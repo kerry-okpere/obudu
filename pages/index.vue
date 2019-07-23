@@ -1,10 +1,18 @@
 <template>
   <div class="container">
-    <h1>Store Home</h1>
+    <NavBar />
   </div>
 </template>
 
 <script>
+import NavBar from "../components/NavBar/index";
+
+export default {
+  name: 'Home',
+  components: {
+    NavBar
+  }
+}
 
 </script>
 
