@@ -1,22 +1,13 @@
+/* Global Imports */
 
-// Colours
+// Variables
 
-$primary-color: #3C87D1;
-$accent-colour: #ff9d02;
-$black: #222222;
-$grey: #807F7F;
-$white: #ffffff;
-$approved: #01A830;
-$failed: #ff5252;
+@import '../../assets/styles/variables.scss';
 
+// Components
 
-// Typography
+@import '../../components/NavBar/index';
 
-$primary-font: 'Poppins', sans-serif;
-$secondary-font: 'Open Sans', sans-serif;
-
-// Spacing
-
-
-
-// Inputs
+body {
+    font-family: $primary-font!important;
+}
