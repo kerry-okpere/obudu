@@ -13,7 +13,7 @@
         </a>
       </div>
 
-      <div id="navbarBasicExample" class="navbar-menu">
+      <div id="navigation" class="navbar-menu">
         <div class="navbar-start">
           <a class="navbar-item">
             Products
@@ -40,11 +40,13 @@
 
         <div class="navbar-end">
           <a class="navbar-item">
-            Search
+            <span>Search</span>
+            <span class="icon"><img src="../../assets/img/search.svg" /></span>
             <!-- <nuxt-link to="/">Home</nuxt-link> -->
           </a>
-                    <a class="navbar-item">
-           Cart
+          <a class="navbar-item">
+            <span>Cart</span>
+            <span class="icon"><img src="../../assets/img/cart.svg" /></span>
             <!-- <nuxt-link to="/">Home</nuxt-link> -->
           </a>
         </div>
