@@ -1,0 +1,28 @@
+@import '../../assets/styles/variables.scss';
+
+
+.navbar {
+    background-color: $white;
+    /* box-shadow: $box-shadow; */
+    /* padding: $spacing-medium; */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    $navbar-item-color: $grey;
+}
+
+.navbar-container {
+
+}
+
+.navbar-link:not(.is-arrowless)::after {
+    border-color: $primary-color!important;
+    margin-top: -0.375em;
+    right: 1.125em;
+}
+
+.navbar-start {
+    padding-left: $spacing-xlarge;
+    padding-right: $spacing-xlarge;
+}

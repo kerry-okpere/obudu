@@ -1,18 +1,12 @@
 <template>
-  <div class="conatiner">
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="container navbar-container">
+    <nav class="navbar is-spaced is-transparent" role="navigation" aria-label="main navigation">
       <div class="navbar-brand">
-        <a class="navbar-item" href="https://bulma.io">
+        <a class="navbar-item" href="/">
           <img src="~assets/img/logo.png" />
         </a>
 
-        <a
-          role="button"
-          class="navbar-burger burger"
-          aria-label="menu"
-          aria-expanded="false"
-          data-target="navbarBasicExample"
-        >
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
@@ -22,12 +16,20 @@
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
           <a class="navbar-item">
-              <nuxt-link to="/">Home</nuxt-link>
+            Products
+            <!-- <nuxt-link to="/">Home</nuxt-link> -->
           </a>
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-              <nuxt-link to="/collections">Collections</nuxt-link>
+
+          <a class="navbar-item">
+            Accessories
+            <!-- <nuxt-link to="/">Home</nuxt-link> -->
           </a>
+
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              Collections
+              <!-- <nuxt-link to="/collections">Collections</nuxt-link> -->
+            </a>
             <div class="navbar-dropdown">
               <a class="navbar-item">Shoes</a>
               <a class="navbar-item">Bags</a>
@@ -37,8 +39,14 @@
         </div>
 
         <div class="navbar-end">
-          
-          
+          <a class="navbar-item">
+            Search
+            <!-- <nuxt-link to="/">Home</nuxt-link> -->
+          </a>
+                    <a class="navbar-item">
+           Cart
+            <!-- <nuxt-link to="/">Home</nuxt-link> -->
+          </a>
         </div>
       </div>
     </nav>
