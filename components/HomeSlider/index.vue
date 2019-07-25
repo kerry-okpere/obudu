@@ -1,20 +1,16 @@
 <template>
-    <div class="container">
-        <carousel>
-  <slide>
-    Slide 1 Content
-  </slide>
-  <slide>
-    Slide 2 Content
-  </slide>
-</carousel>
-    </div>
+  <div class="container">
+    <no-ssr>
+    <carousel :per-page="1">
+      <slide>Slide 1 Content</slide>
+      <slide>Slide 2 Content</slide>
+    </carousel>
+    </no-ssr>
+  </div>
 </template>
 
 <script>
-export default {
-    name: 'HomeSlider'
-}
+
 </script>
 
 <style>

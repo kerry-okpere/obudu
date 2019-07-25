@@ -30,9 +30,11 @@ export default {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [
-    '~/plugins/buefy'
-  ],
+  plugins: [{
+    src: '~/plugins/carousel',
+    ssr: false
+  },
+  '~plugins/buefy'],
   /*
   ** Nuxt.js modules
   */
