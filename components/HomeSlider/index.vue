@@ -1,9 +1,18 @@
 <template>
-  <div class="container">
+  <div class="container is-widescreen is-fullhd">
     <no-ssr>
-    <carousel :per-page="1" :autoplay="true" :mouseDrag="true">
-      <slide><img src="../../assets/img/slider/image-1.jpg" />Slide</slide>
-      <slide><img src="../../assets/img/slider/image-2.jpg" />Slide</slide>
+    <carousel :per-page="1" :mouseDrag="true">
+      <slide>
+        <div class="home-hero">
+        <span>
+          <h1 class="home-hero__title">Enjoy up to 40% OFF this summer!</h1>
+          <br>
+          <span class="home-hero__button">
+          <a class="button is-white is-outlined">SHOP NOW</a>
+          </span>
+        </span>
+        </div>
+        </slide>
     </carousel>
     </no-ssr>
   </div>
