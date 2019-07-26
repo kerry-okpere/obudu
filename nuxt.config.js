@@ -37,7 +37,7 @@ export default {
     src: '~/plugins/carousel',
     ssr: false
   },
-  '~plugins/buefy'],
+  '~/plugins/buefy'],
   /*
   ** Nuxt.js modules
   */
@@ -61,5 +61,14 @@ export default {
     */
     extend(config, ctx) {
     }
+  },
+
+  /*
+  ** Environment Variables
+  */
+
+  env: {
+    
+
   }
 }
