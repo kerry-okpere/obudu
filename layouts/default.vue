@@ -1,13 +1,15 @@
 <template>
-  <div class="container">
+  <div class="container is-fullwidth">
     <NavBar />
     <nuxt />
+
   </div>
 </template>
 
 <script>
-// import NavBarWithSlider from "../components/NavBarWithSlider/index";
+
 import NavBar from "../components/NavBar/index";
+
 
 export default {
   components: {
