@@ -7,7 +7,19 @@
 // Components
 
 @import '../../components/NavBar/index';
+@import '../../components/Footer/index';
+@import '../../components/HomeFeatures/index';
+@import '../../components/HomeProducts/index';
+@import '../../components/HomeSlider/index';
+@import '../../components/NavBar/index';
+@import '../../components/NavBarWithSlider/index';
+@import '../../components/SectionTitle/index';
 
 body {
-    font-family: $primary-font!important;
+    font-family: $primary-font;
+}
+
+.container {
+    width: 100%!important;
+    max-width: 1500px!important;
 }
