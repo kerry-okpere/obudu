@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container animated fadeInUp">
     <div class="columns home-products">
       <div class="column home-products__single">
         <div class="product__image">
