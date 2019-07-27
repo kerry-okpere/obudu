@@ -14,6 +14,7 @@
 @import '../../components/NavBar/index';
 @import '../../components/NavBarWithSlider/index';
 @import '../../components/SectionTitle/index';
+@import '../../components/HomeMap/index';
 
 body {
     font-family: $primary-font;
@@ -21,5 +22,5 @@ body {
 
 .container {
     width: 100%!important;
-    max-width: 1500px!important;
+    max-width: 1440px!important;
 }
