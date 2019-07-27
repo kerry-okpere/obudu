@@ -2,6 +2,7 @@
   <div class="container is-fullwidth">
     <NavBar />
     <nuxt />
+    <Footer />
 
   </div>
 </template>
@@ -9,11 +10,13 @@
 <script>
 
 import NavBar from "../components/NavBar/index";
+import Footer from "../components/Footer/index";
 
 
 export default {
   components: {
-    NavBar
+    NavBar,
+    Footer
   }
 }
 
