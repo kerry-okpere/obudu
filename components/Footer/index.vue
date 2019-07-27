@@ -29,7 +29,7 @@
       <div class="column footer-container__logos">
         <span>
           <img class="footer__logos" src="~assets/img/footer/flutterwave.svg" alt="Flutterwave">
-          <img class="footer__logos" src="~assets/img/footer/quickteller.svg" alt="Quickteller">
+          <!-- <img class="footer__logos" src="~assets/img/footer/quickteller.svg" alt="Quickteller"> -->
         </span>
         <span class="footer__copyright">
           <p>Copyright 2019, MercurieMart. All rights reserved.</p>
