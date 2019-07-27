@@ -1,11 +1,11 @@
 <template>
-  <div class="container is-widescreen is-fullhd">
+  <div class="container is-widescreen home-hero__container">
     <no-ssr>
     <carousel :per-page="1" :mouseDrag="true" :autoplay="true" :pagination-enabled="false">
       <slide>
         <div class="home-hero">
         <span>
-          <h1 class="home-hero__title">Enjoy up to 40% OFF this summer!</h1>
+          <h1 class="home-hero__title">Enjoy up to 40% OFF <br>this summer!</h1>
           <br>
           <span class="home-hero__button">
           <a class="button is-white is-outlined">SHOP NOW</a>
@@ -14,9 +14,9 @@
         </div>
         </slide>
         <slide>
-                  <div class="home-hero">
+        <div class="home-hero home-hero__2">
         <span>
-          <h1 class="home-hero__title">Enjoy up to 40% OFF this summer!</h1>
+          <h1 class="home-hero__title">Enjoy up to 40% OFF <br>this summer!</h1>
           <br>
           <span class="home-hero__button">
           <a class="button is-white is-outlined">SHOP NOW</a>
