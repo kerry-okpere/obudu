@@ -6,10 +6,19 @@
           <img src="../../assets/img/products/item-1.png" alt="Product">
         </div>
         <div class="product__title">
-          <h3>Double Duffle Bag</h3>
+          <h3><a href="#" >Double Duffle Bag</a></h3>
         </div>
+        <div class="product__hover">
+          <ul class="product__action">
+              <li><a href="#"><i class="icon ion-md-heart"></i></a></li>
+
+              <li><a href="#"><i class="icon ion-md-briefcase"></i></a></li>
+
+              <li><a href="#"><i class="icon ion-md-shuffle"></i></a></li>
+          </ul>
+      </div>
         <div class="product__price">
-          <p>N5,000</p>
+          <p> ₦5,000.00</p>
         </div>
       </div>
       <div class="column home-products__single">
@@ -17,10 +26,10 @@
           <img src="../../assets/img/products/item-2.png" alt="Product">
         </div>
         <div class="product__title">
-          <h3>Pattern Ankara Shirt</h3>
+          <h3><a href="#" >Pattern Ankara Shirt</a></h3>
         </div>
         <div class="product__price">
-          <p>N4,300</p>
+          <p> ₦4,300.00</p>
         </div>
       </div>
       <div class="column home-products__single">
@@ -28,10 +37,10 @@
           <img src="../../assets/img/products/item-3.png" alt="Product">
         </div>
         <div class="product__title">
-          <h3>White Collar Shirt</h3>
+          <h3><a href="#" >White Collar Shirt</a></h3>
         </div>
         <div class="product__price">
-          <p>N4,000</p>
+          <p> ₦4,000.00</p>
         </div>
       </div>
       <div class="column home-products__single">
@@ -39,10 +48,10 @@
           <img src="../../assets/img/products/item-4.png" alt="Product">
         </div>
         <div class="product__title">
-          <h3>Geneva Gold Watch</h3>
+          <h3><a href="#" >Geneva Gold Watch</a></h3>
         </div>
         <div class="product__price">
-          <p>N3,500</p>
+          <p> ₦3,500.00</p>
         </div>
       </div>
     </div>
