@@ -1,7 +1,7 @@
 <template>
   <div class="container is-widescreen home-hero__container">
     <no-ssr>
-    <carousel :per-page="1" :mouseDrag="true" :autoplay="true" :pagination-enabled="false">
+    <carousel :per-page="1" :mouseDrag="true" :autoplay="false" :pagination-enabled="false">
       <slide>
         <div class="home-hero">
         <span>
