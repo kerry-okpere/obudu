@@ -1,5 +1,5 @@
 <template>
-  <div class="container is-fullwidth">
+  <div>
     <NavBar />
     <nuxt />
     <Footer />
@@ -17,7 +17,9 @@ export default {
   components: {
     NavBar,
     Footer
-  }
+  },
+  
+
 }
 
 </script>

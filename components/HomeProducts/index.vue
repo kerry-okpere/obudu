@@ -1,62 +1,114 @@
 <template>
-  <div class="container animated fadeInUp">
-    <div class="columns home-products">
-      <div class="column home-products__single">
-        <div class="product__image">
-          <img src="../../assets/img/products/item-1.png" alt="Product">
+  <div class="home-products__section w-container">
+            <h1 class="home-section-title">NEW ARRIVALS</h1>
+            <div class="w-layout-grid grid-2">
+                <div class="home-products__single">
+                    <div class="home-products__image">
+                        <a href="#" class="button-2 w-button">ADD TO CART</a>
+                    </div>
+                    <h1 class="home-products__name">Pink Pattern Dress</h1>
+                    <p class="home-products__price">₦15,000.00</p>
+                </div>
+                <div class="home-products__single">
+                    <div class="home-products__image product_2">
+                        <a href="#" class="button-2 w-button">ADD TO CART</a>
+                    </div>
+                    <h1 class="home-products__name">Blue Wrap Skirt</h1>
+                    <p class="home-products__price">₦5,600.00</p>
+                </div>
+                <div class="home-products__single">
+                    <div class="home-products__image product_3">
+                        <a href="#" class="button-2 w-button">ADD TO CART</a>
+                    </div>
+                    <h1 class="home-products__name">Off Shoulder Black Top</h1>
+                    <p class="home-products__price">₦8,000.00</p>
+                </div>
+                <div class="home-products__single">
+                    <div class="home-products__image product_4">
+                        <a href="#" class="button-2 w-button">ADD TO CART</a>
+                    </div>
+                    <h1 class="home-products__name">Yellow Checkered Jacket</h1>
+                    <p class="home-products__price">₦5,000.00</p>
+                </div>
+                <div class="home-products__single">
+                    <div class="home-products__image product_5">
+                        <a href="#" class="button-2 w-button">ADD TO CART</a>
+                    </div>
+                    <h1 class="home-products__name">Red Checkered Jacket</h1>
+                    <p class="home-products__price">₦5,000.00</p>
+                </div>
+                <div class="home-products__single">
+                    <div class="home-products__image product_5">
+                        <a href="#" class="button-2 w-button">ADD TO CART</a>
+                    </div>
+                    <h1 class="home-products__name">Pink Pattern Dress</h1>
+                    <p class="home-products__price">₦5,000.00</p>
+                </div>
+                <div class="home-products__single">
+                    <div class="home-products__image">
+                        <a href="#" class="button-2 w-button">ADD TO CART</a>
+                    </div>
+                    <h1 class="home-products__name">Pink Pattern Dress</h1>
+                    <p class="home-products__price">₦5,000.00</p>
+                </div>
+                <div class="home-products__single">
+                    <div class="home-products__image product_4">
+                        <a href="#" class="button-2 w-button">ADD TO CART</a>
+                    </div>
+                    <h1 class="home-products__name">Pink Pattern Dress</h1>
+                    <p class="home-products__price">₦5,000.00</p>
+                </div>
+                <div class="home-products__single">
+                    <div class="home-products__image product_2">
+                        <a href="#" class="button-2 w-button">ADD TO CART</a>
+                    </div>
+                    <h1 class="home-products__name">Pink Pattern Dress</h1>
+                    <p class="home-products__price">₦5,000.00</p>
+                </div>
+                <div class="home-products__single">
+                    <div class="home-products__image product_3">
+                        <a href="#" class="button-2 w-button">ADD TO CART</a>
+                    </div>
+                    <h1 class="home-products__name">Pink Pattern Dress</h1>
+                    <p class="home-products__price">₦5,000.00</p>
+                </div>
+                <div class="home-products__single">
+                    <div class="home-products__image">
+                        <a href="#" class="button-2 w-button">ADD TO CART</a>
+                    </div>
+                    <h1 class="home-products__name">Pink Pattern Dress</h1>
+                    <p class="home-products__price">₦5,000.00</p>
+                </div>
+                <div class="home-products__single">
+                    <div class="home-products__image product_4">
+                        <a href="#" class="button-2 w-button">ADD TO CART</a>
+                    </div>
+                    <h1 class="home-products__name">Pink Pattern Dress</h1>
+                    <p class="home-products__price">₦5,000.00</p>
+                </div>
+                <div class="home-products__single">
+                    <div class="home-products__image product_5">
+                        <a href="#" class="button-2 w-button">ADD TO CART</a>
+                    </div>
+                    <h1 class="home-products__name">Pink Pattern Dress</h1>
+                    <p class="home-products__price">₦5,000.00</p>
+                </div>
+                <div class="home-products__single">
+                    <div class="home-products__image product_3">
+                        <a href="#" class="button-2 w-button">ADD TO CART</a>
+                    </div>
+                    <h1 class="home-products__name">Pink Pattern Dress</h1>
+                    <p class="home-products__price">₦5,000.00</p>
+                </div>
+                <div class="home-products__single">
+                    <div class="home-products__image product_2">
+                        <a href="#" class="button-2 w-button">ADD TO CART</a>
+                    </div>
+                    <h1 class="home-products__name">Pink Pattern Dress</h1>
+                    <p class="home-products__price">₦5,000.00</p>
+                </div>
+            </div>
         </div>
-        <div class="product__title">
-          <h3><a href="#" >Double Duffle Bag</a></h3>
-        </div>
-        <div class="product__hover">
-          <ul class="product__action">
-              <li><a href="#"><i class="icon ion-md-heart"></i></a></li>
-
-              <li><a href="#"><i class="icon ion-md-briefcase"></i></a></li>
-
-              <li><a href="#"><i class="icon ion-md-shuffle"></i></a></li>
-          </ul>
-      </div>
-        <div class="product__price">
-          <p> ₦5,000.00</p>
-        </div>
-      </div>
-      <div class="column home-products__single">
-        <div class="product__image">
-          <img src="../../assets/img/products/item-2.png" alt="Product">
-        </div>
-        <div class="product__title">
-          <h3><a href="#" >Pattern Ankara Shirt</a></h3>
-        </div>
-        <div class="product__price">
-          <p> ₦4,300.00</p>
-        </div>
-      </div>
-      <div class="column home-products__single">
-        <div class="product__image">
-          <img src="../../assets/img/products/item-3.png" alt="Product">
-        </div>
-        <div class="product__title">
-          <h3><a href="#" >White Collar Shirt</a></h3>
-        </div>
-        <div class="product__price">
-          <p> ₦4,000.00</p>
-        </div>
-      </div>
-      <div class="column home-products__single">
-        <div class="product__image">
-          <img src="../../assets/img/products/item-4.png" alt="Product">
-        </div>
-        <div class="product__title">
-          <h3><a href="#" >Geneva Gold Watch</a></h3>
-        </div>
-        <div class="product__price">
-          <p> ₦3,500.00</p>
-        </div>
-      </div>
-    </div>
-    <br><br>
-  </div>
 </template>
 
 <script>

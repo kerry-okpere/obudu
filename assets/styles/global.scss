@@ -4,9 +4,13 @@
 
 @import '../../assets/styles/variables.scss';
 
+// Webflow
+
+@import '../../assets/styles/webflow.scss';
+
 // Components
 
-@import '../../components/NavBar/index';
+/* @import '../../components/NavBar/index';
 @import '../../components/Footer/index';
 @import '../../components/HomeFeatures/index';
 @import '../../components/HomeProducts/index';
@@ -15,17 +19,8 @@
 @import '../../components/NavBar/index';
 @import '../../components/NavBarWithSlider/index';
 @import '../../components/SectionTitle/index';
-@import '../../components/HomeMap/index';
+@import '../../components/HomeMap/index'; */
 
 body {
     font-family: $primary-font!important;
-}
-
-.container {
-    width: 100%!important;
-    max-width: 1440px!important;
-}
-
-a {
-    color: $black!important;
 }

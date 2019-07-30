@@ -1,58 +1,27 @@
 <template>
-  <div class="container navbar-container">
-    <nav class="navbar is-spaced is-transparent" role="navigation" aria-label="main navigation">
-      <div class="navbar-brand">
-        <a class="navbar-item" href="/">
-          <img src="~assets/img/logo.png" />
-        </a>
-
-        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false">
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-          <span aria-hidden="true"></span>
-        </a>
-      </div>
-
-      <div id="navigation" class="navbar-menu">
-        <div class="navbar-start">
-          <a class="navbar-item">
-            Products
-            <!-- <nuxt-link to="/">Home</nuxt-link> -->
-          </a>
-
-          <a class="navbar-item">
-            Accessories
-            <!-- <nuxt-link to="/">Home</nuxt-link> -->
-          </a>
-
-          <div class="navbar-item has-dropdown is-hoverable">
-            <a class="navbar-link">
-              Collections
-              <!-- <nuxt-link to="/collections">Collections</nuxt-link> -->
-            </a>
-            <div class="navbar-dropdown">
-              <a class="navbar-item">Shoes</a>
-              <a class="navbar-item">Bags</a>
-              <a class="navbar-item">Clothes</a>
+   <div data-collapse="medium" data-animation="default" data-duration="400" class="navbar w-nav">
+            <div class="w-container">
+                <div class="nav-container div-block-5">
+                    <a href="#" class="brand w-nav-brand">
+                        <img src="https://uploads-ssl.webflow.com/5d2ca9e22be6bac201dbab3a/5d3ec80973102c4cf2c71eff_logo.png" width="150" alt="" class="heder-logo"/>
+                    </a>
+                    <div class="nav__middle">
+                        <a href="#" class="nav-link w-nav-link">Shop</a>
+                        <a href="#" class="nav-link w-nav-link">Collections</a>
+                        <a href="#" class="nav-link w-nav-link">Sale</a>
+                    </div>
+                    <nav role="navigation" class="nav__right w-nav-menu">
+                        <img src="https://uploads-ssl.webflow.com/5d2ca9e22be6bac201dbab3a/5d3ec80873102c28fbc71efe_search.svg" width="15" alt="" class="image"/>
+                        <a href="#" class="nav-link nav-link__right w-nav-link">Search</a>
+                        <img src="https://uploads-ssl.webflow.com/5d2ca9e22be6bac201dbab3a/5d3ec809cb7dfd5295f7d654_cart.svg" width="15" alt="" class="image-2"/>
+                        <a href="#" class="nav-link nav-link__right w-nav-link">Cart</a>
+                    </nav>
+                    <div class="menu-button w-nav-button">
+                        <div class="w-icon-nav-menu"></div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-
-        <div class="navbar-end">
-          <a class="navbar-item">
-            <span>Search</span>
-            <span class="icon"><img src="../../assets/img/search.svg" /></span>
-            <!-- <nuxt-link to="/">Home</nuxt-link> -->
-          </a>
-          <a class="navbar-item">
-            <span>Cart</span>
-            <span class="icon"><img src="../../assets/img/cart.svg" /></span>
-            <!-- <nuxt-link to="/">Home</nuxt-link> -->
-          </a>
-        </div>
-      </div>
-    </nav>
-  </div>
 </template>
 
 <script>
