@@ -7,7 +7,7 @@
                         <img src="https://uploads-ssl.webflow.com/5d2ca9e22be6bac201dbab3a/5d401a01ad57b8d2887484db_product-main.png" srcset="https://uploads-ssl.webflow.com/5d2ca9e22be6bac201dbab3a/5d401a01ad57b8d2887484db_product-main-p-500.png 500w, https://uploads-ssl.webflow.com/5d2ca9e22be6bac201dbab3a/5d401a01ad57b8d2887484db_product-main-p-800.png 800w, https://uploads-ssl.webflow.com/5d2ca9e22be6bac201dbab3a/5d401a01ad57b8d2887484db_product-main.png 890w" sizes="(max-width: 767px) 92vw, (max-width: 991px) 396.328125px, 520px" alt="" class="single-product__main-image"/>
                     </a>
                 </div>
-                <div class="column-2 w-col w-col-5">
+                <div class="single-product__right w-col w-col-5">
                     <div>
                         <h1 class="single-product__title">Off-shoulder Black Top</h1>
                         <p class="single-product__description">

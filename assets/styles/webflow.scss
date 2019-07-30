@@ -2340,6 +2340,13 @@
     background-size: contain;
     background-repeat: no-repeat;
   }
+
+  .single-product__right {
+    display: block;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 50px;
+  }
    
    @media (max-width: 991px) {
      .brand {
