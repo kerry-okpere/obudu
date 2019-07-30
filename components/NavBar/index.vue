@@ -2,7 +2,7 @@
    <div data-collapse="medium" data-animation="default" data-duration="400" class="navbar w-nav">
             <div class="w-container">
                 <div class="nav-container div-block-5">
-                    <a href="#" class="brand w-nav-brand">
+                    <a href="/" class="brand w-nav-brand">
                         <img src="https://uploads-ssl.webflow.com/5d2ca9e22be6bac201dbab3a/5d3ec80973102c4cf2c71eff_logo.png" width="150" alt="" class="heder-logo"/>
                     </a>
                     <div class="nav__middle">

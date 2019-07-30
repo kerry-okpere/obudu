@@ -6,7 +6,7 @@
                     <div class="home-products__image">
                         <a href="#" class="button-2 w-button">ADD TO CART</a>
                     </div>
-                    <h1 class="home-products__name">Pink Pattern Dress</h1>
+                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
                     <p class="home-products__price">₦15,000.00</p>
                 </div>
                 <div class="home-products__single">
