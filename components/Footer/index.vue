@@ -6,9 +6,9 @@
                         <img src="https://uploads-ssl.webflow.com/5d2ca9e22be6bac201dbab3a/5d3efedd4401a55435ef7b6b_logo-alt.png" width="150" alt="" class="footer-logo"/>
                     </a>
                     <div class="footer-nav">
-                        <a href="#" class="nav-link footer-nav__link w-nav-link">Shipping &amp;Returns</a>
+                        <a href="#" class="nav-link footer-nav__link w-nav-link">Shipping &amp; Returns</a>
                         <a href="#" class="nav-link footer-nav__link w-nav-link">Privacy Policy</a>
-                        <a href="#" class="nav-link footer-nav__link w-nav-link">Terms &amp;Conditions</a>
+                        <a href="#" class="nav-link footer-nav__link w-nav-link">Terms &amp; Conditions</a>
                     </div>
                     <div class="footer__social">
                         <img src="https://uploads-ssl.webflow.com/5d2ca9e22be6bac201dbab3a/5d3f0e2ca5236e3187ebd4e0_facebook.png" width="20" alt="" class="footer__social-icons"/>
