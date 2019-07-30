@@ -1912,6 +1912,7 @@
    .home-section-title {
      position: -webkit-sticky;
      position: sticky;
+     z-index: 2;
      top: 50px;
      margin-top: 10px;
      background-color: #fff;
@@ -1961,7 +1962,6 @@
    
    .footer-nav {
      margin-top: 10px;
-     margin-bottom: 10px;
      color: #fff;
    }
    
