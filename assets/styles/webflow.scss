@@ -2262,6 +2262,84 @@
      -ms-flex-align: stretch;
      align-items: stretch;
    }
+
+   .breadcrumbs {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .single-product__title {
+    margin-bottom: 25px;
+    font-size: 24px;
+    line-height: 26px;
+    font-weight: 600;
+  }
+  
+  .single-product__description {
+    font-size: 12px;
+  }
+  
+  .single-product__price {
+    font-size: 18px;
+    line-height: 44px;
+    font-weight: 500;
+  }
+  
+  .single-product__addtocart {
+    background-color: #000;
+  }
+  
+  .single-product-image__container {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 10px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
+  
+  .single-product__similar-container {
+    margin-bottom: 40px;
+  }
+  
+  .grid-2.similar-products-grid {
+    -ms-grid-rows: auto;
+    grid-template-rows: auto;
+  }
+   
+  .single-product__similar-container {
+     margin-bottom: 40px;
+  }
+   
+  .similar-products__grid {
+     -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr;
+     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+     -ms-grid-rows: auto;
+     grid-template-rows: auto;
+  }
+   
+
+  .single-product-image_2 {
+    width: 100px;
+    height: 120px;
+    background-image: url("https://uploads-ssl.webflow.com/5d2ca9e22be6bac201dbab3a/5d401a02eee523f08bf967f6_product-2.png");
+    background-position: 50% 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  
+  .single-product-image_3 {
+    width: 100px;
+    height: 120px;
+    background-image: url("https://uploads-ssl.webflow.com/5d2ca9e22be6bac201dbab3a/5d401a02ad57b8dcf87484dc_product-3.png");
+    background-position: 50% 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
    
    @media (max-width: 991px) {
      .brand {
