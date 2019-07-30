@@ -24,6 +24,10 @@
                             <em>This item is made to order. Please allow 5 – 15 business days for delivery within the U.S. International orders may take longer to ship depending on location.</em>
                             <br/>
                         </p>
+                        <!-- <div class="single-product__quantity">
+                            <div class="quantity-label">Quantity</div>
+                            <input class="quantity" size="4" max="9999" min="1" value="1" type="number" step="1">
+                        </div> -->
                         <h1 class="single-product__price">NGN5,300.00</h1>
                         <a href="#" class="single-product__addtocart w-button">Add to cart</a>
                     </div>

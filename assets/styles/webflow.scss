@@ -1792,9 +1792,9 @@
      -ms-flex-direction: row;
      flex-direction: row;
      -webkit-box-pack: start;
-     -webkit-justify-content: flex-start;
+     -webkit-justify-content: center;
      -ms-flex-pack: start;
-     justify-content: flex-start;
+     justify-content: center;
      -webkit-flex-wrap: wrap;
      -ms-flex-wrap: wrap;
      flex-wrap: wrap;
@@ -2347,7 +2347,13 @@
     position: sticky;
     top: 50px;
   }
-   
+  
+
+  input.quantity {
+    padding: 5px;
+    margin-top: 10px;
+  }
+
    @media (max-width: 991px) {
      .brand {
        -webkit-box-flex: 1;
