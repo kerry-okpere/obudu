@@ -2,6 +2,7 @@
     <div class="container">
         <SingleProductMain />
         <SingleProductImages />
+        <SectionTitle sectionTitle="Similar Products"></SectionTitle>
         <SingleProductSimilar />
     </div>
 </template>
@@ -10,12 +11,14 @@
 
 import SingleProductMain from '../../components/SingleProductMain/index';
 import SingleProductImages from '../../components/SingleProductImages/index';
+import SectionTitle from '../../components/SectionTitle/index';
 import SingleProductSimilar from '../../components/SingleProductSimilar/index';
 
 export default {
     components: {
         SingleProductMain,
         SingleProductImages,
+        SectionTitle,
         SingleProductSimilar
     }
 

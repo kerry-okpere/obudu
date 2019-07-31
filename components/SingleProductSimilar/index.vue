@@ -1,6 +1,5 @@
 <template>
      <div class="single-product__similar-container w-container">
-            <h1 class="home-section-title">SIMILAR PRODUCTS</h1>
             <div class="w-layout-grid similar-products__grid">
                 <div data-w-id="701162c2-b0b8-5b50-bccb-d02f533e7483" class="home-products__single">
                     <div class="home-products__image">
