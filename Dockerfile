@@ -19,5 +19,7 @@ ENV uri \$uri
 #Default config
 ENV PORT 80
 ENV SERVER_NAME _
+ENV DASHBOARD_URI _
+
 # EXPOSE ${PORT}
 CMD ["sh", "-c", "envsubst < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
