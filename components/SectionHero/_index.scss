@@ -1,4 +1,4 @@
-.collection-hero__section {
+.section-hero__section {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -19,7 +19,7 @@
     background-attachment: fixed;
 }
 
-.collection-hero__overlay {
+.section-hero__overlay {
     position: absolute;
     display: block;
     width: 100%;
@@ -28,12 +28,12 @@
     opacity: 0.1;
 }
   
-.collection-hero__heading {
+.section-hero__heading {
     color: #fff;
     text-align: center;
 }
   
-.collection-hero__subheading {
+.section-hero__subheading {
     color: #fff;
     font-size: 16px;
     line-height: 20px;
