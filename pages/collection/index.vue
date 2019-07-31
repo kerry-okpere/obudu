@@ -1,19 +1,19 @@
 <template>
     <div class="container">
-        <CollectionHero />
+        <SectionHero heroHeading="Accessories" heroSubheading="Shop the latest accessories to look as trendy as you feel."/>
         <CollectionProducts />
     </div>
 </template>
 
 <script>
 
-import CollectionHero from '../../components/CollectionHero/index';
+import SectionHero from '../../components/SectionHero/index';
 import CollectionProducts from '../../components/CollectionProducts';
 
 export default {
     name: 'Collections',
     components: {
-        CollectionHero,
+        SectionHero,
         CollectionProducts
     }
 

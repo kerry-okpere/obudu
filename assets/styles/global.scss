@@ -21,8 +21,14 @@
 @import '../../components/SectionTitle/index';
 @import '../../components/HomeMap/index'; */
 
-@import '../../components/CollectionHero/index';
+@import '../../components/SectionHero/index';
 @import '../../components/CollectionProducts/index';
+
+// Pages
+
+@import '../../pages/index';
+@import '../../pages/privacy/index';
+
 
 body {
     font-family: $primary-font!important;
