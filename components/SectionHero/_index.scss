@@ -12,7 +12,6 @@
     -webkit-align-items: center;
     -ms-flex-align: center;
     align-items: center;
-    background-image: url("https://res.cloudinary.com/mercurie/image/upload/v1564579537/mercuriemart/image-6.jpg");
     background-position: 50% 50%;
     background-size: cover;
     background-repeat: no-repeat;
@@ -25,7 +24,11 @@
     width: 100%;
     height: 350px;
     background-color: #000;
-    opacity: 0.1;
+    opacity: 0.5;
+}
+
+.section-hero__container {
+    z-index: 2;
 }
   
 .section-hero__heading {

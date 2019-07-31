@@ -15,6 +15,12 @@ export default {
     components: {
         SectionHero,
         CollectionProducts
+    },
+    data () {
+        return {
+            bgImage: "https://res.cloudinary.com/mercurie/image/upload/v1564579537/mercuriemart/image-5.jpg"
+        }
+
     }
 
 }
