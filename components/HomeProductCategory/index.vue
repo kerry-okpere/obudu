@@ -1,49 +1,43 @@
 <template>
-    <div class="featured-category__section w-container">
-            <div class="featured-category__container w-row">
-                <div class="featured-category__left w-col w-col-3">
-                    <h1 class="heading-2">CLOTHING</h1>
-                    <div class="text-block">
-                        Dresses<br/>
-                        Jumpsuits<br/>
-                        Jackets<br/>
-                        Coats<br/>
-                        Suits<br/>
-                        Trousers<br/>Jeans
-                    </div>
-                    <h1 class="heading-2">ACCESSORIES</h1>
-                    <div class="text-block">
-                        Bags<br/>
-                        Belts<br/>
-                        Wallets<br/>
-                        Earrings<br/>
-                        Bracelets<br/>
-                        Sunglasses<br/>
-                        Caps<br/>
-                        Watches<br/>‍
-                    </div>
-                </div>
-                <div class="featured-category__right w-col w-col-9">
-                    <h1 class="home-section-title">COLLECTIONS</h1>
-                    <div class="w-layout-grid grid">
-                        <div id="w-node-995953f3b94f-3cdbab3b" class="home-category__2"></div>
-                        <div id="w-node-32c54463ef60-3cdbab3b" class="home-category__1"></div>
-                        <div id="w-node-4981e826d649-3cdbab3b" class="home-category__3"></div>
-                        <div id="w-node-e3a992f69bd1-3cdbab3b" class="home-category__4"></div>
-                        <div id="w-node-58b69a044e72-3cdbab3b" class="home-category__5"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="featured-category__section w-container">
+    <div class="w-layout-grid grid">
+      <div id="w-node-995953f3b94f-3cdbab3b" class="featured-category__box">
+          <div class="featured-category__gridbox">
+          <a href="/collection" class="featured-category__image">
+          <span class="featured-category__title">Accessories</span>
+            <span class="featured-category__bg" style="background-image:url('_nuxt/assets/img/collections/image-1.jpg')"></span>
+          </a>
+          </div>
+      </div>
+      <div id="w-node-32c54463ef60-3cdbab3b" class="featured-category__box">
+          <div class="featured-category__gridbox">
+          <a href="/collection" class="featured-category__image">
+          <span class="featured-category__title">Clothing</span>
+            <span class="featured-category__bg" style="background-image:url('_nuxt/assets/img/collections/image-2.jpg')"></span>
+          </a>
+          </div>
+      </div>
+      <div id="w-node-4981e826d649-3cdbab3b" class="featured-category__box">
+          <div class="featured-category__gridbox">
+          <a href="/collection" class="featured-category__image">
+          <span class="featured-category__title">Footwear</span>
+            <span class="featured-category__bg" style="background-image:url('_nuxt/assets/img/collections/image-3.jpg')"></span>
+          </a>
+          </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-export default {
+  export default {
     name: "HomeProductCategory"
 
-}
+  }
+
 </script>
 
 <style>
-@import "./_index.scss";
+  @import "./_index.scss";
+
 </style>

@@ -12,6 +12,76 @@
                     <!-- <h2 class="home-products__name"><a href="/product/:id?">{{product.node.name}}</a></h2> -->
                     <p class="home-products__price">USD {{product.node.price.amount}}</p>
                 </div>
+                <!-- <div class="home-products__single">
+                    <div>
+                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
+                    </div>
+                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
+                    <p class="home-products__price">₦15,000.00</p>
+                </div>
+                <div class="home-products__single">
+                    <div>
+                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
+                    </div>
+                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
+                    <p class="home-products__price">₦15,000.00</p>
+                </div>      
+                <div class="home-products__single">
+                    <div>
+                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
+                    </div>
+                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
+                    <p class="home-products__price">₦15,000.00</p>
+                </div>   
+                <div class="home-products__single">
+                    <div>
+                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
+                    </div>
+                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
+                    <p class="home-products__price">₦15,000.00</p>
+                </div>      
+                <div class="home-products__single">
+                    <div>
+                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
+                    </div>
+                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
+                    <p class="home-products__price">₦15,000.00</p>
+                </div>
+                <div class="home-products__single">
+                    <div>
+                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
+                    </div>
+                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
+                    <p class="home-products__price">₦15,000.00</p>
+                </div>
+                <div class="home-products__single">
+                    <div>
+                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
+                    </div>
+                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
+                    <p class="home-products__price">₦15,000.00</p>
+                </div>      
+                <div class="home-products__single">
+                    <div>
+                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
+                    </div>
+                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
+                    <p class="home-products__price">₦15,000.00</p>
+                </div>   
+                <div class="home-products__single">
+                    <div>
+                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
+                    </div>
+                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
+                    <p class="home-products__price">₦15,000.00</p>
+                </div>      
+                <div class="home-products__single">
+                    <div>
+                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
+                    </div>
+                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
+                    <p class="home-products__price">₦15,000.00</p>
+                </div>                                            -->
             </div>
         </div>
 </template>

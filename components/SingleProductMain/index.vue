@@ -37,8 +37,36 @@
 </template>
 
 <script>
+
+import { GET_SINGLE_PRODUCTS } from "../../queries/productQueries";
+
 export default {
-  name: "SingleProductMain"
+  name: "SingleProductMain",
+  data(){
+      return {
+        products: {
+            id: this.$route.params.id
+        }
+      }
+  },
+
+  async mounted () {
+        // console.log(this.$route.params.id);
+        let singleProds = await this.getSingleProducts();
+        // console.log(singleProds);
+  },
+
+  methods: {
+    async getSingleProducts() {
+        
+        let response = await this.$apollo.query({
+            query: GET_SINGLE_PRODUCTS,
+            variables: { "id": this.products.id }
+        });
+
+        return response.data.products.edges;
+    }
+  }
 };
 </script>
 

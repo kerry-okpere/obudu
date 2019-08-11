@@ -21,7 +21,6 @@ export default {
         SectionTitle,
         SingleProductSimilar
     }
-
 }
 </script>
 

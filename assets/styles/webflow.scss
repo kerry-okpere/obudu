@@ -12,7 +12,11 @@
    /* ==========================================================================
       Start of custom Webflow CSS
       ========================================================================== */
-   .w-layout-grid {
+      .w-nav-link.w--current {
+        color: #222;
+    }
+   
+      .w-layout-grid {
      display: -ms-grid;
      display: grid;
      grid-auto-columns: 1fr;
@@ -1874,8 +1878,8 @@
      grid-template-areas: ". ." ". Area";
      -ms-grid-columns: 1fr 16px 1fr;
      grid-template-columns: 1fr 1fr;
-     -ms-grid-rows: minmax(200px, 200px) 16px minmax(200px, 200px) 16px minmax(200px, 200px);
-     grid-template-rows: minmax(200px, 200px) minmax(200px, 200px) minmax(200px, 200px);
+     -ms-grid-rows: minmax(200px, 200px) 16px minmax(200px, 200px) 16px;
+     grid-template-rows: minmax(200px, 200px) minmax(200px, 200px);
    }
    
    .image-4 {
@@ -1913,7 +1917,7 @@
      position: -webkit-sticky;
      position: sticky;
      z-index: 2;
-     top: 50px;
+     top: 0px;
      margin-top: 10px;
      background-color: #fff;
      font-size: 14px;
@@ -2477,6 +2481,13 @@
        -webkit-flex: 0 0 auto;
        -ms-flex: 0 0 auto;
        flex: 0 0 auto;
+     }
+     .nav__right {
+       display: none;
+     }
+
+     .brand.w-nav-brand {
+      padding-top: 10px;
      }
      .navbar.footer-nav {
        max-height: 450px;
