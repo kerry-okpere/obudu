@@ -25,8 +25,13 @@ import VueApollo from 'vue-apollo';
 
 import { CREATE_TOKEN_MUTATION } from '../queries/authTokenQueries';
 
+// const httpLink = new HttpLink({
+//   uri: process.env.GRAPHQL_URL,
+//   fetch: fetch
+// });
+
 const httpLink = new HttpLink({
-  uri: process.env.GRAPHQL_URL,
+  uri: "https://titan-master-wzownrctwa-uc.a.run.app/graphql/",
   fetch: fetch
 });
 
@@ -92,8 +97,12 @@ export default {
       try{
         let response = await this.$apollo.mutate({
           mutation: CREATE_TOKEN_MUTATION,
-          variables: { "email": process.env.ADMIN_EMAIL, "password": process.env.ADMIN_PASSWORD }
+          variables: { "email": "admin@mercurie.ng", "password": "admin" }
         });
+        // let response = await this.$apollo.mutate({
+        //   mutation: CREATE_TOKEN_MUTATION,
+        //   variables: { "email": process.env.ADMIN_EMAIL, "password": process.env.ADMIN_PASSWORD }
+        // });
         return response.data;
       } catch (e) {
         console.log(e);
