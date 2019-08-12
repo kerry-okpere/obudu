@@ -12,6 +12,7 @@
 import HomeSlider from '../components/HomeSlider/index';
 import HomeProducts from '../components/HomeProducts/index';
 import HomeProductCategory from '../components/HomeProductCategory/index';
+import SingleProductMain from '../components/SingleProductMain/index';
 import TrialBadge from '../components/TrialBadge/index';
 
 import { ApolloClient } from 'apollo-client';

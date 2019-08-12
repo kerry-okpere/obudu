@@ -1,87 +1,17 @@
 <template>
   <div class="home-products__section w-container">
             <h1 class="home-section-title">NEW ARRIVALS</h1>
-            <div class="w-layout-grid grid-2">
-                <div v-for="product in products" :key="product.node.id" class="home-products__single">
-                    <div class="home-products__image">
-                        <a href="#" class="button-2 w-button">ADD TO CART</a>
+            <div class="w-layout-grid grid-2">                
+                <div v-for="product in products" :key="product.node.id"  class="home-products__single">
+                    <div>
+                        <img :src="`${product.node.images[0].url}`" class="loading" data-was-processed="true">
                     </div>
-                    <!-- <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1> -->
-                    <!-- <h2 class="home-products__name"><a href="/product/:id?">{{product.node.name}}</a></h2> -->
-                    <nuxt-link :to="`/product/${product.node.id}`" class="home-products__name">{{product.node.name}}</nuxt-link>
-                    <!-- <h2 class="home-products__name"><a href="/product/:id?">{{product.node.name}}</a></h2> -->
-                    <p class="home-products__price">USD {{product.node.price.amount}}</p>
+                    <h1 class="home-products__name">
+                        <nuxt-link :to="`/product/${product.node.id}`">{{product.node.name}}</nuxt-link>
+                    </h1>
+                    <p class="home-products__price">${{product.node.price.amount}}</p>
                 </div>
-                <!-- <div class="home-products__single">
-                    <div>
-                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
-                    </div>
-                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
-                    <p class="home-products__price">₦15,000.00</p>
-                </div>
-                <div class="home-products__single">
-                    <div>
-                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
-                    </div>
-                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
-                    <p class="home-products__price">₦15,000.00</p>
-                </div>      
-                <div class="home-products__single">
-                    <div>
-                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
-                    </div>
-                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
-                    <p class="home-products__price">₦15,000.00</p>
-                </div>   
-                <div class="home-products__single">
-                    <div>
-                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
-                    </div>
-                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
-                    <p class="home-products__price">₦15,000.00</p>
-                </div>      
-                <div class="home-products__single">
-                    <div>
-                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
-                    </div>
-                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
-                    <p class="home-products__price">₦15,000.00</p>
-                </div>
-                <div class="home-products__single">
-                    <div>
-                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
-                    </div>
-                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
-                    <p class="home-products__price">₦15,000.00</p>
-                </div>
-                <div class="home-products__single">
-                    <div>
-                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
-                    </div>
-                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
-                    <p class="home-products__price">₦15,000.00</p>
-                </div>      
-                <div class="home-products__single">
-                    <div>
-                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
-                    </div>
-                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
-                    <p class="home-products__price">₦15,000.00</p>
-                </div>   
-                <div class="home-products__single">
-                    <div>
-                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
-                    </div>
-                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
-                    <p class="home-products__price">₦15,000.00</p>
-                </div>      
-                <div class="home-products__single">
-                    <div>
-                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
-                    </div>
-                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
-                    <p class="home-products__price">₦15,000.00</p>
-                </div>                                            -->
+
             </div>
         </div>
 </template>
@@ -94,13 +24,14 @@ export default {
 
     data() {
         return {
-            products: []
+            products: [],
         }
     },
 
     async mounted() {
         let prods = await this.getProducts();
         this.products = prods;
+        // this.image = prods.images[0].url
         console.log(this.products);
     },
     
