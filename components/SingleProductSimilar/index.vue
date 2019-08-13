@@ -8,45 +8,62 @@
                     <h1 class="home-products__name">Pink Pattern Dress</h1>
                     <p class="home-products__price">₦15,000.00</p>
                 </div>
-                <div data-w-id="701162c2-b0b8-5b50-bccb-d02f533e748b" class="home-products__single">
-                    <div class="home-products__image product_2">
-                        <a href="#" class="button-2 w-button">ADD TO CART</a>
+
+                <!-- <div v-for="product in products" :key="product.node.id"  class="home-products__single">
+                    <div>
+                        <img :src="`${product.node.images[0].url}`" class="loading" data-was-processed="true">
                     </div>
-                    <h1 class="home-products__name">Blue Wrap Skirt</h1>
-                    <p class="home-products__price">₦5,600.00</p>
-                </div>
-                <div data-w-id="701162c2-b0b8-5b50-bccb-d02f533e7493" class="home-products__single">
-                    <div class="home-products__image product_3">
-                        <a href="#" class="button-2 w-button">ADD TO CART</a>
-                    </div>
-                    <h1 class="home-products__name">Off Shoulder Black Top</h1>
-                    <p class="home-products__price">₦8,000.00</p>
-                </div>
-                <div data-w-id="701162c2-b0b8-5b50-bccb-d02f533e749b" class="home-products__single">
-                    <div class="home-products__image product_4">
-                        <a href="#" class="button-2 w-button">ADD TO CART</a>
-                    </div>
-                    <h1 class="home-products__name">Yellow Checkered Jacket</h1>
-                    <p class="home-products__price">₦5,000.00</p>
-                </div>
-                <div data-w-id="701162c2-b0b8-5b50-bccb-d02f533e74a3" class="home-products__single">
-                    <div class="home-products__image product_5">
-                        <a href="#" class="button-2 w-button">ADD TO CART</a>
-                    </div>
-                    <h1 class="home-products__name">Red Checkered Jacket</h1>
-                    <p class="home-products__price">₦5,000.00</p>
-                </div>
+                    <h1 class="home-products__name">
+                        <nuxt-link :to="`/product/${product.node.id}`">{{product.node.name}}</nuxt-link>
+                    </h1>
+                    <p class="home-products__price">${{product.node.price.amount}}</p>
+                </div> -->
+
+
             </div>
         </div>
 </template>
 
 <script>
+
+import { GET_SIMILAR_PRODUCTS } from "../../queries/productQueries";
+import store from '@/store/index';
+
 export default {
-    name: 'SingleProductSimilar'
+    name: 'SingleProductSimilar',
+    data(){
+        return  {
+            id: '',
+        }
+    },
+
+    computed: {
+        getProdCategory() {
+            return store.getters.getProductsCategory
+        }
+    },
+
+
+    async mounted() {
+        // let cat = await this.getCatId(this.getProdCategory)
+        // console.log(cat);
+    },
+
+    methods: {
+        async getSimilarProducts(id) {
+            let response = await this.$apollo.query({
+                query: GET_SIMILAR_PRODUCTS,
+                variables: { "id": id }
+            });
+
+            return response.data.category.products;
+
+        }
+    }
 
 }
-</script>
 
+</script>
 <style>
 
 </style>

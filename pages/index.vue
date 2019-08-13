@@ -99,10 +99,6 @@ export default {
           mutation: CREATE_TOKEN_MUTATION,
           variables: { "email": "admin@mercurie.ng", "password": "admin" }
         });
-        // let response = await this.$apollo.mutate({
-        //   mutation: CREATE_TOKEN_MUTATION,
-        //   variables: { "email": process.env.ADMIN_EMAIL, "password": process.env.ADMIN_PASSWORD }
-        // });
         return response.data;
       } catch (e) {
         console.log(e);

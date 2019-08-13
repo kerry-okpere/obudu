@@ -9,7 +9,8 @@ query($id: ID!){
     }
     description
     category {
-      name
+      name,
+      id
     }
     price {
       currency
@@ -31,7 +32,8 @@ query {
             currency
           }
           category{
-            name
+            name,
+            id
           }
           images{
             url
@@ -39,5 +41,47 @@ query {
         }
       }
     }
+}
+`;
+
+export const GET_SIMILAR_PRODUCTS = gql`
+query ($id: ID!){
+  category(id: $id) {
+    products(first: 4 ){
+      edges{
+        node{
+          id
+          name
+          images{
+            url
+          }
+          thumbnail{
+            url
+          }
+          price{
+            amount
+            currency
+          }
+          
+        }
+      }
+    }
+  }
+}
+
+`;
+
+export const GET_HOMEPAGE_CATEGORIES = gql`
+query{
+  categories(first: 3) {
+    edges{
+      node{
+        name,
+        backgroundImage{
+          url
+        } 
+      }
+    }
+  }
 }
 `;

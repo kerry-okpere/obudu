@@ -4,7 +4,9 @@
             <div class="w-layout-grid grid-2">                
                 <div v-for="product in products" :key="product.node.id"  class="home-products__single">
                     <div>
-                        <img :src="`${product.node.images[0].url}`" class="loading" data-was-processed="true">
+                        <nuxt-link :to="`/product/${product.node.id}`">
+                            <img :src="`${product.node.images[0].url}`" class="loading" data-was-processed="true">
+                        </nuxt-link>
                     </div>
                     <h1 class="home-products__name">
                         <nuxt-link :to="`/product/${product.node.id}`">{{product.node.name}}</nuxt-link>
@@ -31,8 +33,6 @@ export default {
     async mounted() {
         let prods = await this.getProducts();
         this.products = prods;
-        // this.image = prods.images[0].url
-        console.log(this.products);
     },
     
     methods: {
