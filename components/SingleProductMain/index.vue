@@ -16,7 +16,7 @@
                     <div>
                         <!-- <h1 class="single-product__title">{{ this.products.productDetails.name }}</h1> -->
                         <!-- <h1 class="single-product__title">{{ this.products.name }}</h1> -->
-                        <h1 class="single-product__title">{{ products.name }}</h1>
+                        <h1 class="single-product__title">{{ this.products.name }}</h1>
                         <p class="single-product__description">
                             {{ this.products.description }}
                         </p>
@@ -46,7 +46,7 @@
 <script>
 
 import { GET_SINGLE_PRODUCTS } from "../../queries/productQueries";
-import store from '@/store/index';
+// import store from '@/store/index';
 
 export default {
     name: "SingleProductMain",
@@ -65,19 +65,19 @@ export default {
         }
     },
 
-    computed: {
-        products() {
-            return store.state.products
-        }
-    },
+    // computed: {
+    //     products() {
+    //         return store.state.products
+    //     }
+    // },
 
   async mounted () {
         // console.log(this.$route.params.id);
         this.products.id = this.$route.params.id;
         let singleProds = await this.getSingleProducts();
-        store.commit('setProductsName', singleProds.name);
-        store.commit('setProductsId', this.$route.params.id);
-        store.commit('setProductsCatId', singleProds.category.id);
+        // store.commit('setProductsName', singleProds.name);
+        // store.commit('setProductsId', this.$route.params.id);
+        // store.commit('setProductsCatId', singleProds.category.id);
         this.products.productDetails = singleProds;
         this.products.description = singleProds.description;
         this.products.name = singleProds.name;
