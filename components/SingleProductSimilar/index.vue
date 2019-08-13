@@ -27,7 +27,7 @@
 <script>
 
 import { GET_SIMILAR_PRODUCTS } from "../../queries/productQueries";
-import store from '@/store/index';
+// import store from '@/store/index';
 
 export default {
     name: 'SingleProductSimilar',
@@ -38,9 +38,9 @@ export default {
     },
 
     computed: {
-        getProdCategory() {
-            return store.getters.getProductsCategory
-        }
+        // getProdCategory() {
+        //     return store.getters.getProductsCategory
+        // }
     },
 
 
