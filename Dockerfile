@@ -9,6 +9,7 @@ RUN npm run generate
 # production stage
 FROM nginx:stable as production-stage
 # COPY --from=build-stage /app/dist /usr/share/nginx/html
+RUN chmod 755 -R /var/www
 COPY --from=build-stage /app/dist /var/www
 
 RUN rm /etc/nginx/conf.d/default.conf
