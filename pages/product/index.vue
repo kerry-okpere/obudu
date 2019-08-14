@@ -1,5 +1,6 @@
 <template>
-    <div class="container">
+    <div>
+        <SectionBreadcrumbs />
         <SingleProductMain />
         <SingleProductImages />
         <SectionTitle sectionTitle="Similar Products"></SectionTitle>
@@ -8,7 +9,7 @@
 </template>
 
 <script>
-
+import SectionBreadcrumbs from '../../components/SectionBreadcrumbs/index';
 import SingleProductMain from '../../components/SingleProductMain/index';
 import SingleProductImages from '../../components/SingleProductImages/index';
 import SectionTitle from '../../components/SectionTitle/index';
@@ -16,6 +17,7 @@ import SingleProductSimilar from '../../components/SingleProductSimilar/index';
 
 export default {
     components: {
+        SectionBreadcrumbs,
         SingleProductMain,
         SingleProductImages,
         SectionTitle,
