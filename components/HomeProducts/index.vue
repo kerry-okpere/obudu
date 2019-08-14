@@ -1,84 +1,50 @@
 <template>
   <div class="home-products__section w-container">
             <h1 class="home-section-title">NEW ARRIVALS</h1>
-            <div class="w-layout-grid grid-2">
-                <div class="home-products__single">
+            <div class="w-layout-grid grid-2">                
+                <div v-for="product in products" :key="product.node.id"  class="home-products__single">
                     <div>
-                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
+                        <nuxt-link :to="`/product/${product.node.id}`">
+                            <img :src="`${product.node.images[0].url}`" class="loading" data-was-processed="true">
+                        </nuxt-link>
                     </div>
-                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
-                    <p class="home-products__price">₦15,000.00</p>
+                    <h1 class="home-products__name">
+                        <nuxt-link :to="`/product/${product.node.id}`">{{product.node.name}}</nuxt-link>
+                    </h1>
+                    <p class="home-products__price">${{product.node.price.amount}}</p>
                 </div>
-                <div class="home-products__single">
-                    <div>
-                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
-                    </div>
-                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
-                    <p class="home-products__price">₦15,000.00</p>
-                </div>      
-                <div class="home-products__single">
-                    <div>
-                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
-                    </div>
-                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
-                    <p class="home-products__price">₦15,000.00</p>
-                </div>   
-                <div class="home-products__single">
-                    <div>
-                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
-                    </div>
-                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
-                    <p class="home-products__price">₦15,000.00</p>
-                </div>      
-                <div class="home-products__single">
-                    <div>
-                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
-                    </div>
-                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
-                    <p class="home-products__price">₦15,000.00</p>
-                </div>
-                <div class="home-products__single">
-                    <div>
-                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
-                    </div>
-                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
-                    <p class="home-products__price">₦15,000.00</p>
-                </div>
-                <div class="home-products__single">
-                    <div>
-                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
-                    </div>
-                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
-                    <p class="home-products__price">₦15,000.00</p>
-                </div>      
-                <div class="home-products__single">
-                    <div>
-                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
-                    </div>
-                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
-                    <p class="home-products__price">₦15,000.00</p>
-                </div>   
-                <div class="home-products__single">
-                    <div>
-                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
-                    </div>
-                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
-                    <p class="home-products__price">₦15,000.00</p>
-                </div>      
-                <div class="home-products__single">
-                    <div>
-                        <img src="@/assets/img/products/item-6.jpeg" class="loading" data-was-processed="true">
-                    </div>
-                    <h1 class="home-products__name"><a href="/product">Pink Pattern Dress</a></h1>
-                    <p class="home-products__price">₦15,000.00</p>
-                </div>                                           
+
             </div>
         </div>
 </template>
 
 <script>
+import { GET_PRODUCTS } from "../../queries/productQueries";
+
 export default {
-  name: "HomeProducts"
+    name: "HomeProducts",
+
+    data() {
+        return {
+            products: [],
+        }
+    },
+
+    async mounted() {
+        let prods = await this.getProducts();
+        this.products = prods;
+    },
+    
+    methods: {
+    async getProducts() {
+        let response = await this.$apollo.query({
+            query: GET_PRODUCTS
+        });
+
+        return response.data.products.edges;
+    }
+}
+
 };
 </script>
 

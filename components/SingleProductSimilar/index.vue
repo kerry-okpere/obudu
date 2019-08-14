@@ -1,52 +1,68 @@
 <template>
      <div class="single-product__similar-container w-container">
             <div class="w-layout-grid similar-products__grid">
-                <div data-w-id="701162c2-b0b8-5b50-bccb-d02f533e7483" class="home-products__single">
-                    <div class="home-products__image">
-                        <a href="#" class="button-2 w-button">ADD TO CART</a>
+                <div v-for="category in categories" :key="category.node.id" data-w-id="701162c2-b0b8-5b50-bccb-d02f533e7483" class="home-products__single">
+                    <div>
+                        <nuxt-link :to="`/product/${category.node.id}`">
+                            <img :src="`${category.node.images[0].url}`" class="loading" data-was-processed="true">
+                        </nuxt-link>
+                        <!-- <a href="#" class="button-2 w-button">ADD TO CART</a> -->
                     </div>
-                    <h1 class="home-products__name">Pink Pattern Dress</h1>
-                    <p class="home-products__price">₦15,000.00</p>
-                </div>
-                <div data-w-id="701162c2-b0b8-5b50-bccb-d02f533e748b" class="home-products__single">
-                    <div class="home-products__image product_2">
+                    <!-- <div class="home-products__image">
                         <a href="#" class="button-2 w-button">ADD TO CART</a>
-                    </div>
-                    <h1 class="home-products__name">Blue Wrap Skirt</h1>
-                    <p class="home-products__price">₦5,600.00</p>
+                    </div> -->
+                    <h1 class="home-products__name">
+                        <nuxt-link :to="`/product/${category.node.id}`">{{category.node.name}}</nuxt-link>
+                    </h1>
+                    <p class="home-products__price">${{category.node.price.amount}}</p>
                 </div>
-                <div data-w-id="701162c2-b0b8-5b50-bccb-d02f533e7493" class="home-products__single">
-                    <div class="home-products__image product_3">
-                        <a href="#" class="button-2 w-button">ADD TO CART</a>
-                    </div>
-                    <h1 class="home-products__name">Off Shoulder Black Top</h1>
-                    <p class="home-products__price">₦8,000.00</p>
-                </div>
-                <div data-w-id="701162c2-b0b8-5b50-bccb-d02f533e749b" class="home-products__single">
-                    <div class="home-products__image product_4">
-                        <a href="#" class="button-2 w-button">ADD TO CART</a>
-                    </div>
-                    <h1 class="home-products__name">Yellow Checkered Jacket</h1>
-                    <p class="home-products__price">₦5,000.00</p>
-                </div>
-                <div data-w-id="701162c2-b0b8-5b50-bccb-d02f533e74a3" class="home-products__single">
-                    <div class="home-products__image product_5">
-                        <a href="#" class="button-2 w-button">ADD TO CART</a>
-                    </div>
-                    <h1 class="home-products__name">Red Checkered Jacket</h1>
-                    <p class="home-products__price">₦5,000.00</p>
-                </div>
+
             </div>
         </div>
 </template>
 
 <script>
+
+import { GET_SIMILAR_PRODUCTS } from "../../queries/productQueries";
+
 export default {
-    name: 'SingleProductSimilar'
+    name: 'SingleProductSimilar',
+    data(){
+        return  {
+            categories: []
+        }
+    },
+
+    computed: {
+        async getProdCategory() {
+            return this.$store.getters.getProductsCategory;
+        }
+    },
+
+    async created() {
+        const sleep = m => new Promise(r => setTimeout(r, m));
+        let category  = await this.getProdCategory;
+        await sleep(1000);
+        let similar_prods = await this.getSimilarProducts(category.category.id);
+
+        // remove first element in the array because that's first element but solution is not scalable
+        similar_prods.shift();        
+        this.categories = similar_prods;
+    },
+
+    methods: {
+        async getSimilarProducts(id) {
+            let response = await this.$apollo.query({
+                query: GET_SIMILAR_PRODUCTS,
+                variables: { "id": id }
+            });
+            return response.data.category.products.edges;
+        }
+    }
 
 }
-</script>
 
+</script>
 <style>
 
 </style>
