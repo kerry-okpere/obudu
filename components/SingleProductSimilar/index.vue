@@ -1,24 +1,21 @@
 <template>
      <div class="single-product__similar-container w-container">
             <div class="w-layout-grid similar-products__grid">
-                <div data-w-id="701162c2-b0b8-5b50-bccb-d02f533e7483" class="home-products__single">
-                    <div class="home-products__image">
-                        <a href="#" class="button-2 w-button">ADD TO CART</a>
-                    </div>
-                    <h1 class="home-products__name">Pink Pattern Dress</h1>
-                    <p class="home-products__price">₦15,000.00</p>
-                </div>
-
-                <!-- <div v-for="product in products" :key="product.node.id"  class="home-products__single">
+                <div v-for="category in categories" :key="category.node.id" data-w-id="701162c2-b0b8-5b50-bccb-d02f533e7483" class="home-products__single">
                     <div>
-                        <img :src="`${product.node.images[0].url}`" class="loading" data-was-processed="true">
+                        <nuxt-link :to="`/product/${category.node.id}`">
+                            <img :src="`${category.node.images[0].url}`" class="loading" data-was-processed="true">
+                        </nuxt-link>
+                        <!-- <a href="#" class="button-2 w-button">ADD TO CART</a> -->
                     </div>
+                    <!-- <div class="home-products__image">
+                        <a href="#" class="button-2 w-button">ADD TO CART</a>
+                    </div> -->
                     <h1 class="home-products__name">
-                        <nuxt-link :to="`/product/${product.node.id}`">{{product.node.name}}</nuxt-link>
+                        <nuxt-link :to="`/product/${category.node.id}`">{{category.node.name}}</nuxt-link>
                     </h1>
-                    <p class="home-products__price">${{product.node.price.amount}}</p>
-                </div> -->
-
+                    <p class="home-products__price">${{category.node.price.amount}}</p>
+                </div>
 
             </div>
         </div>
@@ -27,26 +24,30 @@
 <script>
 
 import { GET_SIMILAR_PRODUCTS } from "../../queries/productQueries";
-// import store from '@/store/index';
 
 export default {
     name: 'SingleProductSimilar',
     data(){
         return  {
-            id: '',
+            categories: []
         }
     },
 
     computed: {
-        // getProdCategory() {
-        //     return store.getters.getProductsCategory
-        // }
+        async getProdCategory() {
+            return this.$store.getters.getProductsCategory;
+        }
     },
 
+    async created() {
+        const sleep = m => new Promise(r => setTimeout(r, m));
+        let category  = await this.getProdCategory;
+        await sleep(1000);
+        let similar_prods = await this.getSimilarProducts(category.category.id);
 
-    async mounted() {
-        // let cat = await this.getCatId(this.getProdCategory)
-        // console.log(cat);
+        // remove first element in the array because that's first element but solution is not scalable
+        similar_prods.shift();        
+        this.categories = similar_prods;
     },
 
     methods: {
@@ -55,9 +56,7 @@ export default {
                 query: GET_SIMILAR_PRODUCTS,
                 variables: { "id": id }
             });
-
-            return response.data.category.products;
-
+            return response.data.category.products.edges;
         }
     }
 

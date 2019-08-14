@@ -46,7 +46,7 @@
 <script>
 
 import { GET_SINGLE_PRODUCTS } from "../../queries/productQueries";
-// import store from '@/store/index';
+import store from '@/store/index';
 
 export default {
     name: "SingleProductMain",
@@ -65,19 +65,19 @@ export default {
         }
     },
 
-    // computed: {
-    //     products() {
-    //         return store.state.products
-    //     }
-    // },
+    computed: {
+        stateproducts() {
+            return this.$store.state.products
+        }
+    },
 
   async mounted () {
         // console.log(this.$route.params.id);
         this.products.id = this.$route.params.id;
         let singleProds = await this.getSingleProducts();
-        // store.commit('setProductsName', singleProds.name);
-        // store.commit('setProductsId', this.$route.params.id);
-        // store.commit('setProductsCatId', singleProds.category.id);
+        this.$store.commit('setProductsName', singleProds.name);
+        this.$store.commit('setProductsId', this.$route.params.id);
+        this.$store.commit('setProductsCatId', singleProds.category.id);
         this.products.productDetails = singleProds;
         this.products.description = singleProds.description;
         this.products.name = singleProds.name;

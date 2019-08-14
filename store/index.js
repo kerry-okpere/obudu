@@ -1,3 +1,10 @@
+import Vue from 'vue';
+import Vuex from 'vuex';
+
+import { GET_SINGLE_PRODUCTS } from "../queries/productQueries";
+
+Vue.use(Vuex);
+
 export const state = () => ({
   //data
   products: {
@@ -8,7 +15,7 @@ export const state = () => ({
       amount: ""
     },
     category: {
-      catid: "default"
+      id: "default"
     },
     name: "",
     description: ""
@@ -18,12 +25,16 @@ export const state = () => ({
 export const getters = {
   // computed properties
   getProductsCategory(state, getters) {
-    return state.products;
-  }
+    return new Promise ((resolve, reject) => {
+      resolve(state.products);
+      reject("Unable to get products");
+    }) 
+  },
+  
 };
 
 export const actions = {
-  fetchProducts() {
+  fetchProducts(context) {
     //make the grapql call
   }
 };
@@ -39,6 +50,6 @@ export const mutations = {
   },
 
   setProductsCatId(state, catId) {
-    state.products.category.catid = catId;
+    state.products.category.id = catId;
   }
 };

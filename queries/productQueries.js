@@ -47,7 +47,7 @@ query {
 export const GET_SIMILAR_PRODUCTS = gql`
 query ($id: ID!){
   category(id: $id) {
-    products(first: 4 ){
+    products(first: 5 ){
       edges{
         node{
           id
