@@ -11,3 +11,44 @@
     padding-top:5px;
     font-weight: 600;
 }
+
+.home-atc-button {
+    position: relative;
+    line-height: inherit;
+    padding-left: 25px;
+    padding-right: 10px;
+    color: #2d2d2d;
+    background: transparent;
+    border: none;
+    -webkit-transition: color .3s ease;
+    -moz-transition: color .3s ease;
+    transition: color .3s ease;
+}
+
+.home-product-image__hover {
+    position: absolute;
+    top: 0px;
+    visibility: hidden;
+    left: 0px;
+    width: 100%;
+    opacity: 0;
+    -webkit-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    -webkit-transform: translateX(100%);
+    -ms-transform: translateX(100%);
+    transform: translateX(100%);
+}
+
+.home-product__buttons {
+    margin-top: 15px;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: translateY(30px);
+    -moz-transform: translateY(30px);
+    -o-transform: translateY(30px);
+    transform: translateY(30px);
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    transition: all .3s ease;
+}

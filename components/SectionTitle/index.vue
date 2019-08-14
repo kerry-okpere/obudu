@@ -1,6 +1,7 @@
 <template>
-  <div class="w-container">
-    <h1 class="home-section-title">{{ sectionTitle }}</h1>
+  <div class="container text-center">
+    <h3 class="section-title">{{ sectionTitle }}</h3>
+    <p class="section-subtitle">{{ sectionSubtitle }}</p>
   </div>
 </template>
 
@@ -8,14 +9,15 @@
   export default {
     name: 'SectionTitle',
     props: {
-      sectionTitle: String
+      sectionTitle: String,
+      sectionSubtitle: String
     }
 
   }
 
 </script>
 
-<style>
+<style lang="scss" scoped>
   @import "./_index.scss";
 
 </style>

@@ -1,34 +1,40 @@
 <template>
-  <div class="section">
-            <div data-delay="10000" data-animation="slide" data-autoplay="1" data-hide-arrows="1" data-autoplay-limit="4" data-duration="500" class="slider w-slider">
-                <div class="w-slider-mask">
-                    <div class="w-slide">
-                        <div class="div-block">
-                            <h1 class="heading">Bounce Back in Style</h1>
-                            <p class="paragraph">with the hottest trends this summer</p>
-                            <a href="#" class="button w-button">SHOP NOW</a>
+  <div class="slider-area">
+    <div class="slider-active owl-carousel nav-style-1">
+        <div class="single-slider-2 slider-height-2 d-flex align-items-center bg-img" style="background-image:url(assets/img/slider/slider-2.jpg);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-7 col-md-8 col-12 ml-auto">
+                        <div class="slider-content-3 slider-animated-1 text-center">
+                            <h3 class="animated">Stylish</h3>
+                            <h1 class="animated">Male Clothes</h1>
+                            <p class="animated">30% off Summer Vacation</p>
+                            <div class="slider-btn btn-hover">
+                                <a class="animated" href="shop.html">SHOP NOW</a>
+                            </div>
                         </div>
-                    <img src="@/assets/img/slider/image-4.png" sizes="(max-width: 1920px) 100vw, 1920px" alt=""/>
-                    </div>
-                    <div class="w-slide">
-                        <div class="div-block">
-                            <h1 class="heading slide-content__white">
-                                Enjoy up to 40% OFF<br/>this summer!
-                            </h1>
-                            <a href="#" class="button w-button">SHOP NOW</a>
-                        </div>
-                        <img src="@/assets/img/slider/image-3.jpg" sizes="(max-width: 1920px) 100vw, 1920px" alt=""/>
                     </div>
                 </div>
-                <div class="left-arrow w-slider-arrow-left">
-                    <div class="icon w-icon-slider-left"></div>
-                </div>
-                <div class="right-arrow w-slider-arrow-right">
-                    <div class="icon-2 w-icon-slider-right"></div>
-                </div>
-                <div class="w-slider-nav w-round"></div>
             </div>
         </div>
+        <div class="single-slider-2 slider-height-2 d-flex align-items-center bg-img" style="background-image:url(assets/img/slider/slider-2.jpg);">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-7 col-md-8 col-12 ml-auto">
+                        <div class="slider-content-3 slider-animated-1 text-center">
+                            <h3 class="animated">Stylish</h3>
+                            <h1 class="animated">Male Clothes</h1>
+                            <p class="animated">30% off Summer Vacation</p>
+                            <div class="slider-btn btn-hover">
+                                <a class="animated" href="shop.html">SHOP NOW</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </template>
 
 <script>
@@ -36,6 +42,7 @@ export default {
   name: 'HomeSlider'
 };
 </script>
-<style>
+
+<style lang="scss">
 @import "./_index.scss";
 </style>

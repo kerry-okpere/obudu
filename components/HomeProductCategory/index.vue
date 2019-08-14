@@ -1,43 +1,44 @@
 <template>
-  <div class="featured-category__section w-container">
-    <div class="w-layout-grid grid">
-      <div id="w-node-995953f3b94f-3cdbab3b" class="featured-category__box">
-          <div class="featured-category__gridbox">
-          <a href="/collection" class="featured-category__image">
-          <span class="featured-category__title">Accessories</span>
-            <span class="featured-category__bg" style="background-image:url('_nuxt/assets/img/collections/image-1.jpg')"></span>
-          </a>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-4">
+          <div class="single-banner mb-30 scroll-zoom" data-sr-id="2">
+            <a href="/product">
+              <span class="home-category__title">Groceries</span>
+              <span class="home-category__bg" style="background-image: url(https://res.cloudinary.com/mercurie/image/upload/v1564579540/mercuriemart/image-5.jpg);"></span>
+            </a>
           </div>
-      </div>
-      <div id="w-node-32c54463ef60-3cdbab3b" class="featured-category__box">
-          <div class="featured-category__gridbox">
-          <a href="/collection" class="featured-category__image">
-          <span class="featured-category__title">Clothing</span>
-            <span class="featured-category__bg" style="background-image:url('_nuxt/assets/img/collections/image-2.jpg')"></span>
-          </a>
+        </div>
+      <div class="col-lg-4 col-md-4">
+          <div class="single-banner mb-30 scroll-zoom" data-sr-id="2">
+            <a href="/product">
+              <span class="home-category__title">Groceries</span>
+              <img class="animated" src="@/assets/img/collections/image-2.jpg" alt="">
+            </a>
           </div>
-      </div>
-      <div id="w-node-4981e826d649-3cdbab3b" class="featured-category__box">
-          <div class="featured-category__gridbox">
-          <a href="/collection" class="featured-category__image">
-          <span class="featured-category__title">Footwear</span>
-            <span class="featured-category__bg" style="background-image:url('_nuxt/assets/img/collections/image-3.jpg')"></span>
-          </a>
+        </div>
+      <div class="col-lg-4 col-md-4">
+          <div class="single-banner mb-30 scroll-zoom" data-sr-id="2">
+            <a href="/product">
+              <span class="home-category__title">Groceries</span>
+              <img class="animated" src="@/assets/img/collections/image-2.jpg" alt="">
+            </a>
           </div>
-      </div>
-    </div>
+        </div>
+            </div>
+      
   </div>
 </template>
 
 <script>
+
   export default {
-    name: "HomeProductCategory"
+    name: "HomeProductCategory",
 
   }
 
 </script>
 
-<style>
+<style lang="scss" scoped>
   @import "./_index.scss";
-
 </style>
