@@ -1,48 +1,58 @@
 <template>
-  <div class="slider-area">
-    <div class="slider-active owl-carousel nav-style-1">
-        <div class="single-slider-2 slider-height-2 d-flex align-items-center bg-img" style="background-image:url(assets/img/slider/slider-2.jpg);">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-7 col-md-8 col-12 ml-auto">
-                        <div class="slider-content-3 slider-animated-1 text-center">
-                            <h3 class="animated">Stylish</h3>
-                            <h1 class="animated">Male Clothes</h1>
-                            <p class="animated">30% off Summer Vacation</p>
-                            <div class="slider-btn btn-hover">
-                                <a class="animated" href="shop.html">SHOP NOW</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <div class="home-slider__container">
+    <b-carousel class="animated fadeIn"
+      id="carousel-1"
+      v-model="slide"
+      :interval="10000"
+      controls
+      background="#ababab"
+      img-width="1440"
+      img-height="300"
+      @sliding-start="onSlideStart"
+      @sliding-end="onSlideEnd"
+    >
+
+      <b-carousel-slide img-src="https://res.cloudinary.com/mercurie/image/upload/v1564223934/mercuriemart/7_1920x993.png">
+          <div class="home-slider__title">
+              <h1 class="heading animated fadeInUp delay-1s">Bounce Back in Style</h1>
+              <p class="paragraph animated fadeInUp delay-3s">with the hottest trends this summer</p>
+            <b-button href="/shop/" class="home-slider__button animated fadeInUp delay-5s">Shop Now</b-button>
         </div>
-        <div class="single-slider-2 slider-height-2 d-flex align-items-center bg-img" style="background-image:url(assets/img/slider/slider-2.jpg);">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-7 col-md-8 col-12 ml-auto">
-                        <div class="slider-content-3 slider-animated-1 text-center">
-                            <h3 class="animated">Stylish</h3>
-                            <h1 class="animated">Male Clothes</h1>
-                            <p class="animated">30% off Summer Vacation</p>
-                            <div class="slider-btn btn-hover">
-                                <a class="animated" href="shop.html">SHOP NOW</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </b-carousel-slide>
+
+      <b-carousel-slide img-src="https://res.cloudinary.com/mercurie/image/upload/v1564224743/mercuriemart/bags-blue-bag-cardboard-1038000.jpg">
+          <div class="home-slider__title-2">
+              <h1 class="heading animated fadeInUp delay-1s">Bounce Back in Style</h1>
+              <p class="paragraph animated fadeInUp delay-3s">with the hottest trends this summer</p>
+            <b-button href="/shop/" class="home-slider__button animated fadeInUp delay-5s">Shop Now</b-button>
         </div>
-    </div>
-</div>
+      </b-carousel-slide>
+
+    </b-carousel>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'HomeSlider'
+  name: "HomeSlider",
+
+  data() {
+    return {
+      slide: 0,
+      sliding: null
+    };
+  },
+  methods: {
+    onSlideStart(slide) {
+      this.sliding = true;
+    },
+    onSlideEnd(slide) {
+      this.sliding = false;
+    }
+  }
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @import "./_index.scss";
 </style>

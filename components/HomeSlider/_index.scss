@@ -1,35 +1,39 @@
 @import '../../assets/styles/variables.scss';
 
-.home-hero__container {
-    height: 550px;
+.carousel-inner {
+    max-height: 400px;
 }
 
-.home-hero {
-    background-image: url('https://res.cloudinary.com/mercurie/image/upload/v1564223934/mercuriemart/7_1920x993.png');
-    background-color: #fff;
-    width: 1440px;
-    height: 650px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+.home-slider__container {
+    height: 400px;
+    margin-bottom: 50px;
 }
 
-.home-hero__2 {
-    background-image: url('https://res.cloudinary.com/mercurie/image/upload/v1564224743/mercuriemart/bags-blue-bag-cardboard-1038000.jpg');
+.home-slider__title {
+    margin-bottom: 370px;
 }
 
-.home-hero__title {
-    padding-top: 250px;
-    color: $black;
-    font-size: 42px;
-    padding-left: 50px;
+.home-slider__title-2 {
+    margin-bottom: 630px;
+}
+
+
+.home-slider__button {
+    background-color: white;
+    border-color: transparent;
+    color: $text;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 10px 20px 10px;
+    margin-top: 10px;
+}
+
+h1 {
     font-weight: 600;
 }
 
-.home-hero__button {
-    padding-left: 50px;
-}
-
-.VueCarousel {
-    top: -100px;
+p {
+    font-weight: 400;
+    font-size: 14px;
 }
