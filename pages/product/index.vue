@@ -22,9 +22,9 @@ export default {
         SingleProductImages,
         SectionTitle,
         SingleProductSimilar
-    }
-
+    },
 }
+
 </script>
 
 <style>
