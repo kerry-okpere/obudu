@@ -16,14 +16,15 @@ export default {
     ],
     script: [
       { src: 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js' },
-      { src: 'https://kit.fontawesome.com/6f8bc706a7.js', body: true },
+      // { src: 'https://kit.fontawesome.com/6f8bc706a7.js', body: true },
+      {  src: 'https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js', body: true },
       { src: 'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', body: true },
       { src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js', body: true },
       { src: 'https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', body: true },
       { src: 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js', body: true },
       { src: 'https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js', body: true },
-      { src: '/plugins.js', body: true },
-      { src: '/test.js', body: true }
+      { src: '/plugins.js', body: true }, 
+      { src: '/main.js', body: true}
 
     ],
 
