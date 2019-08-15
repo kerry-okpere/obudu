@@ -15,8 +15,19 @@
     margin: 0 auto;
 }
 
-
 .copyright {
+    margin-left: 10px;
+}
+
+.footer__social {
+    margin-left: 10px;
+}
+
+.footer__social-icons{
+    margin-right: 10px;
+}
+
+.footer-container {
     .footer-logo {
         margin-bottom: 12px;
         margin-top: 41px;
@@ -216,7 +227,7 @@
 
 
 .footer-container {
-    padding: 20px 50px 20px 50px;
+    padding: 0;
 }
 
 .footer-container__nav {
@@ -234,7 +245,7 @@
     font-size: 14px;
 }
 
-.footer__copyright {
+.footer__footer-container {
     padding-top: 50px;
     font-size: 12px;
 }
