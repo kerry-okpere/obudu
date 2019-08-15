@@ -117,30 +117,24 @@ ul {
 }
 
 
-/*--
-    - Background Color
-------------------------------------------*/
+// Other
+
 .dark-bg {
     background-color: #222;
 }
 
-.bg-purple {
-    background-color: #f0e0ff;
-}
-.bg-gray {
-    background-color: #f6f6f8;
-}
-.bg-gray-2 {
-    background-color: #f6f6f6;
+.container-full {
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
-.bg-gray-3 {
-    background-color: #f7f7f7;
+.w-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 940px;
 }
 
-.bg-glaucous {
-    background-color: #daedff;
-}
-.bg-aqua {
-    background-color: #dbfffb;
+.text-bar {
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
