@@ -10,15 +10,19 @@
 
 .home-category__title {
     position: absolute;
-    top: 20px;
-    left: 50px;
+    top: 70%;
+    left: 0px;
     line-height: 1.333em;
     font-weight: 700;
+    font-size: 18px;
     padding: 33px 30px;
     transition: all .35s ease;
     z-index: 2;
     color: #fff;
+    width: 100%;
+    text-shadow: 1px 1px 1px rgba(34,34,34,.65882);
 }
+
 
 .home-category__bg {
     background-color: #333;
@@ -28,4 +32,18 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.home-category__overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.3;
+
 }
