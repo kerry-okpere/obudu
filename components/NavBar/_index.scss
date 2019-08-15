@@ -6,10 +6,6 @@
     padding-bottom: 15px;
 }
 
-ion-icon.md.hydrated {
-    margin-top: 20px;
-}
-
 .menu-item {
     display: inline;
     font-size: 12px;
@@ -295,6 +291,7 @@ ion-icon.md.hydrated {
                         display: flex;
                         flex-grow: 100;
                         justify-content: flex-end;
+                        margin-top: 20px;
                         a {
                             font-size: 16px;
                             color: $text;
