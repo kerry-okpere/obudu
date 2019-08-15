@@ -9,7 +9,6 @@
                                 <div class="zoompro-border zoompro-span">
                                     <img class="zoompro" src="https://res.cloudinary.com/mercurie/image/upload/v1565670635/mercuriemart/sample-2.jpg"
                                         data-zoom-image="https://res.cloudinary.com/mercurie/image/upload/v1565670635/mercuriemart/sample-2.jpg" alt="" />
-                                    <span>SALE</span>
                                 </div>
                             </div>
                             <div id="gallery" class="product-dec-slider-2">
@@ -28,7 +27,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-5 col-lg-5 col-md-12">
+                    <div class="col-lg-5 col-lg-5 col-md-12 hvr-shadow">
                         <div class="product-details-content">
                             <h2>Products Name Here</h2>
                             <div class="product-details-price">
@@ -36,13 +35,6 @@
                             </div>
                             <p>Lorem ipsum dolor sit amet, consectetur adipisic elit eiusm tempor incidid ut labore et
                                 dolore magna aliqua. Ut enim ad minim venialo quis nostrud exercitation ullamco</p>
-                            <div class="pro-details-list">
-                                <ul>
-                                    <li>- 0.5 mm Dail</li>
-                                    <li>- Inspired vector icons</li>
-                                    <li>- Very modern style </li>
-                                </ul>
-                            </div>
                             <div class="pro-details-quality">
                                 <div class="cart-plus-minus">
                                     <input class="cart-plus-minus-box" type="text" name="qtybutton" value="2">
@@ -91,8 +83,9 @@
 
 <script>
     export default {
-        name: "SingleProductMain"
+        name: "SingleProductMain",
     };
+
 </script>
 
 <style lang="scss" scoped>
