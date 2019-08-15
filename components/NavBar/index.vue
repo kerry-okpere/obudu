@@ -1,6 +1,6 @@
 <template>
   <header class="header-area sticky-bar clearfix">
-    <div class="container">
+    <div class="w-container">
       <div class="row">
         <div class="col-xl-2 col-lg-2 col-md-6 col-4">
           <div class="logo">
@@ -24,13 +24,13 @@
           <div class="header-right-wrap">
             <div id="search" class="same-style header-search">
               <a @click="searchVisible = !searchVvisible" class="search-active" href="#">
-                <img src="@/assets/img/search.svg" width="15" alt="" class="image" />
+                <img src="@/assets/img/search.svg" width="13" alt="" class="image" />
                 <p class="menu-item">Search</p>
               </a>
               <div v-if="searchVisible" class="search-content" style="display: block;">
                 <form id="search" action="/search">
                   <input type="text" placeholder="Search">
-                  <button class="button-search"><i class="fa fa-search"></i></button>
+                  <button class="button-search"><ion-icon name="ios-search"></ion-icon></button>
                 </form>
               </div>
             </div>
@@ -44,38 +44,37 @@
                             <ul>
                                 <li class="single-shopping-cart">
                                     <div class="shopping-cart-img">
-                                        <a href="#"><img alt="" src="assets/img/cart/cart-1.png"></a>
+                                        <a href="#"><img alt="" src="@/assets/img/products/sa-prod1.png" width="60"></a>
                                     </div>
                                     <div class="shopping-cart-title">
-                                        <h4><a href="#">T- Shart &amp; Jeans </a></h4>
-                                        <h6>Qty: 02</h6>
-                                        <span>$260.00</span>
+                                        <h4><a href="#">Organic Apple Cider</a></h4>
+                                        <h6>Quantity: 2</h6>
+                                        <span>$260</span>
                                     </div>
                                     <div class="shopping-cart-delete">
-                                        <a href="#"><i class="fa fa-times-circle"></i></a>
+                                        <a href="#"><ion-icon name="trash"></ion-icon></a>
                                     </div>
                                 </li>
                                 <li class="single-shopping-cart">
                                     <div class="shopping-cart-img">
-                                        <a href="#"><img alt="" src="assets/img/cart/cart-2.png"></a>
+                                        <a href="#"><img alt="" src="@/assets/img/products/sa-prod1.png" width="60"></a>
                                     </div>
                                     <div class="shopping-cart-title">
-                                        <h4><a href="#">T- Shart &amp; Jeans </a></h4>
-                                        <h6>Qty: 02</h6>
-                                        <span>$260.00</span>
+                                        <h4><a href="#">Organic Apple Cider</a></h4>
+                                        <h6>Quantity: 2</h6>
+                                        <span>$260</span>
                                     </div>
                                     <div class="shopping-cart-delete">
-                                        <a href="#"><i class="fa fa-times-circle"></i></a>
+                                        <a href="#"><ion-icon name="trash"></ion-icon></a>
                                     </div>
                                 </li>
                             </ul>
                             <div class="shopping-cart-total">
-                                <h4>Shipping : <span>$20.00</span></h4>
-                                <h4>Total : <span class="shop-total">$260.00</span></h4>
+                                <h4>Total <span class="shop-total">$260.00</span></h4>
                             </div>
-                            <div class="shopping-cart-btn btn-hover text-center">
-                                <a class="default-btn" href="cart-page.html">view cart</a>
-                                <a class="default-btn" href="checkout.html">checkout</a>
+                            <div class="shopping-cart-btn text-center">
+                                <a class="default-btn hvr-grow" href="/cart/">View Cart</a>
+                                <a class="default-btn hvr-grow" href="/checkout/">Checkout</a>
                             </div>
                         </div>
             </div>
