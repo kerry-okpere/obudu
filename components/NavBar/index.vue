@@ -23,7 +23,7 @@
         <div class="col-xl-2 col-lg-2 col-md-6 col-8">
           <div class="header-right-wrap">
             <div id="search" class="same-style header-search">
-              <a @click="searchVisible = !searchVvisible" class="search-active" href="#">
+              <a @click="searchVisible = !searchVisible" class="search-active" href="#">
                 <img src="@/assets/img/search.svg" width="13" alt="" class="image" />
                 <p class="menu-item">Search</p>
               </a>
