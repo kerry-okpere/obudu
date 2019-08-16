@@ -1,26 +1,26 @@
 <template>
     <div>
-        <SectionBreadcrumbs />
+        <SingleProductBreadcrumb />
         <SingleProductMain />
-        <SingleProductImages />
-        <SectionTitle sectionTitle="Similar Products"></SectionTitle>
+        <SingleProductDescription />
+        <SectionTitleAlt sectionTitleAlt="Similar Products"></SectionTitleAlt>
         <SingleProductSimilar />
     </div>
 </template>
 
 <script>
-import SectionBreadcrumbs from '../../components/SectionBreadcrumbs/index';
+import SingleProductBreadcrumb from '../../components/SingleProductBreadcrumb/index';
 import SingleProductMain from '../../components/SingleProductMain/index';
-import SingleProductImages from '../../components/SingleProductImages/index';
-import SectionTitle from '../../components/SectionTitle/index';
+import SingleProductDescription from '../../components/SingleProductDescription/index';
+import SectionTitleAlt from '../../components/SectionTitleAlt/index';
 import SingleProductSimilar from '../../components/SingleProductSimilar/index';
 
 export default {
     components: {
-        SectionBreadcrumbs,
+        SingleProductBreadcrumb,
         SingleProductMain,
-        SingleProductImages,
-        SectionTitle,
+        SingleProductDescription,
+        SectionTitleAlt,
         SingleProductSimilar
     },
 }
