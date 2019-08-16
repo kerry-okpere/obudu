@@ -139,6 +139,44 @@ ul {
     padding-bottom: 15px;
 }
 
+// Scroll to Top
+
+#scrollUp {
+    display: none!important;
+    width: 30px;
+    height: 30px;
+    background-color: $primary-color;
+    color: #fff;
+    right: 20px;
+    bottom: 60px;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 50px;
+    z-index: 9811 !important;
+    @media #{$xs-layout} {
+        width: 40px;
+        height: 40px;
+    }
+    & i {
+        display: block;
+        line-height: 50px;
+        font-size: 22px;
+        @media #{$xs-layout} {
+            line-height: 40px;
+            font-size: 16px;
+        }
+    }
+    &:hover {
+        & i {
+            animation-name: fadeInUp;
+            animation-duration: 1s;
+            animation-fill-mode: both;
+            animation-iteration-count: infinite;
+        }
+    }
+}
+
+
 // Hover CSS
 
 /* Shadow */
