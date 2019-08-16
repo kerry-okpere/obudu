@@ -24,7 +24,7 @@ export default {
       { src: 'https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js', body: true },
       { src: 'https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js', body: true },
       { src: '/plugins.js', body: true }, 
-      { src: '/main.js', body: true}
+      { src: '/main.js', body: true},
 
     ],
 
@@ -38,32 +38,22 @@ export default {
       { rel: 'stylesheet', href: '/css/style.css' },
     ]
   },
-  /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#fff' },
-  /*
-  ** Global CSS
-  */
+
+  loading: '~/components/HomePreloader/index.vue',
+
   css: [
     '@/assets/styles/global.scss',
   ],
-  /*
-  ** Plugins to load before mounting the App
-  */
+
   plugins: [
     { src: '~plugins/aos.js', ssr: false }
   ],
-  /*
-  ** Nuxt.js modules
-  */
+
   modules: [
     'bootstrap-vue/nuxt'
     
   ],
-  /*
-  ** Build configuration
-  */
+
   build: {
     postcss: {
       preset: {
