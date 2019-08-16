@@ -415,7 +415,7 @@
         ScrollUp
     ---------------------------- */
     $.scrollUp({
-        scrollText: '<i class="fa fa-angle-double-up"></i>',
+        scrollText: '<ion-icon name="ios-arrow-up"></ion-icon>',
         easingType: 'linear',
         scrollSpeed: 900,
         animation: 'fade'
