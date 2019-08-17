@@ -1,40 +1,42 @@
 /* Global Imports */
 
-// Variables
+// Variables & Helper Classes
 
 @import '../../assets/styles/variables.scss';
-
-// Webflow
-
-@import '../../assets/styles/webflow.scss';
+@import '../../assets/styles/_universal.scss';
+@import '../../assets/styles/_padding.scss';
 
 // Components
 
-/* @import '../../components/NavBar/index';
-@import '../../components/Footer/index';
+@import '../../components/CartForm/index';
+@import '../../components/CollectionProducts/index';
 @import '../../components/HomeFeatures/index';
-@import '../../components/HomeProducts/index';
+@import '../../components/HomeMap/index';
 @import '../../components/HomeProductCategory/index';
+@import '../../components/HomeProducts/index';
 @import '../../components/HomeSlider/index';
 @import '../../components/NavBar/index';
 @import '../../components/NavBarWithSlider/index';
-@import '../../components/SectionTitle/index';
-@import '../../components/HomeMap/index'; */
-
+@import '../../components/NavFooter/index';
+@import '../../components/SectionBreadcrumbs/index';
 @import '../../components/SectionHero/index';
-@import '../../components/CollectionProducts/index';
+@import '../../components/SectionTitle/index';
+@import '../../components/SectionTitleAlt/index';
+@import '../../components/SingleProductBreadcrumb/index';
+@import '../../components/SingleProductImages/index';
+@import '../../components/SingleProductMain/index';
+@import '../../components/SingleProductSimilar/index';
+@import '../../components/TrialBadge/index';
+
 
 // Pages
 
-@import '../../pages/index';
-@import '../../pages/privacy/index';
-
-
-body {
-    font-family: $primary-font!important;
-}
-
-a {
-    color: $black;
-    text-decoration: none;
-}
+@import '../../pages/index.scss';
+@import '../../pages/account/index.scss';
+@import '../../pages/cart/index.scss';
+@import '../../pages/collection/index.scss';
+@import '../../pages/privacy/index.scss';
+@import '../../pages/product/index.scss';
+@import '../../pages/search/index.scss';
+@import '../../pages/shipping/index.scss';
+@import '../../pages/terms/index.scss';

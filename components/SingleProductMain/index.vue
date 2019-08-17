@@ -1,46 +1,95 @@
 <template>
-          <div class="single-product__container w-container">
-            <h1 class="breadcrumbs">Breadcrumbs here</h1>
-            <div class="w-row">
-                <div class="column w-col w-col-7">
-                    <a href="#" class="lightbox-link w-inline-block w-lightbox">
-                        <div v-if="`${ this.products.image }` !== ''   ">
-                            <img :src="`${ this.products.image }`" sizes="(max-width: 767px) 92vw, (max-width: 991px) 396.328125px, 520px" alt="" class="single-product__main-image"/>
-                        </div>
-                        <div v-else>
-                            <!-- <img :src="`https://dummyimage.com/600x400/525969/fff.png&text=${this.name}`" sizes="(max-width: 767px) 92vw, (max-width: 991px) 396.328125px, 520px" alt="" class="single-product__main-image"/> -->
-                        </div>
-                    </a>
+  <div>
+    <div class="shop-area pt-100 pb-100">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-7 col-lg-7 col-md-12">
+            <div class="product-details-img mr-20 product-details-tab">
+              <div class="zoompro-wrap zoompro-2 pr-20">
+                <div class="zoompro-border zoompro-span">
+                  <img
+                    class="zoompro"
+                    src="@/assets/img/products/sa-prod1.png"
+                    data-zoom-image="@/assets/img/products/sa-prod1.png"
+                    alt
+                  />
                 </div>
-                <div class="single-product__right w-col w-col-5">
-                    <div>
-                        <!-- <h1 class="single-product__title">{{ this.products.productDetails.name }}</h1> -->
-                        <!-- <h1 class="single-product__title">{{ this.products.name }}</h1> -->
-                        <h1 class="single-product__title">{{ this.products.name }}</h1>
-                        <p class="single-product__description">
-                            {{ this.products.description }}
-                        </p>
-                        <!-- <ul class="list single-product__description">
-                            <li>10.5 × 7 × 2.5  in.</li>
-                            <li>Strap Length: 46 in.</li>
-                            <li>Strap Drop: 15 – 22.5 in.</li>
-                            <li>Dyed, molded, and stitched by hand</li>
-                            <li>Color may vary slightly</li>
-                        </ul> -->
-                        <p class="single-product__description">
-                            <em>This item is made to order. Please allow 5 – 15 business days for delivery within the U.S. International orders may take longer to ship depending on location.</em>
-                            <br/>
-                        </p>
-                        <!-- <div class="single-product__quantity">
-                            <div class="quantity-label">Quantity</div>
-                            <input class="quantity" size="4" max="9999" min="1" value="1" type="number" step="1">
-                        </div> -->
-                        <h1 class="single-product__price">{{this.products.price.currency}} {{this.products.price.amount}}</h1>
-                        <a href="#" class="single-product__addtocart w-button">Add to cart</a>
-                    </div>
-                </div>
+              </div>
+<!--               <div id="gallery" class="product-dec-slider-2">
+                <a
+                  data-image="https://res.cloudinary.com/mercurie/image/upload/v1565670635/mercuriemart/sample-2.jpg"
+                  data-zoom-image="https://res.cloudinary.com/mercurie/image/upload/v1565670635/mercuriemart/sample-2.jpg"
+                >
+                  <img
+                    src="https://res.cloudinary.com/mercurie/image/upload/v1565670635/mercuriemart/sample-1.jpg"
+                    alt
+                  />
+                </a>
+                <a
+                  data-image="https://res.cloudinary.com/mercurie/image/upload/v1565671069/mercuriemart/sample-2b.jpg"
+                  data-zoom-image="https://res.cloudinary.com/mercurie/image/upload/v1565671069/mercuriemart/sample-2b.jpg"
+                >
+                  <img
+                    src="https://res.cloudinary.com/mercurie/image/upload/v1565671066/mercuriemart/sample-2a.jpg"
+                    alt
+                  />
+                </a>
+                <a
+                  data-image="https://res.cloudinary.com/mercurie/image/upload/v1565671069/mercuriemart/sample-2b.jpg"
+                  data-zoom-image="https://res.cloudinary.com/mercurie/image/upload/v1565671069/mercuriemart/sample-2b.jpg"
+                >
+                  <img
+                    src="https://res.cloudinary.com/mercurie/image/upload/v1565671066/mercuriemart/sample-2a.jpg"
+                    alt
+                  />
+                </a>
+              </div> -->
             </div>
+          </div>
+          <div class="col-lg-5 col-lg-5 col-md-12">
+            <div class="product-details-content">
+              <h2>Organic Apple Cidar</h2>
+              <div class="product-details-price">
+                <span>$18.00</span>
+              </div>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisic elit eiusm tempor incidid ut labore et
+                dolore magna aliqua. Ut enim ad minim venialo quis nostrud exercitation ullamco
+              </p>
+
+              <div class="pro-details-quality">
+  <b-button variant ="dark" href="#">ADD TO CART</b-button>
+              </div>
+              <div class="pro-details-social">
+                <ul>
+                  <li>
+                    <a href="#">
+                      <ion-icon name="logo-facebook"></ion-icon>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <ion-icon name="logo-whatsapp"></ion-icon>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <ion-icon name="logo-instagram"></ion-icon>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <ion-icon name="logo-pinterest"></ion-icon>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -102,5 +151,6 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+@import "./_index.scss";
 </style>

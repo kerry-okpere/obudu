@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div>
     <HomeSlider />
    <HomeProductCategory />
     <HomeProducts />
@@ -12,9 +12,9 @@
   <div class="container">
     <HomeSlider />
     <HomeProductCategory />
+    <SectionTitleAlt sectionTitleAlt="New Products" />
     <HomeProducts />
-    <div class="section-2"></div>
-    <TrialBadge />
+
   </div>
 </template>
 -->
@@ -22,6 +22,8 @@
 import HomeSlider from '../components/HomeSlider/index';
 import HomeProducts from '../components/HomeProducts/index';
 import HomeProductCategory from '../components/HomeProductCategory/index';
+
+import SectionTitleAlt from '../components/SectionTitleAlt/index';
 import SingleProductMain from '../components/SingleProductMain/index';
 import TrialBadge from '../components/TrialBadge/index';
 
@@ -85,8 +87,9 @@ export default {
     HomeSlider,
     HomeProducts,
     HomeProductCategory,
+    SectionTitleAlt,
     SingleProductMain,
-    TrialBadge
+    // TrialBadge
 
   },
   data() {

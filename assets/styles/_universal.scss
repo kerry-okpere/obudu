@@ -1,0 +1,231 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background-color: $white;
+    line-height: 24px;
+    font-size: 14px;
+    font-style: normal; 
+    font-weight: 400;
+    font-family: $primary-font;
+    color: #000;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: $heading-color;
+    font-family: $primary-font;
+    font-weight: 400;
+    margin-top: 0;
+}
+
+p {
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #333;
+    margin-bottom: 15px;
+    font-family: $primary-font;
+}
+
+h1 {
+    font-size: 36px;
+    line-height: 42px;
+}
+
+h2 {
+    font-size: 30px;
+    line-height: 36px;
+}
+
+h3 {
+    font-size: 24px;
+    line-height: 30px;
+}
+
+h4 {
+    font-size: 18px;
+    line-height: 24px;
+}
+
+h5 {
+    font-size: 14px;
+    line-height: 18px;
+}
+
+h6 {
+    font-size: 12px;
+    line-height: 14px;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+a,
+button {
+    color: inherit;
+    line-height: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    color: #000;
+}
+
+a,
+button,
+img,
+input,
+span {
+    transition: all .3s ease 0s;
+}
+
+*:focus {
+    outline: none !important;
+}
+
+a:focus {
+    color: inherit;
+    outline: none;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+button,
+input[type="submit"] {
+    cursor: pointer;
+}
+
+ul {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0;
+}
+
+
+// Other
+
+.dark-bg {
+    background-color: #222;
+}
+
+.container-full {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.w-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 940px;
+}
+
+.text-bar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+// Scroll to Top
+
+#scrollUp {
+    display: none!important;
+    width: 30px;
+    height: 30px;
+    background-color: $primary-color;
+    color: #fff;
+    right: 20px;
+    bottom: 60px;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 50px;
+    z-index: 9811 !important;
+    @media #{$xs-layout} {
+        width: 40px;
+        height: 40px;
+    }
+    & i {
+        display: block;
+        line-height: 50px;
+        font-size: 22px;
+        @media #{$xs-layout} {
+            line-height: 40px;
+            font-size: 16px;
+        }
+    }
+    &:hover {
+        & i {
+            animation-name: fadeInUp;
+            animation-duration: 1s;
+            animation-fill-mode: both;
+            animation-iteration-count: infinite;
+        }
+    }
+}
+
+
+// Hover CSS
+
+/* Shadow */
+.hvr-shadow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: box-shadow;
+  transition-property: box-shadow;
+}
+.hvr-shadow:hover, .hvr-shadow:focus, .hvr-shadow:active {
+  box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* Grow Shadow */
+.hvr-grow-shadow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: box-shadow, transform;
+    transition-property: box-shadow, transform;
+  }
+  .hvr-grow-shadow:hover, .hvr-grow-shadow:focus, .hvr-grow-shadow:active {
+    box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.05);
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+
+/* Grow */
+.hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+  }
+  .hvr-grow:hover, .hvr-grow:focus, .hvr-grow:active {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }

@@ -1,20 +1,110 @@
 <template>
-     <div class="single-product__similar-container w-container">
-            <div class="w-layout-grid similar-products__grid">
-                <div v-for="category in categories" :key="category.node.id" data-w-id="701162c2-b0b8-5b50-bccb-d02f533e7483" class="home-products__single">
-                    <div>
-                        <nuxt-link :to="`/product/${category.node.id}`">
-                            <img :src="`${category.node.images[0].url}`" class="loading" data-was-processed="true">
-                        </nuxt-link>
-                        <!-- <a href="#" class="button-2 w-button">ADD TO CART</a> -->
+<div class="product-area pb-60">
+    <div class="w-container" data-aos="fade-up"
+    data-aos-offset="150"
+    data-aos-delay="20"
+    data-aos-duration="500"
+    data-aos-easing="ease-in-out"
+    data-aos-mirror="true"
+    data-aos-once="true"
+    data-aos-anchor-placement="top-bottom">
+                <div class="row">
+                    <div class="col-xl-3 col-md-6 col-lg-4 col-sm-6 col-6">
+                        <div class="product-wrap-2 mb-25 text-center hvr-grow-shadow">
+                            <div class="product-img">
+                                <a href="/product">
+                                    <img class="default-img" src="@/assets/img/products/sa-prod1.png" alt="">
+                                    <img class="hover-img" src="@/assets/img/products/sa-prod2.png" alt="">
+                                </a>
+                                <div class="product-action-2">
+                                    <a title="Add To Cart" href="#"><ion-icon name="ios-cart"></ion-icon><h4>Add to Cart</h4></a>
+                                    <a title="Quick View" href="#" data-toggle="modal" data-target="#exampleModal"><ion-icon name="ios-eye"></ion-icon>
+                                    <h4>Quick View</h4></a>
+                                </div>
+                            </div>
+                            <div class="product-content-2">
+                                <div class="title-price-wrap-2">
+                                    <h3><a href="/product">Organic Apple Cidar</a></h3>
+                                    <p class="home-product_cat"><a href="#">Groceries</a></p>
+                                    <div class="price-2">
+                                        <span>$ 60.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <!-- <div class="home-products__image">
-                        <a href="#" class="button-2 w-button">ADD TO CART</a>
-                    </div> -->
-                    <h1 class="home-products__name">
-                        <nuxt-link :to="`/product/${category.node.id}`">{{category.node.name}}</nuxt-link>
-                    </h1>
-                    <p class="home-products__price">${{category.node.price.amount}}</p>
+                     <div class="col-xl-3 col-md-6 col-lg-4 col-sm-6 col-6">
+                        <div class="product-wrap-2 mb-25 text-center hvr-grow-shadow">
+                            <div class="product-img">
+                                <a href="/product">
+                                    <img class="default-img" src="@/assets/img/products/sa-prod1.png" alt="">
+                                    <img class="hover-img" src="@/assets/img/products/sa-prod2.png" alt="">
+                                </a>
+                                <div class="product-action-2">
+                                    <a title="Add To Cart" href="#"><ion-icon name="ios-cart"></ion-icon><h4>Add to Cart</h4></a>
+                                    <a title="Quick View" href="#" data-toggle="modal" data-target="#exampleModal"><ion-icon name="ios-eye"></ion-icon>
+                                    <h4>Quick View</h4></a>
+                                </div>
+                            </div>
+                            <div class="product-content-2">
+                                <div class="title-price-wrap-2">
+                                    <h3><a href="/product">T- Shirt And Jeans</a></h3>
+                                    <p class="home-product_cat"><a href="#">Groceries</a></p>
+                                    <div class="price-2">
+                                        <span>$ 60.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>   
+                     <div class="col-xl-3 col-md-6 col-lg-4 col-sm-6 col-6">
+                        <div class="product-wrap-2 mb-25 text-center hvr-grow-shadow">
+                            <div class="product-img">
+                                <a href="/product">
+                                    <img class="default-img" src="@/assets/img/products/sa-prod1.png" alt="">
+                                    <img class="hover-img" src="@/assets/img/products/sa-prod2.png" alt="">
+                                </a>
+                                <div class="product-action-2">
+                                    <a title="Add To Cart" href="#"><ion-icon name="ios-cart"></ion-icon><h4>Add to Cart</h4></a>
+                                    <a title="Quick View" href="#" data-toggle="modal" data-target="#exampleModal"><ion-icon name="ios-eye"></ion-icon>
+                                    <h4>Quick View</h4></a>
+                                </div>
+                            </div>
+                            <div class="product-content-2">
+                                <div class="title-price-wrap-2">
+                                    <h3><a href="/product">Organic Apple Juice</a></h3>
+                                    <p class="home-product_cat"><a href="#">Groceries</a></p>
+                                    <div class="price-2">
+                                        <span>$ 60.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>   
+                     <div class="col-xl-3 col-md-6 col-lg-4 col-sm-6 col-6">
+                        <div class="product-wrap-2 mb-25 text-center hvr-grow-shadow">
+                            <div class="product-img">
+                                <a href="/product">
+                                    <img class="default-img" src="@/assets/img/products/sa-prod1.png" alt="">
+                                    <img class="hover-img" src="@/assets/img/products/sa-prod2.png" alt="">
+                                </a>
+                                <div class="product-action-2">
+                                    <a title="Add To Cart" href="#"><ion-icon name="ios-cart"></ion-icon><h4>Add to Cart</h4></a>
+                                    <a title="Quick View" href="#" data-toggle="modal" data-target="#exampleModal"><ion-icon name="ios-eye"></ion-icon>
+                                    <h4>Quick View</h4></a>
+                                </div>
+                            </div>
+                            <div class="product-content-2">
+                                <div class="title-price-wrap-2">
+                                    <h3><a href="/product">Organic Orange Juice</a></h3>
+                                    <p class="home-product_cat"><a href="#">Groceries</a></p>
+                                    <div class="price-2">
+                                        <span>$ 60.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>         
                 </div>
 
             </div>
@@ -63,6 +153,4 @@ export default {
 }
 
 </script>
-<style>
-
-</style>
+<style lang="scss" scoped>

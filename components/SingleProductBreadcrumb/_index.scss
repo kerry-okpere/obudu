@@ -1,0 +1,62 @@
+@import '../../assets/styles/variables.scss';
+
+h2 {
+    font-weight: 600;
+    color: $white;
+    padding-bottom: 10px;
+}
+
+.breadcrumb {
+    background-color: $white;
+}
+
+.breadcrumb-item.active {
+    color: $text;
+    font-weight: 600;
+}
+
+.section-hero__section {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    height: 350px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    background-position: 50% 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.section-hero__overlay {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 350px;
+    background-color: #000;
+    opacity: 0.5;
+}
+
+.section-hero__container {
+    z-index: 2;
+}
+  
+.section-hero__heading {
+    color: #fff;
+    text-align: center;
+}
+  
+.section-hero__subheading {
+    color: #fff;
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 500;
+    text-align: center;
+}

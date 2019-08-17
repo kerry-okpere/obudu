@@ -2,6 +2,8 @@
 
 $primary-color: #3C87D1;
 $accent-colour: #ff9d02;
+$text: #333;
+$dark: #222;
 $black: #222222;
 $grey: #807F7F;
 $white: #ffffff;
@@ -10,12 +12,26 @@ $failed: #ff5252;
 $transparent: #ffffff00;
 
 
-/* Typography */
+// Background Colours
+
+$bg-white: #ffffff;
+$bg-black: #000000;
+$bg-grey: #f6f6f8;
+$bg-purple: #f0e0ff;
+
+
+// Typography
 
 $primary-font: 'Montserrat', sans-serif;
 $secondary-font: 'Montserrat', sans-serif;
 
-/* Spacing */
+
+// Font Family
+
+$poppins: 'Montserrat', sans-serif;
+
+
+// Spacing
 
 $spacing-xsmall: 5px;
 $spacing-small: 10px;
@@ -24,7 +40,25 @@ $spacing-large: 50px;
 $spacing-xlarge: 100px;
 
 
-/* Box Shadow */
+// Box Shadow
 
 $box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 
+
+// Heading Color
+
+$heading-color: #000000;
+
+
+// Theme Color
+
+$theme-color: #3C87D1;
+
+
+// Responsive Variables 
+$xx-layout : 'only screen and (min-width: 1366px) and (max-width: 1600px)';
+$xl-layout : 'only screen and (min-width: 1200px) and (max-width: 1365px)';
+$lg-layout : 'only screen and (min-width: 992px) and (max-width: 1199px)';
+$md-layout:'only screen and (min-width: 768px) and (max-width: 991px)';
+$xs-layout:'only screen and (max-width: 767px)';
+$sm-layout: 'only screen and (min-width: 576px) and (max-width: 767px)';

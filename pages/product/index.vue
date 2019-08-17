@@ -1,7 +1,7 @@
 <template>
-    <div class="container">
+    <div>
+        <SingleProductBreadcrumb />
         <SingleProductMain />
-        <SingleProductImages />
         <SectionTitle sectionTitle="Similar Products"></SectionTitle>
         <SingleProductSimilar />
     </div>
@@ -9,19 +9,20 @@
 
 <script>
 
+import SingleProductBreadcrumb from '../../components/SingleProductBreadcrumb/index';
 import SingleProductMain from '../../components/SingleProductMain/index';
-import SingleProductImages from '../../components/SingleProductImages/index';
 import SectionTitle from '../../components/SectionTitle/index';
 import SingleProductSimilar from '../../components/SingleProductSimilar/index';
 
 export default {
     components: {
+        SingleProductBreadcrumb,
         SingleProductMain,
-        SingleProductImages,
         SectionTitle,
         SingleProductSimilar
     }
 }
+
 </script>
 
 <style>

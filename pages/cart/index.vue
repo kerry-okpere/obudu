@@ -1,13 +1,20 @@
 <template>
-    
+    <div>
+      <CartForm />  
+    </div>
 </template>
 
 <script>
-export default {
 
+import CartForm from '../../components/CartForm/index';
+
+export default {
+    components: {
+        CartForm
+    }
 }
 </script>
 
-<style>
+<style type="scss" scoped>
 @import './index.scss';
 </style>

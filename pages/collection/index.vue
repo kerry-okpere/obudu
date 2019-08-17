@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container-fluid container-full">
         <SectionHero heroHeading="Accessories" heroSubheading="Shop the latest accessories to look as trendy as you feel."/>
         <CollectionProducts />
     </div>
