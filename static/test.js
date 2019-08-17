@@ -15,6 +15,7 @@ window.sr = ScrollReveal({
     duration: 800,
     reset: false
 });
+
 sr.reveal('.scroll-zoom');
 
 
