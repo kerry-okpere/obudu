@@ -6,6 +6,35 @@
     padding-bottom: 15px;
 }
 
+@media #{$md-layout}{
+    .header-area {
+        padding-left: 20px;
+    }
+
+}
+
+@media #{$xs-layout}{
+.header-area {
+    padding-left: 20px;
+}
+
+.search-content {
+    margin-top: 5px;
+    margin-right: 20px;
+}
+
+.header-search {
+    margin-right: 5px;
+}
+
+.header-right-wrap .same-style.cart-wrap .shopping-cart-content .shopping-cart-btn a{
+    margin-right: 15px!important;
+    font-size: 10px!important;
+}
+
+}
+
+
 .menu-item {
     display: inline;
     font-size: 12px;
@@ -237,9 +266,10 @@
                 right: -52px;
                 padding: 31px 15px 10px;
                 overflow-y: auto;
-                height: 300px;
+                height: auto;
                 top: 100%;
                 margin-top: 14px;
+                margin-right: 1px;
             }
             @media #{$md-layout} {
                 overflow-y: auto;

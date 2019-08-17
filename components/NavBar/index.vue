@@ -78,7 +78,7 @@
                             </div>
                         </div>
             </div>
-              <div class="mobile-menu-area">
+              <!-- <div class="mobile-menu-area">
                 <div class="mobile-menu">
                   <nav id="mobile-menu-active">
                     <ul class="menu-overflow">
@@ -89,7 +89,7 @@
                     </ul>
                   </nav>
                 </div>
-              </div>
+              </div> -->
           </div>
         </div>
       </div>
