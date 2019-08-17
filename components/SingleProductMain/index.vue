@@ -58,9 +58,7 @@
               </p>
 
               <div class="pro-details-quality">
-                <div class="pro-details-cart">
-                  <a href="#">Add To Cart</a>
-                </div>
+  <b-button variant ="dark" href="#">ADD TO CART</b-button>
               </div>
               <div class="pro-details-social">
                 <ul>
