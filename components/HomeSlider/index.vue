@@ -6,13 +6,13 @@
       :interval="10000"
       controls
       background="#ababab"
-      img-width="1440"
-      img-height="300"
+      img-width="1024"
+      img-height="350"
       @sliding-start="onSlideStart"
       @sliding-end="onSlideEnd"
     >
 
-      <b-carousel-slide img-src="https://res.cloudinary.com/mercurie/image/upload/v1564223934/mercuriemart/7_1920x993.png">
+      <b-carousel-slide img-src="@/assets/img/slider/image-5.png">
           <div class="home-slider__title">
               <h1 class="heading animated fadeInUp delay-1s">Bounce Back in Style</h1>
               <p class="paragraph animated fadeInUp delay-3s">with the hottest trends this summer</p>
@@ -20,8 +20,8 @@
         </div>
       </b-carousel-slide>
 
-      <b-carousel-slide img-src="https://res.cloudinary.com/mercurie/image/upload/v1564224743/mercuriemart/bags-blue-bag-cardboard-1038000.jpg">
-          <div class="home-slider__title-2">
+      <b-carousel-slide img-src="@/assets/img/slider/image-5.png">
+          <div class="home-slider__title">
               <h1 class="heading animated fadeInUp delay-1s">Bounce Back in Style</h1>
               <p class="paragraph animated fadeInUp delay-3s">with the hottest trends this summer</p>
             <b-button href="/shop/" class="home-slider__button animated fadeInUp delay-5s">Shop Now</b-button>
