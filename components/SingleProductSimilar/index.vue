@@ -1,19 +1,25 @@
 <template>
-    <div class="product-area pb-60">
-        <div class="container">
+<div class="product-area pb-60">
+    <div class="w-container" data-aos="fade-up"
+    data-aos-offset="150"
+    data-aos-delay="20"
+    data-aos-duration="500"
+    data-aos-easing="ease-in-out"
+    data-aos-mirror="true"
+    data-aos-once="true"
+    data-aos-anchor-placement="top-bottom">
                 <div class="row">
-                    <div class="col-xl-3 col-md-6 col-lg-4 col-sm-6">
-                        <div class="product-wrap-2 mb-25 text-center">
+                    <div class="col-xl-3 col-md-6 col-lg-4 col-sm-6 col-6">
+                        <div class="product-wrap-2 mb-25 text-center hvr-grow-shadow">
                             <div class="product-img">
                                 <a href="/product">
                                     <img class="default-img" src="@/assets/img/products/sa-prod1.png" alt="">
                                     <img class="hover-img" src="@/assets/img/products/sa-prod2.png" alt="">
                                 </a>
                                 <div class="product-action-2">
-                                    <a title="Add To Cart" href="#"><i class="fa fa-shopping-cart"></i></a>
-                                    <a title="Quick View" href="#" data-toggle="modal" data-target="#exampleModal"><i
-                                            class="fa fa-eye"></i></a>
-                                    <a title="Compare" href="#"><i class="fa fa-retweet"></i></a>
+                                    <a title="Add To Cart" href="#"><ion-icon name="ios-cart"></ion-icon><h4>Add to Cart</h4></a>
+                                    <a title="Quick View" href="#" data-toggle="modal" data-target="#exampleModal"><ion-icon name="ios-eye"></ion-icon>
+                                    <h4>Quick View</h4></a>
                                 </div>
                             </div>
                             <div class="product-content-2">
@@ -27,18 +33,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-md-6 col-lg-4 col-sm-6">
-                        <div class="product-wrap-2 mb-25 text-center">
+                     <div class="col-xl-3 col-md-6 col-lg-4 col-sm-6 col-6">
+                        <div class="product-wrap-2 mb-25 text-center hvr-grow-shadow">
                             <div class="product-img">
                                 <a href="/product">
                                     <img class="default-img" src="@/assets/img/products/sa-prod1.png" alt="">
                                     <img class="hover-img" src="@/assets/img/products/sa-prod2.png" alt="">
                                 </a>
                                 <div class="product-action-2">
-                                    <a title="Add To Cart" href="#"><i class="fa fa-shopping-cart"></i></a>
-                                    <a title="Quick View" href="#" data-toggle="modal" data-target="#exampleModal"><i
-                                            class="fa fa-eye"></i></a>
-                                    <a title="Compare" href="#"><i class="fa fa-retweet"></i></a>
+                                    <a title="Add To Cart" href="#"><ion-icon name="ios-cart"></ion-icon><h4>Add to Cart</h4></a>
+                                    <a title="Quick View" href="#" data-toggle="modal" data-target="#exampleModal"><ion-icon name="ios-eye"></ion-icon>
+                                    <h4>Quick View</h4></a>
                                 </div>
                             </div>
                             <div class="product-content-2">
@@ -51,19 +56,18 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6 col-lg-4 col-sm-6">
-                        <div class="product-wrap-2 mb-25 text-center">
+                    </div>   
+                     <div class="col-xl-3 col-md-6 col-lg-4 col-sm-6 col-6">
+                        <div class="product-wrap-2 mb-25 text-center hvr-grow-shadow">
                             <div class="product-img">
                                 <a href="/product">
                                     <img class="default-img" src="@/assets/img/products/sa-prod1.png" alt="">
                                     <img class="hover-img" src="@/assets/img/products/sa-prod2.png" alt="">
                                 </a>
                                 <div class="product-action-2">
-                                    <a title="Add To Cart" href="#"><i class="fa fa-shopping-cart"></i></a>
-                                    <a title="Quick View" href="#" data-toggle="modal" data-target="#exampleModal"><i
-                                            class="fa fa-eye"></i></a>
-                                    <a title="Compare" href="#"><i class="fa fa-retweet"></i></a>
+                                    <a title="Add To Cart" href="#"><ion-icon name="ios-cart"></ion-icon><h4>Add to Cart</h4></a>
+                                    <a title="Quick View" href="#" data-toggle="modal" data-target="#exampleModal"><ion-icon name="ios-eye"></ion-icon>
+                                    <h4>Quick View</h4></a>
                                 </div>
                             </div>
                             <div class="product-content-2">
@@ -76,19 +80,18 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xl-3 col-md-6 col-lg-4 col-sm-6">
-                        <div class="product-wrap-2 mb-25 text-center">
+                    </div>   
+                     <div class="col-xl-3 col-md-6 col-lg-4 col-sm-6 col-6">
+                        <div class="product-wrap-2 mb-25 text-center hvr-grow-shadow">
                             <div class="product-img">
                                 <a href="/product">
                                     <img class="default-img" src="@/assets/img/products/sa-prod1.png" alt="">
                                     <img class="hover-img" src="@/assets/img/products/sa-prod2.png" alt="">
                                 </a>
                                 <div class="product-action-2">
-                                    <a title="Add To Cart" href="#"><i class="fa fa-shopping-cart"></i></a>
-                                    <a title="Quick View" href="#" data-toggle="modal" data-target="#exampleModal"><i
-                                            class="fa fa-eye"></i></a>
-                                    <a title="Compare" href="#"><i class="fa fa-retweet"></i></a>
+                                    <a title="Add To Cart" href="#"><ion-icon name="ios-cart"></ion-icon><h4>Add to Cart</h4></a>
+                                    <a title="Quick View" href="#" data-toggle="modal" data-target="#exampleModal"><ion-icon name="ios-eye"></ion-icon>
+                                    <h4>Quick View</h4></a>
                                 </div>
                             </div>
                             <div class="product-content-2">
@@ -100,11 +103,11 @@
                                     </div>
                                 </div>
                             </div>
-                    </div>
+                        </div>
+                    </div>         
                 </div>
             </div>
         </div>
-    </div>
 </template>
 
 <script>
