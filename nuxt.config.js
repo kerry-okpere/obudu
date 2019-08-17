@@ -34,8 +34,7 @@ export default {
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap' },
       { rel: 'stylesheet', href: '/css/bootstrap.min.css' },
-      { rel: 'stylesheet', href: '/css/plugins.css' },
-      { rel: 'stylesheet', href: '/css/style.css' },
+      { rel: 'stylesheet', href: '/css/plugins.css' }
     ]
   },
 
