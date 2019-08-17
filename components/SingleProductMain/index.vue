@@ -75,6 +75,7 @@ export default {
         // console.log(this.$route.params.id);
         this.products.id = this.$route.params.id;
         let singleProds = await this.getSingleProducts();
+        console.log(singleProds);
         this.$store.commit('setProductsName', singleProds.name);
         this.$store.commit('setProductsId', this.$route.params.id);
         this.$store.commit('setProductsCatId', singleProds.category.id);

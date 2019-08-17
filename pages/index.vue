@@ -1,13 +1,23 @@
 <template>
   <div class="container">
     <HomeSlider />
+   <HomeProductCategory />
+    <HomeProducts />
+    <div class="section-2"></div>
+    <TrialBadge />
+  </div>
+</template>
+<!--
+<template>
+  <div class="container">
+    <HomeSlider />
     <HomeProductCategory />
     <HomeProducts />
     <div class="section-2"></div>
     <TrialBadge />
   </div>
 </template>
-
+-->
 <script>
 import HomeSlider from '../components/HomeSlider/index';
 import HomeProducts from '../components/HomeProducts/index';
@@ -61,6 +71,13 @@ const apolloProvider = new VueApollo({
     }
 });
 
+const apolloProviders = new VueApollo({
+    defaultClient: apolloClient,
+    defaultOptions: {
+        $loadingKey: 'loading'
+    }
+});
+
 
 export default {
   name: 'Home',
@@ -79,6 +96,8 @@ export default {
   },
   apolloProvider,
   async created() {
+    // console.log(apolloProviders);
+    // this.$store.commit('setApolloVariable', this.$apollo);
     if(process.browser) {
       let admin_token = localStorage.getItem('admin_token');
       if(!admin_token){

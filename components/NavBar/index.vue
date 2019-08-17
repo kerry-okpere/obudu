@@ -14,8 +14,8 @@
                         <img src="@/assets/img/search.svg" width="15" alt="" class="image"/>
                         <a href="#" class="nav-link nav-link__right w-nav-link">Search</a>
                         <img src="@/assets/img/cart.svg" width="15" alt="" class="image-2"/>
-                        <a href="#" class="nav-link nav-link__right w-nav-link">Cart</a>
-                    </nav>
+                        <a href="#" class="nav-link nav-link__right w-nav-link">Cart (2)</a>
+                    </nav> 
                     <div class="menu-button w-nav-button">
                     </div>
                 </div>

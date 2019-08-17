@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import { GET_SINGLE_PRODUCTS } from "../queries/productQueries";
+import { GET_SINGLE_PRODUCTS, GET_PRODUCTS } from "../queries/productQueries";
 
 Vue.use(Vuex);
 
@@ -19,7 +19,9 @@ export const state = () => ({
     },
     name: "",
     description: ""
-  }
+  },
+
+  homeProducts: [],
 });
 
 export const getters = {
@@ -28,14 +30,30 @@ export const getters = {
     return new Promise ((resolve, reject) => {
       resolve(state.products);
       reject("Unable to get products");
-    }) 
+    })
   },
-  
+
+  getHomeProducts(state, getters) {
+    return state.homeProducts[0]
+  }
+
 };
 
 export const actions = {
-  fetchProducts(context) {
-    //make the grapql call
+  fetchProducts(context, {apollo}) {
+    return new Promise(async (resolve, reject) => {
+      let response = await apollo.query({
+          query: GET_PRODUCTS
+      });
+      let prods = response.data.products.edges;
+      context.commit('setHomeProducts', prods);
+      resolve();
+      reject('Unable to fetch products')
+    });
+  },
+
+  fetchSingleProducts(context, {apollo}){
+    
   }
 };
 
@@ -51,5 +69,10 @@ export const mutations = {
 
   setProductsCatId(state, catId) {
     state.products.category.id = catId;
-  }
+  },
+
+  setHomeProducts(state, homeProds){
+    // state.homeProducts = homeProds;
+    state.homeProducts.push(homeProds);
+  },
 };
