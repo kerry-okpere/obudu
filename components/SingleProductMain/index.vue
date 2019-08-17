@@ -93,8 +93,61 @@
 </template>
 
 <script>
+
+import { GET_SINGLE_PRODUCTS } from "../../queries/productQueries";
+import store from '@/store/index';
+
 export default {
-  name: "SingleProductMain"
+    name: "SingleProductMain",
+    data(){
+        return {
+            products: {
+                id: '',
+                image: '',  
+                price:{
+                    currency: '',
+                    amount: ''
+                },
+                name: '',
+                description: ''
+            },
+        }
+    },
+
+    computed: {
+        stateproducts() {
+            return this.$store.state.products
+        }
+    },
+
+  async mounted () {
+        // console.log(this.$route.params.id);
+        this.products.id = this.$route.params.id;
+        let singleProds = await this.getSingleProducts();
+        console.log(singleProds);
+        this.$store.commit('setProductsName', singleProds.name);
+        this.$store.commit('setProductsId', this.$route.params.id);
+        this.$store.commit('setProductsCatId', singleProds.category.id);
+        this.products.productDetails = singleProds;
+        this.products.description = singleProds.description;
+        this.products.name = singleProds.name;
+        this.products.image = singleProds.images[0].url;
+        this.products.price.currency = singleProds.price.currency;
+        this.products.price.amount = singleProds.price.amount
+        // console.log(singleProds.category.id);
+  },
+
+  methods: {
+    async getSingleProducts() {
+        
+        let response = await this.$apollo.query({
+            query: GET_SINGLE_PRODUCTS,
+            variables: { "id": this.products.id }
+        });
+
+        return response.data.product;
+    }
+  }
 };
 </script>
 

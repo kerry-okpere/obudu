@@ -1,19 +1,85 @@
 <template>
   <div>
     <HomeSlider />
+   <HomeProductCategory />
+    <HomeProducts />
+    <div class="section-2"></div>
+    <TrialBadge />
+  </div>
+</template>
+<!--
+<template>
+  <div class="container">
+    <HomeSlider />
     <HomeProductCategory />
     <SectionTitleAlt sectionTitleAlt="New Products" />
     <HomeProducts />
 
   </div>
 </template>
-
+-->
 <script>
 import HomeSlider from '../components/HomeSlider/index';
 import HomeProducts from '../components/HomeProducts/index';
 import HomeProductCategory from '../components/HomeProductCategory/index';
 
 import SectionTitleAlt from '../components/SectionTitleAlt/index';
+import SingleProductMain from '../components/SingleProductMain/index';
+import TrialBadge from '../components/TrialBadge/index';
+
+import { ApolloClient } from 'apollo-client';
+import { setContext } from "apollo-link-context";
+import { HttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import fetch from 'node-fetch';
+import Vue from 'vue';
+import VueApollo from 'vue-apollo';
+
+import { CREATE_TOKEN_MUTATION } from '../queries/authTokenQueries';
+
+// const httpLink = new HttpLink({
+//   uri: process.env.GRAPHQL_URL,
+//   fetch: fetch
+// });
+
+const httpLink = new HttpLink({
+  uri: "https://titan-master-wzownrctwa-uc.a.run.app/graphql/",
+  fetch: fetch
+});
+
+Vue.use(VueApollo);
+
+const interceptor = setContext((request, previousContext) => {
+  if(process.browser){
+    let admin_token = localStorage.getItem('admin_token');
+    return {
+      headers: {
+        authorization: admin_token ? `Authorization: JWT ${admin_token}` : null
+      }
+    };
+  }
+});
+
+const apolloClient = new ApolloClient({
+  link: interceptor.concat(httpLink),
+  cache: new InMemoryCache(),
+  connectToDevTools: true
+});
+
+const apolloProvider = new VueApollo({
+    defaultClient: apolloClient,
+    defaultOptions: {
+        $loadingKey: 'loading'
+    }
+});
+
+const apolloProviders = new VueApollo({
+    defaultClient: apolloClient,
+    defaultOptions: {
+        $loadingKey: 'loading'
+    }
+});
+
 
 export default {
   name: 'Home',
@@ -21,8 +87,47 @@ export default {
     HomeSlider,
     HomeProducts,
     HomeProductCategory,
-    SectionTitleAlt
-    
+    SectionTitleAlt,
+    SingleProductMain,
+    // TrialBadge
+
+  },
+  data() {
+    return {
+      loading: 0,
+    }
+  },
+  apolloProvider,
+  async created() {
+    // console.log(apolloProviders);
+    // this.$store.commit('setApolloVariable', this.$apollo);
+    if(process.browser) {
+      let admin_token = localStorage.getItem('admin_token');
+      if(!admin_token){
+        let tokenResponse =  await this.getauthToken();
+        const {token } = tokenResponse.tokenCreate;
+        localStorage.setItem("admin_token", JSON.stringify(token));
+      } else { 
+        console.log("Unto the next!");
+      }
+
+    }
+  },
+
+  methods: {
+    async getauthToken() {
+      try{
+        let response = await this.$apollo.mutate({
+          mutation: CREATE_TOKEN_MUTATION,
+          variables: { "email": "admin@mercurie.ng", "password": "admin" }
+        });
+        return response.data;
+      } catch (e) {
+        console.log(e);
+      }
+
+    },
+
   }
 }
 

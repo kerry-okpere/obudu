@@ -20,7 +20,7 @@ export default {
         SingleProductMain,
         SectionTitle,
         SingleProductSimilar
-    },
+    }
 }
 
 </script>

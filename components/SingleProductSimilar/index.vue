@@ -106,17 +106,51 @@
                         </div>
                     </div>         
                 </div>
+
             </div>
         </div>
 </template>
 
 <script>
-    export default {
-        name: 'SingleProductSimilar'
 
+import { GET_SIMILAR_PRODUCTS } from "../../queries/productQueries";
+
+export default {
+    name: 'SingleProductSimilar',
+    data(){
+        return  {
+            categories: []
+        }
+    },
+
+    computed: {
+        async getProdCategory() {
+            return this.$store.getters.getProductsCategory;
+        }
+    },
+
+    async created() {
+        const sleep = m => new Promise(r => setTimeout(r, m));
+        let category  = await this.getProdCategory;
+        await sleep(1000);
+        let similar_prods = await this.getSimilarProducts(category.category.id);
+
+        // remove first element in the array because that's first element but solution is not scalable
+        similar_prods.shift();        
+        this.categories = similar_prods;
+    },
+
+    methods: {
+        async getSimilarProducts(id) {
+            let response = await this.$apollo.query({
+                query: GET_SIMILAR_PRODUCTS,
+                variables: { "id": id }
+            });
+            return response.data.category.products.edges;
+        }
     }
+
+}
+
 </script>
-
 <style lang="scss" scoped>
-
-</style>
