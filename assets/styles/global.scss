@@ -8,6 +8,7 @@
 
 // Components
 
+@import '../../components/CartForm/index';
 @import '../../components/CollectionProducts/index';
 @import '../../components/HomeFeatures/index';
 @import '../../components/HomeMap/index';
@@ -28,9 +29,14 @@
 @import '../../components/TrialBadge/index';
 
 
-
-
 // Pages
 
-@import '../../pages/index';
-@import '../../pages/privacy/index';
+@import '../../pages/index.scss';
+@import '../../pages/account/index.scss';
+@import '../../pages/cart/index.scss';
+@import '../../pages/collection/index.scss';
+@import '../../pages/privacy/index.scss';
+@import '../../pages/product/index.scss';
+@import '../../pages/search/index.scss';
+@import '../../pages/shipping/index.scss';
+@import '../../pages/terms/index.scss';
