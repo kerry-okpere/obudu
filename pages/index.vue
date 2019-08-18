@@ -1,9 +1,8 @@
 <template>
-  <div class="container">
+  <div>
     <HomeSlider />
     <HomeProductCategory />
     <HomeProducts />
-    <div class="section-2"></div>
   </div>
 </template>
 
@@ -14,7 +13,6 @@ import HomeProductCategory from '../components/HomeProductCategory/index';
 
 import SectionTitleAlt from '../components/SectionTitleAlt/index';
 import SingleProductMain from '../components/SingleProductMain/index';
-import TrialBadge from '../components/TrialBadge/index';
 
 import { ApolloClient } from 'apollo-client';
 import { setContext } from "apollo-link-context";
