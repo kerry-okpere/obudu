@@ -20,9 +20,9 @@
         <div class="col-lg-6 col-md-6">
           <div class="product-details-content product-sticky">
             <h2 class="product-details-name">{{singleProducts.name}}</h2>
-            <div class="product-details-price">
+<!--             <div class="product-details-price">
               <span>{{singleProducts.price.localized}}</span>
-            </div>
+            </div> -->
             <p class="product-details-description">
               {{singleProducts.description}}
             </p>
