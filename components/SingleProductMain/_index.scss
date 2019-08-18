@@ -1,5 +1,21 @@
 @import '../../assets/styles/variables.scss';
 
+.product-addtocart {
+    background-color: $primary-color;
+    border-color: $primary-color;
+    font-size: 12px;
+    font-weight: 600;
+    margin-left: 5px;
+}
+
+.social-share {
+    font-size: 20px;
+}
+
+.product-details-name {
+    color: $text;
+}
+
 .product-details-content .product-details-price {
     margin: 10px 0px 10px;
 }
