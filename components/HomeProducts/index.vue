@@ -1,5 +1,5 @@
 <template>
-    <div class="product-area pb-60">
+    <div class="product-area pt-50 pb-50">
         <div class="container" data-aos="fade-up"
             data-aos-offset="150"
             data-aos-delay="20"
@@ -8,8 +8,11 @@
             data-aos-mirror="true"
             data-aos-once="true"
             data-aos-anchor-placement="top-bottom">
-            <div class="row">
-                <img v-if="loading" src="https://i.imgur.com/JfPpwOA.gif">
+            <div v-if="loading" class="d-flex justify-content-center mb-3">
+                <b-spinner type="grow" variant="primary" label="Loading..."></b-spinner>
+            </div>
+        <div class="row">
+                <!-- <img v-if="loading" src="https://i.imgur.com/JfPpwOA.gif"> -->
                 <div v-for="homeProduct in homeProducts" :key="homeProduct.node.id" class="col-xl-3 col-md-6 col-lg-4 col-sm-6 col-6">
                     
                     <div class="product-wrap-2 mb-25 text-center hvr-grow-shadow">
