@@ -6,6 +6,9 @@ v-model="current"
 </template>
 
 <script>
+
+import "@storefrontui/vue/src/css/_all.scss";
+
 import { SfGallery } from '@storefrontui/vue'
 
 export default {
@@ -19,20 +22,17 @@ export default {
 
   data () {
       return {
-
+        images: {
+          data: [
+            { small: { url: 'https://res.cloudinary.com/mercurie/image/upload/v1565670634/mercuriemart/sample-1.jpg', alt: 'Alt' }, 
+              big: { url: 'https://res.cloudinary.com/mercurie/image/upload/v1565670635/mercuriemart/sample-2.jpg', alt: 'Alt' }, 
+              zoom: { url: 'https://res.cloudinary.com/mercurie/image/upload/v1565670635/mercuriemart/sample-2.jpg', alt: 'Alt' } 
+            }
+          ]
+         }
       }
   },
 
-  methods: {
-      function() {
-          let images =
-           [ 
-              { small: { url, alt }, big: { url, alt }, 
-                zoom: { url, alt }
-              } 
-            ]
-     }
-  }
 }
 </script>
 
