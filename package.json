@@ -14,14 +14,15 @@
   },
   "dependencies": {
     "@nuxtjs/bulma": "^1.2.1",
-    "@storefrontui/vue": "0.0.4-aplha.11",
+    "@storefrontui/vue": "0.0.4-aplha.14",
     "aos": "^3.0.0-beta.6",
     "bootstrap-vue": "^2.0.0-rc.27",
     "buefy": "^0.7.10",
     "jquery": "^3.4.1",
     "nuxt": "^2.0.0",
     "vue": "^2.6.10",
-    "vue-carousel": "^0.18.0"
+    "vue-carousel": "^0.18.0",
+    "vue-social-sharing": "^2.4.6"
   },
   "devDependencies": {
     "@babel/core": "^7.5.5",
