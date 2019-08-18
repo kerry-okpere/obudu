@@ -50,8 +50,8 @@ export default {
   ],
 
   modules: [
-    'bootstrap-vue/nuxt'
-    
+    'bootstrap-vue/nuxt',
+    '@nuxtjs/dotenv'
   ],
 
   build: {
