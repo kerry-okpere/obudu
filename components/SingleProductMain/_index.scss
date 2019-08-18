@@ -1,5 +1,11 @@
 @import '../../assets/styles/variables.scss';
 
+.product-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 100px;
+}
+
 .product-addtocart {
     background-color: $primary-color;
     border-color: $primary-color;

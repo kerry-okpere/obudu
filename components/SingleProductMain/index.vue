@@ -1,24 +1,20 @@
 <template>
   <div>
-    <div class="shop-area pt-100 pb-100">
+    <div class="shop-area pt-60 pb-20">
       <div class="container">
         <div class="row">
-          <div class="col-xl-7 col-lg-7 col-md-12">
-            <div class="product-details-img mr-20 product-details-tab">
-              <div class="zoompro-wrap zoompro-2 pr-20">
-                <div class="zoompro-border zoompro-span">
-                  <img
-                    class="zoompro"
-                    src="@/assets/img/products/sa-prod1.png"
-                    data-zoom-image="@/assets/img/products/sa-prod1.png"
-                    alt
-                  />
+            <div class="col-lg-6 col-md-6">
+                <div class="product-details-gallery">
+                    <div class="dec-img-wrap zoompro-span mb-30">
+                        <img src="@/assets/img/products/sa-prod1.png" alt="">
+                    </div>
+                    <div class="dec-img-wrap mb-30">
+                        <img src="@/assets/img/products/sa-prod2.png" alt="">    
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
-          <div class="col-lg-5 col-lg-5 col-md-12">
-            <div class="product-details-content">
+            <div class="col-lg-6 col-md-6">
+            <div class="product-details-content product-sticky">
               <h2 class="product-details-name">Organic Apple Cidar</h2>
               <div class="product-details-price">
                 <span>$18.00</span>
