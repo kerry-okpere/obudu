@@ -3,17 +3,17 @@
     <div class="shop-area pt-60 pb-20">
       <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-md-6">
-                <div class="product-details-gallery">
-                    <div class="dec-img-wrap zoompro-span mb-30">
-                        <img src="@/assets/img/products/sa-prod1.png" alt="">
-                    </div>
-                    <div class="dec-img-wrap mb-30">
-                        <img src="@/assets/img/products/sa-prod2.png" alt="">    
-                    </div>
-                </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="product-details-gallery">
+              <div class="dec-img-wrap zoompro-span mb-30">
+                <img src="@/assets/img/products/sa-prod1.png" alt />
+              </div>
+              <div class="dec-img-wrap mb-30">
+                <img src="@/assets/img/products/sa-prod2.png" alt />
+              </div>
             </div>
-            <div class="col-lg-6 col-md-6">
+          </div>
+          <div class="col-lg-6 col-md-6">
             <div class="product-details-content product-sticky">
               <h2 class="product-details-name">Organic Apple Cidar</h2>
               <div class="product-details-price">
@@ -23,9 +23,14 @@
                 Lorem ipsum dolor sit amet, consectetur adipisic elit eiusm tempor incidid ut labore et
                 dolore magna aliqua. Ut enim ad minim venialo quis nostrud exercitation ullamco
               </p>
+              <b-dropdown variant="outline-dark" id="product-type" text="Select type" class="m-md-2 product-type">
+                <b-dropdown-item>Orange</b-dropdown-item>
+                <b-dropdown-item>Apple</b-dropdown-item>
+                <b-dropdown-item>Banana</b-dropdown-item>
+              </b-dropdown>
 
               <div class="pro-details-quality">
-                <b-button class="product-addtocart  hvr-grow" href="#">Add to Cart</b-button>
+                <b-button class="product-addtocart hvr-grow" href="#">Add to Cart</b-button>
               </div>
               <div class="social-share">
                 <social-sharing

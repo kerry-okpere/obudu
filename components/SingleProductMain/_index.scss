@@ -1,5 +1,20 @@
 @import '../../assets/styles/variables.scss';
 
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: 0.05rem 0.5rem;
+    clear: both;
+    font-weight: 400;
+    color: $text;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+    font-size: 12px;
+}
+
 .product-sticky {
     position: -webkit-sticky;
     position: sticky;
@@ -15,6 +30,10 @@
     margin-bottom: 5px;
     text-transform: uppercase;
     padding: 10px 30px;
+}
+
+button#product-type__BV_toggle_ {
+    font-size: 10px;
 }
 
 .social-share {
@@ -46,7 +65,7 @@
 .product-details-content p {
     font-size: 15px;
     line-height: 25px;
-    color: #333;
+    color: $text;
     margin-top: 20px;
     margin-bottom: 20px;
     letter-spacing: normal;
@@ -70,7 +89,7 @@
 .product-details-content .pro-details-quality {
     display: flex;
     align-items: center;
-    margin-top: 20px;
+    margin-top: 10px;
     margin-bottom: 20px;
 }
 
