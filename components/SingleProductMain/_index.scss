@@ -12,6 +12,9 @@
     font-size: 12px;
     font-weight: 600;
     margin-left: 5px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    padding: 10px 30px;
 }
 
 .social-share {
@@ -20,6 +23,14 @@
 
 .product-details-name {
     color: $text;
+    font-size: 24px;
+}
+
+.product-details-description {
+    padding-bottom: 5px;
+    padding-top: 0px;
+    font-size: 14px!important;
+
 }
 
 .product-details-content .product-details-price {
@@ -28,7 +39,7 @@
 
 .product-details-content .product-details-price span {
     font-size: 24px;
-    color: #3c87d1;
+    color: $primary-color;
     font-weight: 500;
 }
 

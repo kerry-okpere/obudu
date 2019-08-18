@@ -19,13 +19,13 @@
               <div class="product-details-price">
                 <span>$18.00</span>
               </div>
-              <p>
+              <p class="product-details-description">
                 Lorem ipsum dolor sit amet, consectetur adipisic elit eiusm tempor incidid ut labore et
                 dolore magna aliqua. Ut enim ad minim venialo quis nostrud exercitation ullamco
               </p>
 
               <div class="pro-details-quality">
-                <b-button class="product-addtocart  hvr-grow" href="#"><ion-icon name="ios-cart" style="margin: 5px 10px 0px 5px"></ion-icon>Add to Cart</b-button>
+                <b-button class="product-addtocart  hvr-grow" href="#">Add to Cart</b-button>
               </div>
               <div class="social-share">
                 <social-sharing
