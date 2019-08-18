@@ -67,6 +67,7 @@ import { GET_HOMEPAGE_CATEGORIES } from "../../queries/productQueries";
 
     async mounted(){
       let categories = await this.getCategories();
+      categories.pop();
       this.categories = categories;
       // console.log(cats);
     },

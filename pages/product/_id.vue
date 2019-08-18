@@ -1,7 +1,6 @@
 <template>
     <div class="container">
         <SingleProductMain />
-        <SingleProductImages />
         <SectionTitle sectionTitle="Similar Products"></SectionTitle>
         <SingleProductSimilar />
     </div>
@@ -10,7 +9,6 @@
 <script>
 
 import SingleProductMain from '../../components/SingleProductMain/index';
-import SingleProductImages from '../../components/SingleProductImages/index';
 import SectionTitle from '../../components/SectionTitle/index';
 import SingleProductSimilar from '../../components/SingleProductSimilar/index';
 import Vue from 'vue';
@@ -59,7 +57,6 @@ const apolloProvider = new VueApollo({
 export default {
     components: {
         SingleProductMain,
-        SingleProductImages,
         SectionTitle,
         SingleProductSimilar
     },
