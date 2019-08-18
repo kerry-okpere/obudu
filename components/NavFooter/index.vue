@@ -1,6 +1,6 @@
 <template>
     <footer class="footer-area pt-30 pb-30">
-        <div class="w-container">
+        <div class="container">
             <div class="row">
                 <div class="col-sm-8 col-sm-4">
                     <div class="footer-container">

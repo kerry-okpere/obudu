@@ -2,7 +2,7 @@
   <div>
     <HomeSlider />
     <HomeProductCategory />
-    <SectionTitleAlt sectionTitleAlt="New Products" />
+    <SectionTitle sectionTitle="New Products" sectionSubtitle="Shop from our latest products..."/>
     <HomeProducts />
 
   </div>
@@ -13,7 +13,7 @@ import HomeSlider from '../components/HomeSlider/index';
 import HomeProducts from '../components/HomeProducts/index';
 import HomeProductCategory from '../components/HomeProductCategory/index';
 
-import SectionTitleAlt from '../components/SectionTitleAlt/index';
+import SectionTitle from '../components/SectionTitle/index';
 
 export default {
   name: 'Home',
@@ -21,7 +21,7 @@ export default {
     HomeSlider,
     HomeProducts,
     HomeProductCategory,
-    SectionTitleAlt
+    SectionTitle
     
   }
 }

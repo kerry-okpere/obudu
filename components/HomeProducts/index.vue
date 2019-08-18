@@ -1,6 +1,6 @@
 <template>
 <div class="product-area pb-60">
-    <div class="w-container" data-aos="fade-up"
+    <div class="container" data-aos="fade-up"
     data-aos-offset="150"
     data-aos-delay="20"
     data-aos-duration="500"
