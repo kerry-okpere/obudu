@@ -13,7 +13,7 @@ query($id: ID!){
       id
     }
     price {
-      currency
+      localized
       amount
     }
   }
@@ -30,6 +30,7 @@ query {
           price {
             amount,
             currency
+            localized
           }
           category{
             name,
@@ -47,7 +48,7 @@ query {
 export const GET_SIMILAR_PRODUCTS = gql`
 query ($id: ID!){
   category(id: $id) {
-    products(first: 5 ){
+    products(first: 6 ){
       edges{
         node{
           id
@@ -55,12 +56,16 @@ query ($id: ID!){
           images{
             url
           }
+          category{
+            name
+          }
           thumbnail{
             url
           }
           price{
             amount
             currency
+            localized
           }
           
         }

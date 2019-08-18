@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import { GET_SINGLE_PRODUCTS, GET_PRODUCTS } from "../queries/productQueries";
+import { GET_SINGLE_PRODUCTS, GET_PRODUCTS, GET_SIMILAR_PRODUCTS } from "../queries/productQueries";
 
 Vue.use(Vuex);
 
@@ -22,19 +22,29 @@ export const state = () => ({
   },
 
   homeProducts: [],
+  singleProduct: "",
+  similarProducts: [],
 });
 
 export const getters = {
   // computed properties
   getProductsCategory(state, getters) {
     return new Promise ((resolve, reject) => {
-      resolve(state.products);
+      resolve(state.singleProduct);
       reject("Unable to get products");
     })
   },
 
   getHomeProducts(state, getters) {
     return state.homeProducts[0]
+  },
+
+  getSingleProduct(state, getters) {
+    return state.singleProduct
+  },
+
+  getSimilarProducts(state, getters) {
+    return state.similarProducts[0]
   }
 
 };
@@ -48,12 +58,35 @@ export const actions = {
       let prods = response.data.products.edges;
       context.commit('setHomeProducts', prods);
       resolve();
-      reject('Unable to fetch products')
+      reject("Unable to fetch products")
     });
   },
 
-  fetchSingleProducts(context, {apollo}){
-    
+  fetchSingleProducts(context, {apollo, product_id}){
+    return new Promise(async (resolve, reject) => {
+      let response = await apollo.query({
+        query: GET_SINGLE_PRODUCTS,
+        variables: { "id": product_id }
+      });
+      let single_prod = response.data.product;
+      context.commit('setSingleProducts', single_prod);
+      resolve();
+      reject("Unable to fetch product")
+    })
+  },
+
+  fetchSimilarProducts(context, {apollo, category_id }){
+    return new Promise(async (resolve, reject) => {
+      let response = await apollo.query({
+        query: GET_SIMILAR_PRODUCTS,
+        variables: { "id": category_id }
+      });
+      let similar_prod =  response.data.category.products.edges;
+      context.commit('setSimilarProducts', similar_prod);
+      resolve();
+      reject("Unable to fetch similar products");
+
+    })
   }
 };
 
@@ -75,4 +108,13 @@ export const mutations = {
     // state.homeProducts = homeProds;
     state.homeProducts.push(homeProds);
   },
+
+  setSimilarProducts(state, similarProds){
+    similarProds.shift();        
+    state.similarProducts.push(similarProds);
+  },
+
+  setSingleProducts(state, singleProd){
+    state.singleProduct = singleProd;
+  }
 };

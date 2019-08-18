@@ -2,20 +2,28 @@
   <div>
     <div class="shop-area pt-100 pb-100">
       <div class="container">
-        <div class="row">
+        <div v-if="loading">
+            <img src="https://i.imgur.com/JfPpwOA.gif">
+        </div>
+        <div v-else-if="loadStatus" class="row">
           <div class="col-xl-7 col-lg-7 col-md-12">
             <div class="product-details-img mr-20 product-details-tab">
               <div class="zoompro-wrap zoompro-2 pr-20">
                 <div class="zoompro-border zoompro-span">
                   <img
                     class="zoompro"
-                    src="@/assets/img/products/sa-prod1.png"
-                    data-zoom-image="@/assets/img/products/sa-prod1.png"
+                    :src="`${singleProducts.images[0].url}`"
                     alt
                   />
+                  <!-- <img
+                    class="zoompro"
+                    :src="`${singleProducts.images[0].url}`"
+                    data-zoom-image="@/assets/img/products/sa-prod1.png"
+                    alt
+                  /> -->
                 </div>
               </div>
-<!--               <div id="gallery" class="product-dec-slider-2">
+              <!-- <div id="gallery" class="product-dec-slider-2">
                 <a
                   data-image="https://res.cloudinary.com/mercurie/image/upload/v1565670635/mercuriemart/sample-2.jpg"
                   data-zoom-image="https://res.cloudinary.com/mercurie/image/upload/v1565670635/mercuriemart/sample-2.jpg"
@@ -48,13 +56,12 @@
           </div>
           <div class="col-lg-5 col-lg-5 col-md-12">
             <div class="product-details-content">
-              <h2>Organic Apple Cidar</h2>
+              <h2>{{singleProducts.name}}</h2>
               <div class="product-details-price">
-                <span>$18.00</span>
+                <span>{{singleProducts.price.localized}}</span>
               </div>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisic elit eiusm tempor incidid ut labore et
-                dolore magna aliqua. Ut enim ad minim venialo quis nostrud exercitation ullamco
+                  {{singleProducts.description}}
               </p>
 
               <div class="pro-details-quality">
@@ -99,54 +106,28 @@ import store from '@/store/index';
 
 export default {
     name: "SingleProductMain",
-    data(){
-        return {
-            products: {
-                id: '',
-                image: '',  
-                price:{
-                    currency: '',
-                    amount: ''
-                },
-                name: '',
-                description: ''
-            },
+    computed: {
+        singleProducts() {
+            return this.$store.getters.getSingleProduct;
         }
     },
-
-    computed: {
-        stateproducts() {
-            return this.$store.state.products
+    data() {
+        return {
+            loading: false,
+            loadStatus: false,
         }
     },
 
   async mounted () {
-        // console.log(this.$route.params.id);
-        this.products.id = this.$route.params.id;
-        let singleProds = await this.getSingleProducts();
-        console.log(singleProds);
-        this.$store.commit('setProductsName', singleProds.name);
-        this.$store.commit('setProductsId', this.$route.params.id);
-        this.$store.commit('setProductsCatId', singleProds.category.id);
-        this.products.productDetails = singleProds;
-        this.products.description = singleProds.description;
-        this.products.name = singleProds.name;
-        this.products.image = singleProds.images[0].url;
-        this.products.price.currency = singleProds.price.currency;
-        this.products.price.amount = singleProds.price.amount
-        // console.log(singleProds.category.id);
-  },
-
-  methods: {
-    async getSingleProducts() {
-        
-        let response = await this.$apollo.query({
-            query: GET_SINGLE_PRODUCTS,
-            variables: { "id": this.products.id }
+        this.loading = true,
+        this.$store.dispatch('fetchSingleProducts', {
+            apollo: this.$apollo,
+            product_id: this.$route.params.id
+        })
+        .then( async() => {
+            this.loading = false;
+            this.loadStatus = true
         });
-
-        return response.data.product;
-    }
   }
 };
 </script>
