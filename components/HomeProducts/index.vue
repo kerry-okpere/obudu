@@ -1,14 +1,7 @@
 <template>
 
     <div class="product-area pb-60">
-        <div class="w-container" data-aos="fade-up"
-            data-aos-offset="150"
-            data-aos-delay="20"
-            data-aos-duration="500"
-            data-aos-easing="ease-in-out"
-            data-aos-mirror="true"
-            data-aos-once="true"
-            data-aos-anchor-placement="top-bottom">
+        <div class="w-container">
             <div class="row">
                 <img v-if="loading" src="https://i.imgur.com/JfPpwOA.gif">
                 <div v-for="homeProduct in homeProducts" :key="homeProduct.node.id" class="col-xl-3 col-md-6 col-lg-4 col-sm-6 col-6">

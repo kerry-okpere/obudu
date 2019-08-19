@@ -1,20 +1,11 @@
 <template>
 <div class="product-area pb-60">
-    <div class="w-container" data-aos="fade-up"
-    data-aos-offset="150"
-    data-aos-delay="20"
-    data-aos-duration="500"
-    data-aos-easing="ease-in-out"
-    data-aos-mirror="true"
-    data-aos-once="true"
-    data-aos-anchor-placement="top-bottom">
+    <div class="w-container">
                 <div class="row">
                     <div v-if="loading">
                             <img src="https://i.imgur.com/JfPpwOA.gif">
                     </div>
-                    
-                    
-                    <div v-for="similarProduct in similarProducts" class="col-xl-3 col-md-6 col-lg-4 col-sm-6 col-6">
+                    <div v-for="similarProduct in similarProducts" :key="similarProduct.node.id"   class="col-xl-3 col-md-6 col-lg-4 col-sm-6 col-6">
                         <div v-if="similarProduct.node" class="product-wrap-2 mb-25 text-center hvr-grow-shadow">
                             <div class="product-img">
                                 <nuxt-link :to="`/product/${similarProduct.node.id}`">
@@ -36,7 +27,6 @@
                                             {{similarProduct.node.name}}
                                         </nuxt-link>
                                     </h3>
-                                    <span>saasasas</span>
                                     <p class="home-product_cat"><a href="#">{{similarProduct.node.category.name}}</a></p>
                                     <div class="price-2">
                                         <span>{{similarProduct.node.price.localized}}</span>
@@ -79,6 +69,17 @@ export default {
         similarProducts() {
             return this.$store.getters.getSimilarProducts;
         },
+
+        getSimilarProducts(){
+            this.$store.dispatch('fetchProducts', {
+                apollo: this.$apollo,
+            }).then( (data) => console.log(data));
+            // this.$store.dispatch('fetchSimilarProducts', {
+            //     apollo: this.$apollo,
+            //     category_id: this.getProds
+            // }).then( (data) => console.log(data));
+        }
+
     },
 
     // async created() {
@@ -105,8 +106,14 @@ export default {
         await sleep(3000);
 
         // console.log(this.getProds);
+        this.getSimilarProducts
+        // let check = await this.fetchSimilarProducts(this.getProds);
+        // await sleep(3000);
+        // let similar_prod = check.data.category.products.edges;
+        // similar_prod.shift();        
+        // this.$store.commit("setSimilarProducts", similar_prod);
 
-        await this.runDispatch(this.getProds);
+        // this.$store.state.similarProducts.push(similar_prod);
         // console.log();
         // console.log(this.getSingleProduct);
         // console.log(this.$wait.store.getters.getSingleProduct)
@@ -140,6 +147,15 @@ export default {
                 console.log("success ",category.category);
                 return category
             }
+        },
+
+        async fetchSimilarProducts(category){
+            let response = await this.$apollo.query({
+                query: GET_SIMILAR_PRODUCTS,
+                variables: { "id": category }
+            })
+
+            return response;
         },
 
         async runDispatch(category) {

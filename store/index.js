@@ -62,6 +62,7 @@ export const actions = {
       });
       let prods = response.data.products.edges;
       context.commit('setHomeProducts', prods);
+      context.commit('setSimilarProducts', prods);      
       resolve();
       reject("Unable to fetch products")
     });
@@ -81,14 +82,15 @@ export const actions = {
     })
   },
 
-  fetchSimilarProducts(context, {apollo, category_id }){
+  async fetchSimilarProducts(context, {apollo, category_id }){
     return new Promise(async (resolve, reject) => {
       let response = await apollo.query({
         query: GET_SIMILAR_PRODUCTS,
         variables: { "id": category_id }
-      });
-      let similar_prod =  response.data.category.products.edges;
-      context.commit('setSimilarProducts', similar_prod);
+      })
+      let data = response.data.category.products.edges
+      data.shift();
+      context.commit('setSimilarProducts', data);      
       resolve();
       reject("Unable to fetch similar products");
 
@@ -116,7 +118,6 @@ export const mutations = {
   },
 
   setSimilarProducts(state, similarProds){
-    similarProds.shift();        
     state.similarProducts.push(similarProds);
   },
 

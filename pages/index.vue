@@ -4,7 +4,7 @@
    <HomeProductCategory />
     <HomeProducts />
     <div class="section-2"></div>
-    <TrialBadge />
+    <!-- <TrialBadge /> -->
   </div>
 </template>
 <!--

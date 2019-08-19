@@ -118,7 +118,7 @@ export default {
         }
     },
 
-  async mounted () {
+  async created () {
         this.loading = true,
         this.$store.dispatch('fetchSingleProducts', {
             apollo: this.$apollo,
