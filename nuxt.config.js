@@ -45,6 +45,7 @@ export default {
   ],
 
   plugins: [
+    { src: '~/plugins/bootstrap-vue.js' },
     { src: '~plugins/aos.js', ssr: false }
   ],
 
