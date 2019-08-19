@@ -16,7 +16,6 @@
               </div>
             </div>
           </div>
-        </div>
         <div class="col-lg-6 col-md-6">
           <div class="product-details-content product-sticky">
             <h2 class="product-details-name">{{singleProducts.name}}</h2>
@@ -59,6 +58,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </template>
 

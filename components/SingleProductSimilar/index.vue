@@ -1,13 +1,6 @@
 <template>
 <div class="product-area pb-60">
-    <div class="container" data-aos="fade-up"
-    data-aos-offset="150"
-    data-aos-delay="20"
-    data-aos-duration="500"
-    data-aos-easing="ease-in-out"
-    data-aos-mirror="true"
-    data-aos-once="true"
-    data-aos-anchor-placement="top-bottom">
+    <div class="container">
                 <div v-if="loading" class="d-flex justify-content-center mb-3">
                 <b-spinner type="grow" variant="primary" label="Loading..."></b-spinner>
             </div>
