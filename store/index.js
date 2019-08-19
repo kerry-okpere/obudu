@@ -24,13 +24,14 @@ export const state = () => ({
   homeProducts: [],
   singleProduct: "",
   similarProducts: [],
+  categoryId: '',
 });
 
 export const getters = {
   // computed properties
   getProductsCategory(state, getters) {
     return new Promise ((resolve, reject) => {
-      resolve(state.singleProduct);
+      resolve(state.similarProducts);
       reject("Unable to get products");
     })
   },
@@ -41,6 +42,10 @@ export const getters = {
 
   getSingleProduct(state, getters) {
     return state.singleProduct
+  },
+
+  getCategoryId(state, getters){
+    return state.categoryId
   },
 
   getSimilarProducts(state, getters) {
@@ -70,6 +75,7 @@ export const actions = {
       });
       let single_prod = response.data.product;
       context.commit('setSingleProducts', single_prod);
+      context.commit('setCategoryId', single_prod.category.id);
       resolve();
       reject("Unable to fetch product")
     })
@@ -116,5 +122,9 @@ export const mutations = {
 
   setSingleProducts(state, singleProd){
     state.singleProduct = singleProd;
+  },
+
+  setCategoryId(state, cat_id){
+    state.categoryId = cat_id;
   }
 };

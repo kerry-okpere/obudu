@@ -12,6 +12,8 @@
                     <div v-if="loading">
                             <img src="https://i.imgur.com/JfPpwOA.gif">
                     </div>
+                    
+                    
                     <div v-for="similarProduct in similarProducts" class="col-xl-3 col-md-6 col-lg-4 col-sm-6 col-6">
                         <div v-if="similarProduct.node" class="product-wrap-2 mb-25 text-center hvr-grow-shadow">
                             <div class="product-img">
@@ -34,6 +36,7 @@
                                             {{similarProduct.node.name}}
                                         </nuxt-link>
                                     </h3>
+                                    <span>saasasas</span>
                                     <p class="home-product_cat"><a href="#">{{similarProduct.node.category.name}}</a></p>
                                     <div class="price-2">
                                         <span>{{similarProduct.node.price.localized}}</span>
@@ -61,7 +64,8 @@ export default {
     data(){
         return  {
             loading: false,
-            loadStatus: false
+            loadStatus: false,
+            catId: ''
         }
     },
 
@@ -69,27 +73,55 @@ export default {
         getProdCategory() {
             return this.$store.getters.getSingleProduct;
         },
-        async getProds(){
-            return this.$store.getters.getProductsCategory
+        getProds(){
+            return this.$store.getters.getCategoryId
         },
         similarProducts() {
             return this.$store.getters.getSimilarProducts;
         },
-        ...mapState(['singleProduct'])
     },
 
-    async created() {
+    // async created() {
 
-        this.loading = true;
+        // this.loading = true;
         // let singleProduct = 
         //wait for states to load
+        // const sleep = m => new Promise(r => setTimeout(r, m));
+        // await sleep(3000);
+
+        // let id = this.singleProduct.category.id;
+        // const {id}  = this.singleProduct.category;
+        // console.log(id);
+
+        // let prods = this.getProductCategoryMethod()
+        // .then((data) => this.getIdRecursively(data))
+        // .then((data) => this.runDispatch(data))
+        
+        // .then((data) => this.runDispatch(data) );
+    // },
+    async created() {
+
         const sleep = m => new Promise(r => setTimeout(r, m));
         await sleep(3000);
 
-        // let id = this.singleProduct.category.id;
+        // console.log(this.getProds);
 
-        let prods = this.getProductCategoryMethod()
-        .then((data) => this.runDispatch(data) );
+        await this.runDispatch(this.getProds);
+        // console.log();
+        // console.log(this.getSingleProduct);
+        // console.log(this.$wait.store.getters.getSingleProduct)
+        // this.loading = true;
+        // const sleep = m => new Promise(r => setTimeout(r, m));
+        // await sleep(3000);
+
+        // let id = this.singleProduct.category.id;
+        // const {id}  = this.singleProduct.category;
+
+
+        // await this.runDispatch(id);
+        // let prods = this.getProductCategoryMethod()
+        // .then((data) => this.getIdRecursively(data))
+        // .then((data) => this.runDispatch(data))
     },
 
     methods: {
@@ -98,10 +130,22 @@ export default {
             return this.$store.state.singleProduct
         },
 
-        async runDispatch(product) {
+        async getIdRecursively(category){
+
+            // const {category} = category;
+            if( typeof category.category == undefined){
+                // console.log(category.category.id);
+                await this.getIdRecursively(category)
+            } else{
+                console.log("success ",category.category);
+                return category
+            }
+        },
+
+        async runDispatch(category) {
             this.$store.dispatch('fetchSimilarProducts', {
                 apollo: this.$apollo,
-                category_id: product.category.id
+                category_id: category
             }).then( () => {    
                 this.loading = false,
                 this.loadStatus = true
