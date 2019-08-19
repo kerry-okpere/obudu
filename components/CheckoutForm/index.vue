@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-lg-7">
           <div class="checkout-form">
-                          <h3>Billing Information</h3>
+                          <h3 class="pb-20">Billing Information</h3>
             <b-form @submit="onSubmit" @reset="onReset" v-if="show">
 
               <b-form-group id="first-name" label="First Name *" label-for="first-name">
@@ -39,7 +39,7 @@
 
 
 
-              <b-form-group id="input-group-4">
+              <b-form-group id="input-group-4" class="pb-50">
                 <b-form-checkbox-group v-model="form.checked" id="checkboxes-4">
                   <b-form-checkbox value="me">Create an account?</b-form-checkbox>
                 </b-form-checkbox-group>
@@ -48,7 +48,7 @@
           </div>
         </div>
         <div class="col-lg-5">
-                        <h3>Your order</h3>
+                        <h3 class="pb-20">Your order</h3>
           <div class="your-order-area">
             <div class="your-order-wrap gray-bg-4">
               <div class="your-order-product-info">
