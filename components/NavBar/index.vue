@@ -1,6 +1,6 @@
 <template>
   <header class="header-area sticky-bar clearfix">
-    <div class="w-container">
+    <div class="container">
       <div class="row">
         <div class="col-xl-2 col-lg-2 col-md-6 col-4">
           <div class="logo">

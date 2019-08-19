@@ -1,137 +1,103 @@
 <template>
   <div>
-    <div class="shop-area pt-100 pb-100">
+    <div class="shop-area pt-60 pb-20">
       <div class="container">
-        <div v-if="loading">
-            <img src="https://i.imgur.com/JfPpwOA.gif">
-        </div>
+            <div v-if="loading" class="d-flex justify-content-center mb-3">
+                <b-spinner type="grow" variant="primary" label="Loading..."></b-spinner>
+            </div>
         <div v-else-if="loadStatus" class="row">
-          <div class="col-xl-7 col-lg-7 col-md-12">
-            <div class="product-details-img mr-20 product-details-tab">
-              <div class="zoompro-wrap zoompro-2 pr-20">
-                <div class="zoompro-border zoompro-span">
-                  <img
-                    class="zoompro"
-                    :src="`${singleProducts.images[0].url}`"
-                    alt
-                  />
-                  <!-- <img
-                    class="zoompro"
-                    :src="`${singleProducts.images[0].url}`"
-                    data-zoom-image="@/assets/img/products/sa-prod1.png"
-                    alt
-                  /> -->
-                </div>
+          <div class="col-lg-6 col-md-6">
+            <div class="product-details-gallery">
+              <div class="dec-img-wrap zoompro-span mb-30">
+                <img class="zoompro" :src="`${singleProducts.images[0].url}`" alt />
               </div>
-              <!-- <div id="gallery" class="product-dec-slider-2">
-                <a
-                  data-image="https://res.cloudinary.com/mercurie/image/upload/v1565670635/mercuriemart/sample-2.jpg"
-                  data-zoom-image="https://res.cloudinary.com/mercurie/image/upload/v1565670635/mercuriemart/sample-2.jpg"
-                >
-                  <img
-                    src="https://res.cloudinary.com/mercurie/image/upload/v1565670635/mercuriemart/sample-1.jpg"
-                    alt
-                  />
-                </a>
-                <a
-                  data-image="https://res.cloudinary.com/mercurie/image/upload/v1565671069/mercuriemart/sample-2b.jpg"
-                  data-zoom-image="https://res.cloudinary.com/mercurie/image/upload/v1565671069/mercuriemart/sample-2b.jpg"
-                >
-                  <img
-                    src="https://res.cloudinary.com/mercurie/image/upload/v1565671066/mercuriemart/sample-2a.jpg"
-                    alt
-                  />
-                </a>
-                <a
-                  data-image="https://res.cloudinary.com/mercurie/image/upload/v1565671069/mercuriemart/sample-2b.jpg"
-                  data-zoom-image="https://res.cloudinary.com/mercurie/image/upload/v1565671069/mercuriemart/sample-2b.jpg"
-                >
-                  <img
-                    src="https://res.cloudinary.com/mercurie/image/upload/v1565671066/mercuriemart/sample-2a.jpg"
-                    alt
-                  />
-                </a>
-              </div> -->
+              <div class="dec-img-wrap zoompro-span mb-30">
+                <img class="zoompro" :src="`${singleProducts.images[0].url}`" alt />
+              </div>
             </div>
           </div>
-          <div class="col-lg-5 col-lg-5 col-md-12">
-            <div class="product-details-content">
-              <h2>{{singleProducts.name}}</h2>
-              <div class="product-details-price">
-                <span>{{singleProducts.price.localized}}</span>
-              </div>
-              <p>
-                  {{singleProducts.description}}
-              </p>
+        <div class="col-lg-6 col-md-6">
+          <div class="product-details-content product-sticky">
+            <h2 class="product-details-name">{{singleProducts.name}}</h2>
+<!--             <div class="product-details-price">
+              <span>{{singleProducts.price.localized}}</span>
+            </div> -->
+            <p class="product-details-description">
+              {{singleProducts.description}}
+            </p>
+            <b-dropdown variant="outline-dark" id="product-type" text="Select type" class="m-md-2 product-type">
+              <b-dropdown-item>Orange</b-dropdown-item>
+              <b-dropdown-item>Apple</b-dropdown-item>
+              <b-dropdown-item>Banana</b-dropdown-item>
+            </b-dropdown>
 
-              <div class="pro-details-quality">
-  <b-button variant ="dark" href="#">ADD TO CART</b-button>
-              </div>
-              <div class="pro-details-social">
-                <ul>
-                  <li>
-                    <a href="#">
-                      <ion-icon name="logo-facebook"></ion-icon>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <ion-icon name="logo-whatsapp"></ion-icon>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <ion-icon name="logo-instagram"></ion-icon>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <ion-icon name="logo-pinterest"></ion-icon>
-                    </a>
-                  </li>
-                </ul>
-              </div>
+            <div class="pro-details-quality">
+              <b-button class="product-addtocart hvr-grow" href="#">Add to Cart</b-button>
+            </div>
+            <div class="social-share">
+              <social-sharing url="https://store.mercuriemart.com" title="Product Name"
+                description="Product Description" quote="Product Description" hashtags="shop,store,mercuriemart"
+                inline-template>
+                <div>
+                  <network network="facebook" class="hvr-grow">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                  </network>
+                  <network network="twitter" class="hvr-grow">
+                    <ion-icon name="logo-twitter"></ion-icon>
+                  </network>
+                  <network network="whatsapp" class="hvr-grow">
+                    <ion-icon name="logo-whatsapp"></ion-icon>
+                  </network>
+                  <network network="pinterest" class="hvr-grow">
+                    <ion-icon name="logo-pinterest"></ion-icon>
+                  </network>
+                </div>
+              </social-sharing>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  </div>
 </template>
 
 <script>
+  import {
+    GET_SINGLE_PRODUCTS
+  } from "../../queries/productQueries";
+  import store from '@/store/index';
 
-import { GET_SINGLE_PRODUCTS } from "../../queries/productQueries";
-import store from '@/store/index';
-
-export default {
+  export default {
     name: "SingleProductMain",
     computed: {
-        singleProducts() {
-            return this.$store.getters.getSingleProduct;
-        }
+      singleProducts() {
+        return this.$store.getters.getSingleProduct;
+      }
     },
     data() {
-        return {
-            loading: false,
-            loadStatus: false,
-        }
+      return {
+        loading: false,
+        loadStatus: false,
+      }
     },
 
   async created () {
         this.loading = true,
         this.$store.dispatch('fetchSingleProducts', {
-            apollo: this.$apollo,
-            product_id: this.$route.params.id
+          apollo: this.$apollo,
+          product_id: this.$route.params.id
         })
-        .then( async() => {
-            this.loading = false;
-            this.loadStatus = true
+        .then(async () => {
+          this.loading = false;
+          this.loadStatus = true
         });
-  }
-};
+    }
+  };
+
 </script>
 
 <style lang="scss" scoped>
-@import "./_index.scss";
+  @import "./_index.scss";
+
 </style>

@@ -15,7 +15,7 @@
   "dependencies": {
     "@nuxtjs/bulma": "^1.2.1",
     "@nuxtjs/dotenv": "latest",
-    "@storefrontui/vue": "0.0.4-aplha.11",
+    "@storefrontui/vue": "0.0.4-aplha.14",
     "aos": "^3.0.0-beta.6",
     "apollo-cache-inmemory": "^1.6.2",
     "apollo-client": "^2.6.3",
@@ -32,6 +32,7 @@
     "node-fetch": "^2.6.0",
     "nuxt": "^2.0.0",
     "vue": "^2.6.10",
+    "vue-social-sharing": "^2.4.6",
     "vue-apollo": "^3.0.0-rc.2",
     "vue-carousel": "^0.18.0",
     "vue-wait": "^1.4.6",

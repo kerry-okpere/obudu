@@ -1,5 +1,5 @@
 <template>
-  <div class="home-slider__container">
+  <div>
     <b-carousel class="animated fadeIn"
       id="carousel-1"
       v-model="slide"

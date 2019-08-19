@@ -1,23 +1,11 @@
 <template>
   <div>
     <HomeSlider />
-   <HomeProductCategory />
-    <HomeProducts />
-    <div class="section-2"></div>
-    <!-- <TrialBadge /> -->
-  </div>
-</template>
-<!--
-<template>
-  <div class="container">
-    <HomeSlider />
     <HomeProductCategory />
-    <SectionTitleAlt sectionTitleAlt="New Products" />
     <HomeProducts />
-
   </div>
 </template>
--->
+
 <script>
 import HomeSlider from '../components/HomeSlider/index';
 import HomeProducts from '../components/HomeProducts/index';
@@ -25,7 +13,6 @@ import HomeProductCategory from '../components/HomeProductCategory/index';
 
 import SectionTitleAlt from '../components/SectionTitleAlt/index';
 import SingleProductMain from '../components/SingleProductMain/index';
-import TrialBadge from '../components/TrialBadge/index';
 
 import { ApolloClient } from 'apollo-client';
 import { setContext } from "apollo-link-context";

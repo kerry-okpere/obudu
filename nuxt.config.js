@@ -46,7 +46,8 @@ export default {
 
   plugins: [
     { src: '~/plugins/bootstrap-vue.js' },
-    { src: '~plugins/aos.js', ssr: false }
+    { src: '~plugins/aos.js', ssr: false },
+    { src: '~plugins/vue-social-sharing.js', ssr: true }
   ],
 
   modules: [
@@ -55,6 +56,7 @@ export default {
   ],
 
   build: {
+    vendor: [ 'vue-social-sharing'],
     postcss: {
       preset: {
         features: {
