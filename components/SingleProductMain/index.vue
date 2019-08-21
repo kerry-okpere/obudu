@@ -19,24 +19,19 @@
         <div class="col-lg-6 col-md-6">
           <div class="product-details-content product-sticky">
             <h2 class="product-details-name">{{singleProducts.name}}</h2>
-<!--             <div class="product-details-price">
-              <span>{{singleProducts.price.localized}}</span>
-            </div> -->
             <p class="product-details-description">
               {{singleProducts.description}}
             </p>
             <b-dropdown variant="outline-dark" id="product-type" text="Select type" class="m-md-2 product-type">
-              <b-dropdown-item>Orange</b-dropdown-item>
-              <b-dropdown-item>Apple</b-dropdown-item>
-              <b-dropdown-item>Banana</b-dropdown-item>
+              <b-dropdown-item v-for="variants in singleProducts.variants" :key="variants.id" > {{variants.name}} </b-dropdown-item>
             </b-dropdown>
 
             <div class="pro-details-quality">
               <b-button class="product-addtocart hvr-grow" href="#">Add to Cart</b-button>
             </div>
             <div class="social-share">
-              <social-sharing url="https://store.mercuriemart.com" title="Product Name"
-                description="Product Description" quote="Product Description" hashtags="shop,store,mercuriemart"
+              <social-sharing :url="storeUrl" :title="singleProducts.name"
+                :description="singleProducts.description" quote="Hey checkout" hashtags="shop,store,mercuriemart"
                 inline-template>
                 <div>
                   <network network="facebook" class="hvr-grow">
@@ -48,9 +43,9 @@
                   <network network="whatsapp" class="hvr-grow">
                     <ion-icon name="logo-whatsapp"></ion-icon>
                   </network>
-                  <network network="pinterest" class="hvr-grow">
+                  <!-- <network network="pinterest" class="hvr-grow">
                     <ion-icon name="logo-pinterest"></ion-icon>
-                  </network>
+                  </network> -->
                 </div>
               </social-sharing>
             </div>
@@ -79,20 +74,28 @@
       return {
         loading: false,
         loadStatus: false,
+        storeUrl: ''
       }
     },
 
   async created () {
-        this.loading = true,
-        this.$store.dispatch('fetchSingleProducts', {
-          apollo: this.$apollo,
-          product_id: this.$route.params.id
-        })
-        .then(async () => {
-          this.loading = false;
-          this.loadStatus = true
-        });
-    }
+      this.loading = true,
+      this.$store.dispatch('fetchSingleProducts', {
+        apollo: this.$apollo,
+        product_id: this.$route.params.id
+      })
+      .then(async () => {
+        this.loading = false;
+        this.loadStatus = true
+      });
+      if(process.browser){
+        this.storeUrl = window.location.href;
+      }
+
+        // const sleep = m => new Promise(r => setTimeout(r, m));
+        // await sleep(3000);
+  }
+
   };
 
 </script>

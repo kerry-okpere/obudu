@@ -12,6 +12,11 @@ query($id: ID!){
       name,
       id
     }
+    variants{
+      id,
+      stockQuantity,
+      name
+    }
     price {
       localized
       amount

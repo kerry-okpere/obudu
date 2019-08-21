@@ -24,6 +24,7 @@ export const state = () => ({
   homeProducts: [],
   singleProduct: "",
   similarProducts: [],
+  productsBreadCrumb: [],
   categoryId: '',
 });
 
@@ -50,6 +51,10 @@ export const getters = {
 
   getSimilarProducts(state, getters) {
     return state.similarProducts[0]
+  },
+
+  getSingleProductsBreadcrumbs(state, getters){
+    return state.productsBreadCrumb;
   }
 
 };
@@ -77,6 +82,7 @@ export const actions = {
       let single_prod = response.data.product;
       context.commit('setSingleProducts', single_prod);
       context.commit('setCategoryId', single_prod.category.id);
+      context.commit('setSingleProductsBreadcrumb', single_prod);
       resolve();
       reject("Unable to fetch product")
     })
@@ -127,5 +133,21 @@ export const mutations = {
 
   setCategoryId(state, cat_id){
     state.categoryId = cat_id;
+  },
+
+  setSingleProductsBreadcrumb(state, prodDetails){
+    state.productsBreadCrumb[0] = {
+      text: "Home",
+      href: "/"
+    };
+    state.productsBreadCrumb[1] = {
+      text: prodDetails.category.name,
+      href: `/${prodDetails.category.name}/`
+    };
+
+    state.productsBreadCrumb[2] = {
+      text: prodDetails.name,
+      active: true 
+    }
   }
 };

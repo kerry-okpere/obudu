@@ -14,7 +14,9 @@
                                     <img v-else class="hover-img" :src="`${similarProduct.node.images[0].url}`" alt="">                            
                                 </nuxt-link>                        
                                 <div class="product-action-2">
-                                    <a title="Add To Cart" href="#"><ion-icon name="ios-cart"></ion-icon><h4>Add to Cart</h4></a>
+                                    <nuxt-link :to="`/product/${similarProduct.node.id}`">
+                                        <ion-icon name="ios-cart"></ion-icon><h4>Add to Cart</h4>
+                                    </nuxt-link>                        
                                     <a title="Quick View" href="#" data-toggle="modal" data-target="#exampleModal"><ion-icon name="ios-eye"></ion-icon>
                                     <h4>Quick View</h4></a>
                                 </div>
@@ -73,79 +75,31 @@ export default {
         getSimilarProducts(){
             this.$store.dispatch('fetchProducts', {
                 apollo: this.$apollo,
-            }).then( (data) => console.log(data));
-            // this.$store.dispatch('fetchSimilarProducts', {
-            //     apollo: this.$apollo,
-            //     category_id: this.getProds
-            // }).then( (data) => console.log(data));
+            }).then( () => console.log("Products fetched successfully"));
         }
 
     },
 
-    // async created() {
-
-        // this.loading = true;
-        // let singleProduct = 
-        //wait for states to load
-        // const sleep = m => new Promise(r => setTimeout(r, m));
-        // await sleep(3000);
-
-        // let id = this.singleProduct.category.id;
-        // const {id}  = this.singleProduct.category;
-        // console.log(id);
-
-        // let prods = this.getProductCategoryMethod()
-        // .then((data) => this.getIdRecursively(data))
-        // .then((data) => this.runDispatch(data))
-        
-        // .then((data) => this.runDispatch(data) );
-    // },
     async created() {
 
         const sleep = m => new Promise(r => setTimeout(r, m));
         await sleep(3000);
 
-        // console.log(this.getProds);
         this.getSimilarProducts
-        // let check = await this.fetchSimilarProducts(this.getProds);
-        // await sleep(3000);
-        // let similar_prod = check.data.category.products.edges;
-        // similar_prod.shift();        
-        // this.$store.commit("setSimilarProducts", similar_prod);
-
-        // this.$store.state.similarProducts.push(similar_prod);
-        // console.log();
-        // console.log(this.getSingleProduct);
-        // console.log(this.$wait.store.getters.getSingleProduct)
-        // this.loading = true;
-        // const sleep = m => new Promise(r => setTimeout(r, m));
-        // await sleep(3000);
-
-        // let id = this.singleProduct.category.id;
-        // const {id}  = this.singleProduct.category;
-
-
-        // await this.runDispatch(id);
-        // let prods = this.getProductCategoryMethod()
-        // .then((data) => this.getIdRecursively(data))
-        // .then((data) => this.runDispatch(data))
     },
 
     methods: {
         async getProductCategoryMethod(){
-            // return this.$store.getters.getProductsCategory
             return this.$store.state.singleProduct
         },
 
         async getIdRecursively(category){
 
-            // const {category} = category;
             if( typeof category.category == undefined){
-                // console.log(category.category.id);
-                await this.getIdRecursively(category)
+                await this.getIdRecursively(category);
             } else{
                 console.log("success ",category.category);
-                return category
+                return category;
             }
         },
 

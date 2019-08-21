@@ -17,7 +17,9 @@
                                 <img v-else class="hover-img" :src="`${homeProduct.node.images[0].url}`" alt="">                            
                             </nuxt-link>                        
                             <div class="product-action-2">
-                                <a title="Add To Cart" href="#"><ion-icon name="ios-cart"></ion-icon><h4>Add to Cart</h4></a>
+                                <nuxt-link :to="`/product/${homeProduct.node.id}`">
+                                    <ion-icon name="ios-cart"></ion-icon><h4>Add to Cart</h4>
+                                </nuxt-link>                        
                                 <a title="Quick View" href="#" data-toggle="modal" data-target="#exampleModal"><ion-icon name="ios-eye"></ion-icon>
                                 <h4>Quick View</h4></a>
                             </div>

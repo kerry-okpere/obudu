@@ -31,10 +31,11 @@
     "jquery": "^3.4.1",
     "node-fetch": "^2.6.0",
     "nuxt": "^2.0.0",
+    "typescript": "^3.5.3",
     "vue": "^2.6.10",
-    "vue-social-sharing": "^2.4.6",
     "vue-apollo": "^3.0.0-rc.2",
     "vue-carousel": "^0.18.0",
+    "vue-social-sharing": "^2.4.6",
     "vue-wait": "^1.4.6",
     "vuex": "^3.1.1"
   },
