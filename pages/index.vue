@@ -24,15 +24,15 @@ import VueApollo from 'vue-apollo';
 
 import { CREATE_TOKEN_MUTATION } from '../queries/authTokenQueries';
 
-const httpLink = new HttpLink({
-  uri: process.env.GRAPHQL_URL,
-  fetch: fetch
-});
-
 // const httpLink = new HttpLink({
-//   uri: "",
+//   uri: process.env.GRAPHQL_URL,
 //   fetch: fetch
 // });
+
+const httpLink = new HttpLink({
+  uri: "https://titan-master-wzownrctwa-uc.a.run.app/graphql/",
+  fetch: fetch
+});
 
 Vue.use(VueApollo);
 
@@ -87,9 +87,9 @@ export default {
   apolloProvider,
   async created() {
 
-    console.log("graphql ",process.env.GRAPHQL_URL);
-    console.log("email ",process.env.ADMIN_EMAIL);
-    console.log("passkey ", process.env.ADMIN_PASSWORD);
+    // console.log("graphql ",process.env.GRAPHQL_URL);
+    // console.log("email ",process.env.ADMIN_EMAIL);
+    // console.log("passkey ", process.env.ADMIN_PASSWORD);
 
     // console.log(apolloProviders);
     // this.$store.commit('setApolloVariable', this.$apollo);
@@ -111,7 +111,7 @@ export default {
       try{
         let response = await this.$apollo.mutate({
           mutation: CREATE_TOKEN_MUTATION,
-          variables: { "email": process.env.ADMIN_EMAIL, "password": process.env.ADMIN_PASSWORD }
+          variables: { "email": "admin@mercurie.ng", "password": "admin" }
         });
         return response.data;
       } catch (e) {
