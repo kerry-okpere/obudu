@@ -19,54 +19,9 @@ import { setContext } from "apollo-link-context";
 import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import fetch from 'node-fetch';
-import Vue from 'vue';
-import VueApollo from 'vue-apollo';
 
 import { CREATE_TOKEN_MUTATION } from '../queries/authTokenQueries';
-import { process } from 'ts-invariant';
-
-const httpLink = new HttpLink({
-  uri: process.env.GRAPHQL_URL ? process.env.GRAPHQL_URL : "/graphql/" ,
-  fetch: fetch
-});
-
-// const httpLink = new HttpLink({
-//   uri: "https://titan-master-wzownrctwa-uc.a.run.app/graphql/",
-//   fetch: fetch
-// });
-
-Vue.use(VueApollo);
-
-const interceptor = setContext((request, previousContext) => {
-  if(process.browser){
-    let admin_token = localStorage.getItem('admin_token');
-    return {
-      headers: {
-        authorization: admin_token ? `Authorization: JWT ${admin_token}` : null
-      }
-    };
-  }
-});
-
-const apolloClient = new ApolloClient({
-  link: interceptor.concat(httpLink),
-  cache: new InMemoryCache(),
-  connectToDevTools: true
-});
-
-const apolloProvider = new VueApollo({
-    defaultClient: apolloClient,
-    defaultOptions: {
-        $loadingKey: 'loading'
-    }
-});
-
-const apolloProviders = new VueApollo({
-    defaultClient: apolloClient,
-    defaultOptions: {
-        $loadingKey: 'loading'
-    }
-});
+import config from '@/config';
 
 
 export default {
@@ -85,43 +40,32 @@ export default {
       loading: 0,
     }
   },
-  apolloProvider,
+  
   async created() {
-
-    console.log("graphql ",process.env.GRAPHQL_URL);
-    console.log("email ",process.env.ADMIN_EMAIL);
-    console.log("passkey ", process.env.ADMIN_PASSWORD);
-
-    // console.log(apolloProviders);
-    // this.$store.commit('setApolloVariable', this.$apollo);
     if(process.browser) {
-      let admin_token = localStorage.getItem('admin_token');
-      if(!admin_token){
-        let tokenResponse =  await this.getauthToken();
-        const {token } = tokenResponse.tokenCreate;
-        localStorage.setItem("admin_token", JSON.stringify(token));
-      } else { 
-        console.log("Unto the next!");
-      }
+      // let admin_token = localStorage.getItem('admin_token');
+      // if(!admin_token){
+      //   let tokenResponse =  await this.getauthToken();
+      //   const {token } = tokenResponse.tokenCreate;
+      //   localStorage.setItem("admin_token", JSON.stringify(token));
+      // } else { 
+      //   console.log("Unto the next!");
+      // }
 
     }
   },
 
   methods: {
     async getauthToken() {
-      try{
-        let response = await this.$apollo.mutate({
-          mutation: CREATE_TOKEN_MUTATION,
-          variables: { "email": process.env.ADMIN_EMAIL ? process.env.ADMIN_EMAIL : "admin@mercurie.ng" , "password": process.env.ADMIN_PASSWORD ? process.env.ADMIN_EMAIL : "admin" }
-        });
+      // try{
         // let response = await this.$apollo.mutate({
         //   mutation: CREATE_TOKEN_MUTATION,
-        //   variables: { "email": "admin@mercurie.ng", "password": "admin" }
+        //   variables: { "email": config.admin.email ? process.env.ADMIN_EMAIL : "admin@mercurie.ng" , "password": process.env.ADMIN_PASSWORD ? process.env.ADMIN_EMAIL : "admin" }
         // });
-        return response.data;
-      } catch (e) {
-        console.log(e);
-      }
+        // return response.data;
+      // } catch (e) {
+        // console.log(e);
+      // }
 
     },
 

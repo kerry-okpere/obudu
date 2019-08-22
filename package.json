@@ -13,6 +13,7 @@
     "storybook": "start-storybook -p 6006"
   },
   "dependencies": {
+    "@nuxtjs/apollo": "^4.0.0-rc11",
     "@nuxtjs/bulma": "^1.2.1",
     "@nuxtjs/dotenv": "latest",
     "@storefrontui/vue": "0.0.4-aplha.14",
@@ -35,7 +36,9 @@
     "vue": "^2.6.10",
     "vue-apollo": "^3.0.0-rc.2",
     "vue-carousel": "^0.18.0",
+    "vue-server-renderer": "^2.6.6",
     "vue-social-sharing": "^2.4.6",
+    "vue-template-compiler": "^2.6.10",
     "vue-wait": "^1.4.6",
     "vuex": "^3.1.1"
   },

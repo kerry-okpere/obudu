@@ -8,6 +8,9 @@ export default {
     host: '0.0.0.0', // default: localhost
   },
   env: env.parsed,
+  router: {
+    middleware: 'loadEnv'
+  },
 
   /*
   ** Headers of the page
@@ -60,9 +63,17 @@ export default {
 
   modules: [
     'bootstrap-vue/nuxt',
+    '@nuxtjs/apollo'
     // '@nuxtjs/dotenv'
     // ['@nuxtjs/dotenv', { systemvars: true }]
   ],
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: process.env.GRAPHQL_URL
+      }
+    }
+  },
 
   build: {
     vendor: [ 'vue-social-sharing'],

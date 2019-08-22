@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 
 import { GET_SINGLE_PRODUCTS, GET_PRODUCTS, GET_SIMILAR_PRODUCTS } from "../queries/productQueries";
 
+
 Vue.use(Vuex);
 
 export const state = () => ({
@@ -18,9 +19,9 @@ export const state = () => ({
       id: "default"
     },
     name: "",
-    description: ""
+    description: "",
   },
-
+  enVariables: {},
   homeProducts: [],
   singleProduct: "",
   similarProducts: [],
@@ -105,6 +106,10 @@ export const actions = {
 };
 
 export const mutations = {
+  setEnvironmentVariables(state, envVariables){
+    state.enVariables = envVariables;
+  },
+
   setProductsName(state, productPayload) {
     //update products name
     state.products.name = productPayload;
