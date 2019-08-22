@@ -1,10 +1,10 @@
-import dotenv from 'dotenv'
-dotenv.config()
+// import dotenv from 'dotenv'
+// dotenv.config()
 
 export default {
   mode: 'universal',
   server: {
-    port: process.nextTick.PORT, // default: 3000
+    port: process.env.PORT, // default: 3000
     host: '0.0.0.0', // default: localhost
   },
   // env: env.parsed,
