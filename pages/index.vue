@@ -86,6 +86,7 @@ export default {
   },
   apolloProvider,
   async created() {
+
     console.log("graphql ",process.env.GRAPHQL_URL);
     console.log("email ",process.env.ADMIN_EMAIL);
     console.log("passkey ", process.env.ADMIN_PASSWORD);
