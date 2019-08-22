@@ -28,7 +28,7 @@ import fetch from 'node-fetch';
 // });
 
 const httpLink = new HttpLink({
-  uri: process.env.GRAPHQL_URL,
+  uri: process.env.GRAPHQL_URL ? process.env.GRAPHQL_URL : "/graphql/" ,
   fetch: fetch
 });
 

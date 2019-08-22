@@ -26,7 +26,7 @@ import { CREATE_TOKEN_MUTATION } from '../queries/authTokenQueries';
 import { process } from 'ts-invariant';
 
 const httpLink = new HttpLink({
-  uri: process.env.GRAPHQL_URL,
+  uri: process.env.GRAPHQL_URL ? process.env.GRAPHQL_URL : "/graphql/" ,
   fetch: fetch
 });
 
@@ -112,7 +112,7 @@ export default {
       try{
         let response = await this.$apollo.mutate({
           mutation: CREATE_TOKEN_MUTATION,
-          variables: { "email": process.env.ADMIN_EMAIL, "password": process.env.ADMIN_PASSWORD }
+          variables: { "email": process.env.ADMIN_EMAIL ? process.env.ADMIN_EMAIL : "admin@mercurie.ng" , "password": process.env.ADMIN_PASSWORD ? process.env.ADMIN_EMAIL : "admin" }
         });
         // let response = await this.$apollo.mutate({
         //   mutation: CREATE_TOKEN_MUTATION,
