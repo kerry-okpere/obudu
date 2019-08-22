@@ -22,10 +22,16 @@ import { HttpLink } from 'apollo-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import fetch from 'node-fetch';
 
+// const httpLink = new HttpLink({
+//     uri: "https://titan-master-wzownrctwa-uc.a.run.app/graphql/",
+//     fetch: fetch
+// });
+
 const httpLink = new HttpLink({
-    uri: "https://titan-master-wzownrctwa-uc.a.run.app/graphql/",
-    fetch: fetch
+  uri: process.env.GRAPHQL_URL,
+  fetch: fetch
 });
+
 
 const interceptor = setContext((request, previousContext) => {
   if(process.browser){

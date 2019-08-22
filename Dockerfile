@@ -26,7 +26,7 @@ ENV SERVER_NAME _
 # ENV ADMIN_EMAIL _
 # ENV ADMIN_PASSWORD _
 # ENV GRAPHQL_URL _
-ENV DASHBOARD_URI http://demo.mercuriemart.com
+# ENV DASHBOARD_URI http://demo.mercuriemart.com
 
 # EXPOSE ${PORT}
 CMD ["sh", "-c", "envsubst < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"]
