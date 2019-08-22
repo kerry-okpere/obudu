@@ -6,7 +6,7 @@ RUN npm install
 COPY . .
 RUN npm run build
 # RUN npm run generate
-CMD ["npm", "run start"]
+CMD ["npm", "start"]
 # RUN npm run start
 
 # production stage
