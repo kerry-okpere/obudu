@@ -23,7 +23,6 @@ import Vue from 'vue';
 import VueApollo from 'vue-apollo';
 
 import { CREATE_TOKEN_MUTATION } from '../queries/authTokenQueries';
-import { process } from 'ts-invariant';
 
 const httpLink = new HttpLink({
   uri: process.env.GRAPHQL_URL,
