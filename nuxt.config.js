@@ -1,5 +1,5 @@
-// import dotenv from 'dotenv'
-// dotenv.config()
+import dotenv from 'dotenv'
+let env = dotenv.config()
 
 export default {
   mode: 'universal',
@@ -7,7 +7,7 @@ export default {
     port: process.env.PORT, // default: 3000
     host: '0.0.0.0', // default: localhost
   },
-  // env: env.parsed,
+  env: env.parsed,
 
   /*
   ** Headers of the page
@@ -60,7 +60,8 @@ export default {
 
   modules: [
     'bootstrap-vue/nuxt',
-    ['@nuxtjs/dotenv', { systemvars: true }]
+    // '@nuxtjs/dotenv'
+    // ['@nuxtjs/dotenv', { systemvars: true }]
   ],
 
   build: {
