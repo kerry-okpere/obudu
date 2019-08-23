@@ -15,10 +15,10 @@ import webpack from 'webpack'
 
 export default {
   mode: 'universal',
-  server: {
-    port: process.env.PORT ? process.env.PORT: 3000 , // default: 3000
-    host: '0.0.0.0', // default: localhost
-  },
+  // server: {
+  //   port: process.env.PORT ? process.env.PORT: 3000 , // default: 3000
+  //   host: '0.0.0.0', // default: localhost
+  // },
   // env: env.parsed,
   router: {
     middleware: 'loadEnv'
