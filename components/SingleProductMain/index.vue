@@ -22,9 +22,16 @@
             <p class="product-details-description">
               {{singleProducts.description}}
             </p>
-            <b-dropdown variant="outline-dark" id="product-type" text="Select type" class="m-md-2 product-type">
+              <b-form-select v-model="selected" :options="options">
+                <template slot="first">
+                <option :value="null" disabled> Select variant </option>
+                </template>
+                <option v-for="variants in singleProducts.variants" :key="variants.id"> {{variants.name}} </option>
+              </b-form-select>
+
+<!--             <b-dropdown variant="outline-dark" id="product-type" text="Select type" class="m-md-2 product-type">
               <b-dropdown-item v-for="variants in singleProducts.variants" :key="variants.id" > {{variants.name}} </b-dropdown-item>
-            </b-dropdown>
+            </b-dropdown> -->
 
             <div class="pro-details-quality">
               <b-button class="product-addtocart hvr-grow" href="#">Add to Cart</b-button>
@@ -72,6 +79,7 @@
     },
     data() {
       return {
+        selected: null,
         loading: false,
         loadStatus: false,
         storeUrl: ''
