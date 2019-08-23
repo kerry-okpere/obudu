@@ -1,5 +1,17 @@
 import dotenv from 'dotenv'
-let env = dotenv.config()
+let env = dotenv.config();
+console.log(process.env.GRAPHQL_URL);
+let envGraphql = process.env.GRAPHQL_URL;
+
+const defineEnvironmentPlugin = new webpack.EnvironmentPlugin(['ADMIN_EMAIL', 'ADMIN_PASSWORD', 'GRAPHQL_URL']);
+
+const environmentPlugin = new webpack.DefinePlugin({
+  'process.env.ADMIN_EMAIL': JSON.stringify(process.env.ADMIN_EMAIL),
+  'process.env.ADMIN_PASSWORD': JSON.stringify(process.env.ADMIN_PASSWORD),
+  'process.env.GRAPHQL_URL': JSON.stringify(process.env.GRAPHQL_URL)
+});
+
+import webpack from 'webpack'
 
 export default {
   mode: 'universal',
@@ -7,9 +19,23 @@ export default {
     port: process.env.PORT ? process.env.PORT: 3000 , // default: 3000
     host: '0.0.0.0', // default: localhost
   },
-  env: env.parsed,
+  // env: env.parsed,
   router: {
     middleware: 'loadEnv'
+  },
+
+  /*
+  ** Webpack config
+  *
+  */
+
+  build: {
+    plugins: [
+      new webpack.ProvidePlugin({
+        // defineEnvironmentPlugin,
+        // environmentPlugin
+      })
+    ]
   },
 
   /*
@@ -70,7 +96,7 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: process.env.GRAPHQL_URL ? process.env.GRAPHQL_URL: '/graphql/'
+        httpEndpoint: envGraphql
       }
     }
   },
