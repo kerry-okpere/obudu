@@ -3,12 +3,13 @@ let env = dotenv.config();
 console.log(process.env.GRAPHQL_URL);
 let envGraphql = process.env.GRAPHQL_URL;
 
-const defineEnvironmentPlugin = new webpack.EnvironmentPlugin(['ADMIN_EMAIL', 'ADMIN_PASSWORD', 'GRAPHQL_URL']);
+const defineEnvironmentPlugin = new webpack.EnvironmentPlugin(['ADMIN_EMAIL', 'API_URI', 'ADMIN_PASSWORD', 'GRAPHQL_URL']);
 
 const environmentPlugin = new webpack.DefinePlugin({
   'process.env.ADMIN_EMAIL': JSON.stringify(process.env.ADMIN_EMAIL),
   'process.env.ADMIN_PASSWORD': JSON.stringify(process.env.ADMIN_PASSWORD),
-  'process.env.GRAPHQL_URL': JSON.stringify(process.env.GRAPHQL_URL)
+  'process.env.GRAPHQL_URL': JSON.stringify(process.env.GRAPHQL_URL),
+  'process.env.API_URI': JSON.stringify(process.env.GRAPHQL_URL)
 });
 
 import webpack from 'webpack'
