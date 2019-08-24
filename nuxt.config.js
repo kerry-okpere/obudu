@@ -32,8 +32,8 @@ export default {
   build: {
     plugins: [
       new webpack.ProvidePlugin({
-        // defineEnvironmentPlugin,
-        // environmentPlugin
+        defineEnvironmentPlugin,
+        environmentPlugin
       })
     ]
   },
