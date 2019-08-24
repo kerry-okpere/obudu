@@ -104,7 +104,7 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: process.env.GRAPHQL_URL
+        httpEndpoint: process.env.GRAPHQL_URL ? process.env.GRAPHQL_URL : "https://titan-master-wzownrctwa-uc.a.run.app/graphql/"
       }
     }
   },
