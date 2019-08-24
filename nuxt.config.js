@@ -25,6 +25,7 @@ export default {
     middleware: 'loadEnv'
   },
 
+
   /*
   ** Webpack config
   *
@@ -90,7 +91,13 @@ export default {
 
   modules: [
     'bootstrap-vue/nuxt',
-    '@nuxtjs/apollo'
+    '@nuxtjs/apollo',
+    ['nuxt-env', {
+      keys: [
+        { key: 'GRAPHQL_URL', default: '/graphql' },// Specify a default value
+        { key: 'API_URI', default: 'default API_URI' } // Specify a default value
+      ]
+    }]
     // '@nuxtjs/dotenv'
     // ['@nuxtjs/dotenv', { systemvars: true }]
   ],
