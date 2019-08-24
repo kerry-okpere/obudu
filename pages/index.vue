@@ -42,6 +42,7 @@ export default {
   },
   
   async created() {
+    console.log("API_URL", API_URI);
     if(process.browser) {
       // let admin_token = localStorage.getItem('admin_token');
       // if(!admin_token){
