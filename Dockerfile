@@ -7,7 +7,7 @@ COPY . .
 RUN npm run build
 # RUN npm run generate
 
-CMD ["npm", "run build && run start"]
+CMD ["npm", "run build && start"]
 
 # production stage
 # FROM nginx:stable as production-stage
