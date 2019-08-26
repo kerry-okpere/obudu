@@ -8,7 +8,7 @@ RUN npm run build
 # RUN npm run generate
 
 # ENTRYPOINT ["npm", "run build"]
-CMD ["npm", "run start_prod" ]
+CMD ["npm", "start" ]
 
 # production stage
 # FROM nginx:stable as production-stage
