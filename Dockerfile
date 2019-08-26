@@ -7,7 +7,8 @@ COPY . .
 RUN npm run build
 # RUN npm run generate
 
-CMD ["npm", "run build && start"]
+ENTRYPOINT ["npm", "run build"]
+CMD ["npm", "start" ]
 
 # production stage
 # FROM nginx:stable as production-stage
