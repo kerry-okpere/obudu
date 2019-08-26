@@ -7,7 +7,7 @@ COPY . .
 RUN npm run build
 # RUN npm run generate
 
-CMD ["npm", "start"]
+CMD ["npm", "build && start"]
 
 # production stage
 # FROM nginx:stable as production-stage
@@ -22,11 +22,11 @@ CMD ["npm", "start"]
 # ENV uri \$uri
 
 #Default config
-ENV PORT 80
-ENV SERVER_NAME _
+# ENV PORT 80
+# ENV SERVER_NAME _
 # ENV ADMIN_EMAIL _
 # ENV ADMIN_PASSWORD _
-ENV GRAPHQL_URL _
+# ENV GRAPHQL_URL _
 # ENV DASHBOARD_URI http://demo.mercuriemart.com
 
 # EXPOSE ${PORT}

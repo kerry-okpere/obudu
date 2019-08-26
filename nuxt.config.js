@@ -1,6 +1,8 @@
 import dotenv from 'dotenv'
 let env = dotenv.config();
 
+console.log(process.env.GRAPHQL_URL);
+// console.log(config.env);
 // const defineEnvironmentPlugin = new webpack.EnvironmentPlugin(['API_URI', 'ADMIN_PASSWORD', 'GRAPHQL_URL']);
 
 // const defineEnvironmentPlugin = new webpack.EnvironmentPlugin(['API_URI', 'ADMIN_PASSWORD', 'GRAPHQL_URL']);
@@ -94,7 +96,7 @@ export default {
     '@nuxtjs/apollo',
     // ['nuxt-env', {
     //   keys: [
-    //     { key: 'GRAPHQL_URL', default: '/graphql/' },// Specify a default value
+    //     { key: 'GRAPHQL_URL' },// Specify a default value
     //     { key: 'API_URI', default: 'default API_URI' } // Specify a default value
     //   ]
     // }]
@@ -104,7 +106,7 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: process.env.GRAPHQL_URL ? process.env.GRAPHQL_URL : "https://titan-master-wzownrctwa-uc.a.run.app/graphql/"
+        httpEndpoint: process.env.GRAPHQL_URL ? process.env.GRAPHQL_URL : "/grapql/" 
       }
     }
   },
