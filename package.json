@@ -6,6 +6,7 @@
   "author": "Oluwatoni Atunrase",
   "scripts": {
     "build": "nuxt build",
+    "start_prod": "nuxt build && nuxt start",
     "build-storybook": "build-storybook",
     "dev": "nuxt",
     "generate": "nuxt generate",
