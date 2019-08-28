@@ -38,31 +38,18 @@
               <button @click="cartVisible = !cartVisible" class="icon-cart">
                 <img src="@/assets/img/cart.svg" width="15" alt="" class="image" />
                 <p class="menu-item">Cart</p>
-                <span class="count-style">2</span>
+                <span v-if="getCartCount" class="count-style">{{getCartCount}}</span>
               </button>
               <div v-if="cartVisible" class="shopping-cart-content cart-visible">
                             <ul>
-                                <li class="single-shopping-cart">
+                                <li v-for="getCartItem in getCartItems" :key="getCartItem.prodId" class="single-shopping-cart">
                                     <div class="shopping-cart-img">
-                                        <a href="#"><img alt="" src="@/assets/img/products/sa-prod1.png" width="60"></a>
+                                        <a href="#"><img alt="" :src="`${getCartItem.imgUrl}`" width="60"></a>
                                     </div>
                                     <div class="shopping-cart-title">
-                                        <h4><a href="#">Organic Apple Cider</a></h4>
-                                        <h6>Quantity: 2</h6>
-                                        <span>$260</span>
-                                    </div>
-                                    <div class="shopping-cart-delete">
-                                        <a href="#"><ion-icon name="trash"></ion-icon></a>
-                                    </div>
-                                </li>
-                                <li class="single-shopping-cart">
-                                    <div class="shopping-cart-img">
-                                        <a href="#"><img alt="" src="@/assets/img/products/sa-prod1.png" width="60"></a>
-                                    </div>
-                                    <div class="shopping-cart-title">
-                                        <h4><a href="#">Organic Apple Cider</a></h4>
-                                        <h6>Quantity: 2</h6>
-                                        <span>$260</span>
+                                        <h4><a href="#">{{getCartItem.name}}</a></h4>
+                                        <h6>Quantity: {{getCartItem.quantity}}</h6>
+                                        <span>${{getCartItem.price}}</span>
                                     </div>
                                     <div class="shopping-cart-delete">
                                         <a href="#"><ion-icon name="trash"></ion-icon></a>
@@ -70,7 +57,7 @@
                                 </li>
                             </ul>
                             <div class="shopping-cart-total">
-                                <h4>Total <span class="shop-total">$260.00</span></h4>
+                                <h4>Total <span class="shop-total">$ {{getCartTotalPrice}}</span></h4>
                             </div>
                             <div class="shopping-cart-btn text-center">
                                 <a class="default-btn hvr-grow" href="/cart/">View Cart</a>
@@ -100,12 +87,24 @@
 <script>
   export default {
     name: "NavBar",
+    computed: {
+      getCartCount(){
+        return this.$store.getters.getCartQuantity;
+      },
+      getCartItems(){
+        return this.$store.getters.getCartItems;
+      },
+      getCartTotalPrice(){
+        return this.$store.getters.getCartTotal;
+      }
+    },
     data() {
       return {
         searchVisible: false,
         cartVisible: false
       }
     },
+
 
   };
 

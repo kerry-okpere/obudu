@@ -27,6 +27,8 @@ export const state = () => ({
   similarProducts: [],
   productsBreadCrumb: [],
   categoryId: '',
+  // {id, variantId, quantity}
+  cart:[]
 });
 
 export const getters = {
@@ -56,6 +58,30 @@ export const getters = {
 
   getSingleProductsBreadcrumbs(state, getters){
     return state.productsBreadCrumb;
+  },
+
+  getCartQuantity(state, getters){
+    let cart = state.cart;
+    return cart.length;
+  },
+
+  getCartItems(state, getters){
+    return state.cart;
+  },
+
+  getCartTotal(state, getters){
+    let cartItem = state.cart;
+    let tempPrice = 0;
+    let multiPrice = 0;
+    for(let i=0; i<cartItem.length; i++){
+      if(cartItem[i].quantity == 1){
+        tempPrice += cartItem[i].price;
+      } else {
+        multiPrice = cartItem[i].quantity * cartItem[i].price;
+        tempPrice += multiPrice;
+      }
+    }
+    return tempPrice;
   }
 
 };
@@ -102,6 +128,43 @@ export const actions = {
       reject("Unable to fetch similar products");
 
     })
+  },
+
+  async addProductsToCart(context, product){
+    let productInventory = product.variants.find(item => item.name === product.selected);
+    let newProduct = {
+      "prodId": product.id,
+      "variantId": productInventory.id,
+      "imgUrl": product.images[0].url,
+      "name": product.selected,
+      "prodName": product.name,
+      "price": product.price.amount,
+      "quantity": ""
+    };
+
+    if(productInventory.stockQuantity > 0) {
+      let cartItem = context.state.cart.find(item => (item.name === product.selected) && (item.prodId === product.id));
+      console.log(cartItem);
+      if(!cartItem > 0){
+        context.commit('pushProductToCart', newProduct);
+      } else{
+        context.commit('incrementItemQuantity', cartItem);
+      }
+      // context.commit('decrementProductInventory', cartItem);
+    }
+    // console.log(productInventory);
+    // if(product.inventory > 0){
+    //   const cartItem = context.state.cart.find(item => item.id === product.id);
+    //   console.log(cartItem);
+
+    //   if(!cartItem > 0){
+    //     context.commit('pushProductToCart', product.id)
+    //   } else {
+    //     context.commit('incrementItemQunatity', cartItem)
+    //   }
+    //   context.commit('decrementProductInventory', cartItem)
+    // }
+
   }
 };
 
@@ -154,5 +217,19 @@ export const mutations = {
       text: prodDetails.name,
       active: true 
     }
+  },
+
+  pushProductToCart(state, product){
+    product["quantity"] = 1;
+    console.log(product);
+    state.cart.push(product);
+  },
+
+  incrementItemQuantity(state, cartItem){
+    cartItem.quantity++;
+  },
+
+  decrementProductInventory(state, product){
+    product.inventory--;
   }
 };

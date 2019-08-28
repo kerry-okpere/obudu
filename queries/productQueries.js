@@ -4,6 +4,7 @@ export const GET_SINGLE_PRODUCTS = gql`
 query($id: ID!){
   product(id: $id) {
     name,
+    id
     images{
       url
     }

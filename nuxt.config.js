@@ -1,7 +1,6 @@
 import dotenv from 'dotenv'
 let env = dotenv.config();
 
-console.log(process.env.GRAPHQL_URL);
 // console.log(config.env);
 // const defineEnvironmentPlugin = new webpack.EnvironmentPlugin(['API_URI', 'ADMIN_PASSWORD', 'GRAPHQL_URL']);
 

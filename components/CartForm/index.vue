@@ -17,52 +17,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr v-for="getCartItem in getCartItems" :key="getCartItem.prodId">
                                     <td class="product-thumbnail">
-                                        <a href="#"><img src="assets/img/cart/cart-1.png" alt=""></a>
+                                        <a href="#"><img :src="`${getCartItem.imgUrl}`" alt=""></a>
                                     </td>
-                                    <td class="product-name"><a href="#">Product Name</a></td>
-                                    <td class="product-price-cart"><span class="amount">$260.00</span></td>
+                                    <td class="product-name"><a href="#">{{getCartItem.prodName}}</a></td>
+                                    <td class="product-price-cart"><span class="amount">$ {{getCartItem.price}}</span></td>
                                     <td class="product-quantity">
                                         <div class="cart-plus-minus">
-                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="2">
+                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" :value="`${getCartItem.quantity}`">
                                         </div>
                                     </td>
                                     <td class="product-subtotal">$110.00</td>
-                                    <td class="product-remove">
-                                        <a href="#"><i class="fa fa-pencil"></i></a>
-                                        <a href="#"><i class="fa fa-times"></i></a>
-                                   </td>
-                                </tr>
-                                <tr>
-                                    <td class="product-thumbnail">
-                                        <a href="#"><img src="assets/img/cart/cart-2.png" alt=""></a>
-                                    </td>
-                                    <td class="product-name"><a href="#">Product Name</a></td>
-                                    <td class="product-price-cart"><span class="amount">$150.00</span></td>
-                                    <td class="product-quantity">
-                                        <div class="cart-plus-minus">
-                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="2">
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal">$150.00</td>
-                                    <td class="product-remove">
-                                        <a href="#"><i class="fa fa-pencil"></i></a>
-                                        <a href="#"><i class="fa fa-times"></i></a>
-                                   </td>
-                                </tr>
-                                <tr>
-                                    <td class="product-thumbnail">
-                                        <a href="#"><img src="assets/img/cart/cart-1.png" alt=""></a>
-                                    </td>
-                                    <td class="product-name"><a href="#">Product Name </a></td>
-                                    <td class="product-price-cart"><span class="amount">$170.00</span></td>
-                                    <td class="product-quantity">
-                                        <div class="cart-plus-minus">
-                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="2">
-                                        </div>
-                                    </td>
-                                    <td class="product-subtotal">$170.00</td>
                                     <td class="product-remove">
                                         <a href="#"><i class="fa fa-pencil"></i></a>
                                         <a href="#"><i class="fa fa-times"></i></a>
@@ -169,7 +135,12 @@
 
 <script>
 export default {
-    name: 'CartForm'
+    name: 'CartForm',
+    computed: {
+        getCartItems(){
+            return this.$store.getters.getCartItems;
+        },
+    }
 }
 </script>
 

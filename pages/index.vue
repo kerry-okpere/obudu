@@ -41,10 +41,7 @@ export default {
     }
   },
   
-  async created() {
-    console.log(this.$env.GRAPHQL_URL);
-    
-    // console.log("API_URL", API_URI);
+  async created() {    
     if(process.browser) {
       // let admin_token = localStorage.getItem('admin_token');
       // if(!admin_token){

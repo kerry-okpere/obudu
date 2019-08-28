@@ -22,19 +22,18 @@
             <p class="product-details-description">
               {{singleProducts.description}}
             </p>
-              <b-form-select v-model="selected" :options="options">
+              <b-form-select @change="onChange($event)" v-model="selected" :options="options">
                 <template slot="first">
-                <option :value="null" disabled> Select variant </option>
+                  <option ref="cart" :value="null" disabled> Select variant </option>
                 </template>
-                <option v-for="variants in singleProducts.variants" :key="variants.id"> {{variants.name}} </option>
+                <option v-for="variants in singleProducts.variants" :value="variants.name" :key="variants.id"> {{variants.name}} </option>
               </b-form-select>
-
-<!--             <b-dropdown variant="outline-dark" id="product-type" text="Select type" class="m-md-2 product-type">
-              <b-dropdown-item v-for="variants in singleProducts.variants" :key="variants.id" > {{variants.name}} </b-dropdown-item>
-            </b-dropdown> -->
+            <div v-if="formError">
+              <b-alert show variant="danger"><a href="#" class="alert-link">Please select a variant</a></b-alert>
+            </div>
 
             <div class="pro-details-quality">
-              <b-button class="product-addtocart hvr-grow" href="#">Add to Cart</b-button>
+              <b-button class="product-addtocart hvr-grow" @click.prevent="getFormValues(singleProducts)" >Add to Cart</b-button>
             </div>
             <div class="social-share">
               <social-sharing :url="storeUrl" :title="singleProducts.name"
@@ -82,6 +81,7 @@
         selected: null,
         loading: false,
         loadStatus: false,
+        formError: false,
         storeUrl: ''
       }
     },
@@ -102,6 +102,31 @@
 
         // const sleep = m => new Promise(r => setTimeout(r, m));
         // await sleep(3000);
+  },
+
+  methods: {
+    addProductToCart(product){
+      this.$store.dispatch('addProductsToCart', product);
+    },
+
+    getFormValues(singleProducts){
+      if(this.selected !== null){
+        this.formError = false;
+        let product = this.singleProducts;
+        product['selected'] = this.selected;
+        this.addProductToCart(product);
+      } else{
+        this.formError = true;
+        return;
+      }
+    },
+
+    onChange(event){
+      if(event !== null){
+        this.formError = false;
+      }
+    }
+
   }
 
   };
