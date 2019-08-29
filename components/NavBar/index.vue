@@ -49,7 +49,7 @@
                                     <div class="shopping-cart-title">
                                         <h4><a href="#">{{getCartItem.name}}</a></h4>
                                         <h6>Quantity: {{getCartItem.quantity}}</h6>
-                                        <span>${{getCartItem.price}}</span>
+                                        <span>${{getCartItem.price * getCartItem.quantity }}</span>
                                     </div>
                                     <div class="shopping-cart-delete">
                                         <a href="#"><ion-icon name="trash"></ion-icon></a>

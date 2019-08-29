@@ -17,7 +17,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="getCartItem in getCartItems" :key="`${getCartItem.prodId}`">
+                                <tr v-for="getCartItem in getCartItems" :key="`${getCartItem.prodId}`" >
                                     <td class="product-thumbnail">
                                         <a href="#"><img :src="`${getCartItem.imgUrl}`" alt=""></a>
                                     </td>
@@ -25,10 +25,10 @@
                                     <td class="product-price-cart"><span class="amount">$ {{getCartItem.price}}</span></td>
                                     <td class="product-quantity">
                                         <div class="cart-plus-minus">
-                                            <input @click.prevent="onQtyChange(`${getCartItem.prodId}`)" ref="itemQty" class="cart-plus-minus-box" type="text" name="qtybutton" :value="`${getCartItem.quantity}`">
+                                            <input @change="onQtyChange(`${getCartItem.prodId}`)" ref="itemQty" class="cart-plus-minus-box" type="text" name="qtybutton" :value="`${getCartItem.quantity}`">
                                         </div>
                                     </td>
-                                    <td ref="totalPrice" class="product-subtotal">$ {{ getCartItem.quantity * getCartItem.price }}</td>
+                                    <td ref="totalPrice" class="product-subtotal" v-on: :value="`${getCartItem.quantity * getCartItem.price}`">$ {{ getCartItem.quantity * getCartItem.price }}</td>
                                     <td class="product-remove">
                                         <a href="#"><i class="fa fa-pencil"></i></a>
                                         <a href="#"><i class="fa fa-times"></i></a>
@@ -114,15 +114,15 @@
                             <div class="title-wrap">
                                 <h4 class="cart-bottom-title section-bg-gary-cart">Cart Total</h4>
                             </div>
-                            <h5>Total products <span>$260.00</span></h5>
+                            <h5>Total products <span>$ {{ grandTotal }}</span></h5>
                             <div class="total-shipping">
                                 <h5>Total shipping</h5>
                                 <ul>
-                                    <li><input type="checkbox"> Standard <span>$20.00</span></li>
-                                    <li><input type="checkbox"> Express <span>$30.00</span></li>
+                                    <li><input type="checkbox" checked disabled> Standard <span>$0.00</span></li>
+                                    <li><input type="checkbox" checked disabled> Express <span>$0.00</span></li>
                                 </ul>
                             </div>
-                            <h4 class="grand-totall-title">Grand Total  <span>$260.00</span></h4>
+                            <h4 class="grand-totall-title">Grand Total  <span>$ {{ grandTotal }}</span></h4>
                             <a href="#">Proceed to Checkout</a>
                         </div>
                     </div>
@@ -146,6 +146,9 @@ export default {
         getCartItems(){
             return this.$store.getters.getCartItems;
         },
+        grandTotal(){
+            return this.$store.getters.cartTotalPrice
+        }
         // cartQuantity(id){
         //     this.$store.dispatch('incrementCartQuantity', id);
         // }

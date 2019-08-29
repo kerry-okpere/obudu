@@ -82,7 +82,12 @@ export const getters = {
       }
     }
     return tempPrice;
+  },
+
+  cartTotalPrice(state, getters){
+    return state.cart.reduce( (total, product) => total + product.price * product.quantity, 0);
   }
+
 
 };
 
@@ -158,7 +163,7 @@ export const actions = {
   async incrementCartQuantity({state}, productId) {
       let findCartItem = state.cart.find(item => item.prodId === productId);
       console.log(findCartItem);
-  }
+  },
 };
 
 export const mutations = {
