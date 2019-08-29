@@ -1,46 +1,15 @@
 import dotenv from 'dotenv'
 let env = dotenv.config();
 
-// console.log(config.env);
-// const defineEnvironmentPlugin = new webpack.EnvironmentPlugin(['API_URI', 'ADMIN_PASSWORD', 'GRAPHQL_URL']);
-
-// const defineEnvironmentPlugin = new webpack.EnvironmentPlugin(['API_URI', 'ADMIN_PASSWORD', 'GRAPHQL_URL']);
-
-// const environmentPlugin = new webpack.DefinePlugin({
-  // 'process.env.ADMIN_EMAIL': JSON.stringify(process.env.ADMIN_EMAIL),
-  // 'process.env.ADMIN_PASSWORD': JSON.stringify(process.env.ADMIN_PASSWORD),
-//   'process.env.GRAPHQL_URL': JSON.stringify(process.env.GRAPHQL_URL),
-//   'process.env.API_URI': JSON.stringify(process.env.API_URI)
-// });
-
-// import webpack from 'webpack'
-
 export default {
   mode: 'universal',
   server: {
     port: process.env.PORT ? process.env.PORT: 3000 , // default: 3000
     host: '0.0.0.0', // default: localhost
   },
-  // env: env.parsed,
   router: {
     middleware: 'loadEnv'
   },
-
-
-  /*
-  ** Webpack config
-  *
-  */
-
-  // build: {
-    // plugins: [
-    //   new webpack.ProvidePlugin({
-    //     defineEnvironmentPlugin,
-    //     environmentPlugin
-    //   })
-    // ]
-  // },
-
   /*
   ** Headers of the page
   */
@@ -86,8 +55,9 @@ export default {
 
   plugins: [
     { src: '~/plugins/bootstrap-vue.js' },
-    { src: '~plugins/aos.js', ssr: false },
-    { src: '~plugins/vue-social-sharing.js', ssr: true }
+    { src: '~/plugins/aos.js', ssr: false },
+    { src: '~/plugins/vue-social-sharing.js', ssr: true },
+    { src: '~/plugins/vuex-persist', ssr: false }
   ],
 
   modules: [
@@ -109,13 +79,6 @@ export default {
       }
     }
   },
-  // apollo: {
-  //   clientConfigs: {
-  //     default: {
-  //       httpEndpoint: process.env.GRAPHQL_URL ? process.env.GRAPHQL_URL: "/graphql/"
-  //     }
-  //   }
-  // },
 
   build: {
     vendor: [ 'vue-social-sharing'],

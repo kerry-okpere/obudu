@@ -8,6 +8,9 @@ query($id: ID!){
     images{
       url
     }
+    thumbnail{
+      url
+    }
     description
     category {
       name,

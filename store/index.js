@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import VuexPersistence from 'vuex-persist'
 
 import { GET_SINGLE_PRODUCTS, GET_PRODUCTS, GET_SIMILAR_PRODUCTS } from "../queries/productQueries";
-
 
 Vue.use(Vuex);
 
@@ -28,7 +28,7 @@ export const state = () => ({
   productsBreadCrumb: [],
   categoryId: '',
   // {id, variantId, quantity}
-  cart:[]
+  cart:[],
 });
 
 export const getters = {
@@ -135,7 +135,7 @@ export const actions = {
     let newProduct = {
       "prodId": product.id,
       "variantId": productInventory.id,
-      "imgUrl": product.images[0].url,
+      "imgUrl": product.thumbnail.url,
       "name": product.selected,
       "prodName": product.name,
       "price": product.price.amount,
@@ -151,24 +151,18 @@ export const actions = {
         context.commit('incrementItemQuantity', cartItem);
       }
       // context.commit('decrementProductInventory', cartItem);
-    }
-    // console.log(productInventory);
-    // if(product.inventory > 0){
-    //   const cartItem = context.state.cart.find(item => item.id === product.id);
-    //   console.log(cartItem);
+      //decrement product inventory by writing a mutation
+    } 
+  },
 
-    //   if(!cartItem > 0){
-    //     context.commit('pushProductToCart', product.id)
-    //   } else {
-    //     context.commit('incrementItemQunatity', cartItem)
-    //   }
-    //   context.commit('decrementProductInventory', cartItem)
-    // }
-
+  async incrementCartQuantity({state}, productId) {
+      let findCartItem = state.cart.find(item => item.prodId === productId);
+      console.log(findCartItem);
   }
 };
 
 export const mutations = {
+  
   setEnvironmentVariables(state, envVariables){
     state.enVariables = envVariables;
   },
@@ -231,5 +225,12 @@ export const mutations = {
 
   decrementProductInventory(state, product){
     product.inventory--;
-  }
+  },  
+  
+  // persistCart(state, vuexLocalStorage){
+  //   vuexLocalStorage.storage.setItem('vuex', JSON.stringify(state.cart) );
+  // }
+
 };
+
+// export const plugins = [new VuexPersistence().plugin()]

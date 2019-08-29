@@ -17,7 +17,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="getCartItem in getCartItems" :key="getCartItem.prodId">
+                                <tr v-for="getCartItem in getCartItems" :key="`${getCartItem.prodId}`">
                                     <td class="product-thumbnail">
                                         <a href="#"><img :src="`${getCartItem.imgUrl}`" alt=""></a>
                                     </td>
@@ -25,10 +25,10 @@
                                     <td class="product-price-cart"><span class="amount">$ {{getCartItem.price}}</span></td>
                                     <td class="product-quantity">
                                         <div class="cart-plus-minus">
-                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" :value="`${getCartItem.quantity}`">
+                                            <input @click="onQtyChange($event)" ref="itemQty" class="cart-plus-minus-box" type="text" name="qtybutton" :value="`${getCartItem.quantity}`">
                                         </div>
                                     </td>
-                                    <td class="product-subtotal">$110.00</td>
+                                    <td ref="totalPrice" class="product-subtotal">$ {{ getCartItem.quantity * getCartItem.price }}</td>
                                     <td class="product-remove">
                                         <a href="#"><i class="fa fa-pencil"></i></a>
                                         <a href="#"><i class="fa fa-times"></i></a>
@@ -136,10 +136,25 @@
 <script>
 export default {
     name: 'CartForm',
+    props: ['cartProp'],
+    data() {
+        return {
+            // refer: this.$refs["refer"].values
+        }
+    },
     computed: {
         getCartItems(){
             return this.$store.getters.getCartItems;
         },
+    },
+
+    methods: {
+        onQtyChange(event){
+
+            // console.log(this.$vnode.key);
+            // console.log(this.$key);
+        },
+        
     }
 }
 </script>
