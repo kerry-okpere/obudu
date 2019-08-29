@@ -25,7 +25,7 @@
                                     <td class="product-price-cart"><span class="amount">$ {{getCartItem.price}}</span></td>
                                     <td class="product-quantity">
                                         <div class="cart-plus-minus">
-                                            <input @click="onQtyChange($event)" ref="itemQty" class="cart-plus-minus-box" type="text" name="qtybutton" :value="`${getCartItem.quantity}`">
+                                            <input @click.prevent="onQtyChange(`${getCartItem.prodId}`)" ref="itemQty" class="cart-plus-minus-box" type="text" name="qtybutton" :value="`${getCartItem.quantity}`">
                                         </div>
                                     </td>
                                     <td ref="totalPrice" class="product-subtotal">$ {{ getCartItem.quantity * getCartItem.price }}</td>
@@ -146,13 +146,14 @@ export default {
         getCartItems(){
             return this.$store.getters.getCartItems;
         },
+        // cartQuantity(id){
+        //     this.$store.dispatch('incrementCartQuantity', id);
+        // }
     },
 
     methods: {
         onQtyChange(event){
-
-            // console.log(this.$vnode.key);
-            // console.log(this.$key);
+            this.$store.dispatch('incrementCartQuantity', event);
         },
         
     }
