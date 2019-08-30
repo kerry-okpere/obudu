@@ -4,7 +4,7 @@ let env = dotenv.config();
 export default {
   mode: 'universal',
   server: {
-    port: process.env.PORT || 3000 , // default: 3000
+    port: process.env.PORT ? process.env.PORT: 3000 , // default: 3000
     host: '0.0.0.0', // default: localhost
   },
   router: {
@@ -64,13 +64,13 @@ export default {
     'bootstrap-vue/nuxt',
     '@nuxtjs/apollo',
     ['@nuxtjs/google-analytics', {
-      id: process.env.GOOGLE_ANALYTICS_TRACKING_ID || ''
+      id: process.env.GOOGLE_ANALYTICS_TRACKING_ID ? process.env.GOOGLE_ANALYTICS_TRACKING_ID  : ''
     }]
   ],
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: process.env.GRAPHQL_URL || "/grapql/" 
+        httpEndpoint: process.env.GRAPHQL_URL ? process.env.GRAPHQL_URL : "/grapql/" 
       }
     }
   },
