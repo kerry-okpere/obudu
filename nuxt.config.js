@@ -64,7 +64,7 @@ export default {
     'bootstrap-vue/nuxt',
     '@nuxtjs/apollo',
     ['@nuxtjs/google-analytics', {
-      id: process.env.GA_ID || ''
+      id: process.env.GOOGLE_ANALYTICS_TRACKING_ID || ''
     }]
   ],
   apollo: {
