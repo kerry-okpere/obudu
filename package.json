@@ -17,6 +17,7 @@
     "@nuxtjs/apollo": "^4.0.0-rc11",
     "@nuxtjs/bulma": "^1.2.1",
     "@nuxtjs/dotenv": "latest",
+    "@nuxtjs/google-analytics": "^2.2.0",
     "@storefrontui/vue": "0.0.4-aplha.14",
     "aos": "^3.0.0-beta.6",
     "apollo-cache-inmemory": "^1.6.2",
