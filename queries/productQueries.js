@@ -24,6 +24,7 @@ query($id: ID!){
     price {
       localized
       amount
+      currency
     }
   }
 }

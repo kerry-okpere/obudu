@@ -86,11 +86,8 @@ export const getters = {
 
   cartTotalPrice(state, getters){
     return state.cart.reduce( (total, product) => total + product.price * product.quantity, 0);
-  }
-
+  },
   
-
-
 };
 
 export const actions = {
@@ -146,7 +143,8 @@ export const actions = {
       "name": product.selected,
       "prodName": product.name,
       "price": product.price.amount,
-      "quantity": ""
+      "quantity": "",
+      "currency": product.price.currency
     };
 
     if(productInventory.stockQuantity > 0) {

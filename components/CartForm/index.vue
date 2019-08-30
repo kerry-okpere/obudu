@@ -147,6 +147,9 @@ export default {
         },
         grandTotal(){
             return this.$store.getters.cartTotalPrice
+        },
+        getCurrency(){
+            return this.$store.getters.getCurrency
         }
     },
 
