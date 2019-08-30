@@ -42,17 +42,17 @@
               </button>
               <div v-if="cartVisible" class="shopping-cart-content cart-visible">
                             <ul>
-                                <li v-for="getCartItem in getCartItems" :key="getCartItem.prodId" class="single-shopping-cart">
+                                <li v-for="(getCartItem, index) in getCartItems" :key="getCartItem.prodId" class="single-shopping-cart">
                                     <div class="shopping-cart-img">
                                         <a href="#"><img alt="" :src="`${getCartItem.imgUrl}`" width="60"></a>
                                     </div>
                                     <div class="shopping-cart-title">
-                                        <h4><a href="#">{{getCartItem.name}}</a></h4>
+                                        <h4><a href="#">{{getCartItem.prodName}} - {{getCartItem.name}} </a></h4>
                                         <h6>Quantity: {{getCartItem.quantity}}</h6>
                                         <span>${{getCartItem.price * getCartItem.quantity }}</span>
                                     </div>
                                     <div class="shopping-cart-delete">
-                                        <a href="#"><ion-icon name="trash"></ion-icon></a>
+                                        <a @click="deleteCartItem(index)" href="#"><ion-icon name="trash"></ion-icon></a>
                                     </div>
                                 </li>
                             </ul>
@@ -104,6 +104,13 @@
         cartVisible: false
       }
     },
+
+    methods: {
+      deleteCartItem(cartIndex){
+        this.$store.dispatch('deleteCartItem', cartIndex);
+          // console.log(cartIndex)
+      }
+    }
 
 
   };

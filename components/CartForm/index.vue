@@ -136,7 +136,6 @@
 <script>
 export default {
     name: 'CartForm',
-    props: ['cartProp'],
     data() {
         return {
             // refer: this.$refs["refer"].values
@@ -149,9 +148,6 @@ export default {
         grandTotal(){
             return this.$store.getters.cartTotalPrice
         }
-        // cartQuantity(id){
-        //     this.$store.dispatch('incrementCartQuantity', id);
-        // }
     },
 
     methods: {

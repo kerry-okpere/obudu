@@ -88,6 +88,8 @@ export const getters = {
     return state.cart.reduce( (total, product) => total + product.price * product.quantity, 0);
   }
 
+  
+
 
 };
 
@@ -149,7 +151,6 @@ export const actions = {
 
     if(productInventory.stockQuantity > 0) {
       let cartItem = context.state.cart.find(item => (item.name === product.selected) && (item.prodId === product.id));
-      console.log(cartItem);
       if(!cartItem > 0){
         context.commit('pushProductToCart', newProduct);
       } else{
@@ -162,8 +163,18 @@ export const actions = {
 
   async incrementCartQuantity({state}, productId) {
       let findCartItem = state.cart.find(item => item.prodId === productId);
-      console.log(findCartItem);
   },
+
+  async deleteCartItem({state, commit}, cartIndex){
+    let newCart = state.cart.find( (item, index) => index === cartIndex );
+    console.log(newCart);
+    if(newCart){
+      commit('updateCartItemOnDelete', cartIndex);
+    }
+    // console.log(newCart);
+
+  }
+
 };
 
 export const mutations = {
@@ -220,7 +231,6 @@ export const mutations = {
 
   pushProductToCart(state, product){
     product["quantity"] = 1;
-    console.log(product);
     state.cart.push(product);
   },
 
@@ -230,12 +240,10 @@ export const mutations = {
 
   decrementProductInventory(state, product){
     product.inventory--;
-  },  
-  
-  // persistCart(state, vuexLocalStorage){
-  //   vuexLocalStorage.storage.setItem('vuex', JSON.stringify(state.cart) );
-  // }
+  },
+
+  updateCartItemOnDelete(state, cartId){
+    state.cart = state.cart.filter( (item, index) => index !== cartId );
+  }  
 
 };
-
-// export const plugins = [new VuexPersistence().plugin()]
