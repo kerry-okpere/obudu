@@ -5,7 +5,7 @@
         <div class="col-xl-2 col-lg-2 col-md-6 col-4">
           <div class="logo">
             <a href="/">
-              <img src="@/assets/img/logo.png" width="150" alt="" class="header-logo" />
+              <img src="https://res.cloudinary.com/mercurie/image/upload/v1567281212/mercuriemart/new-logo.png" width="150" alt="" class="header-logo" />
             </a>
           </div>
         </div>
