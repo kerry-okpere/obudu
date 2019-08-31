@@ -1,8 +1,10 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import VuexPersistence from 'vuex-persist'
 
-import { GET_SINGLE_PRODUCTS, GET_PRODUCTS, GET_SIMILAR_PRODUCTS } from "../queries/productQueries";
+import { 
+  GET_SINGLE_PRODUCTS, GET_PRODUCTS, GET_SIMILAR_PRODUCTS,
+  GET_STORE_CURRENCY
+} from "../queries/productQueries";
 
 Vue.use(Vuex);
 
@@ -29,6 +31,7 @@ export const state = () => ({
   categoryId: '',
   // {id, variantId, quantity}
   cart:[],
+  currency: {}
 });
 
 export const getters = {
@@ -68,6 +71,10 @@ export const getters = {
   getCartItems(state, getters){
     return state.cart;
   },
+  
+  getStoreCurrency(state, gettters){
+    return state.currency;
+  },
 
   getCartTotal(state, getters){
     let cartItem = state.cart;
@@ -82,8 +89,12 @@ export const getters = {
       }
     }
     return tempPrice;
-  }
+  },
 
+  cartTotalPrice(state, getters){
+    return state.cart.reduce( (total, product) => total + product.price * product.quantity, 0);
+  },
+  
 };
 
 export const actions = {
@@ -115,6 +126,19 @@ export const actions = {
     })
   },
 
+  fetchStoreCurrency(context, {apollo}){
+    return new Promise( async (resolve, reject) => {
+      let response = await apollo.query({
+        query: GET_STORE_CURRENCY,
+      });
+      // let currency = response.data.product.edges[0].price;
+      let currency = response.data.products.edges[0].node.price;
+      context.commit('setStoreCurrency', currency);
+      resolve();
+      reject("Unable to fetch currency");
+    });
+  },
+
   async fetchSimilarProducts(context, {apollo, category_id }){
     return new Promise(async (resolve, reject) => {
       let response = await apollo.query({
@@ -139,12 +163,12 @@ export const actions = {
       "name": product.selected,
       "prodName": product.name,
       "price": product.price.amount,
-      "quantity": ""
+      "quantity": "",
+      "currency": product.price.currency
     };
 
     if(productInventory.stockQuantity > 0) {
       let cartItem = context.state.cart.find(item => (item.name === product.selected) && (item.prodId === product.id));
-      console.log(cartItem);
       if(!cartItem > 0){
         context.commit('pushProductToCart', newProduct);
       } else{
@@ -157,8 +181,18 @@ export const actions = {
 
   async incrementCartQuantity({state}, productId) {
       let findCartItem = state.cart.find(item => item.prodId === productId);
-      console.log(findCartItem);
+  },
+
+  async deleteCartItem({state, commit}, cartIndex){
+    let newCart = state.cart.find( (item, index) => index === cartIndex );
+    console.log(newCart);
+    if(newCart){
+      commit('updateCartItemOnDelete', cartIndex);
+    }
+    // console.log(newCart);
+
   }
+
 };
 
 export const mutations = {
@@ -215,7 +249,6 @@ export const mutations = {
 
   pushProductToCart(state, product){
     product["quantity"] = 1;
-    console.log(product);
     state.cart.push(product);
   },
 
@@ -225,12 +258,17 @@ export const mutations = {
 
   decrementProductInventory(state, product){
     product.inventory--;
-  },  
-  
-  // persistCart(state, vuexLocalStorage){
-  //   vuexLocalStorage.storage.setItem('vuex', JSON.stringify(state.cart) );
-  // }
+  },
+
+  updateCartItemOnDelete(state, cartId){
+    state.cart = state.cart.filter( (item, index) => index !== cartId );
+  },
+
+  setStoreCurrency(state, price){
+    state.currency = {
+      currency: price.currency,
+      localized: price.localized
+    }
+  }
 
 };
-
-// export const plugins = [new VuexPersistence().plugin()]

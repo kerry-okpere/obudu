@@ -24,6 +24,23 @@ query($id: ID!){
     price {
       localized
       amount
+      currency
+    }
+  }
+}
+`;
+
+export const GET_STORE_CURRENCY = gql`
+query {
+  products(first: 1){
+    edges {
+      node {
+        price {
+          amount,
+          currency
+          localized
+        }
+      }
     }
   }
 }

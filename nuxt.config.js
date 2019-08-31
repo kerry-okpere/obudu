@@ -63,14 +63,9 @@ export default {
   modules: [
     'bootstrap-vue/nuxt',
     '@nuxtjs/apollo',
-    // ['nuxt-env', {
-    //   keys: [
-    //     { key: 'GRAPHQL_URL' },// Specify a default value
-    //     { key: 'API_URI', default: 'default API_URI' } // Specify a default value
-    //   ]
-    // }]
-    // '@nuxtjs/dotenv'
-    // ['@nuxtjs/dotenv', { systemvars: true }]
+    ['@nuxtjs/google-analytics', {
+      id: process.env.GOOGLE_ANALYTICS_TRACKING_ID ? process.env.GOOGLE_ANALYTICS_TRACKING_ID  : ''
+    }]
   ],
   apollo: {
     clientConfigs: {

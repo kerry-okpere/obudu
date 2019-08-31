@@ -1,4 +1,4 @@
-<template>
+ <template>
   <div class="checkout-area pt-95 pb-100">
     <div class="container">
       <div class="row">
@@ -60,13 +60,9 @@
                 </div>
                 <div class="your-order-middle">
                   <ul>
-                    <li>
-                      <span class="order-middle-left">Product Name X 1</span>
-                      <span class="order-price">$329</span>
-                    </li>
-                    <li>
-                      <span class="order-middle-left">Product Name X 1</span>
-                      <span class="order-price">$329</span>
+                    <li v-for="cartItem in getCartItems" :key="cartItem.prodId" >
+                      <span class="order-middle-left">{{cartItem.prodName}} X {{cartItem.quantity}}</span>
+                      <span class="order-price">{{getCurrency.currency}} {{cartItem.price * cartItem.quantity }}</span>
                     </li>
                   </ul>
                 </div>
@@ -79,7 +75,7 @@
                 <div class="your-order-total">
                   <ul>
                     <li class="order-total">Total</li>
-                    <li>$329</li>
+                    <li>{{getCurrency.currency}} {{ grandTotal }}</li>
                   </ul>
                 </div>
               </div>
@@ -116,6 +112,19 @@ export default {
       show: true
     };
   },
+  computed: {
+    getCartItems(){
+        return this.$store.getters.getCartItems;
+    },
+    grandTotal(){
+        return this.$store.getters.cartTotalPrice
+    },
+    getCurrency(){
+        return this.$store.getters.getStoreCurrency
+    }
+
+  },
+
   methods: {
     onSubmit(evt) {
       evt.preventDefault();
