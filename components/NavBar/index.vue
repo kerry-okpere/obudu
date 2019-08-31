@@ -24,10 +24,10 @@
           <div class="header-right-wrap">
 
 
-            <b-nav-form>
+            <!-- <b-nav-form>
               <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
               <b-button size="sm" class="my-2 my-sm-0" type="submit"><img src="@/assets/img/search.svg" width="13" alt="" class="image" /></b-button>
-            </b-nav-form>
+            </b-nav-form> -->
 
 
             <!-- <div id="search" class="same-style header-search">
