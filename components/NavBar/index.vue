@@ -22,7 +22,15 @@
         </div>
         <div class="col-xl-2 col-lg-2 col-md-6 col-8">
           <div class="header-right-wrap">
-            <div id="search" class="same-style header-search">
+
+
+            <b-nav-form>
+              <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
+              <b-button size="sm" class="my-2 my-sm-0" type="submit"><img src="@/assets/img/search.svg" width="13" alt="" class="image" /></b-button>
+            </b-nav-form>
+
+
+            <!-- <div id="search" class="same-style header-search">
               <a @click="searchVisible = !searchVisible" class="search-active" href="#">
                 <img src="@/assets/img/search.svg" width="13" alt="" class="image" />
                 <p class="menu-item">Search</p>
@@ -33,7 +41,7 @@
                   <button class="button-search"><ion-icon name="ios-search"></ion-icon></button>
                 </form>
               </div>
-            </div>
+            </div> -->
             <div class="same-style cart-wrap">
               <button @click="cartVisible = !cartVisible" class="icon-cart">
                 <img src="@/assets/img/cart.svg" width="15" alt="" class="image" />
@@ -41,31 +49,33 @@
                 <span v-if="getCartCount" class="count-style">{{getCartCount}}</span>
               </button>
               <div v-if="cartVisible" class="shopping-cart-content cart-visible">
-                            <ul>
-                                <li v-for="getCartItem in getCartItems" :key="getCartItem.prodId" class="single-shopping-cart">
-                                    <div class="shopping-cart-img">
-                                        <a href="#"><img alt="" :src="`${getCartItem.imgUrl}`" width="60"></a>
-                                    </div>
-                                    <div class="shopping-cart-title">
-                                        <h4><a href="#">{{getCartItem.name}}</a></h4>
-                                        <h6>Quantity: {{getCartItem.quantity}}</h6>
-                                        <span>${{getCartItem.price}}</span>
-                                    </div>
-                                    <div class="shopping-cart-delete">
-                                        <a href="#"><ion-icon name="trash"></ion-icon></a>
-                                    </div>
-                                </li>
-                            </ul>
-                            <div class="shopping-cart-total">
-                                <h4>Total <span class="shop-total">$ {{getCartTotalPrice}}</span></h4>
-                            </div>
-                            <div class="shopping-cart-btn text-center">
-                                <a class="default-btn hvr-grow" href="/cart/">View Cart</a>
-                                <a class="default-btn hvr-grow" href="/checkout/">Checkout</a>
-                            </div>
-                        </div>
+                <ul>
+                  <li v-for="getCartItem in getCartItems" :key="getCartItem.prodId" class="single-shopping-cart">
+                    <div class="shopping-cart-img">
+                      <a href="#"><img alt="" :src="`${getCartItem.imgUrl}`" width="60"></a>
+                    </div>
+                    <div class="shopping-cart-title">
+                      <h4><a href="#">{{getCartItem.name}}</a></h4>
+                      <h6>Quantity: {{getCartItem.quantity}}</h6>
+                      <span>${{getCartItem.price}}</span>
+                    </div>
+                    <div class="shopping-cart-delete">
+                      <a href="#">
+                        <ion-icon name="trash"></ion-icon>
+                      </a>
+                    </div>
+                  </li>
+                </ul>
+                <div class="shopping-cart-total">
+                  <h4>Total <span class="shop-total">$ {{getCartTotalPrice}}</span></h4>
+                </div>
+                <div class="shopping-cart-btn text-center">
+                  <a class="default-btn hvr-grow" href="/cart/">View Cart</a>
+                  <a class="default-btn hvr-grow" href="/checkout/">Checkout</a>
+                </div>
+              </div>
             </div>
-              <!-- <div class="mobile-menu-area">
+            <!-- <div class="mobile-menu-area">
                 <div class="mobile-menu">
                   <nav id="mobile-menu-active">
                     <ul class="menu-overflow">
@@ -88,13 +98,13 @@
   export default {
     name: "NavBar",
     computed: {
-      getCartCount(){
+      getCartCount() {
         return this.$store.getters.getCartQuantity;
       },
-      getCartItems(){
+      getCartItems() {
         return this.$store.getters.getCartItems;
       },
-      getCartTotalPrice(){
+      getCartTotalPrice() {
         return this.$store.getters.getCartTotal;
       }
     },
