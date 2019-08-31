@@ -49,7 +49,7 @@
                                     <div class="shopping-cart-title">
                                         <h4><a href="#">{{getCartItem.prodName}} - {{getCartItem.name}} </a></h4>
                                         <h6>Quantity: {{getCartItem.quantity}}</h6>
-                                        <span>${{getCartItem.price * getCartItem.quantity }}</span>
+                                        <span>{{getCurrency.currency}}{{getCartItem.price * getCartItem.quantity }}</span>
                                     </div>
                                     <div class="shopping-cart-delete">
                                         <a @click="deleteCartItem(index)" href="#"><ion-icon name="trash"></ion-icon></a>
@@ -57,7 +57,7 @@
                                 </li>
                             </ul>
                             <div class="shopping-cart-total">
-                                <h4>Total <span class="shop-total">$ {{getCartTotalPrice}}</span></h4>
+                                <h4>Total <span class="shop-total">{{getCurrency.currency}} {{getCartTotalPrice}}</span></h4>
                             </div>
                             <div class="shopping-cart-btn text-center">
                                 <a class="default-btn hvr-grow" href="/cart/">View Cart</a>
@@ -96,6 +96,9 @@
       },
       getCartTotalPrice(){
         return this.$store.getters.getCartTotal;
+      },
+      getCurrency(){
+        return this.$store.getters.getStoreCurrency
       }
     },
     data() {

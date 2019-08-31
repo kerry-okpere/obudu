@@ -41,7 +41,10 @@ export default {
     }
   },
   
-  async created() {    
+  async created() {
+    this.$store.dispatch('fetchStoreCurrency',
+      { apollo: this.$apollo }
+    );
     if(process.browser) {
       // let admin_token = localStorage.getItem('admin_token');
       // if(!admin_token){

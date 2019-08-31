@@ -62,7 +62,7 @@
                   <ul>
                     <li v-for="cartItem in getCartItems" :key="cartItem.prodId" >
                       <span class="order-middle-left">{{cartItem.prodName}} X {{cartItem.quantity}}</span>
-                      <span class="order-price">$ {{cartItem.price * cartItem.quantity }}</span>
+                      <span class="order-price">{{getCurrency.currency}} {{cartItem.price * cartItem.quantity }}</span>
                     </li>
                   </ul>
                 </div>
@@ -75,7 +75,7 @@
                 <div class="your-order-total">
                   <ul>
                     <li class="order-total">Total</li>
-                    <li>$ {{ grandTotal }}</li>
+                    <li>{{getCurrency.currency}} {{ grandTotal }}</li>
                   </ul>
                 </div>
               </div>
@@ -118,7 +118,11 @@ export default {
     },
     grandTotal(){
         return this.$store.getters.cartTotalPrice
+    },
+    getCurrency(){
+        return this.$store.getters.getStoreCurrency
     }
+
   },
 
   methods: {
