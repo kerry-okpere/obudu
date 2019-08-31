@@ -38,7 +38,7 @@ export default {
     ],
 
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/static/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: 'https://res.cloudinary.com/mercurie/image/upload/v1567279816/mercuriemart/favicon.png' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap' },
