@@ -1,5 +1,13 @@
 @import '../../assets/styles/variables.scss';
 
+.social-share {
+    p{
+        font-weight: 600;
+        margin-left: 5px;
+        margin-bottom: 10px!important;
+        color: $primary-color!important;
+    }
+}
 
 .dropdown-item {
     display: block;
@@ -43,6 +51,7 @@ button#product-type__BV_toggle_ {
 .product-details-name {
     color: $text;
     font-size: 24px;
+    font-weight: 600;
 }
 
 .product-details-description {
@@ -54,10 +63,13 @@ button#product-type__BV_toggle_ {
 
 .product-details-content .product-details-price {
     margin: 10px 0px 10px;
+    font-size: 18px;
+    color: $primary-color;
+    font-weight: 600;
 }
 
 .product-details-content .product-details-price span {
-    font-size: 24px;
+    font-size: 18px;
     color: $primary-color;
     font-weight: 500;
 }
