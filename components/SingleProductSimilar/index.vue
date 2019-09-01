@@ -17,8 +17,8 @@
                                     <nuxt-link :to="`/product/${similarProduct.node.id}`">
                                         <ion-icon name="ios-cart"></ion-icon><h4>Add to Cart</h4>
                                     </nuxt-link>                        
-                                    <a title="Quick View" href="#" data-toggle="modal" data-target="#exampleModal"><ion-icon name="ios-eye"></ion-icon>
-                                    <h4>Quick View</h4></a>
+                                    <!-- <a title="Quick View" href="#" data-toggle="modal" data-target="#exampleModal"><ion-icon name="ios-eye"></ion-icon>
+                                    <h4>Quick View</h4></a> -->
                                 </div>
                             </div>
 

@@ -4,12 +4,12 @@
             <div class="row">
                 <div class="col-sm-8 col-sm-4">
                     <div class="footer-container">
-                        <div class="footer-logo">
+                        <!-- <div class="footer-logo">
                             <a href="/">
                                 <img src="https://res.cloudinary.com/mercurie/image/upload/v1564583388/mercuriemart/logo-alt.png"
                                     width="150" />
                             </a>
-                        </div>
+                        </div> -->
                         <div class="footer-nav">
                         <a href="/shipping/" class="footer-nav__link">Shipping &amp; Returns</a>
                         <a href="/privacy/" class="footer-nav__link">Privacy Policy</a>

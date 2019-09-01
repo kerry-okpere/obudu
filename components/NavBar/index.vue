@@ -5,7 +5,7 @@
         <div class="col-xl-2 col-lg-2 col-md-6 col-4">
           <div class="logo">
             <a href="/">
-              <img src="@/assets/img/logo.png" width="150" alt="" class="header-logo" />
+              <img src="https://res.cloudinary.com/mercurie/image/upload/v1567281212/mercuriemart/new-logo.png" width="150" alt="" class="header-logo" />
             </a>
           </div>
         </div>
@@ -22,7 +22,15 @@
         </div>
         <div class="col-xl-2 col-lg-2 col-md-6 col-8">
           <div class="header-right-wrap">
-            <div id="search" class="same-style header-search">
+
+
+            <!-- <b-nav-form>
+              <b-form-input size="sm" class="mr-sm-2" placeholder="Search"></b-form-input>
+              <b-button size="sm" class="my-2 my-sm-0" type="submit"><img src="@/assets/img/search.svg" width="13" alt="" class="image" /></b-button>
+            </b-nav-form> -->
+
+
+            <!-- <div id="search" class="same-style header-search">
               <a @click="searchVisible = !searchVisible" class="search-active" href="#">
                 <img src="@/assets/img/search.svg" width="13" alt="" class="image" />
                 <p class="menu-item">Search</p>
@@ -33,7 +41,7 @@
                   <button class="button-search"><ion-icon name="ios-search"></ion-icon></button>
                 </form>
               </div>
-            </div>
+            </div> -->
             <div class="same-style cart-wrap">
               <button @click="cartVisible = !cartVisible" class="icon-cart">
                 <img src="@/assets/img/cart.svg" width="15" alt="" class="image" />
@@ -65,7 +73,7 @@
                             </div>
                         </div>
             </div>
-              <!-- <div class="mobile-menu-area">
+            <!-- <div class="mobile-menu-area">
                 <div class="mobile-menu">
                   <nav id="mobile-menu-active">
                     <ul class="menu-overflow">
@@ -88,13 +96,13 @@
   export default {
     name: "NavBar",
     computed: {
-      getCartCount(){
+      getCartCount() {
         return this.$store.getters.getCartQuantity;
       },
-      getCartItems(){
+      getCartItems() {
         return this.$store.getters.getCartItems;
       },
-      getCartTotalPrice(){
+      getCartTotalPrice() {
         return this.$store.getters.getCartTotal;
       },
       getCurrency(){

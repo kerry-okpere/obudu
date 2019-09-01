@@ -6,7 +6,7 @@
           <a href="/product/">
             <span class="home-category__title">{{category.node.name}}</span>
             <span class="home-category__overlay"></span>
-            <img class="animated" :src="category.node.backgroundImage.url" alt="">
+            <img class="animated home-category-image" :src="category.node.backgroundImage.url" alt="">
           </a>
         </div>
       </div>

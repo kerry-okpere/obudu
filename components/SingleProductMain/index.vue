@@ -11,14 +11,15 @@
               <div class="dec-img-wrap zoompro-span mb-30">
                 <img class="zoompro" :src="`${singleProducts.images[0].url}`" alt />
               </div>
-              <div class="dec-img-wrap zoompro-span mb-30">
+              <!-- <div class="dec-img-wrap zoompro-span mb-30">
                 <img class="zoompro" :src="`${singleProducts.images[0].url}`" alt />
-              </div>
+              </div> -->
             </div>
           </div>
         <div class="col-lg-6 col-md-6">
           <div class="product-details-content product-sticky">
             <h2 class="product-details-name">{{singleProducts.name}}</h2>
+            <h3 class="product-details-price">{{singleProducts.price}}</h3>
             <p class="product-details-description">
               {{singleProducts.description}}
             </p>
@@ -40,6 +41,8 @@
                 :description="singleProducts.description" quote="Hey checkout" hashtags="shop,store,mercuriemart"
                 inline-template>
                 <div>
+                  <div class="social-share">
+                    <p>Share</p>
                   <network network="facebook" class="hvr-grow">
                     <ion-icon name="logo-facebook"></ion-icon>
                   </network>
@@ -49,6 +52,7 @@
                   <network network="whatsapp" class="hvr-grow">
                     <ion-icon name="logo-whatsapp"></ion-icon>
                   </network>
+                  </div>
                   <!-- <network network="pinterest" class="hvr-grow">
                     <ion-icon name="logo-pinterest"></ion-icon>
                   </network> -->
