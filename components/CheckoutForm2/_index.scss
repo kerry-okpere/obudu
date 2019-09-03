@@ -1,5 +1,18 @@
 @import '../../assets/styles/variables';
 
+@media (min-width: 320px) and (max-width: 768px) {
+    .checkout__right {
+        padding-left: 0px;
+        margin-top: 50px;
+    }
+}
+
+@media (min-width: 960px) {
+    .checkout__right {
+        padding-left: 50px;
+    }
+}
+
 .checkout {
     margin: 50px 0 80px;
 
@@ -23,9 +36,6 @@
     }
 }
 
-.checkout__right {
-    padding-left: 50px;
-}
 
 .checkout__right-card {
     padding: 0 10px;

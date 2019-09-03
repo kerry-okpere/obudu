@@ -2,7 +2,7 @@
   <section class="checkout">
     <div class="container">
       <div class="row">
-        <div class="col">
+        <div class="col-lg-6 col-md-16 cold-sm-12">
           <div class="checkout__left">
 
             <!-- Billing Details Form -->
@@ -96,7 +96,7 @@
         </div>
 
 
-        <div class="col">
+        <div class="col-lg-6 col-md-16 cold-sm-12">
           <div class="checkout__right">
             <h3>Your Order</h3>
 
