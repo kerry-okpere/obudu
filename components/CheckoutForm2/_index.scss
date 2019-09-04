@@ -10,6 +10,8 @@
 @media (min-width: 960px) {
     .checkout__right {
         padding-left: 50px;
+        position: sticky;
+        top: 40px;
     }
 }
 
@@ -92,14 +94,14 @@
                 line-height: 1.2;
                 text-transform: uppercase;
                 letter-spacing: .3px;
-                color: $primary-color;
+                //color: $primary-color;
                 padding: 30px 0 15px;
             }
 
             td {
                 font-weight: bold;
                 font-size: 14px;
-                color: $primary-color;
+                //color: $primary-color;
             }
         }
 
@@ -132,14 +134,18 @@
             margin: 0 0 20px;
 
             th {
-                padding: 0 0 20px;
+                padding: 0px 0 0px;
+                color: $primary-color;
+                padding-top: 35px;
+                font-size: 20px;
                 
             }
 
             td {
-                font-size: 22px;
+                font-size: 30px;
                 font-weight: 700;
                 color: $primary-color;
+                padding-top: 35px;
             }
         }
     }
