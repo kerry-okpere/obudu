@@ -1,39 +1,89 @@
-<template>
-    <footer class="footer-area pt-30 pb-30">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8 col-sm-4">
-                    <div class="footer-container">
-                        <!-- <div class="footer-logo">
-                            <a href="/">
-                                <img src="https://res.cloudinary.com/mercurie/image/upload/v1564583388/mercuriemart/logo-alt.png"
-                                    width="150" />
-                            </a>
-                        </div> -->
-                        <div class="footer-nav">
-                        <a href="/shipping/" class="footer-nav__link">Shipping &amp; Returns</a>
-                        <a href="/privacy/" class="footer-nav__link">Privacy Policy</a>
-                        <a href="/terms/" class="footer-nav__link">Terms &amp; Conditions</a>
-                    </div>
-                    <div class="footer__social mb-10">
-                        <img src="https://uploads-ssl.webflow.com/5d2ca9e22be6bac201dbab3a/5d3f0e2ca5236e3187ebd4e0_facebook.png" width="20" alt="" class="footer__social-icons"> 
-                        <img src="https://uploads-ssl.webflow.com/5d2ca9e22be6bac201dbab3a/5d3f0e2c238e8c1a578bc519_twitter-logo-silhouette.png" width="20" alt="" class="footer__social-icons"> 
-                        <img src="https://uploads-ssl.webflow.com/5d2ca9e22be6bac201dbab3a/5d3f0e2c519b940e724f2c1f_instagram-logo.png" width="20" alt="" class="footer__social-icons">
-                    </div>
-                        <p class="copyright">© Copyright, <a href="#">MercurieMart</a>. All Rights Reserved</p>
-                    </div>
+    <template>
+      <div>
+        <footer>
+          <div class="container">
+            <div class="footer__main">
+              <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                  <p class="menu-label">Categories</p>
+                  <ul class="menu-list">
+                    <li><a>Clothing</a></li>
+                    <li><a>Accessories</a></li>
+                    <li><a>Footwear</a></li>
+                    <li><a>Bags</a></li>
+                  </ul>
                 </div>
+                <div class="col-lg-3 col-md-3 col-sm-12">
+                  <p class="menu-label">Account</p>
+                  <ul class="menu-list">
+                    <li><a>Sign in</a></li>
+                    <li><a>Register</a></li>
+                    <li><a>Orders</a></li>
+                    <li><a>Wishlist</a></li>
+                  </ul>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <p class="menu-label">Newsletter</p>
+                  <b-form>
+                    <b-form-group
+                      id="newsletter-group"
+                    >
+                      <b-form-input
+                        size="sm"
+                        id="newsletter"
+                        v-model="form.newsletterEmail"
+                        type="email"
+                        required
+                        placeholder="Enter email"
+                      ></b-form-input>
+                    </b-form-group>
+                  </b-form>
+                  <p class="newsletter">Subscribe for updates on new products and more!</p>
+                  <span class="contact-social">
+                    <ion-icon name="logo-whatsapp"></ion-icon>
+                    <ion-icon name="logo-facebook"></ion-icon>
+                    <ion-icon name="logo-twitter"></ion-icon>
+                    <ion-icon name="logo-instagram"></ion-icon>
+                  </span>
+                </div>
+              </div>
             </div>
+          </div>
+        </footer>
+        <div class="container">
+          <div class=" footer__sub">
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-12">
+                <p>© Copyright, Your Store. All Rights Reserved</p>
+              </div>
+              <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="payment-logos">
+                  <img src="../../assets/img/footer/paystack.svg" alt="Paystack Logo" width="100">
+                  <img src="../../assets/img/footer/flutterwave.svg" alt="Flutterwave Logo" width="100">
+                  <img src="../../assets/img/footer/quickteller.svg" alt="Quickteller Logo" width="100">
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-    </footer>
-</template>
+      </div>
+    </template>
 
-<script>
-    export default {
-        name: "NavFooter"
-    };
-</script>
 
-<style lang="scss" scoped>
-    @import "./_index.scss";
-</style>
+    <script>
+      export default {
+        data() {
+          return {
+            form: {
+              newsletterEmail: null
+            }
+          }
+        }
+      };
+
+    </script>
+
+    <style lang="scss" scoped>
+      @import "./_index.scss";
+
+    </style>
