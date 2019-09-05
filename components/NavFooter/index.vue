@@ -4,7 +4,7 @@
           <div class="container">
             <div class="footer__main">
               <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-12">
+                <div class="col col-lg-3 col-md-3">
                   <p class="menu-label">Categories</p>
                   <ul class="menu-list">
                     <li><a>Clothing</a></li>
@@ -13,7 +13,7 @@
                     <li><a>Bags</a></li>
                   </ul>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-12">
+                <div class="col col-lg-3 col-md-3">
                   <p class="menu-label">Account</p>
                   <ul class="menu-list">
                     <li><a>Sign in</a></li>

@@ -56,3 +56,33 @@ footer {
         }
     }
 }
+
+
+// Mobile 
+
+@media (min-width: 320px) and (max-width: 768px) {
+
+
+    .menu-list{
+        margin-bottom: 40px;
+    }
+
+
+    .footer__sub {
+        margin: 20px 0;
+    
+        p {
+            font-size: 12px;
+            margin: 10px 0;
+        }
+        
+        .payment-logos {
+            text-align: left;
+    
+            img {
+                margin-left: 0px;
+                margin-right: 10px;
+            }
+        }
+    }
+}
