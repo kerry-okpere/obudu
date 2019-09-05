@@ -2,12 +2,14 @@
 
 // Variables & Helper Classes
 
-@import '../../assets/styles/variables.scss';
-@import '../../assets/styles/_universal.scss';
+@import '../../assets/styles/variables';
+@import '../../assets/styles/_universal';
+@import '../../assets/styles/padding';
 
 // Components
 
 @import '../../components/CartForm/index';
+@import '../../components/CartForm2/index';
 @import '../../components/CheckoutForm2/index';
 @import '../../components/CollectionProducts/index';
 @import '../../components/HomeFeatures/index';
