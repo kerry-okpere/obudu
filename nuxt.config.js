@@ -68,9 +68,11 @@ export default {
     }]
   ],
   apollo: {
+    tokenName: "adminAuthToken",
+    authenticationType: "JWT",
     clientConfigs: {
       default: {
-        httpEndpoint: process.env.GRAPHQL_URL ? process.env.GRAPHQL_URL : "/grapql/" 
+        httpEndpoint: process.env.GRAPHQL_URL ? process.env.GRAPHQL_URL : "/grapql/",
       }
     }
   },

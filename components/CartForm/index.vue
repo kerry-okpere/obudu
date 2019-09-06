@@ -21,14 +21,14 @@
                                     <td class="product-thumbnail">
                                         <a href="#"><img :src="`${getCartItem.imgUrl}`" alt=""></a>
                                     </td>
-                                    <td class="product-name"><a href="#">{{getCartItem.prodName}}</a></td>
-                                    <td class="product-price-cart"><span class="amount">{{getCurrency.currency}} {{getCartItem.price}}</span></td>
+                                    <td class="product-name"><a href="#">{{getCartItem.prodName}} - {{getCartItem.name}}</a></td>
+                                    <td class="product-price-cart"><span class="amount">{{getCurrency}} {{getCartItem.price}}</span></td>
                                     <td class="product-quantity">
                                         <div class="cart-plus-minus">
                                             <input @change="onQtyChange(`${getCartItem.prodId}`)" ref="itemQty" class="cart-plus-minus-box" type="text" name="qtybutton" :value="`${getCartItem.quantity}`">
                                         </div>
                                     </td>
-                                    <td ref="totalPrice" class="product-subtotal" v-on: :value="`${getCartItem.quantity * getCartItem.price}`">$ {{ getCartItem.quantity * getCartItem.price }}</td>
+                                    <td ref="totalPrice" class="product-subtotal" v-on: :value="`${getCartItem.quantity * getCartItem.price}`">{{getCurrency}} {{ getCartItem.quantity * getCartItem.price }}</td>
                                     <td class="product-remove">
                                         <a href="#"><i class="fa fa-pencil"></i></a>
                                         <a href="#"><i class="fa fa-times"></i></a>

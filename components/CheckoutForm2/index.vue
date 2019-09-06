@@ -123,19 +123,19 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="cart-item">
+                    <tr v-for="cartItem in getCartItems" :key="cartItem.prodId" class="cart-item">
                       <td class="product left">
-                        Apple Juice <strong class="product-quantity">× 1</strong>
+                        {{cartItem.prodName}} <strong class="product-quantity">× {{cartItem.quantity}}</strong>
                       </td>
                       <td class="product right">
-                        <span class="product-price">$69.00</span>
+                        <span class="product-price">{{getCurrency}} {{cartItem.price * cartItem.quantity }}</span>
                       </td>
                     </tr>
                   </tbody>
                   <tfoot>
                     <tr class="cart-subtotal">
                       <th class="left">Subtotal</th>
-                      <td class="right"><span class="product-price">$69.00</span></td>
+                      <td class="right"><span class="product-price">{{getCurrency}} {{ grandTotal }}</span></td>
                     </tr>
 
                     <!-- <tr class="cart-shipping">
@@ -152,7 +152,7 @@
 
                     <tr class="cart-total">
                       <th class="left">Total</th>
-                      <td class="right"><span class="product-price">$69.00</span></td>
+                      <td class="right"><span class="product-price">{{getCurrency}} {{ grandTotal }}</span></td>
                     </tr>
                   </tfoot>
                 </table>
@@ -358,17 +358,56 @@
         ]
       }
     },
+    computed: {
+      getCartItems(){
+          return this.$store.getters.getCartItems;
+      },
+      grandTotal(){
+          return this.$store.getters.cartTotalPrice
+      },
+      getCurrency(){
+          return this.$store.getters.getStoreCurrency
+      }
+    },
+
     methods: {
       toggleShipping(checked) {
         this.shippingVisible = true
       },
 
-      saveCheckout() {
-
+      createCheckout(checkoutInput){
+        return  this.$store.dispatch("createCart", {
+          apollo: this.$apollo,
+          checkoutInput
+        })
       },
 
-      checkout() {
-        this.saveCheckout()
+      saveCheckout() {
+        // console.log(this.countryOptions);
+        let checkoutInput = {
+          email: this.form.email,
+          shippingAddress:{
+            city: this.stateOptions[0].value,
+            companyName: this.form.companyName,
+            country: this.countryOptions[0].value,
+            countryArea: this.stateOptions[0].value,
+            firstName: this.form.firstName,
+            lastName: this.form.lastName,
+            phone: this.form.phone,
+            postalCode: this.form.postal,
+            streetAddress: this.address
+          },
+          lines: this.getCartItems
+        };
+        return checkoutInput;
+      },
+
+      checkout(evt) {
+        evt.preventDefault();
+        let check = this.saveCheckout();
+        // let res = this.createCheckout(check);
+        // console.log(res);
+
         alert("Redirecting to Paystack")
       }
 

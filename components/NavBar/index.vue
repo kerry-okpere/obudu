@@ -50,14 +50,14 @@
               </button>
               <div v-if="cartVisible" class="shopping-cart-content cart-visible">
                             <ul>
-                                <li v-for="(getCartItem, index) in getCartItems" :key="getCartItem.prodId" class="single-shopping-cart">
+                                <li v-for="(getCartItem, index) in getCartItems" :key="index" class="single-shopping-cart">
                                     <div class="shopping-cart-img">
                                         <a href="#"><img alt="" :src="`${getCartItem.imgUrl}`" width="60"></a>
                                     </div>
                                     <div class="shopping-cart-title">
                                         <h4><a href="#">{{getCartItem.prodName}} - {{getCartItem.name}} </a></h4>
                                         <h6>Quantity: {{getCartItem.quantity}}</h6>
-                                        <span>{{getCurrency.currency}}{{getCartItem.price * getCartItem.quantity }}</span>
+                                        <span>{{getCurrency}} {{getCartItem.price * getCartItem.quantity }}</span>
                                     </div>
                                     <div class="shopping-cart-delete">
                                         <a @click="deleteCartItem(index)" href="#"><ion-icon name="trash"></ion-icon></a>
@@ -65,7 +65,7 @@
                                 </li>
                             </ul>
                             <div class="shopping-cart-total">
-                                <h4>Total <span class="shop-total">{{getCurrency.currency}} {{getCartTotalPrice}}</span></h4>
+                                <h4>Total <span class="shop-total">{{getCurrency}} {{getCartTotalPrice}}</span></h4>
                             </div>
                             <div class="shopping-cart-btn text-center">
                                 <a class="default-btn hvr-grow" href="/cart/">View Cart</a>

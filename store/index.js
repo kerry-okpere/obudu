@@ -1,10 +1,16 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import { CREATE_TOKEN_MUTATION } from '../queries/authTokenQueries';
+import config from '@/config';
 import { 
   GET_SINGLE_PRODUCTS, GET_PRODUCTS, GET_SIMILAR_PRODUCTS,
   GET_STORE_CURRENCY
 } from "../queries/productQueries";
+
+import {
+  createCheckoutMutation
+} from "../queries/checkoutQueries";
 
 Vue.use(Vuex);
 
@@ -29,9 +35,10 @@ export const state = () => ({
   similarProducts: [],
   productsBreadCrumb: [],
   categoryId: '',
-  // {id, variantId, quantity}
   cart:[],
-  currency: {}
+  currency: "",
+  checkoutCreate: {},
+  adminToken: {}
 });
 
 export const getters = {
@@ -94,6 +101,10 @@ export const getters = {
   cartTotalPrice(state, getters){
     return state.cart.reduce( (total, product) => total + product.price * product.quantity, 0);
   },
+
+  getAdminAuthToken(state, getters) {
+    return state.adminToken;
+  }
   
 };
 
@@ -131,8 +142,7 @@ export const actions = {
       let response = await apollo.query({
         query: GET_STORE_CURRENCY,
       });
-      // let currency = response.data.product.edges[0].price;
-      let currency = response.data.products.edges[0].node.price;
+      let currency = response.data.shop.defaultCurrency;
       context.commit('setStoreCurrency', currency);
       resolve();
       reject("Unable to fetch currency");
@@ -189,7 +199,32 @@ export const actions = {
     if(newCart){
       commit('updateCartItemOnDelete', cartIndex);
     }
-    // console.log(newCart);
+  },
+
+  async createCart({state, commit}, {apollo, checkoutInput}){
+    return new Promise (async (resolve, reject ) => {
+      let response = await apollo.query({
+        query: createCheckoutMutation,
+        variables: { "checkoutInput": checkoutInput }
+      });
+
+      commmit('checkoutPhase', response.data);
+      resolve();
+      reject("Unable to update checkoutInput mutation")
+    })
+  },
+
+  async createAdminAuthMutation({state, commit}, {apollo, checkoutInput}){
+    return new Promise ( async (resolve, reject) => {
+      let response = await  apollo.mutate({
+        mutation: CREATE_TOKEN_MUTATION,
+        variables: { "email": config.admin.email ? process.env.ADMIN_EMAIL : "admin@mercurie.ng" , "password": process.env.ADMIN_PASSWORD ? process.env.ADMIN_EMAIL : "admin" }
+      });  
+
+      commit('adminAuthToken', response.data);
+      resolve();
+      reject("Unable to update admin auth token mutation");
+    })
 
   }
 
@@ -215,6 +250,7 @@ export const mutations = {
   },
 
   setHomeProducts(state, homeProds){
+    
     // state.homeProducts = homeProds;
     state.homeProducts.push(homeProds);
   },
@@ -264,11 +300,16 @@ export const mutations = {
     state.cart = state.cart.filter( (item, index) => index !== cartId );
   },
 
-  setStoreCurrency(state, price){
-    state.currency = {
-      currency: price.currency,
-      localized: price.localized
-    }
+  setStoreCurrency(state, curr){
+    state.currency = curr;
+  },
+
+  checkoutPhase(state, checkoutCreate){
+    state.checkoutCreate = checkoutCreate;
+  },
+
+  adminAuthToken(state, tokenObj){
+    state.adminToken = tokenObj.tokenCreate.token;
   }
 
 };

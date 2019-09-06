@@ -42,9 +42,20 @@ export default {
   },
   
   async created() {
-    this.$store.dispatch('fetchStoreCurrency',
+    await this.$store.dispatch('fetchStoreCurrency',
       { apollo: this.$apollo }
     );
+
+    await this.$store.dispatch('createAdminAuthMutation',
+      { apollo: this.$apollo }
+    );
+
+    let isAuthenticated = await !!this.$apolloHelpers.getToken();
+    if (!isAuthenticated) {
+      let token = await this.$store.getters.getAdminAuthToken;
+      await this.$apolloHelpers.onLogin(token, undefined, { expires: 7 })
+    }
+
     if(process.browser) {
       // let admin_token = localStorage.getItem('admin_token');
       // if(!admin_token){
@@ -59,19 +70,7 @@ export default {
   },
 
   methods: {
-    async getauthToken() {
-      // try{
-        // let response = await this.$apollo.mutate({
-        //   mutation: CREATE_TOKEN_MUTATION,
-        //   variables: { "email": config.admin.email ? process.env.ADMIN_EMAIL : "admin@mercurie.ng" , "password": process.env.ADMIN_PASSWORD ? process.env.ADMIN_EMAIL : "admin" }
-        // });
-        // return response.data;
-      // } catch (e) {
-        // console.log(e);
-      // }
-
-    },
-
+    
   }
 }
 
