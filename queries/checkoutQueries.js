@@ -152,7 +152,7 @@ export const updateCheckoutLineQuery = gql`
   }
 `;
 
-const createCheckoutMutation = gql`
+export const createCheckoutMutation = gql`
   ${checkoutFragment}
   mutation createCheckout($checkoutInput: CheckoutCreateInput!) {
     checkoutCreate(input: $checkoutInput) {

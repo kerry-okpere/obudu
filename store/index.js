@@ -8,6 +8,9 @@ import {
   GET_STORE_CURRENCY
 } from "../queries/productQueries";
 
+import {productDetailsQuery} from "../queries/productQueries_v2";
+
+
 import {
   createCheckoutMutation
 } from "../queries/checkoutQueries";
@@ -125,7 +128,7 @@ export const actions = {
   fetchSingleProducts(context, {apollo, product_id}){
     return new Promise(async (resolve, reject) => {
       let response = await apollo.query({
-        query: GET_SINGLE_PRODUCTS,
+        query: productDetailsQuery,
         variables: { "id": product_id }
       });
       let single_prod = response.data.product;
@@ -136,6 +139,21 @@ export const actions = {
       reject("Unable to fetch product")
     })
   },
+
+  // fetchSingleProducts(context, {apollo, product_id}){
+  //   return new Promise(async (resolve, reject) => {
+  //     let response = await apollo.query({
+  //       query: GET_SINGLE_PRODUCTS,
+  //       variables: { "id": product_id }
+  //     });
+  //     let single_prod = response.data.product;
+  //     context.commit('setSingleProducts', single_prod);
+  //     context.commit('setCategoryId', single_prod.category.id);
+  //     context.commit('setSingleProductsBreadcrumb', single_prod);
+  //     resolve();
+  //     reject("Unable to fetch product")
+  //   })
+  // },
 
   fetchStoreCurrency(context, {apollo}){
     return new Promise( async (resolve, reject) => {
@@ -203,14 +221,18 @@ export const actions = {
 
   async createCart({state, commit}, {apollo, checkoutInput}){
     return new Promise (async (resolve, reject ) => {
-      let response = await apollo.query({
-        query: createCheckoutMutation,
+      let response = await apollo.mutate({
+        mutation: createCheckoutMutation,
         variables: { "checkoutInput": checkoutInput }
       });
 
-      commmit('checkoutPhase', response.data);
-      resolve();
-      reject("Unable to update checkoutInput mutation")
+      if(response){
+        commmit('checkoutPhase', response.data);
+        resolve();  
+      } else {
+        reject("Unable to update checkoutInput mutation")
+      }
+
     })
   },
 

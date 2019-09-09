@@ -159,6 +159,7 @@ export default {
         },
         lines: getCartItems
       };
+
       // createCheckout()
       console.log(cartItems);
       alert(JSON.stringify(this.form));

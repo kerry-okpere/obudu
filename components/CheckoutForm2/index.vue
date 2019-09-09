@@ -375,15 +375,23 @@
         this.shippingVisible = true
       },
 
-      createCheckout(checkoutInput){
+      createCheckout(chkInput){
         return  this.$store.dispatch("createCart", {
           apollo: this.$apollo,
-          checkoutInput
+          checkoutInput: chkInput
         })
       },
 
       saveCheckout() {
-        // console.log(this.countryOptions);
+        let newLines = this.getCartItems
+        let newCart = [];
+        for(let i=0; i<newLines.length; i++){
+          newCart[i] = {
+            variantId: newLines[i].variantId,
+            quantity: newLines[i].quantity,
+          }
+        }
+
         let checkoutInput = {
           email: this.form.email,
           shippingAddress:{
@@ -397,16 +405,16 @@
             postalCode: this.form.postal,
             streetAddress: this.address
           },
-          lines: this.getCartItems
+          lines: newCart
         };
         return checkoutInput;
       },
 
-      checkout(evt) {
+      async checkout(evt) {
         evt.preventDefault();
         let check = this.saveCheckout();
-        // let res = this.createCheckout(check);
-        // console.log(res);
+        let res = await this.createCheckout(check);
+        console.log(res);
 
         alert("Redirecting to Paystack")
       }
