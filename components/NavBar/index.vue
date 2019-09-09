@@ -116,6 +116,10 @@
       }
     },
 
+    async mounted(){
+      let curr = await this.getCurrency;
+    },
+
     methods: {
       deleteCartItem(cartIndex){
         this.$store.dispatch('deleteCartItem', cartIndex);

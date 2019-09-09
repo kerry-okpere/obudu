@@ -8,12 +8,15 @@ import {
   GET_STORE_CURRENCY
 } from "../queries/productQueries";
 
+import { getPaymentTokenQuery, completeCheckoutMutation, updateCheckoutShippingOptionsMutation, updateCheckoutBillingAddressMutation } from "../queries/coreCheckoutQueries";
+
 import {productDetailsQuery} from "../queries/productQueries_v2";
 
 
 import {
   createCheckoutMutation
 } from "../queries/checkoutQueries";
+import { async } from 'q';
 
 Vue.use(Vuex);
 
@@ -41,7 +44,9 @@ export const state = () => ({
   cart:[],
   currency: "",
   checkoutCreate: {},
-  adminToken: {}
+  adminToken: {},
+  apolloState: {},
+  checkoutId: {}
 });
 
 export const getters = {
@@ -107,6 +112,14 @@ export const getters = {
 
   getAdminAuthToken(state, getters) {
     return state.adminToken;
+  },
+
+  getCheckoutId(state, getters) {
+    return state.checkoutId;
+  },
+
+  getEnvVariables(state, getters){
+    return state.enVariables;
   }
   
 };
@@ -139,21 +152,6 @@ export const actions = {
       reject("Unable to fetch product")
     })
   },
-
-  // fetchSingleProducts(context, {apollo, product_id}){
-  //   return new Promise(async (resolve, reject) => {
-  //     let response = await apollo.query({
-  //       query: GET_SINGLE_PRODUCTS,
-  //       variables: { "id": product_id }
-  //     });
-  //     let single_prod = response.data.product;
-  //     context.commit('setSingleProducts', single_prod);
-  //     context.commit('setCategoryId', single_prod.category.id);
-  //     context.commit('setSingleProductsBreadcrumb', single_prod);
-  //     resolve();
-  //     reject("Unable to fetch product")
-  //   })
-  // },
 
   fetchStoreCurrency(context, {apollo}){
     return new Promise( async (resolve, reject) => {
@@ -190,7 +188,7 @@ export const actions = {
       "imgUrl": product.thumbnail.url,
       "name": product.selected,
       "prodName": product.name,
-      "price": product.price.amount,
+      "price": productInventory.price.amount,
       "quantity": "",
       "currency": product.price.currency
     };
@@ -208,12 +206,12 @@ export const actions = {
   },
 
   async incrementCartQuantity({state}, productId) {
-      let findCartItem = state.cart.find(item => item.prodId === productId);
+      state.cart.find(item => item.prodId === productId);
+      // let findCartItem = state.cart.find(item => item.prodId === productId);
   },
 
   async deleteCartItem({state, commit}, cartIndex){
     let newCart = state.cart.find( (item, index) => index === cartIndex );
-    console.log(newCart);
     if(newCart){
       commit('updateCartItemOnDelete', cartIndex);
     }
@@ -225,10 +223,12 @@ export const actions = {
         mutation: createCheckoutMutation,
         variables: { "checkoutInput": checkoutInput }
       });
-
-      if(response){
-        commmit('checkoutPhase', response.data);
-        resolve();  
+      console.log(response);
+      if(response.data.checkoutCreate.checkout){
+        const {checkout} = response.data.checkoutCreate; 
+        commit('checkoutPhase', response.data);
+        commit('setCheckoutId', checkout.id);
+        resolve(response.data);  
       } else {
         reject("Unable to update checkoutInput mutation")
       }
@@ -248,7 +248,60 @@ export const actions = {
       reject("Unable to update admin auth token mutation");
     })
 
+  },
+
+  async getPaymentToken({state, commit}, {apollo, gateway}) {
+    return new Promise ( async (resolve, reject) => {
+      let response = await apollo.query({
+        query: getPaymentTokenQuery,
+        variables: {"gateway": gateway}
+      });
+
+      resolve(response.data);
+      reject("Unable to get payment query")
+    })
+  },
+
+  async completePayment({state, commit}, {apollo, checkoutInput}){
+    return new Promise( async (resolve, reject) => {
+      let response = await apollo.mutate({
+        mutation: completeCheckoutMutation,
+        variables: {"checkoutId": checkoutInput}
+      });
+
+      if(response.data.checkoutComplete.errors.length < 1){
+        commit("emptyCart");
+        resolve(response.data)
+      } else {
+        reject("Unable to complete payement query");
+      }
+    })
+  },
+
+  async updateShipping({state, commit}, {apollo, checkoutInput, shippingId}){
+    return new Promise( async (resolve, reject) => {
+      let response = await apollo.mutate({
+        mutation: updateCheckoutShippingOptionsMutation,
+        variables: {"checkoutId": checkoutInput, "shippingMethodId": shippingId}
+      });
+
+      resolve(response.data);
+      reject("unable to update shipping options")
+    })
+  },
+
+  async updateBilling({state, commit}, {apollo, billingAddress, checkoutId}){
+    return new Promise( async (resolve, reject) => {
+      let response = await apollo.mutate({
+        mutation: updateCheckoutBillingAddressMutation,
+        variables: {billingAddress, checkoutId}
+      })
+
+      resolve(response.data);
+      reject("unable to update billing options");
+    })
   }
+
 
 };
 
@@ -332,6 +385,13 @@ export const mutations = {
 
   adminAuthToken(state, tokenObj){
     state.adminToken = tokenObj.tokenCreate.token;
-  }
+  },
 
+  setCheckoutId(state, checkoutId){
+    state.checkoutId = checkoutId;
+  },
+  
+  emptyCart(state){
+    state.cart = [];
+  }
 };

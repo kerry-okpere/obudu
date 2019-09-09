@@ -6,5 +6,8 @@ export default {
     },
     graphql: {
         url: process.env.GRAPHQL_URL
+    },
+    paystack: {
+        key: process.env.PAYSTACK_PUB_KEY
     }
 }

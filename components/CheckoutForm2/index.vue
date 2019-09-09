@@ -51,7 +51,7 @@
               </b-form-group>
 
               <b-form-group id="address" label="Address" label-for="address">
-                <b-form-input type="text" id="address" v-model="form.street" required placeholder="Your street address">
+                <b-form-input type="text" id="address" v-model="form.address" required placeholder="Your street address">
                 </b-form-input>
               </b-form-group>
 
@@ -367,7 +367,17 @@
       },
       getCurrency(){
           return this.$store.getters.getStoreCurrency
+      },
+      getCheckoutId(){
+        return this.$store.getters.getCheckoutId;
+      },
+      getEnv(){
+        return this.$store.getters.getEnvVariables;
       }
+    },
+
+    async created(){
+      await this.$apolloHelpers.onLogout();
     },
 
     methods: {
@@ -380,6 +390,45 @@
           apollo: this.$apollo,
           checkoutInput: chkInput
         })
+      },
+
+      updateCheckoutShippingOptions(chkInput, shipping_id){
+        return this.$store.dispatch("updateShipping", {
+          apollo: this.$apollo,
+          checkoutInput: chkInput,
+          shippingId: shipping_id
+        })
+      },
+
+      updateCheckoutBillingAddress(checkoutId){
+        let billingAddress = {
+          city: this.stateOptions[0].value,
+          country: "NG",
+          countryArea: this.stateOptions[0].value,
+          firstName: this.form.firstName,
+          lastName: this.form.lastName,
+          postalCode: this.form.postal,
+          streetAddress1: this.form.address,
+        }
+        return this.$store.dispatch("updateBilling", {
+          apollo: this.$apollo,
+          billingAddress,
+          checkoutId
+        })
+      },
+
+      getPaymentToken(geteway_name){
+        return this.$store.dispatch("getPaymentToken", {
+          apollo: this.$apollo,
+          gateway: geteway_name
+        })
+      },
+
+      completeCheckout(checkout_id){
+        return this.$store.dispatch("completePayment", {
+          apollo: this.$apollo,
+          checkoutInput: checkout_id
+        });
       },
 
       saveCheckout() {
@@ -397,13 +446,13 @@
           shippingAddress:{
             city: this.stateOptions[0].value,
             companyName: this.form.companyName,
-            country: this.countryOptions[0].value,
+            country: "NG",
             countryArea: this.stateOptions[0].value,
             firstName: this.form.firstName,
             lastName: this.form.lastName,
             phone: this.form.phone,
             postalCode: this.form.postal,
-            streetAddress: this.address
+            streetAddress1: this.form.address
           },
           lines: newCart
         };
@@ -412,12 +461,55 @@
 
       async checkout(evt) {
         evt.preventDefault();
-        let check = this.saveCheckout();
-        let res = await this.createCheckout(check);
-        console.log(res);
+        let checkoutInpt = this.saveCheckout();
+        let res = await this.createCheckout(checkoutInpt);
+        let err = res.checkoutCreate.errors;
+        let paystack_key = this.getEnv.paystack.key;
+        if(err.length >= 1){
+          let errMsg = err[0].message
+          alert(errMsg);
+        } else{
+          let checkout_id = res.checkoutCreate.checkout.id;
+          let shipping_mthd_id = res.checkoutCreate.checkout.availableShippingMethods[0].id;
+          let updatedShippingOptions = await this.updateCheckoutShippingOptions(checkout_id, shipping_mthd_id);
+          let totalPrice = updatedShippingOptions.checkoutShippingMethodUpdate.checkout.totalPrice.gross.amount
+          console.log(updatedShippingOptions)
+          await this.updateCheckoutBillingAddress(checkout_id);
+          let gateway = "PAYSTACK";
+          let paymentRes = await this.getPaymentToken(gateway);
+          let amtInKobo = totalPrice * 100;  //Convert Naira to Kobo
+          await this.makePayment(paystack_key, checkoutInpt.email, amtInKobo, paymentRes.paymentClientToken, checkout_id);
 
+        }
         alert("Redirecting to Paystack")
-      }
+      },
+
+      async makePayment(key, email, amount, ref, checkout_id){
+        let handler = PaystackPop.setup({
+          key: key, 
+          email: email,
+          amount: amount,
+          currency: "NGN",
+          ref: ref,
+          metadata: {
+          custom_fields: [
+            {}
+          ]
+          },
+          callback: async (response) => {
+            if(response){
+              await this.completeCheckout(checkout_id);              
+              alert("payment successful");
+            } else {
+              alert("payment failed");
+            }
+          },
+          onClose: function(){
+            alert('Do you want to close this window?');
+          }
+        });
+        handler.openIframe();       
+    }
 
     }
   }

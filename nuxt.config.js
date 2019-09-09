@@ -10,6 +10,7 @@ export default {
   router: {
     middleware: 'loadEnv'
   },
+
   /*
   ** Headers of the page
   */
@@ -34,6 +35,7 @@ export default {
       { src: 'https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js', body: true },
       { src: '/plugins.js', body: true }, 
       { src: '/main.js', body: true},
+      { src: 'https://js.paystack.co/v1/inline.js'}
 
     ],
 
