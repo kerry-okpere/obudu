@@ -13,9 +13,12 @@
           <div class="main-menu">
             <nav>
               <ul>
-                <li><a href="/shop/">Shop</a>
+                <li><a href="#shop">Shop</a>
+                <li><a href="#groceries">Groceries</a></li>
+                <li><a href="#sale">Sale</a></li>
+                <!-- <li><a href="/shop/">Shop</a>
                 <li><a href="/collection/groceries/">Groceries</a></li>
-                <li><a href="/collection/sale/">Sale</a></li>
+                <li><a href="/collection/sale/">Sale</a></li> -->
               </ul>
             </nav>
           </div>

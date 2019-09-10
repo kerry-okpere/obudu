@@ -3,7 +3,7 @@
     <div class="row">
       <div v-for="category in categories" :key="category.node.id" class="col-md-4 animated slideInUp">
         <div class="single-banner mb-30 scroll-zoom" data-sr-id="2">
-          <a href="/product/">
+          <a href="#">
             <span class="home-category__title">{{category.node.name}}</span>
             <span class="home-category__overlay"></span>
             <img class="animated home-category-image" :src="category.node.backgroundImage.url" alt="">

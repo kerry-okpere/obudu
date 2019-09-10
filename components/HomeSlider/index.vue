@@ -16,7 +16,8 @@
           <div class="home-slider__title">
               <h1 class="heading animated fadeInUp delay-1s">Bounce Back in Style</h1>
               <p class="paragraph animated fadeInUp delay-3s">with the hottest trends this summer</p>
-            <b-button href="/shop/" class="home-slider__button animated fadeInUp delay-5s">Shop Now</b-button>
+            <b-button href="#shop" class="home-slider__button animated fadeInUp delay-5s">Shop Now</b-button>
+            <!-- <b-button href="/shop/" class="home-slider__button animated fadeInUp delay-5s">Shop Now</b-button> -->
         </div>
       </b-carousel-slide>
 
@@ -24,7 +25,8 @@
           <div class="home-slider__title">
               <h1 class="heading animated fadeInUp delay-1s">Bounce Back in Style</h1>
               <p class="paragraph animated fadeInUp delay-3s">with the hottest trends this summer</p>
-            <b-button href="/shop/" class="home-slider__button animated fadeInUp delay-5s">Shop Now</b-button>
+            <b-button href="#shop" class="home-slider__button animated fadeInUp delay-5s">Shop Now</b-button>
+            <!-- <b-button href="/shop/" class="home-slider__button animated fadeInUp delay-5s">Shop Now</b-button> -->
         </div>
       </b-carousel-slide>
 
