@@ -33,7 +33,7 @@
               </b-form-group>
 
               <b-form-group id="phone" label="Phone" label-for="phone">
-                <b-form-input type="tel" id="phone" v-model="form.phone" required placeholder="Your phone number">
+                <b-form-input type="tel" min="14" max="14" id="phone" v-model="form.phone" required placeholder="Your phone number">
                 </b-form-input>
               </b-form-group>
 
@@ -417,10 +417,36 @@
         })
       },
 
-      getPaymentToken(geteway_name){
+      getPaymentToken(gateway_name){
         return this.$store.dispatch("getPaymentToken", {
           apollo: this.$apollo,
-          gateway: geteway_name
+          gateway: gateway_name
+        })
+      },
+
+      createPayment(checkoutId, amount, gateway){
+        let billingAddress = {
+          city: this.stateOptions[0].value,
+          country: "NG",
+          countryArea: this.stateOptions[0].value,
+          firstName: this.form.firstName,
+          lastName: this.form.lastName,
+          postalCode: this.form.postal,
+          streetAddress1: this.form.address,
+        }
+
+        let input = {
+          amount,
+          billingAddress,
+          gateway,
+          token: "auth"
+        }
+
+
+        return this.$store.dispatch("createPayment", {
+          apollo: this.$apollo,
+          checkoutId,
+          input
         })
       },
 
@@ -459,13 +485,16 @@
         return checkoutInput;
       },
 
+      // The power house, all the shit happens in this function and other functions. Psyches! 
       async checkout(evt) {
         evt.preventDefault();
         let checkoutInpt = this.saveCheckout();
         let res = await this.createCheckout(checkoutInpt);
+        // console.log(res);
         let err = res.checkoutCreate.errors;
         let paystack_key = this.getEnv.paystack.key;
         if(err.length >= 1){
+          //TODO refactor error display
           let errMsg = err[0].message
           alert(errMsg);
         } else{
@@ -473,11 +502,11 @@
           let shipping_mthd_id = res.checkoutCreate.checkout.availableShippingMethods[0].id;
           let updatedShippingOptions = await this.updateCheckoutShippingOptions(checkout_id, shipping_mthd_id);
           let totalPrice = updatedShippingOptions.checkoutShippingMethodUpdate.checkout.totalPrice.gross.amount
-          console.log(updatedShippingOptions)
           await this.updateCheckoutBillingAddress(checkout_id);
           let gateway = "PAYSTACK";
           let paymentRes = await this.getPaymentToken(gateway);
           let amtInKobo = totalPrice * 100;  //Convert Naira to Kobo
+          await this.createPayment(checkout_id, totalPrice, gateway).catch( (error) => console.log(error));
           await this.makePayment(paystack_key, checkoutInpt.email, amtInKobo, paymentRes.paymentClientToken, checkout_id);
 
         }

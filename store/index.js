@@ -8,7 +8,11 @@ import {
   GET_STORE_CURRENCY
 } from "../queries/productQueries";
 
-import { getPaymentTokenQuery, completeCheckoutMutation, updateCheckoutShippingOptionsMutation, updateCheckoutBillingAddressMutation } from "../queries/coreCheckoutQueries";
+import { 
+  getPaymentTokenQuery, completeCheckoutMutation, 
+  updateCheckoutShippingOptionsMutation, updateCheckoutBillingAddressMutation,
+  paymentMethodCreateMutation
+} from "../queries/coreCheckoutQueries";
 
 import {productDetailsQuery} from "../queries/productQueries_v2";
 
@@ -223,7 +227,7 @@ export const actions = {
         mutation: createCheckoutMutation,
         variables: { "checkoutInput": checkoutInput }
       });
-      console.log(response);
+      // console.log(response);
       if(response.data.checkoutCreate.checkout){
         const {checkout} = response.data.checkoutCreate; 
         commit('checkoutPhase', response.data);
@@ -262,6 +266,21 @@ export const actions = {
     })
   },
 
+  async createPayment({state, commit}, {apollo, checkoutId, input}) {
+    return new Promise ( async (resolve, reject) => {
+      let response = await apollo.mutate({
+        mutation: paymentMethodCreateMutation,
+        variables: {
+          checkoutId,
+          input
+        }
+      })
+
+      resolve(response);
+      reject ("Unable to initialise payment")
+    })
+  },  
+
   async completePayment({state, commit}, {apollo, checkoutInput}){
     return new Promise( async (resolve, reject) => {
       let response = await apollo.mutate({
@@ -269,12 +288,12 @@ export const actions = {
         variables: {"checkoutId": checkoutInput}
       });
 
-      if(response.data.checkoutComplete.errors.length < 1){
+      // if(response.data.checkoutComplete.errors.length < 1){
         commit("emptyCart");
-        resolve(response.data)
-      } else {
-        reject("Unable to complete payement query");
-      }
+        resolve();
+      // } else {
+      //   reject("Unable to complete payement query");
+      // }
     })
   },
 

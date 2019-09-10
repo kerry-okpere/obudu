@@ -65,9 +65,9 @@ export default {
   modules: [
     'bootstrap-vue/nuxt',
     '@nuxtjs/apollo',
-    ['@nuxtjs/google-analytics', {
-      id: process.env.GOOGLE_ANALYTICS_TRACKING_ID ? process.env.GOOGLE_ANALYTICS_TRACKING_ID  : ''
-    }]
+    // ['@nuxtjs/google-analytics', {
+    //   id: process.env.GOOGLE_ANALYTICS_TRACKING_ID ? process.env.GOOGLE_ANALYTICS_TRACKING_ID  : ''
+    // }]
   ],
   apollo: {
     tokenName: "adminAuthToken",
