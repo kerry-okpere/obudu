@@ -3,8 +3,8 @@ steps:
 - name: 'gcr.io/kaniko-project/executor:latest'
   args:
     - --destination=gcr.io/mercuriemart/obudu:dev
-    # - --cache=true
-    # - --cache-ttl=6h
+    - --cache=true
+    - --cache-ttl=2h
   # Deploy container image to Cloud Run
 - name: "gcr.io/cloud-builders/gcloud"
   args: ['beta', 'run', 'deploy', 'obudu', '--image', 'gcr.io/mercuriemart/obudu:dev', '--region', 'us-central1', '--platform', 'managed']

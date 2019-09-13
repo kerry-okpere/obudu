@@ -1,4 +1,3 @@
-
 export default {
     admin: {
         email: process.env.ADMIN_EMAIL,
