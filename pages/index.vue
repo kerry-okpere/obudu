@@ -14,11 +14,11 @@ import HomeProductCategory from '../components/HomeProductCategory/index';
 import SectionTitleAlt from '../components/SectionTitleAlt/index';
 import SingleProductMain from '../components/SingleProductMain/index';
 
-import { ApolloClient } from 'apollo-client';
-import { setContext } from "apollo-link-context";
-import { HttpLink } from 'apollo-link-http';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import fetch from 'node-fetch';
+// import { ApolloClient } from 'apollo-client';
+// import { setContext } from "apollo-link-context";
+// import { HttpLink } from 'apollo-link-http';
+// import { InMemoryCache } from 'apollo-cache-inmemory';
+// import fetch from 'node-fetch';
 
 import { CREATE_TOKEN_MUTATION } from '../queries/authTokenQueries';
 import config from '@/config';
@@ -70,7 +70,7 @@ export default {
   },
 
   methods: {
-    
+
   }
 }
 

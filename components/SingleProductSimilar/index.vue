@@ -5,7 +5,7 @@
                 <b-spinner type="grow" variant="primary" label="Loading..."></b-spinner>
             </div>
                 <div class="row">
-                    <div v-for="similarProduct in similarProducts" :key="similarProduct.node.id"   class="col-xl-3 col-md-6 col-lg-4 col-sm-6 col-6">
+                    <div v-for="(similarProduct, index) in similarProducts" :key="index" class="col-xl-3 col-md-6 col-lg-4 col-sm-6 col-6">
                         <div v-if="similarProduct.node" class="product-wrap-2 mb-25 text-center hvr-grow-shadow">
                             <div class="product-img">
                                 <nuxt-link :to="`/product/${similarProduct.node.id}`">
@@ -81,11 +81,7 @@ export default {
     },
 
     async created() {
-
-        const sleep = m => new Promise(r => setTimeout(r, m));
-        await sleep(3000);
-
-        this.getSimilarProducts
+        
     },
 
     methods: {

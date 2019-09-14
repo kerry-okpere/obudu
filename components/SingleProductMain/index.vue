@@ -28,7 +28,7 @@
                 <template slot="first">
                   <option ref="cart" :value="null" disabled> Select {{singleProducts.variants[0].attributes[0].attribute.name}} </option>
                 </template>
-                <option v-for="variants in singleProducts.variants" :value="variants.name" :key="variants.id"> {{variants.name}} </option>
+                <option v-for="(variants, index) in singleProducts.variants" :value="variants.name" :key="index"> {{variants.name}} </option>
               </b-form-select>
             <div v-if="formError">
               <b-alert show variant="danger"><a href="#" class="alert-link">Please select a variant</a></b-alert>
@@ -37,6 +37,7 @@
             <div class="pro-details-quality">
               <b-button class="product-addtocart hvr-grow" @click.prevent="getFormValues(singleProducts)" >Add to Cart</b-button>
             </div>
+            
             <div class="social-share">
               <social-sharing :url="storeUrl" :title="singleProducts.name"
                 :description="singleProducts.seoDescription" quote="Hey checkout" hashtags="shop,store,mercuriemart"
@@ -102,13 +103,21 @@
       .then(async () => {
         this.loading = false;
         this.loadStatus = true
+
+
       });
       if(process.browser){
         this.storeUrl = window.location.href;
       }
 
+        const sleep = m => new Promise(r => setTimeout(r, m));
+        await sleep(3000);
+
+        let check = this.singleProducts;
+        console.log(check);
         // const sleep = m => new Promise(r => setTimeout(r, m));
         // await sleep(3000);
+    
   },
 
   methods: {

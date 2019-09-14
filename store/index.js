@@ -20,7 +20,6 @@ import {productDetailsQuery} from "../queries/productQueries_v2";
 import {
   createCheckoutMutation
 } from "../queries/checkoutQueries";
-import { async } from 'q';
 
 Vue.use(Vuex);
 
@@ -288,12 +287,12 @@ export const actions = {
         variables: {"checkoutId": checkoutInput}
       });
 
-      // if(response.data.checkoutComplete.errors.length < 1){
+      if(response.data.checkoutComplete.errors.length < 1){
         commit("emptyCart");
         resolve();
-      // } else {
-      //   reject("Unable to complete payement query");
-      // }
+      } else {
+        reject("Unable to complete payement query");
+      }
     })
   },
 

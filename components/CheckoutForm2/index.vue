@@ -165,8 +165,12 @@
                   </b-form-radio-group>
                 </b-form-group>
               </div> -->
-
-                <b-button size="lg" variant="primary" type="submit">Proceed to payment</b-button>
+                <div v-if="cart">
+                  <b-button size="lg" ref="paymentBtn" variant="primary" type="submit">Proceed to payment</b-button>
+                </div>
+                <div v-else>
+                  <b-button size="lg" ref="paymentBtn" variant="primary" type="submit" disabled>Proceed to payment</b-button>
+                </div>
 
               </div>
             </div>
@@ -186,6 +190,7 @@
     data() {
       return {
         show: true,
+        cart: false,
         form: {
           firstName: null,
           lastName: null,
@@ -355,7 +360,7 @@
             text: 'Zamfara'
           }
 
-        ]
+        ],      
       }
     },
     computed: {
@@ -378,6 +383,13 @@
 
     async created(){
       await this.$apolloHelpers.onLogout();
+      if(this.getCartItems.length > 0){
+        this.cart = true;
+      }
+
+      let check = this.singleProducts;
+      console.log(check);
+
     },
 
     methods: {
@@ -485,7 +497,7 @@
         return checkoutInput;
       },
 
-      // The power house, all the shit happens in this function and other functions. Psyches! 
+      // The power house, all the shit happens in this function and other functions. Psych!! 
       async checkout(evt) {
         evt.preventDefault();
         let checkoutInpt = this.saveCheckout();
@@ -503,7 +515,8 @@
           let updatedShippingOptions = await this.updateCheckoutShippingOptions(checkout_id, shipping_mthd_id);
           let totalPrice = updatedShippingOptions.checkoutShippingMethodUpdate.checkout.totalPrice.gross.amount
           await this.updateCheckoutBillingAddress(checkout_id);
-          let gateway = "PAYSTACK";
+          let gateway = "DUMMY";
+          // let gateway = "PAYSTACK";
           let paymentRes = await this.getPaymentToken(gateway);
           let amtInKobo = totalPrice * 100;  //Convert Naira to Kobo
           await this.createPayment(checkout_id, totalPrice, gateway).catch( (error) => console.log(error));
