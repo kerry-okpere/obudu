@@ -34,8 +34,11 @@
               <b-alert show variant="danger"><a href="#" class="alert-link">Please select a variant</a></b-alert>
             </div>
 
-            <div class="pro-details-quality">
-              <b-button class="product-addtocart hvr-grow" @click.prevent="getFormValues(singleProducts)" >Add to Cart</b-button>
+            <div class="pro-details-quality" v-if="isAvailable">
+              <b-button ref="addCartBtn" class="product-addtocart hvr-grow" @click.prevent="getFormValues(singleProducts)" >Add to Cart</b-button>
+            </div>
+            <div class="pro-details-quality" v-else>
+              <b-button ref="addCartBtn" class="product-addtocart hvr-grow" disabled>Add to Cart</b-button>
             </div>
             
             <div class="social-share">
@@ -85,6 +88,7 @@
     data() {
       return {
         selected: null,
+        isAvailable: true,
         loading: false,
         loadStatus: false,
         formError: false,
@@ -110,11 +114,6 @@
         this.storeUrl = window.location.href;
       }
 
-        const sleep = m => new Promise(r => setTimeout(r, m));
-        await sleep(3000);
-
-        let check = this.singleProducts;
-        console.log(check);
         // const sleep = m => new Promise(r => setTimeout(r, m));
         // await sleep(3000);
     
@@ -140,9 +139,16 @@
     onChange(event){
       let getSelectedVariantDetails = this.singleProducts.variants.find( (variant) => variant.name == event );
       this.price = getSelectedVariantDetails.price.localized;
+      
       if(event !== null){
         this.formError = false;
       }
+      if(getSelectedVariantDetails.stockQuantity <= 0){
+        this.isAvailable = false
+      } else {
+        this.isAvailable = true        
+      }
+
     }
 
   }

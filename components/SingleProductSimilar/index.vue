@@ -81,7 +81,7 @@ export default {
     },
 
     async created() {
-        
+        await this.getSimilarProducts;
     },
 
     methods: {
