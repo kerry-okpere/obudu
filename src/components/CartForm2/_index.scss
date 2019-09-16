@@ -1,0 +1,20 @@
+table {
+    background: transparent;
+    border: none;
+    width: 100%;
+
+    thead {
+        border-bottom: 2px solid rgba(0,0,0,0.04);
+        padding-bottom: 20px;
+
+        tr {
+            margin-bottom: 20px;
+        }
+        th {
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.2;
+            text-transform: initial;
+        }
+    }
+}

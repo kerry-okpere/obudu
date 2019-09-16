@@ -1,0 +1,32 @@
+@import '../../assets/styles/variables.scss';
+
+.topnav {
+    padding: 20px 0;
+
+    &__menu {
+        text-align: center;
+
+        a {
+            font-size: 14px;
+            font-weight: 600;
+            color: $text;
+            margin-right: 10px;
+        }
+    }
+
+    &__submenu {
+        float: right;
+        display: inline-flex;
+
+        input {
+            max-width: 70%;
+            margin-right: 10px;
+        }
+
+        ion-icon {
+            font-size: 25px;
+            margin-right: 5px;
+            margin-top: 5px;
+        }
+    }
+}
