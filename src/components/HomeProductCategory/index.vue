@@ -28,7 +28,7 @@
 <script>
   import {
     GET_HOMEPAGE_CATEGORIES
-  } from "../../queries/productQueries";
+  } from "@/queries/productQueries";
 
   export default {
     name: "HomeProductCategory",

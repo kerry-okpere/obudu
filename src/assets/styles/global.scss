@@ -33,12 +33,12 @@
 
 // Pages
 
-@import '../../pages/index.scss';
-@import '../../pages/account/index.scss';
-@import '../../pages/cart/index.scss';
-@import '../../pages/collection/index.scss';
-@import '../../pages/privacy/index.scss';
-@import '../../pages/product/index.scss';
-@import '../../pages/search/index.scss';
-@import '../../pages/shipping/index.scss';
-@import '../../pages/terms/index.scss';
+@import '../../router/views/Home/index.scss';
+@import '../../router/views/account/index.scss';
+@import '../../router/views/cart/index.scss';
+@import '../../router/views/collection/index.scss';
+@import '../../router/views/privacy/index.scss';
+@import '../../router/views/product/index.scss';
+@import '../../router/views/search/index.scss';
+@import '../../router/views/shipping/index.scss';
+@import '../../router/views/terms/index.scss';

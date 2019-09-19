@@ -54,7 +54,7 @@
 </template>
 
 <script>
-import { GET_PRODUCTS } from "../../queries/productQueries";
+import { GET_PRODUCTS } from "@/queries/productQueries";
 
 export default {
     name: "HomeProducts",
