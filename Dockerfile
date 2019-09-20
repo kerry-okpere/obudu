@@ -3,22 +3,17 @@ FROM node:lts-alpine as build-stage
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
-COPY . .
+COPY ./ /app/
 # RUN npm run build
 # RUN npm run generate
 
 # ENTRYPOINT ["npm", "run build"]
-CMD ["npm", "start" ]
+# CMD ["npm", "start" ]
 
 # production stage
-# FROM nginx:stable as production-stage
-# COPY --from=build-stage /app/dist /usr/share/nginx/html
-# COPY --from=build-stage /app/dist /var/www
-
-# RUN chmod 755 /var/www/
-
-# RUN rm /etc/nginx/conf.d/default.conf
-# COPY ./nginx.conf /etc/nginx/conf.d/default.conf.template
+FROM nginx:alpine
+COPY --from=build-stage /app/dist/ /var/www
+COPY --from=build-stage /nginx.conf /etc/nginx/conf.d/default.conf
 
 # ENV uri \$uri
 
