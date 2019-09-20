@@ -12,7 +12,7 @@ COPY ./ /app/
 
 # production stage
 FROM nginx:alpine
-COPY --from=build-stage /app/dist/ /var/www
+COPY --from=build-stage /app/dist/ /usr/share/nginx/html
 COPY --from=build-stage /nginx.conf /etc/nginx/conf.d/default.conf
 EXPOSE 8080 
 # ENV uri \$uri
