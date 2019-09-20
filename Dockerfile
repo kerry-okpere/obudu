@@ -13,7 +13,7 @@ RUN npm run build
 # production stage
 FROM nginx:alpine
 COPY --from=build-stage /app/dist/ /usr/share/nginx/html
-COPY --from=build-stage /nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build-stage ./nginx.conf /etc/nginx/conf.d/default.conf
 # ENV uri \$uri
 
 #Default config
