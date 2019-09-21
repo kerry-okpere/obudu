@@ -7,6 +7,7 @@ import { setContext } from "apollo-link-context";
 Vue.use(VueApollo);
 
 const baseUrl = process.env.VUE_APP_GRAPHQL_URL;
+
 const uploadClientLink = apolloUploadClient.createUploadLink({
   uri: baseUrl
 });
@@ -26,6 +27,7 @@ const apolloClient = new ApolloClient({
   cache: new InMemoryCache(),
   connectToDevTools: true
 });
+
 
 
 export default apolloClient;

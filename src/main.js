@@ -7,11 +7,11 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
-import Default from "@/router/layouts/default.vue";
+import Default from "./router/layouts/default.vue";
 
-import router from '@/router'
+import router from './router'
 
-import store from '@/store'
+import store from './store'
 import VueApollo from "vue-apollo";
 import apolloClient from "./vue-apollo";
 

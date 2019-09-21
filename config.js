@@ -1,10 +1,9 @@
-
-export default {
-    admin: {
-        email: process.env.ADMIN_EMAIL,
-        password: process.env.ADMIN_PASSWORD
-    },
-    graphql: {
-        url: process.env.GRAPHQL_URL
-    }
+window._env_ =  {
+    "VUE_APP_GRAPHQL_URL":"default"
 }
+
+// const config  =  {
+//     "VUE_APP_GRAPHQL_URL":"default"
+// }
+
+// export default config;
