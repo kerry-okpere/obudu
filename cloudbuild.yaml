@@ -7,6 +7,6 @@ steps:
     # - --cache-ttl=6h
   # Deploy container image to Cloud Run
 - name: "gcr.io/cloud-builders/gcloud"
-  args: ['beta', 'run', 'deploy', 'obudu', '--image', 'gcr.io/mercuriemart/obudu:dev', '--region', 'us-central1', '--platform', 'managed']
+  args: ['beta', 'run', 'deploy', 'obudu', '--image', 'gcr.io/mercuriemart/obudu:vue', '--region', 'us-central1', '--platform', 'managed']
 options:
   machineType: 'N1_HIGHCPU_8'
