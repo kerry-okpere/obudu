@@ -89,15 +89,21 @@
         formError: false,
         storeUrl: '',
         price: false,
-        noPrice: true
+        noPrice: true,
+        ProdId: window.ProductId
       }
     },
 
-  async created () {
+  async created() {
+      let ProdId = await localStorage.getItem("ProductId");
+      if(ProdId !== null){
+        let storeUrlsArrays = this.$store.getters.getStoreUrls;
+        
+      }
       this.loading = true,
       this.$store.dispatch('fetchSingleProducts', {
         apollo: this.$apollo,
-        product_id: this.$route.params.id
+        product_id: ProdId
       })
       .then(async () => {
         this.loading = false;

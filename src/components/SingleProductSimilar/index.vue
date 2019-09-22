@@ -8,15 +8,15 @@
                     <div v-for="similarProduct in similarProducts" :key="similarProduct.node.id"   class="col-xl-3 col-md-6 col-lg-4 col-sm-6 col-6">
                         <div v-if="similarProduct.node" class="product-wrap-2 mb-25 text-center hvr-grow-shadow">
                             <div class="product-img">
-                                <nuxt-link :to="`/product/${similarProduct.node.id}`">
+                                <router-link :to="`/product/${similarProduct.node.id}`">
                                     <img class="default-img" :src="`${similarProduct.node.images[0].url}`" alt="">
                                     <img v-if="similarProduct.node.images[1]" class="hover-img" :src="`${similarProduct.node.images[1].url}`" alt="">
                                     <img v-else class="hover-img" :src="`${similarProduct.node.images[0].url}`" alt="">                            
-                                </nuxt-link>                        
+                                </router-link>                        
                                 <div class="product-action-2">
-                                    <nuxt-link :to="`/product/${similarProduct.node.id}`">
+                                    <router-link :to="`/product/${similarProduct.node.id}`">
                                         <ion-icon name="ios-cart"></ion-icon><h4>Add to Cart</h4>
-                                    </nuxt-link>                        
+                                    </router-link>                        
                                     <!-- <a title="Quick View" href="#" data-toggle="modal" data-target="#exampleModal"><ion-icon name="ios-eye"></ion-icon>
                                     <h4>Quick View</h4></a> -->
                                 </div>
@@ -25,9 +25,9 @@
                             <div class="product-content-2">
                                 <div class="title-price-wrap-2">
                                     <h3>
-                                        <nuxt-link :to="`/product/${similarProduct.node.id}`">
+                                        <router-link :to="`/product/${similarProduct.node.id}`">
                                             {{similarProduct.node.name}}
-                                        </nuxt-link>
+                                        </router-link>
                                     </h3>
                                     <p class="home-product_cat"><a href="#">{{similarProduct.node.category.name}}</a></p>
                                     <div class="price-2">

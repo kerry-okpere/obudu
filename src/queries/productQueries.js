@@ -50,6 +50,10 @@ query {
             currency
             localized
           }
+          url
+          thumbnail{
+            url
+          }
           category{
             name,
             id
@@ -106,5 +110,18 @@ query{
       }
     }
   }
+}
+`;
+
+export const GET_PRODUCTS_URL = gql`
+query {
+    products(first: 100){
+      edges {
+        node {
+          url
+          id
+        }
+      }
+    }
 }
 `;

@@ -10,16 +10,16 @@
                     
                     <div class="product-wrap-2 mb-25 text-center hvr-grow-shadow">
                         
-                        <div class="product-img">
-                            <nuxt-link :to="`/product/${homeProduct.node.id}`">
-                                <img class="default-img" :src="`${homeProduct.node.images[0].url}`" alt="">
-                                <img v-if="homeProduct.node.images[1]" class="hover-img" :src="`${homeProduct.node.images[1].url}`" alt="">
-                                <img v-else class="hover-img" :src="`${homeProduct.node.images[0].url}`" alt="">                            
-                            </nuxt-link>                        
+                        <div class="product-img" @click="getId(`${homeProduct.node.id}`)">
+                            <router-link :to="`/product/${getUrl(homeProduct.node.url)}`">
+                                <img class="default-img" :src="`${homeProduct.node.thumbnail.url}`" alt="">
+                                <img v-if="homeProduct.node.thumbnail.url" class="hover-img" :src="`${homeProduct.node.thumbnail.url}`" alt="">
+                                <img v-else class="hover-img" :src="`${homeProduct.node.thumbnail.url}`" alt="">                            
+                            </router-link>                        
                             <div class="product-action-2">
-                                <nuxt-link :to="`/product/${homeProduct.node.id}`">
+                                <router-link :to="`/product/${getUrl(homeProduct.node.url)}`">
                                     <ion-icon name="ios-cart"></ion-icon><h4>Add to Cart</h4>
-                                </nuxt-link>                        
+                                </router-link>                        
                                 <!-- <a title="Quick View" href="#" data-toggle="modal" data-target="#exampleModal"><ion-icon name="ios-eye"></ion-icon>
                                 <h4>Quick View</h4></a> -->
                             </div>
@@ -29,9 +29,9 @@
                             
                             <div class="title-price-wrap-2">
                                 <h3>
-                                    <nuxt-link :to="`/product/${homeProduct.node.id}`">
+                                    <router-link :to="`/product/${getUrl(homeProduct.node.url)}`">
                                         {{homeProduct.node.name}}
-                                    </nuxt-link>
+                                    </router-link>
                                 </h3>
                                 <p class="home-product_cat"><a href="#">{{homeProduct.node.category.name}}</a></p>
                                 <div class="price-2">
@@ -85,7 +85,25 @@ export default {
         });
 
         return response.data.products.edges;
+    },
+
+    getId(data){
+        // const {setItem, getItem} = localStorage;
+        if(localStorage.getItem("ProductId") !== null){
+            localStorage.setItem("ProductId", JSON.stringify(data))
+        }else{
+            localStorage.setItem("ProductId", JSON.stringify(data));
+        }
+        // window.ProductId = data;
+    },
+
+    getUrl(data){
+        let newUrl = data.split("/");
+        let url = newUrl[3];
+        return url;
     }
+
+    
 }
 
 };

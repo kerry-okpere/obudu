@@ -4,7 +4,7 @@ import Vuex from 'vuex';
 import { CREATE_TOKEN_MUTATION } from '../queries/authTokenQueries';
 import { 
   GET_PRODUCTS, GET_SIMILAR_PRODUCTS,
-  GET_STORE_CURRENCY
+  GET_STORE_CURRENCY, GET_PRODUCTS_URL
 } from "../queries/productQueries";
 
 import {productDetailsQuery} from "../queries/productQueries_v2";
@@ -40,7 +40,8 @@ const store = new Vuex.Store({
     cart:[],
     currency: "",
     checkoutCreate: {},
-    adminToken: {}
+    adminToken: {},
+    storeUrls: []
   },
 
 
@@ -108,6 +109,10 @@ const store = new Vuex.Store({
 
     getAdminAuthToken(state) {
       return state.adminToken;
+    },
+
+    getStoreUrls(state){
+      return state.storeUrls;
     }
     
   },
@@ -234,6 +239,18 @@ const store = new Vuex.Store({
         reject("Unable to update admin auth token mutation");
       })
 
+    },
+
+    async fetchStoreUrls(context, {apollo}){
+      return new Promise(async (resolve, reject) => {
+        let response = await apollo.query({
+            query: GET_PRODUCTS_URL
+        });
+        let storeUrls = response.data.product.edges;
+        context.commit("storeUrls", storeUrls);
+        resolve();
+        reject("Unable to fetch store urls");
+      })
     }
 
   },
@@ -318,6 +335,10 @@ const store = new Vuex.Store({
 
     adminAuthToken(state, tokenObj){
       state.adminToken = tokenObj.tokenCreate.token;
+    },
+
+    storeUrls(state, storeUrlObj){
+      state.storeUrls.push(storeUrlObj); 
     }
 
   }

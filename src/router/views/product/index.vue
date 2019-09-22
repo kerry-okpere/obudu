@@ -9,10 +9,10 @@
 
 <script>
 
-import SingleProductBreadcrumb from '../../components/SingleProductBreadcrumb/index';
-import SingleProductMain from '../../components/SingleProductMain/index';
-import SectionTitle from '../../components/SectionTitle/index';
-import SingleProductSimilar from '../../components/SingleProductSimilar/index';
+import SingleProductBreadcrumb from '@/components/SingleProductBreadcrumb/index';
+import SingleProductMain from '@/components/SingleProductMain/index';
+import SectionTitle from '@/components/SectionTitle/index';
+import SingleProductSimilar from '@/components/SingleProductSimilar/index';
 
 export default {
     components: {
