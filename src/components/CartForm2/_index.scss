@@ -1,20 +1,87 @@
-table {
-    background: transparent;
-    border: none;
-    width: 100%;
+@import '../../assets/styles/variables';
 
-    thead {
-        border-bottom: 2px solid rgba(0,0,0,0.04);
-        padding-bottom: 20px;
+@media (min-width: 320px) and (max-width: 768px) {
+    .cart {
+        table {
+            thead {
+                tr {
+                    th {
+                        padding-right: 20px!important;
 
-        tr {
-            margin-bottom: 20px;
-        }
-        th {
-            font-size: 14px;
-            font-weight: 500;
-            line-height: 1.2;
-            text-transform: initial;
+                    }
+                }
+            }
+
+            tbody {
+                .product-name {
+                    padding-right: 20px;
+                }
+                .product-quantity {
+                    text-align: right;
+                }
+                .product-subtotal {
+                    padding: 0 20px 0 50px ;
+                }
+            }
         }
     }
+
+    th.h-total {
+        text-align: right;
+    }
+
+    .input-group {
+        width: 130%!important;
+    }
+}
+
+@media (min-width: 960px) {
+    .cart {
+
+    }
+}
+
+.cart {
+    margin: 50px 0;
+
+    table {
+        background: transparent;
+        border: none;
+        width: 100%;
+
+        thead {
+            border-bottom: 2px solid rgba(0,0,0,0.04);
+            padding-bottom: 20px;
+
+            tr {
+                margin-bottom: 20px;
+                
+                th {
+                    font-size: 12px;
+                    font-weight: 600;
+                    line-height: 1.2;
+                    text-transform: uppercase;
+                    padding: 0 0 20px;
+
+                    .pull-right {
+                        text-align: right;
+                    }
+                }
+            }
+        }
+
+        tbody {
+            .product-name {
+                font-weight: 600;
+            }
+            .product-quantity {
+                text-align: right;
+                max-width: 40px;
+            }
+        }
+    }
+}
+
+.input-group {
+    width: 80%;
 }
