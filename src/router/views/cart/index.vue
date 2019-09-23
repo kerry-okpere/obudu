@@ -1,19 +1,37 @@
 <template>
     <div>
-      <SectionHero heroHeading="Cart" />
-      <CartForm />  
+      <div class="breadcrumbs">
+      <h3>Cart</h3>
+      <b-breadcrumb :items="items"></b-breadcrumb>
+    </div>
+    <div class="container">
+        <CartForm2 />
+    </div>
     </div>
 </template>
 
 <script>
 
-import SectionHero from '@/components/SectionHero/index';
-import CartForm from '@/components/CartForm/index';
+import CartForm2 from '@/components/CartForm2/index';
 
 export default {
     components: {
-        SectionHero,
-        CartForm
+        CartForm2
+    },
+
+    data() {
+      return {
+        items: [
+          {
+            text: 'Home',
+            href: '/'
+          },
+          {
+            text: 'Cart',
+            active: true
+          }
+        ]
+      }
     }
 }
 </script>

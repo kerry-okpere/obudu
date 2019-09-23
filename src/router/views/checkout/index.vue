@@ -28,7 +28,7 @@ export default {
           },
           {
             text: 'Cart',
-            href: '/cart'
+            href: '/#/cart'
           },
           {
             text: 'Checkout',
