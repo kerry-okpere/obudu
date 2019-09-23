@@ -1,6 +1,5 @@
 <template>
     <div>
-        <!-- <SingleProductBreadcrumb /> -->
         <SingleProductMain />
         <SectionTitle sectionTitle="Similar Products"></SectionTitle>
         <SingleProductSimilar />
@@ -9,14 +8,12 @@
 
 <script>
 
-import SingleProductBreadcrumb from '../../components/SingleProductBreadcrumb/index';
 import SingleProductMain from '../../components/SingleProductMain/index';
 import SectionTitle from '../../components/SectionTitle/index';
 import SingleProductSimilar from '../../components/SingleProductSimilar/index';
 
 export default {
     components: {
-        SingleProductBreadcrumb,
         SingleProductMain,
         SectionTitle,
         SingleProductSimilar
