@@ -31,7 +31,7 @@ Vue.component('defaultLayout', Default);
 
 
 
-
+ 
 Vue.config.productionTip = false
 
 new Vue({
