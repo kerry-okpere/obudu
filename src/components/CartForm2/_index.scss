@@ -7,7 +7,7 @@
                 tr {
                     th {
                         padding-right: 20px!important;
-
+                        font-size: 10px;
                     }
                 }
             }
@@ -15,12 +15,19 @@
             tbody {
                 .product-name {
                     padding-right: 20px;
+                    font-size: 12px;
+                    
                 }
                 .product-quantity {
                     text-align: right;
                 }
+                .product-price {
+                    font-size: 12px;
+
+                }
                 .product-subtotal {
                     padding: 0 20px 0 50px ;
+                    font-size: 12px;
                 }
             }
         }
@@ -71,8 +78,14 @@
         }
 
         tbody {
+            .product-thumbnail {
+                padding-top: 20px;
+                width: 12px;
+            }
+
             .product-name {
                 font-weight: 600;
+                text-align: left;
             }
             .product-quantity {
                 text-align: right;
