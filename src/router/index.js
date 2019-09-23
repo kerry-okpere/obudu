@@ -8,7 +8,9 @@ import Product from "./views/product";
 import Cart from "./views/cart";
 import Checkout from "./views/checkout";
 
-export default new Router({  
+export default new Router({
+  mode: 'history',
+
   routes: [
     {
       path: "/",

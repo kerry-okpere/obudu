@@ -90,7 +90,6 @@
         storeUrl: '',
         price: false,
         noPrice: true,
-        ProdId: window.ProductId
       }
     },
 
