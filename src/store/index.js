@@ -1,5 +1,15 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import VuexPersistence from 'vuex-persist'
+
+const cartPersist = new VuexPersistence({
+    storage: window.localStorage,
+    reducer: (state) => ({ 
+        cart: state.cart,
+        currency: state.currency
+    }),
+});
+
 
 import { CREATE_TOKEN_MUTATION } from '../queries/authTokenQueries';
 import { 
@@ -218,7 +228,7 @@ const store = new Vuex.Store({
         });
 
         if(response){
-          commmit('checkoutPhase', response.data);
+          commit('checkoutPhase', response.data);
           resolve();  
         } else {
           reject("Unable to update checkoutInput mutation")
@@ -341,7 +351,10 @@ const store = new Vuex.Store({
       state.storeUrls.push(storeUrlObj); 
     }
 
-  }
+  },
+
+  plugins: [cartPersist.plugin]
+
 
 });
 
