@@ -95,15 +95,24 @@
     },
 
   async created() {
-      let ProdId = await localStorage.getItem("ProductId");
-      if(ProdId !== null){
-        let storeUrlsArrays = this.$store.getters.getStoreUrls;
-        
-      }
+      //get url slug
+      let slug = this.$route.params.slug;
+
+      //fetch store urls
+      let storeUrlsArrays = await this.$store.dispatch("fetchStoreUrls", {
+        apollo: this.$apollo
+      });
+      
+      // traverse store urls and find matching slug
+      let prodNode = await storeUrlsArrays.find((item) => {
+        let itemUrlStr = item.node.url.split("/");
+        if (itemUrlStr[3] == slug) return item;
+      });
+
       this.loading = true,
       this.$store.dispatch('fetchSingleProducts', {
         apollo: this.$apollo,
-        product_id: ProdId
+        product_id: prodNode.node.id
       })
       .then(async () => {
         this.loading = false;

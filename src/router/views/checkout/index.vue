@@ -12,7 +12,7 @@
 
 <script>
 
-import CheckoutForm2 from '../../components/CheckoutForm2/index';
+import CheckoutForm2 from '@/components/CheckoutForm2/index';
 
 export default {
     components: {

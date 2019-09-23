@@ -68,8 +68,8 @@
                                 <h4>Total <span class="shop-total">{{getCurrency}} {{getCartTotalPrice}}</span></h4>
                             </div>
                             <div class="shopping-cart-btn text-center">
-                                <a class="default-btn hvr-grow" href="/cart/">View Cart</a>
-                                <a class="default-btn hvr-grow" href="/checkout/">Checkout</a>
+                                <router-link to="/cart" class="default-btn hvr-grow" >View Cart</router-link>
+                                <router-link to="/checkout" class="default-btn hvr-grow" >Checkout</router-link>
                             </div>
                         </div>
             </div>

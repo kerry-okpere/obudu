@@ -246,9 +246,9 @@ const store = new Vuex.Store({
         let response = await apollo.query({
             query: GET_PRODUCTS_URL
         });
-        let storeUrls = response.data.product.edges;
-        context.commit("storeUrls", storeUrls);
-        resolve();
+        let storeUrls = response.data.products.edges;
+        // context.commit("storeUrls", storeUrls);
+        resolve(storeUrls);
         reject("Unable to fetch store urls");
       })
     }
