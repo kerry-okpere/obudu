@@ -18,7 +18,7 @@
             <tbody>
               <tr v-for="getCartItem in getCartItems" :key="`${getCartItem.prodId}`">
                 <td class="product-thumbnail">
-                  <a href="#"><img :src="`${getCartItem.imgUrl}`" alt=""></a>
+                  <a href="#"><img :src="`${getCartItem.imgUrl}`" alt="" width="100"></a>
                 </td>
                 <td class="product-name"><a href="#">{{getCartItem.prodName}} - {{getCartItem.name}}</a></td>
                 <td class="product-price">{{getCurrency}} {{getCartItem.price}}</td>
@@ -37,7 +37,7 @@
                     </b-input-group>
                   </span>
                 </td>
-                <td class="product-subtotal" ref="totalPrice"v-on: :value="`${getCartItem.quantity * getCartItem.price}`">{{getCurrency}} {{ getCartItem.quantity * getCartItem.price }}>$69</td>
+                <td class="product-subtotal" ref="totalPrice"v-on: :value="`${getCartItem.quantity * getCartItem.price}`">{{getCurrency}} {{ getCartItem.quantity * getCartItem.price }}</td>
                 <td class="product-remove">
                   <ion-icon name="trash"></ion-icon>
                 </td>
@@ -61,7 +61,7 @@
 export default {
   data() {
     return {
-      num: 0
+      num: 1
     }
   },
   computed: {
