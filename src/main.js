@@ -7,6 +7,10 @@ import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
+var SocialSharing = require('vue-social-sharing');
+ 
+Vue.use(SocialSharing);
+
 import Default from "./router/layouts/default.vue";
 
 import router from './router'
