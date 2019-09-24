@@ -33,7 +33,7 @@
               </b-form-group>
 
               <b-form-group id="phone" label="Phone" label-for="phone">
-                <b-form-input type="tel" id="phone" v-model="form.phone" required placeholder="Your phone number">
+                <b-form-input type="tel" min="14" max="14" id="phone" v-model="form.phone" required placeholder="Your phone number">
                 </b-form-input>
               </b-form-group>
 
@@ -51,7 +51,7 @@
               </b-form-group>
 
               <b-form-group id="address" label="Address" label-for="address">
-                <b-form-input type="text" id="address" v-model="form.street" required placeholder="Your street address">
+                <b-form-input type="text" id="address" v-model="form.address" required placeholder="Your street address">
                 </b-form-input>
               </b-form-group>
 
@@ -66,34 +66,27 @@
               <!-- Shipping Details Form -->
 
               <!-- <b-form v-if="shippingVisible" validated="true">
-
               <b-form-group id="first-name" label="First Name" label-for="first-name">
                 <b-form-input type="text" id="first-name" v-model="form.firstName" required placeholder="Your first name">
                 </b-form-input>
               </b-form-group>
-
               <b-form-group id="last-name" label="Last Name" label-for="last-name">
                 <b-form-input type="text" id="last-name" v-model="form.lastName" required placeholder="Your last name">
                 </b-form-input>
               </b-form-group>
-
               <b-form-group id="email" label="Email" label-for="email">
                 <b-form-input type="email" id="email" v-model="form.email" required placeholder="Your email address">
                 </b-form-input>
               </b-form-group>
-
               <b-form-group id="phone" label="Phone" label-for="phone">
                 <b-form-input type="tel" id="phone" v-model="form.phone" required placeholder="Your phone number"></b-form-input>
               </b-form-group>
-
               <b-form-group id="country" label="Country" label-for="country">
                 <b-form-select v-model="selected" :options="countryOptions" size="sm"></b-form-select>
               </b-form-group>
-
               <b-form-group id="state" label="State" label-for="state">
                 <b-form-select v-model="selected" :options="stateOptions" size="sm"></b-form-select>
               </b-form-group>
-
               <b-form-group id="address" label="Address" label-for="address">
                 <b-form-input type="text" id="address" v-model="form.street" required placeholder="Your street address">
                 </b-form-input>
@@ -165,8 +158,12 @@
                   </b-form-radio-group>
                 </b-form-group>
               </div> -->
-
-                <b-button size="lg" variant="primary" type="submit">Proceed to payment</b-button>
+                <div v-if="cart">
+                  <b-button size="lg" ref="paymentBtn" variant="primary" type="submit">Proceed to payment</b-button>
+                </div>
+                <div v-else>
+                  <b-button size="lg" ref="paymentBtn" variant="primary" type="submit" disabled>Proceed to payment</b-button>
+                </div>
 
               </div>
             </div>
@@ -186,6 +183,7 @@
     data() {
       return {
         show: true,
+        cart: false,
         form: {
           firstName: null,
           lastName: null,
@@ -354,8 +352,7 @@
             value: 'zamfara',
             text: 'Zamfara'
           }
-
-        ]
+        ],      
       }
     },
     computed: {
@@ -367,21 +364,88 @@
       },
       getCurrency(){
           return this.$store.getters.getStoreCurrency
+      },
+      getCheckoutId(){
+        return this.$store.getters.getCheckoutId;
+      },
+      getEnv(){
+        return this.$store.getters.getEnvVariables;
       }
     },
+    async created(){
+      
+      if(this.getCartItems.length > 0){
+        this.cart = true;
+      }
 
+    },
     methods: {
       toggleShipping(checked) {
         this.shippingVisible = true
       },
-
       createCheckout(chkInput){
         return  this.$store.dispatch("createCart", {
           apollo: this.$apollo,
           checkoutInput: chkInput
         })
       },
-
+      updateCheckoutShippingOptions(chkInput, shipping_id){
+        return this.$store.dispatch("updateShipping", {
+          apollo: this.$apollo,
+          checkoutInput: chkInput,
+          shippingId: shipping_id
+        })
+      },
+      updateCheckoutBillingAddress(checkoutId){
+        let billingAddress = {
+          city: this.stateOptions[0].value,
+          country: "NG",
+          countryArea: this.stateOptions[0].value,
+          firstName: this.form.firstName,
+          lastName: this.form.lastName,
+          postalCode: this.form.postal,
+          streetAddress1: this.form.address,
+        }
+        return this.$store.dispatch("updateBilling", {
+          apollo: this.$apollo,
+          billingAddress,
+          checkoutId
+        })
+      },
+      getPaymentToken(gateway_name){
+        return this.$store.dispatch("getPaymentToken", {
+          apollo: this.$apollo,
+          gateway: gateway_name
+        })
+      },
+      createPayment(checkoutId, amount, gateway){
+        let billingAddress = {
+          city: this.stateOptions[0].value,
+          country: "NG",
+          countryArea: this.stateOptions[0].value,
+          firstName: this.form.firstName,
+          lastName: this.form.lastName,
+          postalCode: this.form.postal,
+          streetAddress1: this.form.address,
+        }
+        let input = {
+          amount,
+          billingAddress,
+          gateway,
+          token: "auth"
+        }
+        return this.$store.dispatch("createPayment", {
+          apollo: this.$apollo,
+          checkoutId,
+          input
+        })
+      },
+      completeCheckout(checkout_id){
+        return this.$store.dispatch("completePayment", {
+          apollo: this.$apollo,
+          checkoutInput: checkout_id
+        });
+      },
       saveCheckout() {
         let newLines = this.getCartItems
         let newCart = [];
@@ -391,40 +455,80 @@
             quantity: newLines[i].quantity,
           }
         }
-
         let checkoutInput = {
           email: this.form.email,
           shippingAddress:{
             city: this.stateOptions[0].value,
             companyName: this.form.companyName,
-            country: this.countryOptions[0].value,
+            country: "NG",
             countryArea: this.stateOptions[0].value,
             firstName: this.form.firstName,
             lastName: this.form.lastName,
             phone: this.form.phone,
             postalCode: this.form.postal,
-            streetAddress: this.address
+            streetAddress1: this.form.address
           },
           lines: newCart
         };
         return checkoutInput;
       },
-
+      // The power house, all the shit happens in this function and other functions. Psych!! 
       async checkout(evt) {
         evt.preventDefault();
-        let check = this.saveCheckout();
-        let res = await this.createCheckout(check);
-        console.log(res);
+        let checkoutInpt = this.saveCheckout();
+        let res = await this.createCheckout(checkoutInpt);
+        // console.log(res);
+        let err = res.checkoutCreate.errors;
+        let paystack_key = await this.getEnv.paystack.key;
 
+        if(err.length >= 1){
+          //TODO refactor error display
+          let errMsg = err[0].message
+          alert(errMsg);
+        } else{
+          let checkout_id = res.checkoutCreate.checkout.id;
+          let shipping_mthd_id = res.checkoutCreate.checkout.availableShippingMethods[0].id;
+          let updatedShippingOptions = await this.updateCheckoutShippingOptions(checkout_id, shipping_mthd_id);
+          let totalPrice = updatedShippingOptions.checkoutShippingMethodUpdate.checkout.totalPrice.gross.amount
+          await this.updateCheckoutBillingAddress(checkout_id);
+          let gateway = "DUMMY";
+          // let gateway = "PAYSTACK";
+          let paymentRes = await this.getPaymentToken(gateway);
+          let amtInKobo = totalPrice * 100;  //Convert Naira to Kobo
+          await this.createPayment(checkout_id, totalPrice, gateway).catch( (error) => console.log(error));
+          await this.makePayment(paystack_key, checkoutInpt.email, amtInKobo, paymentRes.paymentClientToken, checkout_id);
+        }
         alert("Redirecting to Paystack")
-      }
-
+      },
+      async makePayment(key, email, amount, ref, checkout_id){
+        let handler = PaystackPop.setup({
+          key: key, 
+          email: email,
+          amount: amount,
+          currency: "NGN",
+          ref: ref,
+          metadata: {
+          custom_fields: [
+            {}
+          ]
+          },
+          callback: function(response){
+            if(response){
+              this.completeCheckout(checkout_id).then( () => alert("payment successful"))
+            } else {
+              alert("payment failed");
+            }
+          },
+          onClose: function(){
+            alert('Do you want to close this window?');
+          }
+        });
+        handler.openIframe();       
+    }
     }
   }
-
 </script>
 
 <style lang="scss" scoped>
   @import "./_index.scss";
-
 </style>

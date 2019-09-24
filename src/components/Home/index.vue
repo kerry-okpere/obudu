@@ -44,11 +44,14 @@ export default {
       { apollo: this.$apollo }
     );
 
-    let isAuthenticated = await !!this.$apolloHelpers.getToken();
-    if (!isAuthenticated) {
-      let token = await this.$store.getters.getAdminAuthToken;
-      await this.$apolloHelpers.onLogin(token, undefined, { expires: 7 })
-    }
+    let token = await this.$store.getters.getAdminAuthToken;
+
+    token ? '' : localStorage.setItem('AdminAuthToken', JSON.stringify(token));    
+
+    // if (!isAuthenticated) {
+    //   let token = await this.$store.getters.getAdminAuthToken;
+    //   await this.$apolloHelpers.onLogin(token, undefined, { expires: 7 })
+    // }
 
     if(process.browser) {
       // let admin_token = localStorage.getItem('admin_token');

@@ -6,11 +6,11 @@
             </div>
         <div class="row">
                 <!-- <img v-if="loading" src="https://i.imgur.com/JfPpwOA.gif"> -->
-                <div v-for="homeProduct in homeProducts" :key="homeProduct.node.id" class="col-xl-3 col-md-6 col-lg-4 col-sm-6 col-6">
+                <div v-for="(homeProduct, index) in homeProducts" :key="index" class="col-xl-3 col-md-6 col-lg-4 col-sm-6 col-6">
                     
                     <div class="product-wrap-2 mb-25 text-center hvr-grow-shadow">
                         
-                        <div class="product-img" @click="getId(`${homeProduct.node.id}`)">
+                        <div class="product-img">
                             <router-link :to="`/product/${getUrl(homeProduct.node.url)}`">
                                 <img class="default-img" :src="`${homeProduct.node.thumbnail.url}`" alt="">
                                 <img v-if="homeProduct.node.thumbnail.url" class="hover-img" :src="`${homeProduct.node.thumbnail.url}`" alt="">
@@ -85,16 +85,6 @@ export default {
         });
 
         return response.data.products.edges;
-    },
-
-    getId(data){
-        // const {setItem, getItem} = localStorage;
-        if(localStorage.getItem("ProductId") !== null){
-            localStorage.setItem("ProductId", JSON.stringify(data))
-        }else{
-            localStorage.setItem("ProductId", JSON.stringify(data));
-        }
-        // window.ProductId = data;
     },
 
     getUrl(data){

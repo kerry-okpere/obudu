@@ -17,6 +17,14 @@ import {
   GET_STORE_CURRENCY, GET_PRODUCTS_URL
 } from "../queries/productQueries";
 
+import { 
+  getPaymentTokenQuery, completeCheckoutMutation, 
+  updateCheckoutShippingOptionsMutation, updateCheckoutBillingAddressMutation,
+  paymentMethodCreateMutation
+} from "../queries/coreCheckoutQueries";
+
+import config from '@/config';
+
 import {productDetailsQuery} from "../queries/productQueries_v2";
 
 
@@ -51,7 +59,8 @@ const store = new Vuex.Store({
     currency: "",
     checkoutCreate: {},
     adminToken: {},
-    storeUrls: []
+    storeUrls: [],
+    checkoutId: {}
   },
 
 
@@ -119,6 +128,14 @@ const store = new Vuex.Store({
 
     getAdminAuthToken(state) {
       return state.adminToken;
+    },
+
+    getCheckoutId(state) {
+      return state.checkoutId;
+    },
+    
+    getEnvVariables(state){
+      return state.enVariables;
     },
 
     getStoreUrls(state){
@@ -226,29 +243,98 @@ const store = new Vuex.Store({
           mutation: createCheckoutMutation,
           variables: { "checkoutInput": checkoutInput }
         });
-
-        if(response){
+        // console.log(response);
+        if(response.data.checkoutCreate.checkout){
+          const {checkout} = response.data.checkoutCreate; 
           commit('checkoutPhase', response.data);
-          resolve();  
+          commit('setCheckoutId', checkout.id);
+          resolve(response.data);  
         } else {
           reject("Unable to update checkoutInput mutation")
         }
-
+  
       })
     },
-
+  
     async createAdminAuthMutation({state, commit}, {apollo, checkoutInput}){
       return new Promise ( async (resolve, reject) => {
         let response = await  apollo.mutate({
           mutation: CREATE_TOKEN_MUTATION,
-          variables: { "email": process.env.ADMIN_EMAIL ? process.env.ADMIN_EMAIL : "admin@mercurie.ng" , "password": process.env.ADMIN_PASSWORD ? process.env.ADMIN_EMAIL : "admin" }
+          variables: { "email": config.admin.email  , "password": config.admin.password }
         });  
-
+  
         commit('adminAuthToken', response.data);
         resolve();
         reject("Unable to update admin auth token mutation");
       })
-
+  
+    },
+  
+    async getPaymentToken({state, commit}, {apollo, gateway}) {
+      return new Promise ( async (resolve, reject) => {
+        let response = await apollo.query({
+          query: getPaymentTokenQuery,
+          variables: {"gateway": gateway}
+        });
+  
+        resolve(response.data);
+        reject("Unable to get payment query")
+      })
+    },
+  
+    async createPayment({state, commit}, {apollo, checkoutId, input}) {
+      return new Promise ( async (resolve, reject) => {
+        let response = await apollo.mutate({
+          mutation: paymentMethodCreateMutation,
+          variables: {
+            checkoutId,
+            input
+          }
+        })
+  
+        resolve(response);
+        reject ("Unable to initialise payment")
+      })
+    },  
+  
+    async completePayment({state, commit}, {apollo, checkoutInput}){
+      return new Promise( async (resolve, reject) => {
+        let response = await apollo.mutate({
+          mutation: completeCheckoutMutation,
+          variables: {"checkoutId": checkoutInput}
+        });
+  
+        if(response.data.checkoutComplete.errors.length < 1){
+          commit("emptyCart");
+          resolve();
+        } else {
+          reject("Unable to complete payement query");
+        }
+      })
+    },
+  
+    async updateShipping({state, commit}, {apollo, checkoutInput, shippingId}){
+      return new Promise( async (resolve, reject) => {
+        let response = await apollo.mutate({
+          mutation: updateCheckoutShippingOptionsMutation,
+          variables: {"checkoutId": checkoutInput, "shippingMethodId": shippingId}
+        });
+  
+        resolve(response.data);
+        reject("unable to update shipping options")
+      })
+    },
+  
+    async updateBilling({state, commit}, {apollo, billingAddress, checkoutId}){
+      return new Promise( async (resolve, reject) => {
+        let response = await apollo.mutate({
+          mutation: updateCheckoutBillingAddressMutation,
+          variables: {billingAddress, checkoutId}
+        })
+  
+        resolve(response.data);
+        reject("unable to update billing options");
+      })
     },
 
     async fetchStoreUrls(context, {apollo}){
@@ -261,7 +347,7 @@ const store = new Vuex.Store({
         resolve(storeUrls);
         reject("Unable to fetch store urls");
       })
-    }
+  }
 
   },
 
@@ -349,6 +435,14 @@ const store = new Vuex.Store({
 
     storeUrls(state, storeUrlObj){
       state.storeUrls.push(storeUrlObj); 
+    },
+
+    setCheckoutId(state, checkoutId){
+      state.checkoutId = checkoutId;
+    },
+    
+    emptyCart(state){
+      state.cart = [];
     }
 
   },

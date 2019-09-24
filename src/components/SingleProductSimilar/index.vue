@@ -8,13 +8,13 @@
                     <div v-for="similarProduct in similarProducts" :key="similarProduct.node.id"   class="col-xl-3 col-md-6 col-lg-4 col-sm-6 col-6">
                         <div v-if="similarProduct.node" class="product-wrap-2 mb-25 text-center hvr-grow-shadow">
                             <div class="product-img">
-                                <router-link :to="`/product/${similarProduct.node.id}`">
+                                <router-link :to="`/product/${getUrl(similarProduct.node.url)}`">
                                     <img class="default-img" :src="`${similarProduct.node.images[0].url}`" alt="">
                                     <img v-if="similarProduct.node.images[1]" class="hover-img" :src="`${similarProduct.node.images[1].url}`" alt="">
                                     <img v-else class="hover-img" :src="`${similarProduct.node.images[0].url}`" alt="">                            
                                 </router-link>                        
                                 <div class="product-action-2">
-                                    <router-link :to="`/product/${similarProduct.node.id}`">
+                                    <router-link :to="`/product/${getUrl(similarProduct.node.url)}`">
                                         <ion-icon name="ios-cart"></ion-icon><h4>Add to Cart</h4>
                                     </router-link>                        
                                     <!-- <a title="Quick View" href="#" data-toggle="modal" data-target="#exampleModal"><ion-icon name="ios-eye"></ion-icon>
@@ -25,7 +25,7 @@
                             <div class="product-content-2">
                                 <div class="title-price-wrap-2">
                                     <h3>
-                                        <router-link :to="`/product/${similarProduct.node.id}`">
+                                        <router-link :to="`/product/${getUrl(similarProduct.node.url)}`">
                                             {{similarProduct.node.name}}
                                         </router-link>
                                     </h3>
@@ -110,6 +110,12 @@ export default {
             })
 
             return response;
+        },
+
+        getUrl(data){
+            let newUrl = data.split("/");
+            let url = newUrl[3];
+            return url;
         },
 
         async runDispatch(category) {

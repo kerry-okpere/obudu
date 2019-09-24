@@ -28,7 +28,7 @@
                 <template slot="first">
                   <option ref="cart" :value="null" disabled> Select {{singleProducts.variants[0].attributes[0].attribute.name}} </option>
                 </template>
-                <option v-for="variants in singleProducts.variants" :value="variants.name" :key="variants.id"> {{variants.name}} </option>
+                <option v-for="(variants, index) in singleProducts.variants" :value="variants.name" :key="index"> {{variants.name}} </option>
               </b-form-select>
             <div v-if="formError">
               <b-alert show variant="danger"><a href="#" class="alert-link">Please select a variant</a></b-alert>
