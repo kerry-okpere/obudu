@@ -372,6 +372,9 @@
         return this.$store.getters.getEnvVariables;
       }
     },
+    apollo: {
+      $client: 'resetHeaderClient',
+    },
     async created(){
       
       if(this.getCartItems.length > 0){
@@ -495,10 +498,20 @@
           // let gateway = "PAYSTACK";
           let paymentRes = await this.getPaymentToken(gateway);
           let amtInKobo = totalPrice * 100;  //Convert Naira to Kobo
+          alert("Redirecting to Paystack")
           await this.createPayment(checkout_id, totalPrice, gateway).catch( (error) => console.log(error));
           await this.makePayment(paystack_key, checkoutInpt.email, amtInKobo, paymentRes.paymentClientToken, checkout_id);
+          await this.completeCheckout(checkout_id);
         }
-        alert("Redirecting to Paystack")
+      },
+      async paystackCallback(response, checkout_id){
+        if(response){
+          console.log(response);
+          await this.completeCheckout(checkout_id);
+          alert("payment successful");
+        } else {
+          alert("payment failed");
+        }  
       },
       async makePayment(key, email, amount, ref, checkout_id){
         let handler = PaystackPop.setup({
@@ -512,11 +525,11 @@
             {}
           ]
           },
-          callback: function(response){
+          callback: function (response){
             if(response){
-              this.completeCheckout(checkout_id).then( () => alert("payment successful"))
-            } else {
-              alert("payment failed");
+              alert("payment successful")
+            }else {
+              alert("payment failed")
             }
           },
           onClose: function(){

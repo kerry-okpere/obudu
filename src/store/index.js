@@ -305,8 +305,8 @@ const store = new Vuex.Store({
         });
   
         if(response.data.checkoutComplete.errors.length < 1){
+          resolve(response.data);
           commit("emptyCart");
-          resolve();
         } else {
           reject("Unable to complete payement query");
         }
