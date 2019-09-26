@@ -131,7 +131,7 @@
                       <td class="right"><span class="product-price">{{getCurrency}} {{ grandTotal }}</span></td>
                     </tr>
 
-                    <!-- <tr class="cart-shipping">
+                    <tr class="cart-shipping">
                     <th>Shipping</th>
                     <td data-title="Shipping">
                       <b-form-group>
@@ -141,7 +141,7 @@
                         </b-form-radio-group>
                       </b-form-group>
                     </td>
-                  </tr> -->
+                  </tr>
 
                     <tr class="cart-total">
                       <th class="left">Total</th>

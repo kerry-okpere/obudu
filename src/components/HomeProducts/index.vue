@@ -1,9 +1,9 @@
 <template>
     <div class="product-area pt-50 pb-50">
         <div class="container">
-            <div v-if="loading" class="d-flex justify-content-center mb-3">
+            <!-- <div v-if="loading" class="d-flex justify-content-center mb-3">
                 <b-spinner type="grow" variant="primary" label="Loading..."></b-spinner>
-            </div>
+            </div> -->
         <div class="row">
                 <!-- <img v-if="loading" src="https://i.imgur.com/JfPpwOA.gif"> -->
                 <div v-for="(homeProduct, index) in homeProducts" :key="index" class="col-xl-3 col-md-6 col-lg-4 col-sm-6 col-6">

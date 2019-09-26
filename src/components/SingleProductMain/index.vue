@@ -2,10 +2,11 @@
   <div>
     <div class="shop-area pt-60 pb-20">
       <div class="container">
-            <div v-if="loading" class="d-flex justify-content-center mb-3">
+            <!-- <div v-if="loading" class="d-flex justify-content-center mb-3">
                 <b-spinner type="grow" variant="primary" label="Loading..."></b-spinner>
-            </div>
-        <div v-else-if="loadStatus" class="row">
+            </div> -->
+        <div class="row">
+        <!-- <div v-else-if="loadStatus" class="row"> -->
           <div class="col-lg-6 col-md-6">
             <div class="product-details-gallery">
               <div class="dec-img-wrap zoompro-span mb-30">
