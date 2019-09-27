@@ -29,7 +29,7 @@
                         <b-btn variant="outline-info" @click="num--">-</b-btn>
                       </b-input-group-prepend>
 
-                      <b-form-input type="number" min="0.00" v-model="num" @change="onQtyChange(`${getCartItem.prodId}`)" ref="itemQty" :value="`${getCartItem.quantity}`"></b-form-input>
+                      <b-form-input type="number" min="1" v-model="num" @change="onQtyChange(`${getCartItem.prodId}`)" ref="itemQty" :value="`${getCartItem.quantity}`"></b-form-input>
 
                       <b-input-group-append>
                         <b-btn variant="outline-secondary" @click="num++">+</b-btn>
@@ -50,7 +50,7 @@
       <div class="row">
         <div class="col-lg-8 col-md-8 col-sm-12"></div>
         <div class="col-lg-4 col-md-4 col-sm-12 c-button">
-          <b-button size="lg" variant="primary" type="submit">Proceed to checkout</b-button>
+          <b-button @click="checkout()" size="lg" variant="primary" type="submit">Proceed to checkout</b-button>
         </div>
       </div>
     </div>
@@ -80,6 +80,10 @@ export default {
         onQtyChange(event){
             this.$store.dispatch('incrementCartQuantity', event);
         },
+
+        checkout(){
+          this.$router.push("checkout");
+        }
         
     }
 };
