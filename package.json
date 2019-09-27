@@ -13,6 +13,7 @@
     "prod": "webpack --mode production"
   },
   "dependencies": {
+    "@chenfengyuan/vue-number-input": "^1.1.1",
     "aos": "^3.0.0-beta.6",
     "apollo-boost": "^0.4.4",
     "apollo-cache-inmemory": "^1.6.2",

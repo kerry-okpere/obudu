@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 import SocialSharing from 'vue-social-sharing';
+import VueNumberInput from '@chenfengyuan/vue-number-input';
 
 import Default from "./router/layouts/default.vue";
 
@@ -27,6 +28,7 @@ const apolloProvider = new VueApollo({
 
 Vue.use(BootstrapVue)
 Vue.use(SocialSharing);
+Vue.use(VueNumberInput);
 Vue.use(Vuex)
 Vue.use(Router)
 
