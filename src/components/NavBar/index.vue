@@ -48,7 +48,7 @@
                 <p class="menu-item">Cart</p>
                 <span v-if="getCartCount" class="count-style">{{getCartCount}}</span>
               </button>
-              <div v-if="cartVisible" class="shopping-cart-content cart-visible">
+              <div v-show="cartVisible" class="shopping-cart-content cart-visible">
                             <ul>
                                 <li v-for="(getCartItem, index) in getCartItems" :key="index" class="single-shopping-cart">
                                     <div class="shopping-cart-img">
