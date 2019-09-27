@@ -24,20 +24,10 @@
                 <td class="product-price">{{getCurrency}} {{getCartItem.price}}</td>
                 <td class="product-quantity">
                   <span class="quantity">
-                    <b-input-group>
-                      <b-input-group-prepend>
-                        <b-btn variant="outline-info" @click="num--">-</b-btn>
-                      </b-input-group-prepend>
-
-                      <b-form-input type="number" min="1" v-model="num" @change="onQtyChange(`${getCartItem.prodId}`)" ref="itemQty" :value="`${getCartItem.quantity}`"></b-form-input>
-
-                      <b-input-group-append>
-                        <b-btn variant="outline-secondary" @click="num++">+</b-btn>
-                      </b-input-group-append>
-                    </b-input-group>
+                    <number-input v-model="num.prodId" :min="1" :max="10" size="small" inline controls @change="onQtyChange(`${getCartItem.prodId}`)" ref="itemQty" :value="`${getCartItem.quantity}`"></number-input>
                   </span>
                 </td>
-                <td class="product-subtotal" ref="totalPrice"v-on: :value="`${getCartItem.quantity * getCartItem.price}`">{{getCurrency}} {{ getCartItem.quantity * getCartItem.price }}</td>
+                <td class="product-subtotal" ref="totalPrice" v-on: :value="`${getCartItem.quantity * getCartItem.price}`">{{getCurrency}} {{ getCartItem.quantity * getCartItem.price }}</td>
                 <td class="product-remove">
                   <ion-icon name="trash"></ion-icon>
                 </td>
