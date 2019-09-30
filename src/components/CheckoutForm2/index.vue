@@ -124,6 +124,14 @@
                         <span class="product-price">{{getCurrency}} {{cartItem.price * cartItem.quantity }}</span>
                       </td>
                     </tr>
+                    <tr class="cart-top">
+                      <th class="left">Delivery</th>
+                      <th class="right">Total</th>
+                    </tr>
+                    <tr v-if="grandTotal > 0" class="cart-item">
+                      <td class="product left">Post office</td>
+                      <td class="product right">NGN 80.1</td>
+                    </tr>
                   </tbody>
                   <tfoot>
                     <tr class="cart-subtotal">
@@ -131,7 +139,7 @@
                       <td class="right"><span class="product-price">{{getCurrency}} {{ grandTotal }}</span></td>
                     </tr>
 
-                    <tr class="cart-shipping">
+                    <!-- <tr class="cart-shipping">
                     <th>Shipping</th>
                     <td data-title="Shipping">
                       <b-form-group>
@@ -141,7 +149,7 @@
                         </b-form-radio-group>
                       </b-form-group>
                     </td>
-                  </tr>
+                  </tr> -->
 
                     <tr class="cart-total">
                       <th class="left">Total</th>
@@ -401,9 +409,9 @@
       },
       updateCheckoutBillingAddress(checkoutId){
         let billingAddress = {
-          city: this.stateOptions[0].value,
+          city: this.stateSelected,
           country: "NG",
-          countryArea: this.stateOptions[0].value,
+          countryArea: this.stateSelected,
           firstName: this.form.firstName,
           lastName: this.form.lastName,
           postalCode: this.form.postal,
@@ -423,9 +431,9 @@
       },
       createPayment(checkoutId, amount, gateway){
         let billingAddress = {
-          city: this.stateOptions[0].value,
+          city: this.stateSelected,
           country: "NG",
-          countryArea: this.stateOptions[0].value,
+          countryArea: this.stateSelected,
           firstName: this.form.firstName,
           lastName: this.form.lastName,
           postalCode: this.form.postal,
@@ -443,11 +451,17 @@
           input
         })
       },
-      completeCheckout(checkout_id){
-        return this.$store.dispatch("completePayment", {
-          apollo: this.$apollo,
-          checkoutInput: checkout_id
-        });
+      completeCheckout(checkout_id, response){
+        if(response.status !== "success"){
+          let error = response.message;
+          alert(error);
+        }else if (response.status === "success"){
+          this.clearInputfields();
+          return this.$store.dispatch("completePayment", {
+            apollo: this.$apollo,
+            checkoutInput: checkout_id
+          });
+        }
       },
       saveCheckout() {
         let newLines = this.getCartItems
@@ -461,10 +475,10 @@
         let checkoutInput = {
           email: this.form.email,
           shippingAddress:{
-            city: this.stateOptions[0].value,
+            city: this.stateSelected,
             companyName: this.form.companyName,
             country: "NG",
-            countryArea: this.stateOptions[0].value,
+            countryArea: this.stateSelected,
             firstName: this.form.firstName,
             lastName: this.form.lastName,
             phone: this.form.phone,
@@ -474,6 +488,12 @@
           lines: newCart
         };
         return checkoutInput;
+      },
+      clearInputfields(){
+        let self = this;
+        Object.keys(this.form).forEach(function(key,index) {
+            self.form[key] = '';
+        });
       },
       // The power house, all the shit happens in this function and other functions. Psych!! 
       async checkout(evt) {
@@ -493,27 +513,19 @@
           let shipping_mthd_id = res.checkoutCreate.checkout.availableShippingMethods[0].id;
           let updatedShippingOptions = await this.updateCheckoutShippingOptions(checkout_id, shipping_mthd_id);
           let totalPrice = updatedShippingOptions.checkoutShippingMethodUpdate.checkout.totalPrice.gross.amount
-          await this.updateCheckoutBillingAddress(checkout_id);
+          let checkoutAddr =  await this.updateCheckoutBillingAddress(checkout_id);
           let gateway = "DUMMY";
           // let gateway = "PAYSTACK";
           let paymentRes = await this.getPaymentToken(gateway);
           let amtInKobo = totalPrice * 100;  //Convert Naira to Kobo
           alert("Redirecting to Paystack")
           await this.createPayment(checkout_id, totalPrice, gateway).catch( (error) => console.log(error));
-          await this.makePayment(paystack_key, checkoutInpt.email, amtInKobo, paymentRes.paymentClientToken, checkout_id);
-          await this.completeCheckout(checkout_id);
+          await this.makePayment(paystack_key, checkoutInpt.email, amtInKobo, paymentRes.paymentClientToken, checkout_id, this.completeCheckout);
+          // console.log(resp);
+          // await this.completeCheckout(checkout_id, response);
         }
       },
-      async paystackCallback(response, checkout_id){
-        if(response){
-          console.log(response);
-          await this.completeCheckout(checkout_id);
-          alert("payment successful");
-        } else {
-          alert("payment failed");
-        }  
-      },
-      async makePayment(key, email, amount, ref, checkout_id){
+      async makePayment(key, email, amount, ref, checkout_id, callbackFunc){
         let handler = PaystackPop.setup({
           key: key, 
           email: email,
@@ -527,9 +539,9 @@
           },
           callback: function (response){
             if(response){
-              alert("payment successful")
+              callbackFunc(checkout_id, response);
             }else {
-              alert("payment failed")
+              alert("payment failed");
             }
           },
           onClose: function(){

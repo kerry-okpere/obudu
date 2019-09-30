@@ -96,7 +96,9 @@ const store = new Vuex.Store({
 
     getCartQuantity(state){
       let cart = state.cart;
-      return cart.length;
+      let totalCartCount = cart.reduce((totalCount, item) => totalCount += item.quantity, 0);
+      return totalCartCount;
+      // return cart.length;
     },
 
     getCartItems(state){
@@ -123,7 +125,9 @@ const store = new Vuex.Store({
     },
 
     cartTotalPrice(state){
-      return state.cart.reduce( (total, product) => total + product.price * product.quantity, 0);
+      let price = state.cart.reduce( (total, product) => total + product.price * product.quantity, 0);
+      // where 80.1 is default delivery option for post office
+      if(price == 0) return price; else return price += 80.1;
     },
 
     getAdminAuthToken(state) {
