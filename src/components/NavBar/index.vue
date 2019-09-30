@@ -68,8 +68,8 @@
                                 <h4>Total <span class="shop-total">{{getCurrency}} {{getCartTotalPrice}}</span></h4>
                             </div>
                             <div class="shopping-cart-btn text-center">
-                                <router-link to="/cart" class="default-btn hvr-grow" >View Cart</router-link>
-                                <router-link to="/checkout" class="default-btn hvr-grow" >Checkout</router-link>
+                                <a @click="viewCart()" class="default-btn hvr-grow">View Cart</a>
+                                <a @click="viewCheckout()" class="default-btn hvr-grow" >Checkout</a>
                             </div>
                         </div>
             </div>
@@ -120,6 +120,16 @@
       deleteCartItem(cartIndex){
         this.$store.dispatch('deleteCartItem', cartIndex);
           // console.log(cartIndex)
+      },
+
+      viewCart(){
+        this.cartVisible = false,
+        this.$router.push("cart");
+      },
+
+      viewCheckout() {
+        this.cartVisible = false,
+        this.$router.push("checkout");
       }
     }
 
