@@ -24,10 +24,10 @@
                 <td class="product-price">{{getCurrency}} {{getCartItem.price}}</td>
                 <td class="product-quantity">
                   <span class="quantity">
-                    <number-input v-model="num.prodId" :min="1" :max="10" size="small" inline controls @change="onQtyChange(`${getCartItem.prodId}`)" ref="itemQty" :value="`${getCartItem.quantity}`"></number-input>
+                    <number-input v-model="getCartItem.prodId" :min="1" :max="10" size="small" inline controls @change="onQtyChange(`${getCartItem.prodId}`, `${num}`)" ref="ddd" :value="`${getCartItem.quantity}`"></number-input>
                   </span>
                 </td>
-                <td class="product-subtotal" ref="totalPrice" v-on: :value="`${getCartItem.quantity * getCartItem.price}`">{{getCurrency}} {{ getCartItem.quantity * getCartItem.price }}</td>
+                <td class="product-subtotal" v-on: :value="`${getCartItem.quantity * getCartItem.price}`">{{getCurrency}} {{ getCartItem.quantity * getCartItem.price }}</td>
                 <td class="product-remove">
                   <ion-icon name="trash"></ion-icon>
                 </td>
@@ -68,6 +68,9 @@ export default {
 
     methods: {
         onQtyChange(event){
+            let check = this.$refs["ddd"];
+            console.log(check);
+            // console.log(this.num);
             this.$store.dispatch('incrementCartQuantity', event);
         },
 
