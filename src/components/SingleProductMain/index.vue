@@ -23,7 +23,7 @@
             <h3 v-if="price" id="price" ref="price" class="product-details-price">{{price}}</h3>
             <h3 v-else-if="noPrice" id="price" ref="price" class="product-details-price">{{singleProducts.price.localized}}</h3>
             <p class="product-details-description">
-              {{singleProducts.seoDescription}}
+              {{ singleProducts.descriptionJson }}
             </p>
               <b-form-select @change="onChange($event)" v-model="selected" :options="options">
                 <template slot="first">
@@ -51,7 +51,8 @@
                   <network network="twitter" class="hvr-grow">
                     <ion-icon name="logo-twitter"></ion-icon>
                   </network>
-                  <network network="whatsapp" class="hvr-grow">
+                  <network network="whatsapp" c
+                  lass="hvr-grow">
                     <ion-icon name="logo-whatsapp"></ion-icon>
                   </network>
                   </div>

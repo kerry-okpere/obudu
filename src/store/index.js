@@ -385,7 +385,9 @@ const store = new Vuex.Store({
     },
 
     setSingleProducts(state, singleProd){
+      let newDesc = JSON.parse(singleProd.descriptionJson);
       state.singleProduct = singleProd;
+      state.singleProduct.descriptionJson = newDesc.blocks[0].text;
     },
 
     setCategoryId(state, cat_id){
