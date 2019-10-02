@@ -224,13 +224,19 @@ const store = new Vuex.Store({
         } else{
           context.commit('incrementItemQuantity', cartItem);
         }
-        // context.commit('decrementProductInventory', cartItem);
-        //decrement product inventory by writing a mutation
       } 
     },
 
-    async incrementCartQuantity({state}, productId) {
-        let findCartItem = state.cart.find(item => item.prodId === productId);
+    async incrementCartQuantity({state, commit}, {productId, quantity}) {
+        let findCartItem = state.cart.find( (item, index) => item.prodId === productId);
+        let cartIndex = state.cart.indexOf(findCartItem)
+        findCartItem.newQty = quantity;
+        findCartItem.cartIndex = cartIndex;
+        if(findCartItem.quantity < quantity){
+          commit("increaseCartQtyMutation", findCartItem)
+        } else if(findCartItem.quantity > quantity) {
+          commit("decreaseCartQtyMutation", findCartItem)
+        }
     },
 
     async deleteCartItem({state, commit}, cartIndex){
@@ -413,6 +419,27 @@ const store = new Vuex.Store({
     pushProductToCart(state, product){
       product["quantity"] = 1;
       state.cart.push(product);
+    },
+
+    increaseCartQtyMutation(state, newCartObj){
+      const {cartIndex, quantity, newQty} = newCartObj;
+      if(state.cart[cartIndex].quantity == newQty); else if(state.cart[cartIndex].quantity !== newQty){
+        let qtyDif = newQty - quantity;
+        if(qtyDif === 1){
+          state.cart[cartIndex].quantity = newQty;
+        }
+      }
+    },
+
+    decreaseCartQtyMutation(state, newCartObj){
+      const {cartIndex, quantity, newQty} = newCartObj;
+      if(state.cart[cartIndex].quantity == newQty); else if(state.cart[cartIndex].quantity !== newQty){
+        let qtyDif = newQty - quantity;
+        if(qtyDif !== 1){
+          state.cart[cartIndex].quantity = newQty;
+        }
+      }
+
     },
 
     incrementItemQuantity(state, cartItem){

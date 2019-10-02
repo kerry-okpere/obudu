@@ -16,7 +16,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="getCartItem in getCartItems" :key="`${getCartItem.prodId}`">
+              <tr v-for="(getCartItem, index) in getCartItems" :key="index">
                 <td class="product-thumbnail">
                   <a href="#"><img :src="`${getCartItem.imgUrl}`" alt="" width="100"></a>
                 </td>
@@ -24,12 +24,14 @@
                 <td class="product-price">{{getCurrency}} {{getCartItem.price}}</td>
                 <td class="product-quantity">
                   <span class="quantity">
-                    <number-input v-model="getCartItem.prodId" :min="1" :max="10" size="small" inline controls @change="onQtyChange(`${getCartItem.prodId}`, `${num}`)" ref="ddd" :value="`${getCartItem.quantity}`"></number-input>
+                    <number-input inline controls :min="1" :max="10" size="small" @change="onQtyChange(`${getCartItem.prodId}`, $event )" :value="`${getCartItem.quantity}`"></number-input>
                   </span>
                 </td>
                 <td class="product-subtotal" v-on: :value="`${getCartItem.quantity * getCartItem.price}`">{{getCurrency}} {{ getCartItem.quantity * getCartItem.price }}</td>
                 <td class="product-remove">
-                  <ion-icon name="trash"></ion-icon>
+                  <a @click="deleteCartItem(index)" href="#"> 
+                    <ion-icon name="trash"></ion-icon> 
+                  </a>
                 </td>
               </tr>
             </tbody>
@@ -51,7 +53,6 @@
 export default {
   data() {
     return {
-      num: 1
     }
   },
   computed: {
@@ -67,12 +68,20 @@ export default {
     },
 
     methods: {
-        onQtyChange(event){
-            let check = this.$refs["ddd"];
-            console.log(check);
-            // console.log(this.num);
-            this.$store.dispatch('incrementCartQuantity', event);
+        onQtyChange(...args){
+            // console.log(typeof args[1])
+
+            this.$store.dispatch('incrementCartQuantity',{
+              productId: args[0],
+              quantity: args[1]
+            });
         },
+
+        deleteCartItem(cartIndex){
+          this.$store.dispatch('deleteCartItem', cartIndex);
+          // console.log(cartIndex)
+        },
+
 
         checkout(){
           this.$router.push("checkout");

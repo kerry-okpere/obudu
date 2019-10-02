@@ -39,9 +39,11 @@ Vue.component('defaultLayout', Default);
  
 Vue.config.productionTip = false
 
-new Vue({
+const vm  = new Vue({
   store,
   router,
   apolloProvider,
   render: h => h(App),
 }).$mount('#app')
+
+export default vm;
