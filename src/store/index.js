@@ -2,6 +2,8 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import VuexPersistence from 'vuex-persist'
 
+import csc from 'country-state-city'
+
 const cartPersist = new VuexPersistence({
     storage: window.localStorage,
     reducer: (state) => ({ 
@@ -60,7 +62,8 @@ const store = new Vuex.Store({
     checkoutCreate: {},
     adminToken: {},
     storeUrls: [],
-    checkoutId: {}
+    checkoutId: {},
+    countries: []
   },
 
 
@@ -76,6 +79,10 @@ const store = new Vuex.Store({
     getHomeProducts(state) {
       return state.homeProducts[0]
       // console.log(check);
+    },
+
+    getCountries(state){
+      return state.countries;
     },
 
     getSingleProduct(state) {
@@ -347,6 +354,15 @@ const store = new Vuex.Store({
       })
     },
 
+    async fetchCountries({commit}){
+      return new Promise( async (resolve, reject) => {
+        let countries = csc.getAllCountries();
+        commit("setCountriesMutation", countries);
+        resolve();
+        reject("Unable to fetch countries");
+      })
+    },
+
     async fetchStoreUrls(context, {apollo}){
       return new Promise(async (resolve, reject) => {
         let response = await apollo.query({
@@ -476,6 +492,10 @@ const store = new Vuex.Store({
     
     emptyCart(state){
       state.cart = [];
+    },
+
+    setCountriesMutation(state, countries){
+      state.countries = countries;
     }
 
   },

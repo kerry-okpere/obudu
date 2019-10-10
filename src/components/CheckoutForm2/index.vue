@@ -6,9 +6,7 @@
           <div class="col-lg-6 col-md-16 cold-sm-12">
             <div class="checkout__left">
 
-              <!-- Billing Details Form -->
-
-              <h3>Billing Details</h3>
+              <h3>Shipping Details</h3>
 
               <b-form-group id="first-name" label="First Name" label-for="first-name">
                 <b-form-input type="text" id="first-name" v-model="form.firstName" required
@@ -21,28 +19,34 @@
                 </b-form-input>
               </b-form-group>
 
-              <b-form-group id="company-name" label="Company Name" label-for="company-name">
+              <!-- <b-form-group id="company-name" label="Company Name" label-for="company-name">
                 <b-form-input type="text" id="company-name" v-model="form.companyName" required
                   placeholder="Your company name">
                 </b-form-input>
-              </b-form-group>
+              </b-form-group> -->
 
               <b-form-group id="email" label="Email" label-for="email">
                 <b-form-input type="email" id="email" v-model="form.email" required placeholder="Your email address">
                 </b-form-input>
               </b-form-group>
 
-              <b-form-group id="phone" label="Phone" label-for="phone">
-                <b-form-input type="tel" min="14" max="14" id="phone" v-model="form.phone" required placeholder="Your phone number">
-                </b-form-input>
-              </b-form-group>
-
               <b-form-group id="country" label="Country" label-for="country">
-                <b-form-select v-model="countrySelected" :options="countryOptions" size="sm" required></b-form-select>
+                <b-form-select @change="getStates($event)" v-model="countrySelected" size="sm" required>
+                    <option v-for="(country, index) in getAllCountries" :key="index" :value="country.name" >{{country.name}}</option>
+                </b-form-select>
               </b-form-group>
 
               <b-form-group id="state" label="State" label-for="state">
-                <b-form-select v-model="stateSelected" :options="stateOptions" size="sm" required></b-form-select>
+                <b-form-select v-model="stateSelected" size="sm" required>
+                    <option v-for="(statesVal, index) in states" :key="index" :value="statesVal.name">{{statesVal.name}}</option>
+                </b-form-select>
+              </b-form-group>
+
+              <b-form-group id="phone" label="Phone" label-for="phone">
+                <b-input-group v-if="phoneCode" size="sm" :prepend="`+${phoneCode}`">
+                  <b-form-input type="tel" min="14" max="14" id="phone" v-model="form.phone" required placeholder="Your phone number">
+                  </b-form-input>
+                </b-input-group>
               </b-form-group>
 
               <b-form-group id="postal" label="Postal Code" label-for="postal">
@@ -187,6 +191,9 @@
 </template>
 
 <script>
+import csc from 'country-state-city'
+
+
   export default {
     data() {
       return {
@@ -198,169 +205,19 @@
           companyName: null,
           email: null,
           phone: null,
+          phoneCode: null,
           postal: null,
           address: null
         },
         selected: null,
-        countrySelected: 'nigeria',
+        states: [],
+        countrySelected: null,
         stateSelected: null,
         shippingVisible: false,
         shippingDetails: 'sameShipping',
         shippingSelected: 'lagos',
         paymentSelected: 'paystack',
-        countryOptions: [{
-          value: 'nigeria',
-          text: 'Nigeria'
-        }],
-        stateOptions: [{
-            value: 'abia',
-            text: 'Abia'
-          },
-          {
-            value: 'adamawa',
-            text: 'Adamawa'
-          },
-          {
-            value: 'akwa-ibom',
-            text: 'Akwa Ibom'
-          },
-          {
-            value: 'anambra',
-            text: 'Anambra'
-          },
-          {
-            value: 'bauchi',
-            text: 'Bauchi'
-          },
-          {
-            value: 'bayelsa',
-            text: 'Bayelsa'
-          },
-          {
-            value: 'benue',
-            text: 'Benue'
-          },
-          {
-            value: 'borno',
-            text: 'Borno'
-          },
-          {
-            value: 'cross-river',
-            text: 'Cross River'
-          },
-          {
-            value: 'delta',
-            text: 'Delta'
-          },
-          {
-            value: 'ebonyi',
-            text: 'Ebonyi'
-          },
-          {
-            value: 'edo',
-            text: 'Edo'
-          },
-          {
-            value: 'ekiti',
-            text: 'Ekiti'
-          },
-          {
-            value: 'enugu',
-            text: 'Enugu'
-          },
-          {
-            value: 'fct',
-            text: 'FCT'
-          },
-          {
-            value: 'gombe',
-            text: 'Gombe'
-          },
-          {
-            value: 'imo',
-            text: 'Imo'
-          },
-          {
-            value: 'jigawa',
-            text: 'Jigawa'
-          },
-          {
-            value: 'kaduna',
-            text: 'Kaduna'
-          },
-          {
-            value: 'kano',
-            text: 'Kano'
-          },
-          {
-            value: 'katsina',
-            text: 'Katsina'
-          },
-          {
-            value: 'kebbi',
-            text: 'Kebbi'
-          },
-          {
-            value: 'kogi',
-            text: 'Kogi'
-          },
-          {
-            value: 'kwara',
-            text: 'Kwara'
-          },
-          {
-            value: 'lagos',
-            text: 'Lagos'
-          },
-          {
-            value: 'nasarawa',
-            text: 'Nasarawa'
-          },
-          {
-            value: 'niger',
-            text: 'Niger'
-          },
-          {
-            value: 'ogun',
-            text: 'Ogun'
-          },
-          {
-            value: 'ondo',
-            text: 'Ondo'
-          },
-          {
-            value: 'osun',
-            text: 'Osun'
-          },
-          {
-            value: 'oyo',
-            text: 'Oyo'
-          },
-          {
-            value: 'plateau',
-            text: 'Plateau'
-          },
-          {
-            value: 'rivers',
-            text: 'Rivers'
-          },
-          {
-            value: 'sokoto',
-            text: 'Sokoto'
-          },
-          {
-            value: 'taraba',
-            text: 'Taraba'
-          },
-          {
-            value: 'yobe',
-            text: 'Yobe'
-          },
-          {
-            value: 'zamfara',
-            text: 'Zamfara'
-          }
-        ],      
+        countryStates: '',
       }
     },
     computed: {
@@ -378,6 +235,9 @@
       },
       getEnv(){
         return this.$store.getters.getEnvVariables;
+      },
+      getAllCountries(){
+        return this.$store.getters.getCountries
       }
     },
     apollo: {
@@ -387,12 +247,24 @@
       
       if(this.getCartItems.length > 0){
         this.cart = true;
-      }
+      };
+
+      await this.$store.dispatch("fetchCountries");
+
+
+
 
     },
     methods: {
       toggleShipping(checked) {
         this.shippingVisible = true
+      },
+      getStates(evt){
+        let nameOfCountry = evt;
+        let countryData = this.getAllCountries.find(item => item.name == nameOfCountry);
+        this.phoneCode = countryData.phonecode
+        let getStatesOfCountry = csc.getStatesOfCountry(countryData.id);
+        this.states =  getStatesOfCountry;
       },
       createCheckout(chkInput){
         return  this.$store.dispatch("createCart", {
