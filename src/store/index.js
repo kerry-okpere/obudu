@@ -267,7 +267,7 @@ const store = new Vuex.Store({
           commit('setCheckoutId', checkout.id);
           resolve(response.data);  
         } else {
-          reject("Unable to update checkoutInput mutation")
+          resolve(response.data);
         }
   
       })

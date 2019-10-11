@@ -37,21 +37,41 @@
               </b-form-group>
 
               <b-form-group id="state" label="State" label-for="state">
-                <b-form-select v-model="stateSelected" size="sm" required>
+                <b-form-select @change="getCities($event)" v-model="stateSelected" size="sm" required>
                     <option v-for="(statesVal, index) in states" :key="index" :value="statesVal.name">{{statesVal.name}}</option>
                 </b-form-select>
               </b-form-group>
 
+              <b-form-group id="city" label="City" label-for="city">
+                <b-form-input type="text" id="city" v-model="citySelected" required placeholder="Your city">
+                </b-form-input>
+              </b-form-group>
+
+
+              <!-- <b-form-group id="city" label="City" label-for="city">
+                <b-form-select v-model="citySelected" size="sm" required>
+                    <option v-for="(cityVal, index) in cities" :key="index" :value="cityVal.name">{{cityVal.name}}</option>
+                </b-form-select>
+              </b-form-group> -->
+
               <b-form-group id="phone" label="Phone" label-for="phone">
-                <b-input-group v-if="phoneCode" size="sm" :prepend="`+${phoneCode}`">
-                  <b-form-input type="tel" min="14" max="14" id="phone" v-model="form.phone" required placeholder="Your phone number">
-                  </b-form-input>
+                <b-input-group v-if="form.phoneCode" size="sm" :prepend="`+${form.phoneCode}`">
+                  <b-input type="number" min="10" id="phone" v-model="form.phone" required placeholder="Your phone number">
+                  </b-input>
                 </b-input-group>
+                <b-form-input v-else type="number" min="10" id="phone" v-model="form.phone" required placeholder="Your phone number">
+                </b-form-input>
+                  <div v-if="formError.phone">
+                    <b-form-invalid-feedback :state="phoneValidation">{{erMsg.phone}}</b-form-invalid-feedback>
+                  </div>
               </b-form-group>
 
               <b-form-group id="postal" label="Postal Code" label-for="postal">
                 <b-form-input type="text" id="postal" v-model="form.postal" required placeholder="Your postal code">
                 </b-form-input>
+                <div v-if="formError.postal">
+                  <b-form-invalid-feedback :state="postalCodeValidation">{{erMsg.postal}}</b-form-invalid-feedback>
+                </div>
               </b-form-group>
 
               <b-form-group id="address" label="Address" label-for="address">
@@ -204,20 +224,29 @@ import csc from 'country-state-city'
           lastName: null,
           companyName: null,
           email: null,
-          phone: null,
+          phone: '',
           phoneCode: null,
           postal: null,
           address: null
         },
+        formError: {
+          phone: false,
+          postal: false
+        },
+        fullPhoneNo: '',
+        countryCode: '',
         selected: null,
         states: [],
+        cities:[],
         countrySelected: null,
         stateSelected: null,
+        citySelected: null,
         shippingVisible: false,
         shippingDetails: 'sameShipping',
         shippingSelected: 'lagos',
         paymentSelected: 'paystack',
         countryStates: '',
+        erMsg: {}
       }
     },
     computed: {
@@ -238,6 +267,12 @@ import csc from 'country-state-city'
       },
       getAllCountries(){
         return this.$store.getters.getCountries
+      },
+      phoneValidation(){
+        return !this.formError.phone
+      },
+      postalCodeValidation(){
+        return !this.formError.postal
       }
     },
     apollo: {
@@ -259,12 +294,21 @@ import csc from 'country-state-city'
       toggleShipping(checked) {
         this.shippingVisible = true
       },
-      getStates(evt){
-        let nameOfCountry = evt;
+      getStates(nameOfCountry){
+        this.states = [];
+        this.cities = [];
         let countryData = this.getAllCountries.find(item => item.name == nameOfCountry);
-        this.phoneCode = countryData.phonecode
+        this.form.phoneCode = countryData.phonecode;
+        this.countryCode = countryData.sortname;
         let getStatesOfCountry = csc.getStatesOfCountry(countryData.id);
         this.states =  getStatesOfCountry;
+      },
+      getCities(nameOfState){
+        let cityData = this.states.find(item => item.name == nameOfState);
+        let cities = csc.getCitiesOfState(cityData.id);
+        if(cities.length <= 0) this.cities.push(cityData); else{
+          this.cities = csc.getCitiesOfState(cityData.id);
+        }
       },
       createCheckout(chkInput){
         return  this.$store.dispatch("createCart", {
@@ -281,8 +325,8 @@ import csc from 'country-state-city'
       },
       updateCheckoutBillingAddress(checkoutId){
         let billingAddress = {
-          city: this.stateSelected,
-          country: "NG",
+          city: this.citySelected,
+          country: this.countryCode,
           countryArea: this.stateSelected,
           firstName: this.form.firstName,
           lastName: this.form.lastName,
@@ -347,18 +391,32 @@ import csc from 'country-state-city'
         let checkoutInput = {
           email: this.form.email,
           shippingAddress:{
-            city: this.stateSelected,
-            companyName: this.form.companyName,
-            country: "NG",
+            city: this.citySelected,
+            country: this.countryCode,
             countryArea: this.stateSelected,
             firstName: this.form.firstName,
             lastName: this.form.lastName,
-            phone: this.form.phone,
+            phone: this.fullPhoneNo,
             postalCode: this.form.postal,
             streetAddress1: this.form.address
           },
           lines: newCart
         };
+        // let checkoutInput = {
+        //   email: this.form.email,
+        //   shippingAddress:{
+        //     city: this.stateSelected,
+        //     companyName: this.form.companyName,
+        //     country: "NG",
+        //     countryArea: this.stateSelected,
+        //     firstName: this.form.firstName,
+        //     lastName: this.form.lastName,
+        //     phone: this.form.phone,
+        //     postalCode: this.form.postal,
+        //     streetAddress1: this.form.address
+        //   },
+        //   lines: newCart
+        // };
         return checkoutInput;
       },
       clearInputfields(){
@@ -366,10 +424,30 @@ import csc from 'country-state-city'
         Object.keys(this.form).forEach(function(key,index) {
             self.form[key] = '';
         });
+        this.countrySelected = '';
+        this.stateSelected =  '';
+        this.citySelected = '';
+      },
+      clearErrorFields(){
+        let self = this;
+        Object.keys(this.formError).forEach(function(key, index) {
+          self.formError[key]= false;
+        })
+      },
+      throwErrors(errData){
+        if(errData.field == "phone"){
+          this.erMsg.phone = errData.message;
+          this.formError.phone = true;
+        }
+        if(errData.field == "postalCode"){
+          this.erMsg.postal = errData.message;
+          this.formError.postal = true;
+        }
       },
       // The power house, all the shit happens in this function and other functions. Psych!! 
       async checkout(evt) {
         evt.preventDefault();
+        this.fullPhoneNo = `${this.form.phoneCode}${this.form.phone}`;
         let checkoutInpt = this.saveCheckout();
         let res = await this.createCheckout(checkoutInpt);
         // console.log(res);
@@ -378,9 +456,12 @@ import csc from 'country-state-city'
 
         if(err.length >= 1){
           //TODO refactor error display
-          let errMsg = err[0].message
-          alert(errMsg);
+          this.throwErrors(err[0]);
+          return;
+          // let errMsg = err[0].message
+          // alert(errMsg);
         } else{
+          this.clearErrorFields();
           let checkout_id = res.checkoutCreate.checkout.id;
           let shipping_mthd_id = res.checkoutCreate.checkout.availableShippingMethods[0].id;
           let updatedShippingOptions = await this.updateCheckoutShippingOptions(checkout_id, shipping_mthd_id);
