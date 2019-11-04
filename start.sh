@@ -8,7 +8,7 @@ then
 
     echo "START COPY";
 
-    cp -rf  app/dist/. /usr/share/nginx/html/
+    cp -rf  /app/dist/. /usr/share/nginx/html/
 
     echo "END COPY";
 fi
