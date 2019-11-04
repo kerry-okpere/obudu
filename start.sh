@@ -6,13 +6,9 @@ then
 
     echo "Build finished...";
 
-    echo "CD INTO DIST DIRECTORY...";
-
-    cd /app/dist/
-
     echo "START COPY";
 
-    cp -rf . /usr/share/nginx/html/
+    cp -rf  app/dist/. /usr/share/nginx/html/
 
     echo "END COPY";
 fi
