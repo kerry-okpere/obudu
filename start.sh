@@ -1,15 +1,18 @@
 #!/bin/bash
 
-npm run build
+if [ ! -d "/app/dist" ] 
+then
+    npm run build
 
-echo "Build finished...";
+    echo "Build finished...";
 
-echo "CD INTO DIST DIRECTORY...";
+    echo "CD INTO DIST DIRECTORY...";
 
-cd /app/dist/
+    cd /app/dist/
 
-echo "START COPY";
+    echo "START COPY";
 
-cp -rf . /usr/share/nginx/html/
+    cp -rf . /usr/share/nginx/html/
 
-echo "END COPY";
+    echo "END COPY";
+fi
