@@ -35,8 +35,6 @@ Vue.use(Router)
 Vue.component('defaultLayout', Default);
 
 
-
- 
 Vue.config.productionTip = false
 
 const vm  = new Vue({

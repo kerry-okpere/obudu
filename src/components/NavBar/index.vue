@@ -50,7 +50,7 @@
               </button>
               <div v-show="cartVisible" class="shopping-cart-content cart-visible">
                             <ul>
-                                <li v-for="(getCartItem, index) in getCartItems" :key="index" class="single-shopping-cart">
+                                <li v-for="(getCartItem, index) in filteredCartItems" :key="index" class="single-shopping-cart">
                                     <div class="shopping-cart-img">
                                         <a href="#"><img alt="" :src="`${getCartItem.imgUrl}`" width="60"></a>
                                     </div>
@@ -64,6 +64,17 @@
                                     </div>
                                 </li>
                             </ul>
+                              <div class="overflow-auto">
+                                <b-pagination
+                                  v-model="currentPage"
+                                  :total-rows="rows"
+                                  :per-page="perPage"
+                                  aria-controls="cart-pagination"
+                                  @change="handlePagination"
+                                ></b-pagination>
+                                <!-- <p class="mt-3">Current Page: {{ currentPage }}</p> -->
+                              </div>
+                            
                             <div class="shopping-cart-total">
                                 <h4>Total <span class="shop-total">{{getCurrency}} {{getCartTotalPrice}}</span></h4>
                             </div>
@@ -109,19 +120,88 @@
       },
       getCurrency(){
         return this.$store.getters.getStoreCurrency
+      },
+      rows() {
+        return this.getCartItems.length
+      },
+      filteredCartItems(){
+        if(this.cartItems.length == 0){
+          return this.getCartItems.slice(0, 2)
+          // this.cartItems = this.getCartItems;
+        }
+        return this.cartItems.slice(0, 2)
       }
     },
     data() {
       return {
         searchVisible: false,
-        cartVisible: false
+        cartVisible: false,
+        cartItems: [],
+        perPage: 2,
+        currentPage: 1,
+        temp: []
       }
+    },
+
+    beforeCreate(){
+
     },
 
     methods: {
       deleteCartItem(cartIndex){
         this.$store.dispatch('deleteCartItem', cartIndex);
           // console.log(cartIndex)
+      },
+
+      handlePagination(evt){
+        let currPage = evt;
+        let newArr = [];
+        let counter = 0;
+        let temp = [];
+        newArr = this.recursiveNewArray(this.getCartItems, currPage, counter, temp );
+        this.temp = [];
+        this.cartItems = newArr
+        // console.log(newArr)
+
+
+      
+      },
+
+      recursiveNewArray(arr, currPage, counter, temp){
+        // let counter = currPage;
+
+        if( arr[currPage] === undefined ){
+          return temp;
+        }
+
+        if(currPage === 1 ){
+          temp.push(arr[0]);
+          temp.push(arr[1]);
+          this.recursiveNewArray(arr, currPage+=1, counter, temp );
+        }
+
+        temp.push(arr[currPage]);
+        this.recursiveNewArray(arr, currPage+=1, counter, temp );
+
+        let tempArr = temp;
+        return tempArr.filter(age => age !== undefined);
+
+
+        // if((arr[currPage] !== undefined) ){
+        //   if(currPage === 1 ){
+        //     temp.push(arr[0]);
+        //     temp.push(arr[1]);
+        //     this.recursiveNewArray(arr, currPage+=1, counter, temp );
+        //   }
+        //   temp.push(arr[currPage]);
+        //   this.recursiveNewArray(arr, currPage+=1, counter, temp );
+        // }
+
+        // let tempArr = temp;
+        // return tempArr.filter(age => age !== undefined);
+
+        // console.log(tempArr);
+
       },
 
       viewCart(){
