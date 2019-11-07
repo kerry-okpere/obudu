@@ -348,7 +348,7 @@ import csc from 'country-state-city'
       createPayment(checkoutId, amount, gateway){
         let billingAddress = {
           city: this.stateSelected,
-          country: "NG",
+          country: this.countryCode,
           countryArea: this.stateSelected,
           firstName: this.form.firstName,
           lastName: this.form.lastName,
@@ -463,7 +463,7 @@ import csc from 'country-state-city'
         } else{
           this.clearErrorFields();
           let checkout_id = res.checkoutCreate.checkout.id;
-          let shipping_mthd_id = res.checkoutCreate.checkout.availableShippingMethods[0].id;
+          let shipping_mthd_id = res.checkoutCreate.checkout.availableShippingMethods.length === 0 ? '' : res.checkoutCreate.checkout.availableShippingMethods[0].id  ;
           let updatedShippingOptions = await this.updateCheckoutShippingOptions(checkout_id, shipping_mthd_id);
           let totalPrice = updatedShippingOptions.checkoutShippingMethodUpdate.checkout.totalPrice.gross.amount
           let checkoutAddr =  await this.updateCheckoutBillingAddress(checkout_id);

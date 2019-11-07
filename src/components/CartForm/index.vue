@@ -32,7 +32,7 @@
                                     <td class="product-remove">
                                         <a href="#"><i class="fa fa-pencil"></i></a>
                                         <a href="#"><i class="fa fa-times"></i></a>
-                                   </td>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

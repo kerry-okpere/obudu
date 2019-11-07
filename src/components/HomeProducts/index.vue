@@ -56,6 +56,7 @@
 <script>
 import { GET_PRODUCTS } from "@/queries/productQueries";
 
+
 export default {
     name: "HomeProducts",
 
