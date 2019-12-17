@@ -1,0 +1,40 @@
+.product__info {
+    &-name {
+        h1 {
+            font-size: 42px;
+            font-weight: 600;
+        }
+        h2 {
+            font-size: 32px;
+            font-weight: 600;
+            padding: 10px 0;
+            color: #40A9FF;
+        }
+    }
+
+    &-description {
+        p {
+            font-size: 16px;
+        }
+    }
+
+    &-variant {
+        padding: 10px 0;
+    }
+
+    &-quantity {
+        padding: 10px 0;
+    }
+
+    &-cart {
+        padding: 10px 0;
+        button {
+            height: 50px;
+        }
+    }
+
+    h4 {
+        font-size: 14px;
+        font-weight: 600;
+    }
+}

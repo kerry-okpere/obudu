@@ -1,0 +1,29 @@
+.collection {
+    padding: 50px 0 40px;
+
+    &__one {
+        &-single {
+            .wrapper {
+                display: inline-flex;
+                padding: 20px;
+                overflow: auto;
+                .content {
+                    padding: 50px 0 0;
+                    h3 {
+                        font-weight: 700;
+                        margin-bottom: 5px;
+                    }
+                    p {
+                        margin-bottom: 10px;
+                    }
+                }
+                .image {
+                    position: absolute;
+                    width: 100%;
+                    left: 60%;
+                    top: 30%;
+                }
+            }
+        }
+    }
+}

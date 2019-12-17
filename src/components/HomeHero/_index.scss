@@ -1,0 +1,59 @@
+.hero {
+    h1{
+        font-weight: bold;
+    }
+    p {
+        font-size: 16px;
+    }
+    &__one {
+        &-content {
+            margin: 70px 0;
+        }
+        &-text {
+            margin: 70px 0;
+        }
+        img {
+            margin: 0 auto;
+        }
+    }
+
+    &__two {
+        &-content {
+            display: flex!important;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+    }
+
+    &__three {
+        &-content {
+            margin: 70px 0;
+        }
+        img {
+            float: left;
+        }
+        &-text {
+            margin: 70px 0;
+            text-align: right;
+        }
+    }
+}
+
+.ant-carousel {
+    .slick-slide {
+        height: 400px;
+        overflow: hidden;
+        h1 {
+            color: white;
+        }
+    }
+}
+
+.heroBgImg {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+

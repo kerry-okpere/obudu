@@ -1,0 +1,145 @@
+header {
+    // margin: 0 0 40px;
+    background: #fff;
+    img {
+        max-width: 100px;
+    }
+    .ant-affix {
+        background: white;
+        padding: 20px 0;
+    }
+    a:hover {
+        text-decoration: none;
+    }
+    .logo {
+        h1 {
+            font-weight: 700;
+            margin: 5px 0;
+        }
+    }
+
+    // Nav Layout One
+    .navbar__one {
+        padding: 15px 0;
+        &-nav {
+            margin: 10px 0 0 0;
+
+            a {
+                display: inline-flex;
+                margin-right: 20px;
+                font-size: 14px;
+                font-weight: bold;
+                line-height: 0;
+            }
+        }
+        &-secnav {
+            display: inline-flex;
+            img {
+                margin-right: 10px;
+            }
+
+            p {
+                margin: 12px 0 0 0;
+            }
+        }
+        &-search {
+            margin: 5px 0 0 0;
+        }
+    }
+
+    // Nav Layout Two
+    .navbar__two {
+        padding: 20px 0;
+        img {
+            display: block;
+            margin: 0 auto;
+        }
+        &-nav {
+            margin: 10px 0 0 0;
+
+            a {
+                display: inline-flex;
+                margin-right: 20px;
+                font-size: 14px;
+                line-height: 0;
+            }
+        }
+        &-secnav {
+            display: inline-flex;
+            img {
+                margin-right: 10px;
+            }
+
+            p {
+                margin: 12px 0 0 0;
+            }
+        }
+        &-search {
+            margin: 5px 0 0 0;
+        }
+    }
+
+    // Nav Layout Three
+    .navbar__three {
+        padding: 20px 0;
+        img {
+            display: block;
+            float: right;
+        }
+        &-nav {
+            margin: 10px 0 0 0;
+
+            a {
+                display: inline-flex;
+                margin-right: 20px;
+                font-size: 14px;
+                line-height: 0;
+            }
+        }
+        &-secnav {
+            display: inline-flex;
+            img {
+                margin-right: 10px;
+            }
+
+            p {
+                margin: 12px 0 0 0;
+            }
+        }
+        &-search {
+            margin: 5px 0 0 0;
+        }
+    }
+
+    &.navTrans {
+        position: absolute;
+        top: 0%;
+        left: auto;
+        right: auto;
+        bottom: 0%;
+        background: transparent;
+        width: 100%;
+    }
+    
+    &.navFixed {
+        position: fixed;
+        top: 0%;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        z-index: 100;
+        width: 100%;
+        -webkit-transition: background .25s cubic-bezier(0.25, 0.8, 0.25, 1),padding .25s cubic-bezier(0.25, 0.8, 0.25, 1);
+        transition: background .25s cubic-bezier(0.25, 0.8, 0.25, 1),padding .25s cubic-bezier(0.25, 0.8, 0.25, 1);
+        box-shadow: 0 0px 22px rgba(0,0,0,0.1);
+        animation: slideInDown 420ms cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+}
+
+.cpOpen {
+    width: 82%;
+}
+
+.cpClosed {
+    width: 95%
+}

@@ -1,0 +1,103 @@
+.checkout {
+    &__steps {
+        &-shipping {
+            span {
+                font-size: 14px;
+                font-weight: 600;
+            }
+            p {
+                padding-left: 25px;
+                font-size: 12px;
+                margin-bottom: 0;
+            }
+            img {
+                width: 150px;
+                padding-left: 25px;
+            }
+        }
+        button {
+            font-size: 16px;
+            font-weight: 600;
+            height: 40px;
+        }
+    }
+
+    &__summary {
+        &-single {
+            border-bottom: 1px solid #f3f3f3;
+            margin: 15px 0;
+            .col-lg-3, .col-lg-6 {
+                padding-right: 0;
+            }
+            h3 {
+                &.name {
+                    font-size: 14px;
+                    font-weight: 500;
+                    line-height: 16px;
+                    margin: 10px 0;
+                }
+
+                &.variant {
+                    font-size: 12px;
+                    font-weight: 500;
+                    color: #777;
+                    margin-bottom: 0.2rem;
+                }
+
+                &.price {
+                    font-size: 16px;
+                    font-weight: 500;
+                    padding: 28px 0;
+                }
+            }
+        }
+
+        &-total {
+            float: right;
+            padding: 5px 20px;
+            p {
+                font-size: 14px;
+                font-weight: 400;
+                text-align: right;
+                margin-bottom: 5px;
+                span.amount {
+                    font-weight: 500;
+                    margin-left: 5px;
+                }
+            }
+            
+        }
+        button {
+            border-radius: 0 0 10px 10px;
+            height: 60px;
+            font-size: 18px;
+            font-weight: 700;
+
+            &.complete {
+                border-color: $approved;
+                background-color: $approved;
+            }
+        }
+    }
+}
+.ant-form-inline .ant-form-item {
+    margin-bottom: 10px;
+}
+.ant-card-bordered {
+    border: 0px solid #222;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.19);
+}
+
+@media (min-width: 764px) and (max-width: 1024px) {
+    .checkout {
+        &__steps {
+            &-shipping {
+                .wrapperCol {
+                    width: 250px;
+                }
+            }
+        }
+    }
+    
+}

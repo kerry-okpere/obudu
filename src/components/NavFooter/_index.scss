@@ -1,0 +1,153 @@
+footer {
+    .logo {
+        h1 {
+            font-size: 26px;
+            font-weight: 700;
+        }
+    }
+    
+    // Footer Layout One
+    .footer__one {
+        padding: 50px 0;
+        background-color: #f7f8fa;
+        h3 {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: capitalize;
+            padding: 0 0 5px;
+        }
+        p {
+            font-size: 14px;
+        }
+        a {
+            color: #222;
+            font-size: 14px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            li {
+                padding: 0 0 3px;
+            }
+        }
+        &-contact {
+            float: left;
+            text-align: left;
+            img {
+                padding: 0 0 10px;
+            }
+            h3 {
+                font-size: 14px;
+                text-transform: initial;
+                padding: 20px 0 0;
+            }
+            p {
+                font-size: 12px;
+                line-height: 14px;
+                margin: 0 0 4px;
+            }
+        }
+        &-social {
+            display: inline-block;
+            svg {
+                margin-left: 10px;
+            }
+        }
+    }
+
+    //Subfooter Layout One
+    .subfooter__one {
+        padding: 20px 0;
+        background-color: white;
+        line-height: 12px;
+        &-copyright {
+            float: left;
+            padding-top: 10px;
+            font-size: 12px;
+            margin: 10px 0 0;
+        }
+        &-payment {
+            float: left;
+            img {
+                padding-left: 0px;
+            }
+        }
+        &-badge {
+            float: left;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 5px 0 0;
+        }
+    }
+
+    //Subfooter Layout Two
+    .subfooter__two {
+        padding: 20px 0;
+        background-color: white;
+        line-height: 12px;
+        &-copyright {
+            float: left;
+            font-size: 12px;
+            padding-top: 10px;
+            margin: 10px 0 0;
+        }
+        &-badge {
+            float: left;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 0;
+            p {
+            margin-bottom: 0;
+            }
+        }
+    }
+
+    //Subfooter Layout Three
+    .subfooter__three {
+        padding: 20px 0;
+        background-color: white;
+        line-height: 12px;
+        &-copyright {
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        &-badge {
+            text-align: center;
+            font-size: 12px;
+            font-weight: 600;
+            p {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+// Responsive
+@include media-breakpoint-up(md) { 
+    footer {
+        .footer__one {
+            &-contact {
+                float: right;
+                text-align: right;
+            }
+        }
+        .subfooter__one {
+            &-payment {
+                float: right;
+                img {
+                    padding-left: 15px;
+                }
+            }
+            &-badge {
+                float: right;
+            }
+        }
+        .subfooter__two {
+            &-badge {
+                float: right;
+                padding: 25px 0;
+            }
+        }
+    }
+}

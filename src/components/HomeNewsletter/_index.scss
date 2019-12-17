@@ -1,0 +1,66 @@
+.newsletter {
+    &__one {
+    padding: 20px 0;
+        &-title {
+            h3 {
+                font-size: 18px;
+                font-weight: 600;
+            }
+            p {
+                font-size: 14px;
+                font-weight: 400;
+            }
+        }
+        &-form {
+            float: left;
+        }
+    }
+    &__two {
+        padding: 20px 0;
+        &-title {
+            h3 {
+                font-size: 24px;
+                line-height: 30px;
+                font-weight: 600;
+            }
+        }
+    }
+    &__three {
+        padding: 20px 0;
+        text-align: center;
+        &-title {
+            h3 {
+                font-size: 18px;
+                font-weight: 600;
+            }
+            p {
+                font-size: 14px;
+                font-weight: 400;
+            }
+        }
+        .ant-row.ant-form-item {
+            margin-bottom: 5px;
+        }
+    }
+    button {
+        font-weight: 600;
+    }
+}
+
+.ant-input {
+    width: 330px;
+}
+
+// Responsive
+@include media-breakpoint-up(lg) { 
+    .newsletter {
+        &__one {
+            &-form {
+                float: right;
+            }
+        }
+    }
+    .ant-input {
+        width: 340px;
+    }
+}

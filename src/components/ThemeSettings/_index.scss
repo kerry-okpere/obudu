@@ -1,0 +1,122 @@
+$dark: #444;
+$light: #fff;
+
+h1,h2,h3,h4,h5,h6,p {
+    color: $dark;
+}
+
+.settings {
+    padding: 40px 0;
+    &__intro {
+        h1 {
+            font-size: 18px;
+            font-weight: 700;
+        }
+        h3 {
+            font-size: 16px;
+        }
+        p {
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .anticon {
+            margin-left: 70px;
+            &:hover {
+                color: $primary;
+            }
+        }
+        button {
+            margin-left: 90px;
+            margin-top: 10px;
+        }
+        
+    }
+    &__title {
+        h1 {
+            font-size: 12px;
+            font-weight: 700;
+            padding: 10px 0;
+        }
+    }
+    &__item {
+        padding: 10px 0;
+        h3 {
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .vc-chrome {
+            margin: 20px 0 0;
+            width: 210px;
+        }
+    }
+    &__switch {
+        display: inline-flex;
+        padding: 0 0 20px;
+        h3 {
+            padding-right: 10px;
+        }
+    }
+    &__modal {
+        display: block;
+        padding: 20px 0 0;
+
+        &-item {
+            padding: 5px 0 10px;
+            p {
+                font-weight: 600;
+                margin-bottom: 10px;
+            }
+            .vc-chrome {
+                margin: 20px 0 0;
+                width: 210px;
+            }
+            .ant-form-item {
+                margin-bottom: 0;
+            }
+            h3 {
+                font-size: 12px;
+                font-weight: 600;
+            }
+            button {
+                margin: 10px 0 0;
+                font-size: 12px;
+                font-weight: bold;
+            }
+        }
+    }
+    &__dashboard {
+        padding: 20px 0;
+        button {
+            font-weight: bold;
+            font-size: 14px;
+            // background-color: $primary;
+            // border-color: $primary;
+            // color: #fff;
+        }
+    }
+    .ant-divider {
+        background: #ddd;
+    }
+    .ant-collapse {
+        margin: 0 0 10px;
+        font-size: 13px;
+        font-weight: 600;
+    }
+    .ant-radio-wrapper {
+        font-size: 12px;
+        color: $dark;
+        font-weight: 400;
+    }
+    .ant-select {
+        font-size: 12px;
+        color: $dark;
+    }
+    .ant-upload-select-picture-card i {
+        font-size: 32px;
+        color: #999;
+    }
+    .ant-upload-select-picture-card .ant-upload-text {
+        margin-top: 8px;
+        color: #666;
+    }
+}
