@@ -1,23 +1,24 @@
 <template>
-  <div>
+  <section class="layout__default">
     <NavBar />
-    <slot></slot>
+        <slot />
     <NavFooter />
-  </div>
+  </section>
 </template>
 
 <script>
-import NavBar from "@/components/NavBar/index";
-import NavFooter from "@/components/NavFooter/index";
+// import NavHeader from '~/components/NavHeader'
+import NavBar from '@/components/NavBar'
+import NavFooter from '@/components/NavFooter'
+
 export default {
   components: {
     NavBar,
     NavFooter
-  },
-  
+  }
 }
 </script>
 
-<style lang="sass">
-@import '@/assets/styles/global';
+<style>
+@import 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css';
 </style>
