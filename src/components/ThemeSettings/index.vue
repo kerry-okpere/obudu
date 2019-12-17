@@ -101,7 +101,7 @@
                                         <div class="settings__modal-item">
                                             <p>Logo</p>
                                             <div class="settings__upload">
-                                                <a-button type="primary">
+                                                <a-button type="primary" id="upload_widget" @click="uploadWidget()">
                                                     Upload Logo
                                                 </a-button>
                                             </div>
@@ -171,7 +171,7 @@
                                                         <a-switch :defaultChecked="heroBgImgShow" @change="setHeroBgImgShow" />
                                                     </div>
                                                     <div class="settings__upload">
-                                                        <a-button type="primary">
+                                                        <a-button type="primary" @click="uploadWidget()">
                                                             Upload Image
                                                         </a-button>
                                                     </div>
@@ -200,7 +200,7 @@
                                                         <a-switch :defaultChecked="heroImageShow" @change="setHeroImageShow" />
                                                     </div>
                                                     <div class="settings__upload">
-                                                        <a-button type="primary">
+                                                        <a-button type="primary" @click="uploadWidget()">
                                                             Upload Image
                                                         </a-button>
                                                     </div>
@@ -290,7 +290,7 @@
                                             <div class="settings__modal-item">
                                                 <p>Collection Image</p>
                                                 <div class="settings__upload">
-                                                    <a-button type="primary">
+                                                    <a-button type="primary" @click="uploadWidget()">
                                                         Upload Image
                                                     </a-button>
                                                 </div>
@@ -333,7 +333,7 @@
                                             <div class="settings__modal-item">
                                                 <p>Collection Image</p>
                                                 <div class="settings__upload">
-                                                    <a-button type="primary">
+                                                    <a-button type="primary" @click="uploadWidget()">
                                                         Upload Image
                                                     </a-button>
                                                 </div>
@@ -372,7 +372,7 @@
                                             <div class="settings__modal-item">
                                                 <p>Collection Image</p>
                                                 <div class="settings__upload">
-                                                    <a-button type="primary">
+                                                    <a-button type="primary" @click="uploadWidget()">
                                                         Upload Image
                                                     </a-button>
                                                 </div>
@@ -892,7 +892,35 @@ import { mapGetters, mapMutations } from 'vuex'
                     'You have saved your storefront design successfully.',
                 });
             },
+
+                uploadWidget() {
+                    // TODO: Update present to support logo dimensions and use versions for updating logos
+                    // Save image with params e.g. heroBg, logo ...
+                    const myWidget = cloudinary.createUploadWidget(
+                        {
+                        cloudName: "mercurie",
+                        apiKey: "486138948246678",
+                        // uploadPreset: "mercuriemartlogos",
+                        uploadPreset: "preset1",
+                        multiple: false,
+                        cropping: true,
+                        defaultSource: "local",
+                        folder: "mercuriemartlogos",
+                        public_id: "testStore"
+                        },
+                        (error, result) => {
+                        if (!error && result && result.event === "success") {
+                            console.log("Done! Here is the image info: ", result.info);
+                        } else {
+                            console.log(error);
+                        }
+                        }
+                    );
+                    return myWidget.open()
+                }
             
+        },
+        mounted(){
         }
     }
 </script>
