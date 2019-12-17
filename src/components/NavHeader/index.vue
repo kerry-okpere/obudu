@@ -7,17 +7,17 @@
           <div class="row">
             <div class="col col-lg-2">
               <div class="logo">
-                <g-link to="/">
+                <router-link to="/">
                   <img v-if="navLogoImg" :src="navLogo" alt="Store Logo">
                   <h1 v-else :style="{color: navLogoTextColor, fontSize: navLogoTextSize + 'px'}">{{storeName}}</h1>
-                </g-link>
+                </router-link>
               </div>
             </div>
             <div class="col col-lg-5">
               <nav class="navbar__one-nav">
-                <g-link exact to="/">Shop</g-link>
-                <g-link exact to="/">Collection</g-link>
-                <g-link exact to="/">Sale</g-link>
+                <router-link exact to="/">Shop</router-link>
+                <router-link exact to="/">Collection</router-link>
+                <router-link exact to="/">Sale</router-link>
               </nav>
             </div>
             <div class="col col-lg-3">
@@ -27,10 +27,10 @@
             </div>
             <div class="col col-lg-2">
               <nav class="navbar__one-nav navbar__one-secnav">
-                <g-link exact to="/">
+                <router-link exact to="/">
                   <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart">
                   <p>Cart</p>
-                </g-link>
+                </router-link>
                 <a-dropdown :trigger="['click']">
                   <a class="ant-dropdown-link" href="#"><img src="@/assets/img/nav/user.svg" width="20" alt="Account">
                     <p>Account</p>
@@ -58,15 +58,15 @@
           <div class="row">
             <div class="col col-lg-4">
               <nav class="navbar__two-nav">
-                <g-link exact to="/">Shop</g-link>
-                <g-link exact to="/">Collection</g-link>
-                <g-link exact to="/">Sale</g-link>
+                <router-link exact to="/">Shop</router-link>
+                <router-link exact to="/">Collection</router-link>
+                <router-link exact to="/">Sale</router-link>
               </nav>
             </div>
             <div class="col col-lg-3">
-              <g-link>
+              <router-link>
                 <img :src="navLogo" alt="Store Logo">
-              </g-link>
+              </router-link>
             </div>
             <div class="col col-lg-3">
               <div class="navbar__two-search">
@@ -75,10 +75,10 @@
             </div>
             <div class="col col-lg-2">
               <nav class="navbar__two-nav navbar__two-secnav">
-                <g-link exact to="/">
+                <router-link exact to="/">
                   <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart">
                   <p>Cart</p>
-                </g-link>
+                </router-link>
                 <a-dropdown :trigger="['click']">
                   <a class="ant-dropdown-link" href="#"><img src="@/assets/img/nav/user.svg" width="20" alt="Account">
                     <p>Account</p>
@@ -111,22 +111,22 @@
             </div>
             <div class="col col-lg-4">
               <nav class="navbar__three-nav">
-                <g-link exact to="/">Shop</g-link>
-                <g-link exact to="/">Collection</g-link>
-                <g-link exact to="/">Sale</g-link>
+                <router-link exact to="/">Shop</router-link>
+                <router-link exact to="/">Collection</router-link>
+                <router-link exact to="/">Sale</router-link>
               </nav>
             </div>
             <div class="col col-lg-3">
-              <g-link>
+              <router-link>
                 <img :src="navLogo" alt="Store Logo">
-              </g-link>
+              </router-link>
             </div>
             <div class="col col-lg-2">
               <nav class="navbar__three-nav navbar__three-secnav">
-                <g-link exact to="/">
+                <router-link exact to="/">
                   <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart">
                   <p>Cart</p>
-                </g-link>
+                </router-link>
                 <a-dropdown :trigger="['click']">
                   <a class="ant-dropdown-link" href="#"><img src="@/assets/img/nav/user.svg" width="20" alt="Account">
                     <p>Account</p>
@@ -149,26 +149,22 @@
 
     <!-- Mobile Nav -->
     <section class="navbar__mobile d-block d-lg-none">
-      <ClientOnly>
-        <Slide>
-          <a id="home" href="#">
-            <span>Home</span>
-          </a>
-        </Slide>
-      </ClientOnly>
+      <Slide>
+        <a id="home" href="#">
+          <span>Home</span>
+        </a>
+      </Slide>
     </section>
   </header>
 </template>
 
 <script>
+import { Slide } from 'vue-burger-menu'
 import { mapGetters } from 'vuex'
 
   export default {
     components: {
-      Slide: () => 
-        import ('vue-burger-menu')
-        .then(m => m.Slide)
-        .catch()
+      Slide
     },
 
     data: () => ({

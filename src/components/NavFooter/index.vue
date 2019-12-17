@@ -9,13 +9,13 @@
                             <h3>Categories</h3>
                             <ul>
                                 <li>
-                                    <g-link exact to="/">Category One</g-link>
+                                    <router-link exact to="/">Category One</router-link>
                                 </li>
                                 <li>
-                                    <g-link exact to="/">Category Two</g-link>
+                                    <router-link exact to="/">Category Two</router-link>
                                 </li>
                                 <li>
-                                    <g-link exact to="/">Category Three</g-link>
+                                    <router-link exact to="/">Category Three</router-link>
                                 </li>
                             </ul>
                         </div>
@@ -23,13 +23,13 @@
                             <h3>Account</h3>
                             <ul>
                                 <li>
-                                    <g-link exact to="/">Register</g-link>
+                                    <router-link exact to="/">Register</router-link>
                                 </li>
                                 <li>
-                                    <g-link exact to="/">Sign In</g-link>
+                                    <router-link exact to="/">Sign In</router-link>
                                 </li>
                                 <li>
-                                    <g-link exact to="/">Orders</g-link>
+                                    <router-link exact to="/">Orders</router-link>
                                 </li>
                             </ul>
                         </div>
@@ -41,7 +41,7 @@
                             <div class="footer__one-contact">
                                 <div class="logo">
                                     <img v-if="navLogoImg" :src="navLogo" :alt="storeName" width="200">
-                                    <h1 v-else :style="{color: navLogoTextDark}">{{storeName}}</h1>
+                                    <h1 v-else :style="{color: navLogoTextColor}">{{storeName}}</h1>
                                 </div>
                                 <p>+234 801 234 5678</p>
                                 <p>123A, Somewhere Street, Lagos, Nigeria.</p>
@@ -141,7 +141,7 @@ export default {
             'subfooterShow',
             'subfooterLayout',
             'navLogoImg',
-            'navLogoTextDark',
+            'navLogoTextColor',
             'storeName'
         ]),
         getCurrentYear() {

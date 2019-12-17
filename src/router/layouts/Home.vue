@@ -13,14 +13,14 @@
 </template>
 
 <script>
-import NavHeader from '~/components/NavHeader'
-import NavFooter from '~/components/NavFooter'
-import HomeHero from '~/components/HomeHero'
-import HomeCollections from '~/components/HomeCollections'
-import HomeProductsTitle from '~/components/HomeProductsTitle'
-import HomeProducts from '~/components/HomeProducts'
-import HomeNewsletter from '~/components/HomeNewsletter'
-import BacktoTop from '~/components/BacktoTop'
+import NavHeader from '@/components/NavHeader'
+import NavFooter from '@/components/NavFooter'
+import HomeHero from '@/components/HomeHero'
+import HomeCollections from '@/components/HomeCollections'
+import HomeProductsTitle from '@/components/HomeProductsTitle'
+import HomeProducts from '@/components/HomeProducts'
+import HomeNewsletter from '@/components/HomeNewsletter'
+import BacktoTop from '@/components/BacktoTop'
 
 export default {
   components: {

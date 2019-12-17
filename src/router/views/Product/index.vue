@@ -19,12 +19,12 @@
 </template>
 
 <script>
-import Layout from './../layouts/Product.vue'
-import ProductImage from '~/components/ProductImage'
-import ProductInfo from '~/components/ProductInfo'
-import ProductShare from '~/components/ProductShare'
-import ProductBottom from '~/components/ProductBottom'
-import ProductBreadcrumb from '~/components/ProductBreadcrumb'
+import Layout from '@/router/layouts/Product.vue'
+import ProductImage from '@/components/ProductImage'
+import ProductInfo from '@/components/ProductInfo'
+import ProductShare from '@/components/ProductShare'
+import ProductBottom from '@/components/ProductBottom'
+import ProductBreadcrumb from '@/components/ProductBreadcrumb'
 
 export default {
     components: {

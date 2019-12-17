@@ -1,11 +1,13 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from 'vue';
+import App from './App.vue';
 
 import Vuex from 'vuex';
-import store from '~/store/store'
-import router from './router'
+import Router from 'vue-router';
 
-import Default from '~/router/layouts/Default.vue';
+import store from '@/store/store';
+import router from '@/router';
+
+import Default from '@/router/layouts/Default.vue';
 
 import Antd from 'ant-design-vue';
 import 'ant-design-vue/dist/antd.css';
@@ -24,22 +26,22 @@ import Icon from 'vue-awesome/components/Icon';
 import SocialSharing from 'vue-social-sharing';
 
 import "@storefront-ui/vue/styles.scss";
-import '~/assets/styles/global.scss';
+import '@/assets/styles/global.scss';
 
 // Firebase
-import '~/firebase/config'
+import '@/firebase/config';
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
-Vue.use(Vuex)
-Vue.use(Router)
-Vue.use(BootstrapVue)
-Vue.use(Antd)
-Vue.use(VueMaterial)
-Vue.use(SocialSharing)
+Vue.use(Vuex);
+Vue.use(Router);
+Vue.use(BootstrapVue);
+Vue.use(Antd);
+Vue.use(VueMaterial);
+Vue.use(SocialSharing);
 
-Vue.component('Layout', Default)
-Vue.component('v-icon', Icon)
+Vue.component('Layout', Default);
+Vue.component('v-icon', Icon);
 
 new Vue({
   store,

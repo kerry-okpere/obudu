@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import Layout from './../layouts/Checkout'
-import CheckoutForm from '~/components/CheckoutForm'
+import Layout from '@/router/layouts/Checkout'
+import CheckoutForm from '@/components/CheckoutForm'
 
 export default {
     components: {

@@ -1,14 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import store from '@/store'
+import store from '@/store/store'
 
 Vue.use(Router)
 
-import Home from "@/components/Home";
-import Product from "./views/product";
-import Checkout from "./views/checkout";
+import Home from './views/Home';
+import Product from './views/Product';
+import Checkout from './views/Checkout';
+import Customize from './views/Customize';
 
-import loadEnv from "./middleware/loadEnv";
+import loadEnv from './middleware/loadEnv';
 
 
 const router =  new Router({
@@ -26,13 +27,13 @@ const router =  new Router({
       name: "Product",
       component: Product
     },
-    // {
-    //   path:"/cart",
-    //   name: "Cart",
-    //   component: Cart
-    // },
     {
-      path: "/checkout",
+      path: "/customize/",
+      name: "Customize",
+      component: Customize,
+    },
+    {
+      path: "/checkout/",
       name: "Checkout",
       component: Checkout,
       meta: {

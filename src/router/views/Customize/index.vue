@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import Layout from "~/layouts/HomeLayout.vue";
-import ThemeSettings from "~/components/ThemeSettings";
+import Layout from "@/router/layouts/Home.vue";
+import ThemeSettings from "@/components/ThemeSettings";
 // import db from "~/firebase/db";
 
 export default {

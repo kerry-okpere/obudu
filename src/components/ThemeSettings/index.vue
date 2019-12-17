@@ -63,21 +63,17 @@
                     <a-collapse-panel header="Colors" key="2" :showArrow="false">
                         <div class="settings__item">
                             <h3>Primary Color</h3>
-                            <a-button type="primary" @click="showPriColorPicker = !showPriColorPicker" v-bind:style="{backgroundColor: priColor, borderColor: priColor}">
+                            <a-button type="primary" @click="showPriColorCP = !showPriColorCP" v-bind:style="{backgroundColor: priColor, borderColor: priColor}">
                                 Select Color
                             </a-button>
-                            <ClientOnly>
-                                <swatches-picker v-if="showPriColorPicker" :value="priColor" @input="setPriColor($event.hex)" :disableAlpha="true" />
-                            </ClientOnly>
+                            <swatches-picker v-if="priColorCP" :value="priColor" @input="setPriColor($event.hex)" :disableAlpha="true" />
                         </div>
                         <div class="settings__item">
                             <h3>Secondary Color</h3>
-                            <a-button type="primary" @click="showSecColorPicker = !showSecColorPicker" v-bind:style="{backgroundColor: secColor, borderColor: secColor}">
+                            <a-button type="primary" @click="showSecColorCP = !showSecColorCP" v-bind:style="{backgroundColor: secColor, borderColor: secColor}">
                                 Select Color
                             </a-button>
-                            <ClientOnly>
-                                <swatches-picker v-if="showSecColorPicker" :value="secColor" @input="setSecColor($event.hex)" :disableAlpha="true" />
-                            </ClientOnly>
+                            <swatches-picker v-if="secColorCP" :value="secColor" @input="setSecColor($event.hex)" :disableAlpha="true" />
                         </div>
                     </a-collapse-panel>
                     <a-collapse-panel header="Menu" key="3" :showArrow="false">
@@ -115,9 +111,7 @@
                                             <a-button type="primary" size="small" @click="showNavLogoTextCP = !showNavLogoTextCP">
                                                 Select Color
                                             </a-button>
-                                            <ClientOnly>
-                                                <swatches-picker v-if="showNavLogoTextCP" :value="navLogoTextColor" @input="setNavLogoTextColor($event.hex)" :disableAlpha="true" />
-                                            </ClientOnly>
+                                            <swatches-picker v-if="navLogoTextCP" :value="navLogoTextColor" @input="setNavLogoTextColor($event.hex)" :disableAlpha="true" />
                                         </div>
                                         <div class="settings__modal-item">
                                             <p>Text Logo Size</p>
@@ -166,12 +160,10 @@
                                             <a-collapse-panel header="Hero Background" key="1" :showArrow="false">
                                                 <div class="settings__modal-item">
                                                     <p>Background Color</p>
-                                                    <a-button type="primary" @click="showHeroColor = !showHeroColor" v-bind:style="{backgroundColor: heroColor, borderColor: heroColor}">
+                                                    <a-button type="primary" @click="showHeroColorCP = !showHeroColorCP" v-bind:style="{backgroundColor: heroColor, borderColor: heroColor}">
                                                         Select Color
                                                     </a-button>
-                                                    <ClientOnly>
-                                                        <swatches-picker v-if="showHeroColor" :value="heroColor" @input="setHeroColor($event.hex)" :disableAlpha="true" />
-                                                    </ClientOnly>
+                                                    <swatches-picker v-if="showHeroColorCP" :value="heroColor" @input="setHeroColor($event.hex)" :disableAlpha="true" />
                                                 </div>
                                                 <div class="settings__modal-item">
                                                     <p>Background Image</p>
@@ -192,9 +184,7 @@
                                                     <a-button type="primary" size="small" @click="showHeroTitleCP = !showHeroTitleCP">
                                                         Select Color
                                                     </a-button>
-                                                    <ClientOnly>
-                                                        <swatches-picker v-if="showHeroTitleCP" :value="heroTitleColor" @input="setHeroTitleColor($event.hex)" :disableAlpha="true" />
-                                                    </ClientOnly>
+                                                    <swatches-picker v-if="heroTitleCP" :value="heroTitleColor" @input="setHeroTitleColor($event.hex)" :disableAlpha="true" />
                                                 </div>
                                                 <div class="settings__modal-item">
                                                     <p>Hero Content</p>
@@ -202,9 +192,7 @@
                                                     <a-button type="primary" size="small" @click="showHeroContentCP = !showHeroContentCP">
                                                         Select Color
                                                     </a-button>
-                                                    <ClientOnly>
-                                                        <swatches-picker v-if="showHeroContentCP" :value="heroContentColor" @input="setHeroContentColor($event.hex)" :disableAlpha="true" />
-                                                    </ClientOnly>
+                                                    <swatches-picker v-if="heroContentCP" :value="heroContentColor" @input="setHeroContentColor($event.hex)" :disableAlpha="true" />
                                                 </div>
                                                 <div class="settings__modal-item">
                                                     <p>Hero Image</p>
@@ -225,21 +213,17 @@
                                             <a-collapse-panel header="Hero Button" key="3" :showArrow="false">
                                                 <div class="settings__modal-item">
                                                     <p>Primary Color</p>
-                                                    <a-button type="primary" size="small" @click="showHeroBtnPri = !showHeroBtnPri" v-bind:style="{backgroundColor: heroBtnPri, borderColor: heroContentBtnPri, color: heroBtnSec}">
+                                                    <a-button type="primary" size="small" @click="showHeroBtnPriCP = !showHeroBtnPriCP" v-bind:style="{backgroundColor: heroBtnPri, borderColor: heroBtnPri, color: heroBtnSec}">
                                                         Select Color
                                                     </a-button>
-                                                    <ClientOnly>
-                                                        <swatches-picker v-if="showHeroBtnPri" :value="heroBtnPri" @input="setHeroBtnPri($event.hex)" :disableAlpha="true" />
-                                                    </ClientOnly>
+                                                    <swatches-picker v-if="heroBtnPriCP" :value="heroBtnPri" @input="setHeroBtnPri($event.hex)" :disableAlpha="true" />
                                                 </div>
                                                 <div class="settings__modal-item">
                                                     <p>Secondary Color</p>
-                                                    <a-button type="primary" size="small" @click="showHeroBtnSec = !showHeroBtnSec" v-bind:style="{backgroundColor: heroBtnPri, borderColor: heroBtnPri, color: heroBtnSec}">
+                                                    <a-button type="primary" size="small" @click="showHeroBtnSecCP = !showHeroBtnSecCP" v-bind:style="{backgroundColor: heroBtnPri, borderColor: heroBtnPri, color: heroBtnSec}">
                                                         Select Color
                                                     </a-button>
-                                                    <ClientOnly>
-                                                        <swatches-picker v-if="showHeroBtnSec" :value="heroBtnSec" @input="setHeroBtnSec($event.hex)" :disableAlpha="true" />
-                                                    </ClientOnly>
+                                                    <swatches-picker v-if="heroBtnSecCP" :value="heroBtnSec" @input="setHeroBtnSec($event.hex)" :disableAlpha="true" />
                                                 </div>
                                                 <div class="settings__modal-item">
                                                     <p>Call to Action</p>
@@ -282,9 +266,7 @@
                                                 <a-button type="primary" @click="showCollectionBtnCP = !showCollectionBtnCP" v-bind:style="{backgroundColor: collectionBtnColor, borderColor: collectionBtnColor}">
                                                     Select Color
                                                 </a-button>
-                                                <ClientOnly>
-                                                    <swatches-picker v-if="showCollectionBtnCP" :value="collectionBtnColor" @input="setCollectionBtnColor($event.hex)" :disableAlpha="true" />
-                                                </ClientOnly>
+                                                <swatches-picker v-if="collectionBtnCP" :value="collectionBtnColor" @input="setCollectionBtnColor($event.hex)" :disableAlpha="true" />
                                             </div>
                                         </a-collapse-panel>
                                         <a-collapse-panel header="Collection One" key="2" :showArrow="false">
@@ -299,9 +281,7 @@
                                                 <a-button type="primary" @click="showCollectionOneBgCP = !showCollectionOneBgCP" v-bind:style="{backgroundColor: collectionOneBg, borderColor: collectionOneBg}">
                                                     Select Color
                                                 </a-button>
-                                                <ClientOnly>
-                                                    <swatches-picker v-if="showCollectionOneBgCP" :value="collectionOneBg" @input="setCollectionOneBg($event.hex)" :disableAlpha="true" />
-                                                </ClientOnly>
+                                                <swatches-picker v-if="collectionOneBgCP" :value="collectionOneBg" @input="setCollectionOneBg($event.hex)" :disableAlpha="true" />
                                             </div>
                                             <div class="settings__modal-item">
                                                 <p>Collection Title</p>
@@ -340,9 +320,7 @@
                                                 <a-button type="primary" @click="showCollectionTwoBgCP = !showCollectionTwoBgCP" v-bind:style="{backgroundColor: collectionTwoBg, borderColor: collectionTwoBg}">
                                                     Select Color
                                                 </a-button>
-                                                <ClientOnly>
-                                                    <swatches-picker v-if="showCollectionTwoBgCP" :value="collectionTwoBg" @input="setCollectionTwoBg($event.hex)" :disableAlpha="true" />
-                                                </ClientOnly>
+                                                <swatches-picker v-if="collectionTwoBgCP" :value="collectionTwoBg" @input="setCollectionTwoBg($event.hex)" :disableAlpha="true" />
                                             </div>
                                             <div class="settings__modal-item">
                                                 <p>Collection Title</p>
@@ -381,9 +359,7 @@
                                                 <a-button type="primary" @click="showCollectionThreeBgCP = !showCollectionThreeBgCP" v-bind:style="{backgroundColor: collectionThreeBg, borderColor: collectionThreeBg}">
                                                     Select Color
                                                 </a-button>
-                                                <ClientOnly>
-                                                    <swatches-picker v-if="showCollectionThreeBgCP" :value="collectionThreeBg" @input="setCollectionThreeBg($event.hex)" :disableAlpha="true" />
-                                                </ClientOnly>
+                                                <swatches-picker v-if="collectionThreeBgCP" :value="collectionThreeBg" @input="setCollectionThreeBg($event.hex)" :disableAlpha="true" />
                                             </div>
                                             <div class="settings__modal-item">
                                                 <p>Collection Title</p>
@@ -440,9 +416,7 @@
                                                     <a-button type="primary" @click="showProdBgCP = !showProdBgCP" v-bind:style="{backgroundColor: productBg, borderColor: productBg}">
                                                         Select Color
                                                     </a-button>
-                                                    <ClientOnly>
-                                                        <swatches-picker v-if="showProdBgCP" :value="productBg" @input="setProductBg($event.hex)" :disableAlpha="true" />
-                                                    </ClientOnly>
+                                                    <swatches-picker v-if="prodBgCP" :value="productBg" @input="setProductBg($event.hex)" :disableAlpha="true" />
                                                 </div>
                                             </a-collapse-panel>
                                             <a-collapse-panel header="Product Section Title" key="2" :showArrow="false">
@@ -451,9 +425,7 @@
                                                     <a-button type="primary" @click="showProductTitleBgCP = !showProductTitleBgCP" v-bind:style="{backgroundColor: productTitleBgColor, borderColor: productTitleBgColor}">
                                                         Select Color
                                                     </a-button>
-                                                    <ClientOnly>
-                                                        <swatches-picker v-if="showProductTitleBgCP" :value="productTitleBgColor" @input="setProductTitleBgColor($event.hex)" :disableAlpha="true" />
-                                                    </ClientOnly>
+                                                    <swatches-picker v-if="productTitleBgCP" :value="productTitleBgColor" @input="setProductTitleBgColor($event.hex)" :disableAlpha="true" />
                                                 </div>
                                                 <div class="settings__modal-item">
                                                     <p>Product Section Title</p>
@@ -465,18 +437,14 @@
                                                         <a-button type="primary" size="small" @click="showProdTitleMainCP = !showProdTitleMainCP" v-bind:style="{backgroundColor: productTitleMainColor, borderColor: productTitleMainColor}">
                                                             Select Color
                                                         </a-button>
-                                                        <ClientOnly>
-                                                            <swatches-picker v-if="showProdTitleMainCP" :value="productTitleMainColor" @input="setProductTitleMainColor($event.hex)" :disableAlpha="true" />
-                                                        </ClientOnly>
+                                                        <swatches-picker v-if="prodTitleMainCP" :value="productTitleMainColor" @input="setProductTitleMainColor($event.hex)" :disableAlpha="true" />
                                                     </div>
                                                     <div class="pb-3">
                                                         <a-input @change="setProductTitleSub($event.target.value)" :placeholder="productTitleSub" />
                                                         <a-button type="primary" size="small" @click="showProdTitleSubCP = !showProdTitleSubCP" v-bind:style="{backgroundColor: productTitleSubColor, borderColor: productTitleSubColor}">
                                                             Select Color
                                                         </a-button>
-                                                        <ClientOnly>
-                                                            <swatches-picker v-if="showProdTitleSubCP" :value="productTitleSubColor" @input="setProductTitleSubColor($event.hex)" :disableAlpha="true" />
-                                                        </ClientOnly>
+                                                        <swatches-picker v-if="prodTitleSubCP" :value="productTitleSubColor" @input="setProductTitleSubColor($event.hex)" :disableAlpha="true" />
                                                     </div>
                                                 </div>
                                                 <div class="settings__modal-item">
@@ -553,14 +521,12 @@
 </template>
 
 <script>
+import { Swatches } from 'vue-color'
 import { mapGetters, mapMutations } from 'vuex'
 
     export default {
         components: {
-            'swatches-picker': () =>
-                import ('vue-color')
-                    .then(m => m.Swatches)
-                    .catch()
+            'swatches-picker': Swatches
         },
 
         data: () => ({
@@ -571,18 +537,10 @@ import { mapGetters, mapMutations } from 'vuex'
                 height: '30px',
                 lineHeight: '30px'
             },
-            showPriColorPicker: false,
-            showSecColorPicker: false,
-            showNavLogoTextCP: false,
             showHeroSettings: false,
-            showHeroColor: false,
-            showHeroTitleCP: false,
-            showHeroContentCP: false,
             showHeroImageUpload: false,
             heroImageModal: false,
             heroImagePreview: '',
-            showHeroBtnPri: false,
-            showHeroBtnSec: false,
             newHeroTitle: '',
             fileList: [
                 {
@@ -594,15 +552,24 @@ import { mapGetters, mapMutations } from 'vuex'
             ],
             showMenuSettings: false,
             showCollectionSettings: false,
-            showCollectionBtnCP: false,
-            showCollectionOneBgCP: false,
-            showCollectionTwoBgCP: false,
-            showCollectionThreeBgCP: false,
             showProductSettings: false,
-            showProductTitleBgCP: false,
-            showProdTitleMainCP: false,
-            showProdTitleSubCP: false,
-            showProdBgCP: false,
+            priColorCP: false,
+            secColorCP: false,
+            navLogoTextCP: false,
+            productTitleBgCP: false,
+            heroColorCP: false,
+            heroTitleCP: false,
+            heroContentCP: false,
+            heroBtnPriCP: false,
+            heroBtnSecCP: false,
+            collectionBtnCP: false,
+            collectionOneBgCP: false,
+            collectionTwoBgCP: false,
+            collectionThreeBgCP: false,
+            productTitleBgCP: false,
+            prodTitleMainCP: false,
+            prodTitleSubCP: false,
+            prodBgCP: false,
         }),
 
         computed: {
@@ -709,9 +676,6 @@ import { mapGetters, mapMutations } from 'vuex'
             heroCancel(e) {
                 this.showHeroSettings = false;
             },
-            heroColor() {
-                this.showHeroColor = true;
-            },
             //END
 
             //Hero Image Upload
@@ -728,47 +692,53 @@ import { mapGetters, mapMutations } from 'vuex'
             //END
             
             //Color Pickers
-            showPriColorPicker() {
-                this.showPriColorPicker = true;
+            showPriColorCP() {
+                this.priColorCP = true;
             },
-            showSecColorPicker() {
-                this.showSecColorPicker = true;
+            showSecColorCP() {
+                this.secColorCP = true;
             },
             showNavLogoTextCP() {
-                this.showNavLogoTextCP = true;
+                this.navLogoTextCP = true;
+            },
+            showHeroColorCP() {
+                this.heroColorCP = true;
             },
             showHeroTitleCP() {
-                this.showHeroTitleColor = true;
+                this.heroTitleCP = true;
             },
             showHeroContentCP() {
-                this.showHeroContentColor = true;
+                this.heroContentCP = true;
             },
             showCollectionBtnCP() {
-                this.showCollectionBtnCP = true;
+                this.collectionBtnCP = true;
             },
             showCollectionOneBgCP() {
-                this.showCollectionOneBgCP = true;
+                this.collectionOneBgCP = true;
             },
             showCollectionTwoBgCP() {
-                this.showCollectionTwoBgCP = true;
+                this.collectionTwoBgCP = true;
             },
             showCollectionThreeBgCP() {
-                this.showCollectionThreeBgCP = true;
+                this.collectionThreeBgCP = true;
+            },
+            showProductTitleBgCP() {
+                this.productTitleBgCP = true;
             },
             showProdTitleMainCP() {
-                this.showProdTitleMainCP = true;
+                this.prodTitleMainCP = true;
             },
             showProdTitleSubCP() {
-                this.showProdTitleSubCP = true;
+                this.prodTitleSubCP = true;
             },
             showProdBgCP() {
-                this.showProdBgCP = true;
+                this.prodBgCP = true;
             },
-            showHeroBtnPri() {
-                this.showHeroBtnPri = true;
+            showHeroBtnPriCP() {
+                this.heroBtnPriCP = true;
             },
-            showHeroBtnSec() {
-                this.showHeroBtnSec = true;
+            showHeroBtnSecCP() {
+                this.heroBtnSecCP = true;
             },
             //END
 
@@ -923,39 +893,6 @@ import { mapGetters, mapMutations } from 'vuex'
                 });
             },
             
-            //Cloudinary
-            uploadWidget() {
-                let myWidget = cloudinary.createUploadWidget(
-                    {
-                        cloudName: "mercurie",
-                        apiKey: "XYZ",
-                        uploadPreset: "XYZ",
-                        multiple: false,
-                        cropping: true,
-                        defaultSource: "local",
-                        folder: "mercuriemartlogos",
-                        public_id: "<FILENAME>"
-                    },
-                    (error, result) => {
-                        if (!error && result && result.event === "success") {
-                            console.log("Done! Here is the image info: ", result.info);
-                        } else {
-                            console.log(error);
-                        }
-                    }
-                );
-
-                document.getElementById("upload_widget").addEventListener(
-                    "click",
-                    function() {
-                    myWidget.open();
-                    },
-                    false
-                );
-            },
-        },
-        mounted () {
-            this.uploadWidget()
         }
     }
 </script>

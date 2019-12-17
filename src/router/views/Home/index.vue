@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Layout from './../layouts/Home.vue'
+import Layout from '@/router/layouts/Home.vue'
 
 export default {
   components: {
