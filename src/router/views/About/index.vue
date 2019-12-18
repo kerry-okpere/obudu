@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import ThemePicker from '~/components/ThemePicker'
-import ThemedButton from '~/components/styled-components/ThemedButton.js'
+import ThemePicker from '@/components/ThemePicker'
+import ThemedButton from '@/components/styled-components/ThemedButton.js'
 
 export default {
   metaInfo: {
