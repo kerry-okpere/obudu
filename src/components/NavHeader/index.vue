@@ -1,5 +1,6 @@
 <template>
   <header v-if="navShow === true" :class="[navType]">
+
     <!-- Layout One -->
     <section class="navbar__one d-none d-lg-block" v-if="navLayout === 1">
       <!-- <a-affix :offsetTop="0"> -->
@@ -155,15 +156,18 @@
         </a>
       </Slide>
     </section>
+
   </header>
 </template>
 
 <script>
+import NavLogin from '@/components/NavLogin'
 import { Slide } from 'vue-burger-menu'
 import { mapGetters } from 'vuex'
 
   export default {
     components: {
+      NavLogin,
       Slide
     },
 
