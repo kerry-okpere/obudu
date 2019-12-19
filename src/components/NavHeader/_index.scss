@@ -11,6 +11,17 @@ header {
     a:hover {
         text-decoration: none;
     }
+    .navbar__item {
+        display: inline-flex;
+        margin-right: 15px;
+        img {
+            margin-right: 8px;
+        }
+        p {
+            font-size: 14px;
+            margin: 0;
+        }
+    }
     .logo {
         h1 {
             font-weight: 700;
@@ -30,16 +41,6 @@ header {
                 font-size: 14px;
                 font-weight: bold;
                 line-height: 0;
-            }
-        }
-        &-secnav {
-            display: inline-flex;
-            img {
-                margin-right: 10px;
-            }
-
-            p {
-                margin: 12px 0 0 0;
             }
         }
         &-search {

@@ -7,6 +7,7 @@
         <HomeProducts />
             <slot />
         <HomeNewsletter />
+        <NavCart />
         <BacktoTop />
     <NavFooter />
   </section>
@@ -14,6 +15,7 @@
 
 <script>
 import NavHeader from '@/components/NavHeader'
+import NavCart from '@/components/NavCart'
 import NavFooter from '@/components/NavFooter'
 import HomeHero from '@/components/HomeHero'
 import HomeCollections from '@/components/HomeCollections'
@@ -25,6 +27,7 @@ import BacktoTop from '@/components/BacktoTop'
 export default {
   components: {
     NavHeader,
+    NavCart,
     NavFooter,
     HomeHero,
     HomeCollections,
