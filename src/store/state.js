@@ -13,6 +13,8 @@ const state = {
         navLogoTextColor: '#fff',
         navLogoTextSize: 100,
         navLogo: 'https://res.cloudinary.com/mercurie/image/upload/v1567432684/mercuriemart/logo.svg',
+        cartShow: false,
+        loginShow: false,
         heroShow: true,
         heroLayout: 1,
         heroHeight: 300,

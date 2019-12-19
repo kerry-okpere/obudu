@@ -1,0 +1,108 @@
+.cart {
+    h1 {
+        font-size: 24px;
+        font-weight: 700;
+        margin: 15px 0;
+    }
+    h3 {
+        font-size: 18px;
+        font-weight: 700;
+        margin: 15px 0;
+    }
+    p {
+        font-size: 16px;
+        line-height: 24px;
+        margin: 0 0 20px;
+    }
+    &__overlay {
+        background-color: rgba(199,207,207,0.8);
+        height: 100%;
+        min-height: 100vh;
+        position: fixed;
+        top: 0;
+        transition: 300ms;
+        width: 100%;
+        z-index: 100;
+    }
+    &__close {
+        position: absolute;
+        left: 67.3%;
+        margin: 70px 0;
+        z-index: 101;
+    }
+    &__main {
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: center;
+        position: fixed;
+        background-color: #fff;
+        right: 0;
+        top: 0;
+        height: 100%;
+        width: 25rem;
+        max-width: 100vw;
+        
+        &-empty {
+            text-align: center;
+            margin: 100px 10px;
+            img {
+                width: 250px;
+                margin: 0 auto;
+            }
+            button {
+                height: 40px;
+                font-size: 16px;
+                font-weight: 700;
+            }
+        }
+
+        &-full {
+            .header {
+                display: flex;
+                margin: 20px 0;
+            }
+            .item {
+                position: relative;
+                .item-details {
+                    margin: 10px 0;
+                    h1 {
+                        font-size: 16px;
+                        line-height: 20px;
+                        margin: 0 0 10px;
+                    }
+                    h3 {
+                        font-size: 14px;
+                        margin: 0;
+                    }
+                    p {
+                        margin: 0;
+                    }
+                }
+                button {
+                    position: absolute;
+                    top: 35%;
+                }
+            }
+            .footer {
+                .total {
+                    display: flex;
+                    margin: 30px 10px;
+                    h3 {
+                        float: left;
+                        margin: 5px 0 0;
+                    }
+                    h1 {
+                        position: absolute;
+                        right: 20px;
+                        margin: 0;
+                    }
+                }
+                button {
+                    height: 50px;
+                    font-size: 18px;
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+}

@@ -6,7 +6,10 @@ Vue.use(Router)
 
 import Home from './views/Home';
 import Product from './views/Product';
+import Collection from './views/Collection';
 import Checkout from './views/Checkout';
+import Account from './views/Account';
+import About from './views/About';
 import Customize from './views/Customize';
 
 import loadEnv from './middleware/loadEnv';
@@ -28,9 +31,9 @@ const router =  new Router({
       component: Product
     },
     {
-      path: "/customize/",
-      name: "Customize",
-      component: Customize,
+      path: "/collection/",
+      name: "Collection",
+      component: Collection
     },
     {
       path: "/checkout/",
@@ -41,7 +44,23 @@ const router =  new Router({
           loadEnv
         ]
       }
-    }
+    },
+    {
+      path: "/account/",
+      name: "Account",
+      component: Account
+    },
+    {
+      path: "/about/",
+      name: "About",
+      component: About
+    },
+    {
+      path: "/customize/",
+      name: "Customize",
+      component: Customize,
+    },
+    
   ]
 });
 
