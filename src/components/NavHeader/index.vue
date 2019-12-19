@@ -34,8 +34,10 @@
                 </a-button>
               </div>
               <div class="navbar__item">
-                <img src="@/assets/img/nav/user.svg" width="20" alt="Account">
-                <p>Account</p>
+                <a-button type="link" @click="setLoginShow">
+                  <img src="@/assets/img/nav/user.svg" width="20" alt="Account">
+                  <p>Account</p>
+                </a-button>
               </div>
             </nav>
           </div>
@@ -162,6 +164,9 @@ import { mapGetters, mapMutations } from 'vuex'
     methods: {
       setCartShow(e) {
         this.$store.state.styles.cartShow = true;
+      },
+      setLoginShow(e) {
+        this.$store.state.styles.loginShow = true;
       }
     },
     computed: {
