@@ -1,22 +1,22 @@
 import axios from "axios";
-const fetch = require("isomorphic-fetch");
-require("isomorphic-fetch");
+// const fetch = require("isomorphic-fetch");
+// require("isomorphic-fetch");
 
-let fetchProductUrl = `${process.env.GRIDSOME_API_URL}/storefront/fetch`;
-let dummy_store = `${process.env.GRIDSOME_STORENAME}`;
+let fetchProductUrl = `${process.env.VUE_APP_API_URL}/storefront/fetch`;
+let dummy_store = `${process.env.VUE_APP_STORENAME}`;
 
-if(dummy_store == undefined){
-    // Attempt to get Config JSON
-    fetch("./config.json")
-      .then(response => response.json())
-      .then(json => {
-        console.log("The Config contents are: ", json);
-        fetchProductUrl = `${json["GRIDSOME_API_URL"]}/storefront/fetch`;
-        dummy_store = json["GRIDSOME_STORENAME"];
-      })
-      .catch(err => console.log("Unable to locate config file", err));
+// if(dummy_store == undefined){
+//     // Attempt to get Config JSON
+//     fetch("./config.json")
+//       .then(response => response.json())
+//       .then(json => {
+//         console.log("The Config contents are: ", json);
+//         fetchProductUrl = `${json["GRIDSOME_API_URL"]}/storefront/fetch`;
+//         dummy_store = json["GRIDSOME_STORENAME"];
+//       })
+//       .catch(err => console.log("Unable to locate config file", err));
 
-}
+// }
 
 
 const actions = {
