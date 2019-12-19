@@ -15,7 +15,6 @@
                     <div class="cart__main-full" v-else>
                         <div class="header">
                             <h1>Cart</h1>
-                            <a-button type="primary" shape="circle" icon="close"></a-button>
                         </div>
                         <div class="item">
                             <a-card hoverable>
@@ -55,7 +54,7 @@ import { mapGetters } from 'vuex'
 
 export default {
     data: () => ({
-        cartEmpty: true
+        cartEmpty: false
     }),
     methods: {
         setCartShow(e) {

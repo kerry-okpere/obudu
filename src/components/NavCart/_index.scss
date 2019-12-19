@@ -31,9 +31,9 @@
         z-index: 101;
     }
     &__main {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: center;
         position: fixed;
         background-color: #fff;
         right: 0;
@@ -44,7 +44,7 @@
         
         &-empty {
             text-align: center;
-            margin: 0 10px;
+            margin: 100px 10px;
             img {
                 width: 250px;
                 margin: 0 auto;
