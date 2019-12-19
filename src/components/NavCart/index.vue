@@ -54,7 +54,7 @@ import { mapGetters } from 'vuex'
 
 export default {
     data: () => ({
-        cartEmpty: false
+        cartEmpty: true
     }),
     methods: {
         setCartShow(e) {
