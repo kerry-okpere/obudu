@@ -22,7 +22,8 @@ let dummy_store = `${process.env.VUE_APP_STORENAME}`;
 const actions = {
   async fetchHomeProducts({ state, commit }) {
     return new Promise(async (resolve, reject) => {
-      let reqUrl = `/fetch/${fetchProductUrl}/${dummy_store}`;
+      let reqUrl = `${fetchProductUrl}/fetch/${dummy_store}`;
+      console.log(reqUrl)
       let response = await axios.get(reqUrl).catch(err => console.log(err));
       if (response.status == 200) {
         resolve(response.data);
