@@ -62,7 +62,7 @@
 
             
             let singleProd = await this.$store.dispatch('products/fetchSingleProducts',{
-                prodId: "ZxcUie4BKyC2YTdWahTz"
+                prodId: slug
             });
 
             this.singleProd = singleProd;
