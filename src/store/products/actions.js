@@ -2,7 +2,7 @@ import axios from "axios";
 // const fetch = require("isomorphic-fetch");
 // require("isomorphic-fetch");
 
-let fetchProductUrl = `${process.env.VUE_APP_API_URL}/storefront/fetch`;
+let fetchProductUrl = `${process.env.VUE_APP_API_URL}/storefront`;
 let dummy_store = `${process.env.VUE_APP_STORENAME}`;
 
 // if(dummy_store == undefined){
@@ -22,7 +22,7 @@ let dummy_store = `${process.env.VUE_APP_STORENAME}`;
 const actions = {
   async fetchHomeProducts({ state, commit }) {
     return new Promise(async (resolve, reject) => {
-      let reqUrl = `${fetchProductUrl}/${dummy_store}`;
+      let reqUrl = `/fetch/${fetchProductUrl}/${dummy_store}`;
       let response = await axios.get(reqUrl).catch(err => console.log(err));
       if (response.status == 200) {
         resolve(response.data);
@@ -32,6 +32,20 @@ const actions = {
         reject("Unable to fetch products");
       }
     });
+  },
+
+  async fetchSingleProducts({state, commit}, {prodId}) {
+    return new Promise (async (resolve, reject) => {
+      let reqUrl = `${fetchProductUrl}/${prodId}/${dummy_store}`;
+      let response = await axios.get(reqUrl).catch(err => console.log(err));
+
+      if(response.status == 200) {
+        resolve(response.data);
+        commit("setProduct", response.data);
+      }else {
+        reject("Unable to fetch product");
+      }
+    })
   }
 };
 

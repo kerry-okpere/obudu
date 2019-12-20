@@ -8,7 +8,7 @@
                     <div class="col" v-for="(product, index) in products" :key="index" >
                         <a-card :hoverable="false" @mouseover="hover = true" @mouseleave="hover = false" :bordered="true" :loading="loading" style="width: 240px">
                             <img alt="example" :src="`${product.images[0].url}`" width="240" />
-                            <router-link :to="`/product`" type="primary">
+                            <router-link :to="`/product/${product.id}`" type="primary">
                                 <a-button v-bind:style="{backgroundColor: priColor, borderColor: priColor}">Buy Now</a-button>
                             </router-link>
                             <div class="products__one-meta">

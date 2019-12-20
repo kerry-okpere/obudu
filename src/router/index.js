@@ -25,8 +25,8 @@ const router =  new Router({
       component: Home,
     },
     {
-    //   path:"/product/:slug",
-      path: "/product/",
+      path:"/product/:slug",
+      // path: "/product/",
       name: "Product",
       component: Product
     },
