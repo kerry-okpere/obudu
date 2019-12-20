@@ -25,6 +25,9 @@ import Icon from 'vue-awesome/components/Icon';
 
 import SocialSharing from 'vue-social-sharing';
 
+import VueTour from 'vue-tour';
+require('vue-tour/dist/vue-tour.css');
+
 import "@storefront-ui/vue/styles.scss";
 import '@/assets/styles/global.scss';
 
@@ -39,6 +42,7 @@ Vue.use(BootstrapVue);
 Vue.use(Antd);
 Vue.use(VueMaterial);
 Vue.use(SocialSharing);
+Vue.use(VueTour);
 
 Vue.component('Layout', Default);
 Vue.component('v-icon', Icon);
@@ -46,5 +50,5 @@ Vue.component('v-icon', Icon);
 new Vue({
   store,
   router,
-  render: function (h) { return h(App) },
+  render: h => h(App),
 }).$mount('#app')
