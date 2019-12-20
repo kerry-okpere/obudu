@@ -26,14 +26,30 @@
             </div>
           </div>
           <div class="col col-lg-2">
-            <nav class="navbar__one-nav">
+            <nav class="navbar__one-nav navbar-cta">
               <div class="navbar__item">
                 <a-button type="link" @click="setCartShow">
                   <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart">
                   <p>Cart</p>
                 </a-button>
               </div>
-              <div class="navbar__item">
+              <div v-if="userLoggedin" class="navbar__item">
+                <a-dropdown>
+                  <a-menu slot="overlay" @click="handleMenuClick">
+                    <a-menu-item key="1"><a-icon type="user" />My Account</a-menu-item>
+                    <a-menu-item key="2"><a-icon type="shopping" />My Orders</a-menu-item>
+                    <a-menu-item key="3"><a-icon type="home" />My Address</a-menu-item>
+                    <a-menu-item key="3"><a-icon type="wallet" />My Payment Options</a-menu-item>
+                    <a-menu-item key="3"><a-icon type="lock" />Logout</a-menu-item>
+                  </a-menu>
+                  <a-button type="link">
+                    <img src="@/assets/img/nav/user.svg" width="20" alt="Account">
+                    <p>Account</p>
+                    <a-icon type="down" style="margin:5px 5px 0;" />
+                  </a-button>
+                </a-dropdown>
+              </div>
+              <div v-else class="navbar__item">
                 <a-button type="link" @click="setLoginShow">
                   <img src="@/assets/img/nav/user.svg" width="20" alt="Account">
                   <p>Account</p>
@@ -155,12 +171,15 @@
 
 <script>
 import { Slide } from 'vue-burger-menu'
-import { mapGetters, mapMutations } from 'vuex'
+import { mapGetters } from 'vuex'
 
   export default {
     components: {
       Slide
-    }, 
+    },
+    data: () => ({
+      userLoggedin: false
+    }),
     methods: {
       setCartShow(e) {
         this.$store.state.styles.cartShow = true;

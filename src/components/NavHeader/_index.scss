@@ -12,8 +12,7 @@ header {
         text-decoration: none;
     }
     .navbar__item {
-        display: inline-flex;
-        margin-right: 15px;
+        display: flex;
         img {
             margin-right: 8px;
         }
@@ -22,8 +21,11 @@ header {
             margin: 0;
         }
         button {
-            display: contents;
+            display: flex;
         }
+    }
+    .navbar-cta {
+        display: flex;
     }
     .logo {
         h1 {
