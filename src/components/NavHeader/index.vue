@@ -178,7 +178,7 @@ import { mapGetters } from 'vuex'
       Slide
     },
     data: () => ({
-      userLoggedin: false
+      userLoggedin: true
     }),
     methods: {
       setCartShow(e) {
