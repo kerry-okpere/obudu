@@ -19,7 +19,6 @@
 </template>
 
 <script>
-import Layout from '@/router/layouts/Product.vue'
 import ProductImage from '@/components/ProductImage'
 import ProductInfo from '@/components/ProductInfo'
 import ProductShare from '@/components/ProductShare'
@@ -28,7 +27,6 @@ import ProductBreadcrumb from '@/components/ProductBreadcrumb'
 
 export default {
     components: {
-        Layout,
         ProductImage,
         ProductInfo,
         ProductShare,
