@@ -6,7 +6,7 @@ const mutations = {
       state.styles = stylesObject
     },
     setStoreName(state, storeName) {
-        state.styles.storeName = storeName
+        state.data.storeName = storeName
     },
     //Fonts
     setThemeColor(state, color) {
@@ -43,7 +43,7 @@ const mutations = {
         state.styles.navLogoTextSize = navLogoTextSize
     },
     setNavLogo(state, navLogo) {
-        state.styles.navLogo = navLogo
+        state.data.navLogo = navLogo
     },
     //Hero
     setHeroShow(state, heroShow) {
@@ -59,31 +59,31 @@ const mutations = {
         state.styles.heroBgImgShow = heroBgImgShow
     },
     setHeroBgImg(state, heroBgImg) {
-        state.styles.heroBgImg = heroBgImg
+        state.data.heroBgImg = heroBgImg
     },
     setHeroColor(state, color) {
         state.styles.heroColor = color
     },
     setHeroTitle(state, heroTitle) {
-        state.styles.heroTitle = heroTitle
+        state.data.heroTitle = heroTitle
     },
     setHeroTitleColor(state, color) {
         state.styles.heroTitleColor = color
     },
     setHeroContent(state, heroContent) {
-        state.styles.heroContent = heroContent
+        state.data.heroContent = heroContent
     },
     setHeroContentColor(state, color) {
         state.styles.heroContentColor = color
     },
     setHeroCTA(state, heroCTA) {
-        state.styles.heroCTA = heroCTA
+        state.data.heroCTA = heroCTA
     },
     setHeroCTALink(state, heroCTALink) {
-        state.styles.heroCTALink = heroCTALink
+        state.data.heroCTALink = heroCTALink
     }, 
     setHeroImage(state, heroImage) {
-        state.styles.heroImage = heroImage
+        state.data.heroImage = heroImage
     },
     setHeroImageShow(state, heroImageShow) {
         state.styles.heroImageShow = heroImageShow
@@ -111,19 +111,19 @@ const mutations = {
         state.styles.collectionOneBg = color
     },
     setCollectionOneTitle(state, collectionOneTitle) {
-        state.styles.collectionOneTitle = collectionOneTitle
+        state.data.collectionOneTitle = collectionOneTitle
     },
     setCollectionOneSubtitle(state, collectionOneSubtitle) {
-        state.styles.collectionOneSubtitle = collectionOneSubtitle
+        state.data.collectionOneSubtitle = collectionOneSubtitle
     },
     setCollectionOneImg(state, collectionOneImg) {
-        state.styles.collectionOneImg = collectionOneImg
+        state.data.collectionOneImg = collectionOneImg
     },
     setCollectionOneBtn(state, collectionOneBtn) {
-        state.styles.collectionOneBtn = collectionOneBtn
+        state.data.collectionOneBtn = collectionOneBtn
     },
     setCollectionOneLink(state, collectionOneLink) {
-        state.styles.collectionOneLink = collectionOneLink
+        state.data.collectionOneLink = collectionOneLink
     },
     setCollectionTwoShow(state, collectionTwoShow) {
         state.styles.collectionTwoShow = collectionTwoShow
@@ -132,19 +132,19 @@ const mutations = {
         state.styles.collectionTwoBg = color
     },
     setCollectionTwoTitle(state, collectionTwoTitle) {
-        state.styles.collectionTwoTitle = collectionTwoTitle
+        state.data.collectionTwoTitle = collectionTwoTitle
     },
     setCollectionTwoSubtitle(state, collectionTwoSubtitle) {
-        state.styles.collectionTwoSubtitle = collectionTwoSubtitle
+        state.data.collectionTwoSubtitle = collectionTwoSubtitle
     },
     setCollectionTwoImg(state, collectionTwoImg) {
-        state.styles.collectionTwoImg = collectionTwoImg
+        state.data.collectionTwoImg = collectionTwoImg
     },
     setCollectionTwoBtn(state, collectionTwoBtn) {
-        state.styles.collectionTwoBtn = collectionTwoBtn
+        state.data.collectionTwoBtn = collectionTwoBtn
     },
     setCollectionTwoLink(state, collectionTwoLink) {
-        state.styles.collectionTwoLink = collectionTwoLink
+        state.data.collectionTwoLink = collectionTwoLink
     },
     setCollectionThreeShow(state, collectionThreeShow) {
         state.styles.collectionThreeShow = collectionThreeShow
@@ -153,19 +153,19 @@ const mutations = {
         state.styles.collectionThreeBg = color
     },
     setCollectionThreeTitle(state, collectionThreeTitle) {
-        state.styles.collectionThreeTitle = collectionThreeTitle
+        state.data.collectionThreeTitle = collectionThreeTitle
     },
     setCollectionThreeSubtitle(state, collectionThreeSubtitle) {
-        state.styles.collectionThreeSubtitle = collectionThreeSubtitle
+        state.data.collectionThreeSubtitle = collectionThreeSubtitle
     },
     setCollectionThreeImg(state, collectionThreeImg) {
-        state.styles.collectionThreeImg = collectionThreeImg
+        state.data.collectionThreeImg = collectionThreeImg
     },
     setCollectionThreeBtn(state, collectionThreeBtn) {
-        state.styles.collectionThreeBtn = collectionThreeBtn
+        state.data.collectionThreeBtn = collectionThreeBtn
     },
     setCollectionThreeLink(state, collectionThreeLink) {
-        state.styles.collectionThreeLink = collectionThreeLink
+        state.data.collectionThreeLink = collectionThreeLink
     },
     //Products
     setProductTitleShow(state, productTitleShow) {
@@ -178,13 +178,13 @@ const mutations = {
         state.styles.productTitleBgColor = color
     },
     setProductTitleMain(state, productTitleMain) {
-        state.styles.productTitleMain = productTitleMain
+        state.data.productTitleMain = productTitleMain
     },
     setProductTitleMainColor(state, color) {
         state.styles.productTitleMainColor = color
     },
     setProductTitleSub(state, productTitleSub) {
-        state.styles.productTitleSub = productTitleSub
+        state.data.productTitleSub = productTitleSub
     },
     setProductTitleSubColor(state, color) {
         state.styles.productTitleSubColor = color
@@ -212,13 +212,13 @@ const mutations = {
         state.styles.notificationSec = color
     },
     setNotificationTitle(state, notificationTitle) {
-        state.styles.notificationTitle = notificationTitle
+        state.data.notificationTitle = notificationTitle
     },
     setNotificationContent(state, notificationContent) {
-        state.styles.notificationContent = notificationContent
+        state.data.notificationContent = notificationContent
     },
     setNotificationButton(state, notificationButton) {
-        state.styles.notificationButton = notificationButton
+        state.data.notificationButton = notificationButton
     },
     setNotificationButtonPri(state, color) {
         state.styles.notificationButtonPri = color
