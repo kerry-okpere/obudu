@@ -56,7 +56,7 @@ const router =  new Router({
       component: About
     },
     {
-      path: "/customize/",
+      path: "/design/",
       name: "Customize",
       component: Customize,
     },
