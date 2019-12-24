@@ -12,51 +12,38 @@ export default {
         SfGallery
     },
     data: () => ({
-        images: [
-            {
-                small: {
-                    url: "https://ecom-ptqgjveg.nyc3.digitaloceanspaces.com/imgs/100px/@1550858949523-frontal-macbook-pro-apple-13-intel-core-i5-128gb-mpxq2bz-a.jpg",
-                    alt: "alt"
+        images: []
+    }),
+
+    computed: {
+        singleProdGetter(){
+            return this.$store.getters["products/getProduct"];
+        }
+    },
+
+    async created(){
+        this.images = this.makeImageArr(this.singleProdGetter.images);
+    },
+
+    methods: {
+        makeImageArr(image){
+            let imgArr = [];
+            image.map( (img) => {
+                let newObj = {
+                    small: {
+                        url: img.url,
+                        alt: `${img.ref}`
                     },
-                normal: {
-                    url: "https://ecom-ptqgjveg.nyc3.digitaloceanspaces.com/imgs/400px/@1550858949523-frontal-macbook-pro-apple-13-intel-core-i5-128gb-mpxq2bz-a.jpg",
-                    alt: "alt"
-                },
-                big: {
-                    url: "https://ecom-ptqgjveg.nyc3.digitaloceanspaces.com/imgs/700px/@1550858949523-frontal-macbook-pro-apple-13-intel-core-i5-128gb-mpxq2bz-a.jpg",
-                    alt: "alt"
+                    big: {
+                        url: img.url,
+                        alt: `${img.ref}`
+                    }
                 }
-            },
-            {
-                small: {
-                    url: "https://ecom-ptqgjveg.nyc3.digitaloceanspaces.com/imgs/100px/@1550858949523-frontal-macbook-pro-apple-13-intel-core-i5-128gb-mpxq2bz-a.jpg",
-                    alt: "alt"
-                    },
-                normal: {
-                    url: "https://ecom-ptqgjveg.nyc3.digitaloceanspaces.com/imgs/400px/@1550858949523-frontal-macbook-pro-apple-13-intel-core-i5-128gb-mpxq2bz-a.jpg",
-                    alt: "alt"
-                },
-                big: {
-                    url: "https://ecom-ptqgjveg.nyc3.digitaloceanspaces.com/imgs/700px/@1550858949523-frontal-macbook-pro-apple-13-intel-core-i5-128gb-mpxq2bz-a.jpg",
-                    alt: "alt"
-                }
-            },
-            {
-                small: {
-                    url: "https://ecom-ptqgjveg.nyc3.digitaloceanspaces.com/imgs/100px/@1550858949523-frontal-macbook-pro-apple-13-intel-core-i5-128gb-mpxq2bz-a.jpg",
-                    alt: "alt"
-                    },
-                normal: {
-                    url: "https://ecom-ptqgjveg.nyc3.digitaloceanspaces.com/imgs/400px/@1550858949523-frontal-macbook-pro-apple-13-intel-core-i5-128gb-mpxq2bz-a.jpg",
-                    alt: "alt"
-                },
-                big: {
-                    url: "https://ecom-ptqgjveg.nyc3.digitaloceanspaces.com/imgs/700px/@1550858949523-frontal-macbook-pro-apple-13-intel-core-i5-128gb-mpxq2bz-a.jpg",
-                    alt: "alt"
-                }
-            }
-        ]
-    })
+                imgArr.push(newObj);
+            });
+            return imgArr;
+        }
+    }
 }
 </script>
 

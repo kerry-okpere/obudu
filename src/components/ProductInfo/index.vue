@@ -58,7 +58,6 @@
         async created(){
             //get slugUrl
             let slug = this.$route.params.slug;
-            console.log(slug);
 
             
             let singleProd = await this.$store.dispatch('products/fetchSingleProducts',{
