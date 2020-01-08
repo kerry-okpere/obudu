@@ -1,5 +1,7 @@
 steps:
     - name: gcr.io/cloud-builders/git
+      args: ['init']
+    - name: gcr.io/cloud-builders/git
       args: ['checkout', '--orphan', 'temp']
     - name: gcr.io/cloud-builders/git
       args: ['add', '-A']
