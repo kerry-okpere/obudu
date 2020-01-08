@@ -4,9 +4,9 @@ steps:
     - name: gcr.io/cloud-builders/git
       args: ['add', '-A']
     - name: gcr.io/cloud-builders/git
-      args: ['config', '--global', 'user.name', 'Tim']
+      args: ['config', '--global', 'user.name', '${_GIT_NAME}']
     - name: gcr.io/cloud-builders/git
-      args: ['config', '--global', 'user.email', 'timothy@mercurie.ng']
+      args: ['config', '--global', 'user.email', '${_GIT_EMAIL}']
     - name: gcr.io/cloud-builders/git
       args: ['commit', '-am', 'latest production commit']
     - name: gcr.io/cloud-builders/git
@@ -14,5 +14,4 @@ steps:
     - name: gcr.io/cloud-builders/git
       args: ['branch', '-m', 'master']
     - name: gcr.io/cloud-builders/git
-      args: ['push', '-f', 'https://source.developers.google.com/p/ng-prod/r/yankari', 'master']
-  
+      args: ['push', '-f', 'https://source.developers.google.com/p/${_PROD_PROJECT}/r/${_PROD_REPO}', 'master']
