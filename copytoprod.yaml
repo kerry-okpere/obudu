@@ -1,0 +1,18 @@
+steps:
+    - name: gcr.io/cloud-builders/git
+      args: ['checkout', '--orphan', 'temp']
+    - name: gcr.io/cloud-builders/git
+      args: ['add', '-A']
+    - name: gcr.io/cloud-builders/git
+      args: ['config', '--global', 'user.name', 'Tim']
+    - name: gcr.io/cloud-builders/git
+      args: ['config', '--global', 'user.email', 'timothy@mercurie.ng']
+    - name: gcr.io/cloud-builders/git
+      args: ['commit', '-am', 'latest production commit']
+    - name: gcr.io/cloud-builders/git
+      args: ['branch', '-D', 'master']
+    - name: gcr.io/cloud-builders/git
+      args: ['branch', '-m', 'master']
+    - name: gcr.io/cloud-builders/git
+      args: ['push', '-f', 'https://source.developers.google.com/p/ng-prod/r/yankari', 'master']
+  
