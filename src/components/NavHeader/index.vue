@@ -38,8 +38,6 @@
                   <a-menu slot="overlay" @click="handleMenuClick">
                     <a-menu-item key="1"><a-icon type="user" />My Account</a-menu-item>
                     <a-menu-item key="2"><a-icon type="shopping" />My Orders</a-menu-item>
-                    <a-menu-item key="3"><a-icon type="home" />My Address</a-menu-item>
-                    <a-menu-item key="3"><a-icon type="wallet" />My Payment Options</a-menu-item>
                     <a-menu-item key="3"><a-icon type="lock" />Logout</a-menu-item>
                   </a-menu>
                   <a-button type="link">
