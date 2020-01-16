@@ -1,6 +1,6 @@
 <template>
   <section class="layout__default">
-    <NavHeaderFixed />
+    <NavHeader />
     <div class="content">
       <slot />
     </div>
@@ -11,14 +11,14 @@
 </template>
 
 <script>
-import NavHeaderFixed from '@/components/NavHeaderFixed'
+import NavHeader from '@/components/NavHeader'
 import NavCart from '@/components/NavCart'
 import NavLogin from '@/components/NavLogin'
 import NavFooter from '@/components/NavFooter'
 
 export default {
   components: {
-    NavHeaderFixed,
+    NavHeader,
     NavCart,
     NavLogin,
     NavFooter
@@ -28,6 +28,6 @@ export default {
 
 <style lang="scss" scoped>
 .content {
-  margin-top: 100px;
+  margin-top: 60px;
 }
 </style>

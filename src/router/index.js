@@ -8,7 +8,7 @@ import Home from './views/Home';
 import Product from './views/Product';
 import Collection from './views/Collection';
 import Checkout from './views/Checkout';
-import Account from './views/Account';
+import Dashboard from './views/Dashboard';
 import About from './views/About';
 import Customize from './views/Customize';
 
@@ -17,7 +17,6 @@ import loadEnv from './middleware/loadEnv';
 
 const router =  new Router({
   mode: 'history',
-
   routes: [
     {
       path: "/",
@@ -46,9 +45,9 @@ const router =  new Router({
       }
     },
     {
-      path: "/account/",
-      name: "Account",
-      component: Account
+      path: "/dashboard/",
+      name: "Dashboard",
+      component: Dashboard
     },
     {
       path: "/about/",
