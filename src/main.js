@@ -12,13 +12,13 @@ import Default from '@/router/layouts/Default.vue';
 import Antd from 'ant-design-vue';
 import 'ant-design-vue/dist/antd.css';
 
-import BootstrapVue from 'bootstrap-vue';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap-vue/dist/bootstrap-vue.css';
-
 import VueMaterial from 'vue-material';
 import 'vue-material/dist/vue-material.min.css';
 import 'vue-material/dist/theme/default.css';
+
+import BootstrapVue from 'bootstrap-vue';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 import 'vue-awesome/icons';
 import Icon from 'vue-awesome/components/Icon';
