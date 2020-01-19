@@ -1,0 +1,10 @@
+steps:
+  # build the container image
+- name: 'gcr.io/kaniko-project/executor:latest'
+  args:
+    - --destination=gcr.io/$PROJECT_ID/obudu
+    - --cache=true
+    - --cache-ttl=2h
+  # Deploy container image to Cloud Run
+- name: "gcr.io/cloud-builders/gcloud"
+  args: ['beta', 'run', 'deploy', 'demoshop', '--image', 'gcr.io/$PROJECT_ID/obudu', '--region', 'us-central1', '--platform', 'managed', '--allow-unauthenticated']

@@ -1,0 +1,13 @@
+steps:
+    - name: gcr.io/cloud-builders/git
+      args: ['init']
+    - name: gcr.io/cloud-builders/git
+      args: ['add', '-A']
+    - name: gcr.io/cloud-builders/git
+      args: ['config', '--global', 'user.name', '${_GIT_NAME}']
+    - name: gcr.io/cloud-builders/git
+      args: ['config', '--global', 'user.email', '${_GIT_EMAIL}']
+    - name: gcr.io/cloud-builders/git
+      args: ['commit', '-am', 'latest production commit']
+    - name: gcr.io/cloud-builders/git
+      args: ['push', '-f', 'https://source.developers.google.com/p/${_PROD_PROJECT}/r/${_PROD_REPO}', 'master']
