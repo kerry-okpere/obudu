@@ -1,23 +1,17 @@
-FROM nginx:alpine
-
-# Install npm and node
-RUN apk add --update npm
-
-# Add bash
-RUN apk add --no-cache bash
-
+# build stage
+FROM node:lts-alpine as build-stage
 WORKDIR /app
-
-COPY package.json ./
-
-RUN npm install -f
-
+COPY package*.json ./
+RUN yarn install
 COPY . .
+RUN yarn run build
 
-# # Make our shell script executable
-RUN chmod +x start.sh
-
+# production stage
+FROM nginx:stable-alpine as production-stage
+COPY --from=build-stage /app/dist /usr/share/nginx/html
 COPY ./nginx.conf /etc/nginx/conf.d/default.conf
-
-
-CMD ["/bin/bash", "-c", "/app/start.sh && nginx -g 'daemon off;'"]
+COPY --from=build-stage /app/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+EXPOSE 80 
+ENTRYPOINT ["/entrypoint.sh"]
+CMD ["nginx", "-g", "daemon off;"]
