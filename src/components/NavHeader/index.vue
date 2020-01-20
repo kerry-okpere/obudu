@@ -156,6 +156,7 @@
 <script>
 import { Slide } from 'vue-burger-menu'
 import { mapGetters, mapMutations } from 'vuex'
+import { STORENAME } from "./../../config"
 
   export default {
     components: {
@@ -182,8 +183,11 @@ import { mapGetters, mapMutations } from 'vuex'
         'navLogoTextColor',
         'navLogoTextSize',
         'navLayout',
-        'storeName'
+        // 'storeName'
       ]),
+      storeName() {
+        return STORENAME
+      }
     }
   }
 </script>
