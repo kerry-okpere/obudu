@@ -13,14 +13,14 @@
               </router-link>
             </div>
           </div>
-          <div class="col col-lg-5">
+          <div class="col col-lg-4">
             <nav class="navbar__one-nav">
               <router-link exact to="/">Shop</router-link>
               <router-link exact to="/">Collection</router-link>
               <router-link exact to="/">Sale</router-link>
             </nav>
           </div>
-          <div class="col col-lg-3">
+          <div class="col col-lg-4">
             <div class="navbar__one-search">
               <a-input-search placeholder="Search store..." style="width: 250px" />
             </div>
