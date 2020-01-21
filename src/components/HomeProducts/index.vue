@@ -8,7 +8,9 @@
                     <div class="col" v-for="(product, index) in products" :key="index" >
                         <a-card :hoverable="false" @mouseover="hover = true" @mouseleave="hover = false" :bordered="true" :loading="loading" style="width: 240px">
                             <img alt="example" :src="`${product.images[0].url}`" width="240" />
-                            <a-button type="primary" v-bind:style="{backgroundColor: priColor, borderColor: priColor}">Buy Now</a-button>
+                            <router-link :to="`/product/${product.slug}`" type="primary">
+                                <a-button v-bind:style="{backgroundColor: priColor, borderColor: priColor}">Buy Now</a-button>
+                            </router-link>
                             <div class="products__one-meta">
                                 <h2>{{product.name}}</h2>
                                 <h3>{{product.categoryName}}</h3>
@@ -97,7 +99,6 @@ import { mapGetters } from 'vuex'
         async created(){
             let res = await this.$store.dispatch('products/fetchHomeProducts');
             this.products = res;
-            console.log(res);
         }
     }
 </script>

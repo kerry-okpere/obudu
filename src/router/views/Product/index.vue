@@ -32,7 +32,7 @@ export default {
         ProductShare,
         ProductBottom,
         ProductBreadcrumb,
-    }
+    },
 }
 </script>
 

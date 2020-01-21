@@ -24,8 +24,8 @@ const router =  new Router({
       component: Home,
     },
     {
-    //   path:"/product/:slug",
-      path: "/product/",
+      path:"/product/:slug",
+      // path: "/product/",
       name: "Product",
       component: Product
     },
@@ -55,7 +55,7 @@ const router =  new Router({
       component: About
     },
     {
-      path: "/customize/",
+      path: "/design/",
       name: "Customize",
       component: Customize,
     },

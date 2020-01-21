@@ -1,5 +1,6 @@
 const state = {
-    products: []
+    products: [],
+    singleProduct: {},
 
 };
 

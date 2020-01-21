@@ -1,65 +1,66 @@
 <template>
   <div class="product__image">
-    <SfGallery :images="images"></SfGallery>
+    <a-skeleton :loading="loading" :disabled="loading" active>
+      <SfGallery :images="images"></SfGallery>
+    </a-skeleton>
   </div>
 </template>
 
 <script>
-import { SfGallery } from "@storefront-ui/vue"
+import { SfGallery } from "@storefront-ui/vue";
 
 export default {
-    components: {
-        SfGallery
-    },
-    data: () => ({
-        images: [
-            {
-                small: {
-                    url: "https://ecom-ptqgjveg.nyc3.digitaloceanspaces.com/imgs/100px/@1550858949523-frontal-macbook-pro-apple-13-intel-core-i5-128gb-mpxq2bz-a.jpg",
-                    alt: "alt"
-                    },
-                normal: {
-                    url: "https://ecom-ptqgjveg.nyc3.digitaloceanspaces.com/imgs/400px/@1550858949523-frontal-macbook-pro-apple-13-intel-core-i5-128gb-mpxq2bz-a.jpg",
-                    alt: "alt"
-                },
-                big: {
-                    url: "https://ecom-ptqgjveg.nyc3.digitaloceanspaces.com/imgs/700px/@1550858949523-frontal-macbook-pro-apple-13-intel-core-i5-128gb-mpxq2bz-a.jpg",
-                    alt: "alt"
-                }
-            },
-            {
-                small: {
-                    url: "https://ecom-ptqgjveg.nyc3.digitaloceanspaces.com/imgs/100px/@1550858949523-frontal-macbook-pro-apple-13-intel-core-i5-128gb-mpxq2bz-a.jpg",
-                    alt: "alt"
-                    },
-                normal: {
-                    url: "https://ecom-ptqgjveg.nyc3.digitaloceanspaces.com/imgs/400px/@1550858949523-frontal-macbook-pro-apple-13-intel-core-i5-128gb-mpxq2bz-a.jpg",
-                    alt: "alt"
-                },
-                big: {
-                    url: "https://ecom-ptqgjveg.nyc3.digitaloceanspaces.com/imgs/700px/@1550858949523-frontal-macbook-pro-apple-13-intel-core-i5-128gb-mpxq2bz-a.jpg",
-                    alt: "alt"
-                }
-            },
-            {
-                small: {
-                    url: "https://ecom-ptqgjveg.nyc3.digitaloceanspaces.com/imgs/100px/@1550858949523-frontal-macbook-pro-apple-13-intel-core-i5-128gb-mpxq2bz-a.jpg",
-                    alt: "alt"
-                    },
-                normal: {
-                    url: "https://ecom-ptqgjveg.nyc3.digitaloceanspaces.com/imgs/400px/@1550858949523-frontal-macbook-pro-apple-13-intel-core-i5-128gb-mpxq2bz-a.jpg",
-                    alt: "alt"
-                },
-                big: {
-                    url: "https://ecom-ptqgjveg.nyc3.digitaloceanspaces.com/imgs/700px/@1550858949523-frontal-macbook-pro-apple-13-intel-core-i5-128gb-mpxq2bz-a.jpg",
-                    alt: "alt"
-                }
-            }
-        ]
-    })
-}
+  components: {
+    SfGallery
+  },
+  data: () => ({
+    images: [],
+    loading: true
+  }),
+
+  computed: {
+    singleProdGetter() {
+      return this.$store.getters["products/getProduct"];
+    }
+  },
+
+  async created() {
+    let slug = this.$route.params.slug;
+
+    let product = await this.$store.dispatch("products/fetchSingleProducts", {
+      prodId: slug
+    });
+
+    this.images = this.makeImageArr(product.images);
+  },
+
+  methods: {
+    makeImageArr(image) {
+      let imgArr = [];
+      image.map(img => {
+        let newObj = {
+          small: {
+            url: img.url,
+            alt: `${img.ref}`
+          },
+          normal: {
+            url: img.url,
+            alt: `${img.ref}`
+          },
+          big: {
+            url: img.url,
+            alt: `${img.ref}`
+          }
+        };
+        imgArr.push(newObj);
+      });
+      this.loading = false;
+      return imgArr;
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-@import './_index';
+@import "./_index";
 </style>

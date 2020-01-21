@@ -1,28 +1,27 @@
 <template>
     <div class="product__info">
         <div class="product__info-name">
-            <h1>Apple MacBook Pro 15 2019 - 512GB SSD</h1>
-            <h2>NGN 255,200</h2>
+            <h1>{{singleProd.name}}</h1>
+            <h2>{{singleProd.basePrice}}</h2>
+            <!-- {{singleProds}} -->
         </div>
         <div class="product__info-description">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.
-            </p>
+            <p>{{singleProd.description}}</p>
         </div>
         <div class="product__info-variant">
-            <h4>Size</h4>
+            <!-- <h4>Size</h4>
                 <a-button-group>
                     <a-button>S</a-button>
                     <a-button>M</a-button>
                     <a-button>L</a-button>
                     <a-button>XL</a-button>
-                </a-button-group>
+                </a-button-group> -->
         </div>
         <div class="product__info-variant">
-            <h4>Variant</h4>
+            <!-- <h4>Variant</h4>
             <a-select defaultValue="variant" @change="selectVariant">
                 <a-select-option value="variant">Variant Option</a-select-option>
-            </a-select>
+            </a-select> -->
         </div>
         <div class="product__info-quantity">
             <h4>Quantity</h4>
@@ -38,8 +37,15 @@
     export default {
         data: () => ({
             value: 1,
-            btnSize: 'large'
+            btnSize: 'large',
+            singleProd: {}
         }),
+
+        computed: {
+            singleProds(){
+                return this.$store.getters.getProduct;
+            }
+        },
         methods: {
             changeQuant(value) {
                 console.log('changed', value)
@@ -47,6 +53,24 @@
             selectVariant(value) {
                 console.log(`selected ${value}`)
             }
+        },
+
+        async created(){
+            //get slugUrl
+            let slug = this.$route.params.slug;
+
+            
+            let singleProd = await this.$store.dispatch('products/fetchSingleProducts',{
+                prodId: slug
+            });
+
+            this.singleProd = singleProd;
+
+            
+
+            // console.log(singleProd);
+
+
         }
     }
 </script>

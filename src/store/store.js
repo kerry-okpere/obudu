@@ -3,7 +3,12 @@ import Vuex from 'vuex';
 
 import VuexPersistence from 'vuex-persist';
 const vuexLocal = new VuexPersistence({
-    storage: window.localStorage
+    key: process.env.VUE_APP_STORENAME,
+    storage: window.localStorage,
+    reducer: (state) => ({
+        products: state.products.products,
+        singleProduct: state.products.singleProduct
+    })
 });
 
 import state from './state';
