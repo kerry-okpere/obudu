@@ -27,8 +27,8 @@ const actions = {
 
   async fetchSingleProducts({state, commit}, {prodId}) {
     return new Promise (async (resolve, reject) => {
-      let reqUrl = `${fetchProductUrl}/${prodId}/${dummy_store}`;
-      let response = await axios.get(reqUrl).catch(err => console.log(err));
+      let reqUrl = `/${prodId}`;
+      let response = await storefront$http.get(reqUrl).catch(err => console.log(err));
 
       if(response.status == 200) {
         resolve(response.data);
