@@ -1,6 +1,9 @@
 <template>
   <section class="payments">
-    <h3>Payment Options</h3>
+    <div class="title">
+      <h3>Payments</h3>
+      <p>Manage your payment details here...</p>
+    </div>
   </section>
 </template>
 
@@ -10,6 +13,6 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+@import './index';
 </style>

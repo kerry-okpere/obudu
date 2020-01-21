@@ -1,6 +1,9 @@
 <template>
   <section class="account">
-    <h3>Account Overview</h3>
+    <div class="title">
+      <h3>Account Overview</h3>
+      <p>Manage your account here...</p>
+    </div>
     <div class="row">
       <div class="col">
         <a-card title="Account Details">
@@ -28,6 +31,6 @@ export default {
 }
 </script>
 
-<style>
-
+<style lang="scss" scoped>
+@import './index';
 </style>
