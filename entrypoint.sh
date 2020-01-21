@@ -10,6 +10,7 @@ do
 
   sed -i 's|VUE_APP_API_URL|'${VUE_APP_API_URL}'|g' $file 
   sed -i 's|VUE_APP_STORENAME|'${VUE_APP_STORENAME}'|g' $file
+  sed -i 's|VUE_APP_STORE_ID|'${VUE_APP_STORE_ID}'|g' $file
 
 done
 
