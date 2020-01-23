@@ -64,7 +64,7 @@
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="subfooter__one-copyright">
-                                <p>© Copyright {{getCurrentYear}}, <a :href="storeUrl">Store Name</a> - All Rights
+                                <p>© Copyright {{getCurrentYear}}, <a :href="storeUrl">{{storeName}}</a> - All Rights
                                     Reserved.</p>
                             </div>
                         </div>
@@ -94,7 +94,7 @@
                     <div class="row">
                         <div class="col-12 col-xl-6 col-lg-6 col-md-12 col-sm-12">
                             <div class="subfooter__two-copyright">
-                                <p>© Copyright {{getCurrentYear}}, <a :href="storeUrl">Store Name</a> - All Rights
+                                <p>© Copyright {{getCurrentYear}}, <a :href="storeUrl">{{storeName}}</a> - All Rights
                                     Reserved.
                                 </p>
                             </div>
@@ -114,7 +114,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="subfooter__three-copyright">
-                                <p>© Copyright {{getCurrentYear}}, <a :href="storeUrl">Store Name</a> - All Rights Reserved.</p>
+                                <p>© Copyright {{getCurrentYear}}, <a :href="storeUrl">{{storeName}}</a> - All Rights Reserved.</p>
                             </div>
                             <div class="subfooter__three-badge">
                                 <p>Powered by MercurieMart</p>
