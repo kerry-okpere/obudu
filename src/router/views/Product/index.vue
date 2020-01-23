@@ -3,17 +3,21 @@
         <section class="product">
             <div class="container">
                 <div class="row">
-                    <div class="col">
-                        <ProductBreadcrumb />
+                    <div class="col col-xl-6">
                         <ProductImage />
+                    </div>
+                    <div class="col col-xl-6">
+                        <ProductBreadcrumb />
+                        <ProductInfo />
                         <ProductShare />
                     </div>
+                </div>
+                <div class="row">
                     <div class="col">
-                        <ProductInfo />
+                        <ProductInfoBottom />
                     </div>
                 </div>
             </div>
-            <ProductBottom />
         </section>
     </Layout>
 </template>
@@ -21,16 +25,16 @@
 <script>
 import ProductImage from '@/components/ProductImage'
 import ProductInfo from '@/components/ProductInfo'
+import ProductInfoBottom from '@/components/ProductInfoBottom'
 import ProductShare from '@/components/ProductShare'
-import ProductBottom from '@/components/ProductBottom'
 import ProductBreadcrumb from '@/components/ProductBreadcrumb'
 
 export default {
     components: {
         ProductImage,
         ProductInfo,
+        ProductInfoBottom,
         ProductShare,
-        ProductBottom,
         ProductBreadcrumb,
     },
 }

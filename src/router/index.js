@@ -10,7 +10,7 @@ import Collection from './views/Collection';
 import Checkout from './views/Checkout';
 import Dashboard from './views/Dashboard';
 import About from './views/About';
-import Customize from './views/Customize';
+import Design from './views/Design';
 
 import loadEnv from './middleware/loadEnv';
 
@@ -20,25 +20,25 @@ const router =  new Router({
   routes: [
     {
       path: "/",
-      name: "Home",
       component: Home,
+      meta: {
+        title: 'Storefront',
+      }
     },
     {
       path:"/product/:slug",
       // path: "/product/",
-      name: "Product",
       component: Product
     },
     {
       path: "/collection/",
-      name: "Collection",
       component: Collection
     },
     {
       path: "/checkout/",
-      name: "Checkout",
       component: Checkout,
       meta: {
+        title: 'Checkout - Storename',
         middleware: [
           loadEnv
         ]
@@ -46,18 +46,24 @@ const router =  new Router({
     },
     {
       path: "/dashboard/",
-      name: "Dashboard",
-      component: Dashboard
+      component: Dashboard,
+      meta: {
+        title: 'Manage Account - Storename'
+      }
     },
     {
       path: "/about/",
-      name: "About",
-      component: About
+      component: About,
+      meta: {
+        title: 'About - Storename'
+      }
     },
     {
       path: "/design/",
-      name: "Customize",
-      component: Customize,
+      component: Design,
+      meta: {
+        title: 'Design - Storename',
+      }
     },
     
   ]
