@@ -32,31 +32,65 @@
                         <div class="settings__item">
                             <h3>Primary Font</h3>
                             <a-select :defaultValue="priFont" :size="size" style="width: 200px" @change="setPriFont">
-                                <a-select-option value="fontPriLato" class="fontPriLato">Lato</a-select-option>
-                                <a-select-option value="fontPriPlayfair" class="fontPriPlayfair">Playfair Display</a-select-option>
-                                <a-select-option value="fontPriRoboto" class="fontPriRoboto">Roboto</a-select-option>
-                                <a-select-option value="fontPriOpensans" class="fontPriOpensans">Open Sans</a-select-option>
-                                <a-select-option value="fontPriPoppins" class="fontPriPoppins">Poppins</a-select-option>
                                 <a-select-option value="fontPriAbril" class="fontPriAbril">Abril Fatface</a-select-option>
+                                <a-select-option value="fontPriBangers" class="fontPriBangers">Bangers</a-select-option>
+                                <a-select-option value="fontPriBlackops" class="fontPriBlackops">Black Ops One</a-select-option>
+                                <a-select-option value="fontPriCinzel" class="fontPriCinzel">Cinzel</a-select-option>
                                 <a-select-option value="fontPriCalistoga" class="fontPriCalistoga">Calistoga</a-select-option>
-                                <a-select-option value="fontPriMontserrat" class="fontPriMontserrat">Montserrat</a-select-option>
                                 <a-select-option value="fontPriCormorant" class="fontPriCormorant">Cormorant Garamond</a-select-option>
+                                <a-select-option value="fontPriCourier" class="fontPriCourier">Courier Prime</a-select-option>
+                                <a-select-option value="fontPriDancing" class="fontPriDancing">Dancing Script</a-select-option>
+                                <a-select-option value="fontPriFredericka" class="fontPriFredericka">Fredericka the Great</a-select-option>
+                                <a-select-option value="fontPriGelasio" class="fontPriGelasio">Gelasio</a-select-option>
+                                <a-select-option value="fontPriJosefin" class="fontPriJosefin">Josefin Sans</a-select-option>
+                                <a-select-option value="fontPriKnewave" class="fontPriKnewave">Knewave</a-select-option>
+                                <a-select-option value="fontPriLato" class="fontPriLato">Lato</a-select-option>
+                                <a-select-option value="fontPriLilita" class="fontPriLilita">Lilita One</a-select-option>
+                                <a-select-option value="fontPriLimelight" class="fontPriLimelight">Limelight</a-select-option>
+                                <a-select-option value="fontPriLuckiest" class="fontPriLuckiest">Luckiest</a-select-option>
+                                <a-select-option value="fontPriMontserrat" class="fontPriMontserrat">Montserrat</a-select-option>
                                 <a-select-option value="fontPriNunito" class="fontPriNunito">Nunito</a-select-option>
+                                <a-select-option value="fontPriOpensans" class="fontPriOpensans">Open Sans</a-select-option>
+                                <a-select-option value="fontPriPlayfair" class="fontPriPlayfair">Playfair Display</a-select-option>
+                                <a-select-option value="fontPriPoppins" class="fontPriPoppins">Poppins</a-select-option>
+                                <a-select-option value="fontPriPressstart" class="fontPriPressstart">Press Start 2P</a-select-option>
+                                <a-select-option value="fontPriRaleway" class="fontPriRaleway">Raleway</a-select-option>
+                                <a-select-option value="fontPriRoboto" class="fontPriRoboto">Roboto</a-select-option>
+                                <a-select-option value="fontPriSacramento" class="fontPriSacramento">Sacramento</a-select-option>
+                                <a-select-option value="fontPriSigmar" class="fontPriSigmar">Sigmar One</a-select-option>
+                                <a-select-option value="fontPriUbuntu" class="fontPriUbuntu">Ubuntu</a-select-option>
                             </a-select>
                         </div>
                         <div class="settings__item">
                             <h3>Secondary Font</h3>
                             <a-select :defaultValue="secFont" :size="size" style="width: 200px" @change="setSecFont">
-                                <a-select-option value="fontSecLato" class="fontPriLato">Lato</a-select-option>
-                                <a-select-option value="fontSecPlayfair" class="fontPriPlayfair">Playfair Display</a-select-option>
-                                <a-select-option value="fontSecRoboto" class="fontPriRoboto">Roboto</a-select-option>
-                                <a-select-option value="fontSecOpensans" class="fontPriOpensans">Open Sans</a-select-option>
-                                <a-select-option value="fontSecPoppins" class="fontPriPoppins">Poppins</a-select-option>
                                 <a-select-option value="fontSecAbril" class="fontPriAbril">Abril Fatface</a-select-option>
+                                <a-select-option value="fontSecBangers" class="fontPriBangers">Bangers</a-select-option>
+                                <a-select-option value="fontSecBlackops" class="fontPriBlackops">Black Ops One</a-select-option>
+                                <a-select-option value="fontSecCinzel" class="fontPriCinzel">Cinzel</a-select-option>
                                 <a-select-option value="fontSecCalistoga" class="fontPriCalistoga">Calistoga</a-select-option>
-                                <a-select-option value="fontSecMontserrat" class="fontPriMontserrat">Montserrat</a-select-option>
                                 <a-select-option value="fontSecCormorant" class="fontPriCormorant">Cormorant Garamond</a-select-option>
+                                <a-select-option value="fontSecCourier" class="fontPriCourier">Courier Prime</a-select-option>
+                                <a-select-option value="fontSecDancing" class="fontPriDancing">Dancing Script</a-select-option>
+                                <a-select-option value="fontSecFredericka" class="fontPriFredericka">Fredericka the Great</a-select-option>
+                                <a-select-option value="fontSecGelasio" class="fontPriGelasio">Gelasio</a-select-option>
+                                <a-select-option value="fontSecJosefin" class="fontPriJosefin">Josefin Sans</a-select-option>
+                                <a-select-option value="fontSecKnewave" class="fontPriKnewave">Knewave</a-select-option>
+                                <a-select-option value="fontSecLato" class="fontPriLato">Lato</a-select-option>
+                                <a-select-option value="fontSecLilita" class="fontPriLilita">Lilita One</a-select-option>
+                                <a-select-option value="fontSecLimelight" class="fontPriLimelight">Limelight</a-select-option>
+                                <a-select-option value="fontSecLuckiest" class="fontPriLuckiest">Luckiest</a-select-option>
+                                <a-select-option value="fontSecMontserrat" class="fontPriMontserrat">Montserrat</a-select-option>
                                 <a-select-option value="fontSecNunito" class="fontPriNunito">Nunito</a-select-option>
+                                <a-select-option value="fontSecOpensans" class="fontPriOpensans">Open Sans</a-select-option>
+                                <a-select-option value="fontSecPlayfair" class="fontPriPlayfair">Playfair Display</a-select-option>
+                                <a-select-option value="fontSecPoppins" class="fontPriPoppins">Poppins</a-select-option>
+                                <a-select-option value="fontSecPressstart" class="fontPriPressstart">Press Start 2P</a-select-option>
+                                <a-select-option value="fontSecRaleway" class="fontPriRaleway">Raleway</a-select-option>
+                                <a-select-option value="fontSecRoboto" class="fontPriRoboto">Roboto</a-select-option>
+                                <a-select-option value="fontSecSacramento" class="fontPriSacramento">Sacramento</a-select-option>
+                                <a-select-option value="fontSecSigmar" class="fontPriSigmar">Sigmar One</a-select-option>
+                                <a-select-option value="fontSecUbuntu" class="fontPriUbuntu">Ubuntu</a-select-option>
                             </a-select>
                         </div>
                     </a-collapse-panel>
@@ -245,12 +279,6 @@
                                     <h3>Show</h3>
                                     <a-switch :defaultChecked="collectionShow" @change="setCollectionShow" size="small" />
                                 </div>
-                                <!-- <h3>Collection Layout</h3>
-                                <a-radio-group @change="setCollectionLayout($event.target.value)" :defaultValue="collectionLayout">
-                                    <a-radio :style="radioStyle" :value="1">Layout One</a-radio>
-                                    <a-radio :style="radioStyle" :value="2">Layout Two</a-radio>
-                                    <a-radio :style="radioStyle" :value="3">Layout Three</a-radio>
-                                </a-radio-group> -->
                             </div>
                             <div class="settings__modal">
                                 <a-button type="primary" @click="collectionSettings">More Settings</a-button>
@@ -267,6 +295,13 @@
                                                     Select Color
                                                 </a-button>
                                                 <swatches-picker v-if="showCollectionBtnCP" :value="collectionBtnColor" @input="setCollectionBtnColor($event.hex)" :disableAlpha="true" />
+                                            </div>
+                                            <div class="settings__modal-item">
+                                                <p>Background Color</p>
+                                                <a-button type="primary" @click="showCollectionBgCP = !showCollectionBgCP" v-bind:style="{backgroundColor: collectionBgColor, borderColor: collectionBgColor}">
+                                                    Select Color
+                                                </a-button>
+                                                <swatches-picker v-if="showCollectionBgCP" :value="collectionBgColor" @input="setCollectionBgColor($event.hex)" :disableAlpha="true" />
                                             </div>
                                         </a-collapse-panel>
                                         <a-collapse-panel header="Collection One" key="2" :showArrow="false">
@@ -562,6 +597,7 @@ import { mapGetters, mapMutations } from 'vuex'
             showHeroContentCP: false,
             showHeroBtnPriCP: false,
             showHeroBtnSecCP: false,
+            showCollectionBgCP: false,
             showCollectionBtnCP: false,
             showCollectionOneBgCP: false,
             showCollectionTwoBgCP: false,
@@ -601,6 +637,7 @@ import { mapGetters, mapMutations } from 'vuex'
                 'heroBtnSec',
                 'collectionShow',
                 'collectionLayout',
+                'collectionBgColor',
                 'collectionBtnColor',
                 'collectionOneShow',
                 'collectionOneBg',
@@ -709,6 +746,9 @@ import { mapGetters, mapMutations } from 'vuex'
             },
             showHeroContentCP() {
                 this.heroContentCP = true;
+            },
+            showHeroCollectionBgCP() {
+                this.collectionBgCP = true;
             },
             showCollectionBtnCP() {
                 this.collectionBtnCP = true;
@@ -845,6 +885,7 @@ import { mapGetters, mapMutations } from 'vuex'
                 'setNavLogoTextColor',
                 'setNavLogoTextSize',
                 'setCollectionLayout',
+                'setCollectionBgColor',
                 'setCollectionBtnColor',
                 'setCollectionOneBg',
                 'setCollectionOneTitle',
