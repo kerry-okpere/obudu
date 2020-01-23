@@ -1,0 +1,27 @@
+// Mixins
+
+@mixin btn-solid-color($color) {
+    background-color: $color;
+    border-color: $color;
+}
+
+@mixin btn-outline-color($color) {
+    color: $color;
+    border-color: $color;
+}
+
+@mixin transition($pri,$sec) {
+    transition: $pri,$sec;
+    -webkit-transtition: $pri,$sec;
+}
+
+@mixin animation($var) {
+    animation: $var;
+    -webkit-animation: $var;
+}
+
+@mixin box-shadow($var) {
+    box-shadow: $var;
+    -webkit-box-shadow: $var;
+    -moz-box-shadow: $var;
+}

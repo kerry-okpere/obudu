@@ -8,7 +8,7 @@ function addStyleResource (rule) {
         path.resolve(__dirname, './src/assets/styles/global.scss')
       ],
     })
-}
+};
 
 module.exports = {
   chainWebpack (config) {
@@ -17,16 +17,17 @@ module.exports = {
       addStyleResource(config.module.rule('scss').oneOf(type))
     })
   },
-  // css: {
-  //   loaderOptions: {
-  //     less: {
-  //       modifyVars: {
-  //         'primary-color': '#1DA57A',
-  //         'link-color': '#1DA57A',
-  //         'border-radius-base': '2px',
-  //       },
-  //       javascriptEnabled: true
-  //     }
-  //   }
-  // }
+  productionSourceMap: false,
+  css: {
+    loaderOptions: {
+      less: {
+        modifyVars: {
+          'primary-color': '#3C87D1',
+          'link-color': '#3C87D1',
+          'border-radius-base': '5px',
+        },
+        javascriptEnabled: true
+      }
+    }
+  }
 }

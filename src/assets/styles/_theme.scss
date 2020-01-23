@@ -1,0 +1,6 @@
+@import './mixins';
+
+button {
+    color: $white;
+    @include btn-solid-color($primary);
+}

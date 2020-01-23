@@ -1,38 +1,35 @@
 .product__info {
     &-name {
         h1 {
-            font-size: 42px;
+            font-size: 24px;
+            line-height: 30px;
             font-weight: 600;
+            padding: 0 0 10px;
         }
         h2 {
-            font-size: 32px;
+            font-size: 30px;
             font-weight: 600;
-            padding: 10px 0;
-            color: #40A9FF;
+            padding: 10px 0 5px;
         }
     }
-
     &-description {
         p {
             font-size: 16px;
         }
     }
-
     &-variant {
-        padding: 10px 0;
+        padding: 5px 0;
     }
-
     &-quantity {
-        padding: 10px 0;
+        padding: 5px 0;
     }
-
     &-cart {
         padding: 10px 0;
         button {
-            height: 50px;
+            height: 40px;
+            font-size: 14px;
         }
     }
-
     h4 {
         font-size: 14px;
         font-weight: 600;

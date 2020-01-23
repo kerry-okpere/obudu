@@ -13,6 +13,14 @@ export default {
       return string.charAt(0).toUpperCase() + string.slice(1);
     }
   },
+  watch: {
+    '$route':{
+    handler: (to, from) => {
+        document.title = to.meta.title 
+    },
+    immediate: true
+    }
+  },
   async created() {
     let res = await this.$store.dispatch("products/fetchStoreStyles");
     let savedStyles = { ...res, storeName: this.capitalizeFirstLetter(STORENAME) };

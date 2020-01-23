@@ -1,157 +1,51 @@
 // Theme Customizer Fonts
 
 @import url('https://fonts.googleapis.com/css?family=Abril+Fatface|Calistoga|Cormorant+Garamond:400,600,700|Lato:400,700|Montserrat:400,600,700|Nunito:400,600,700|Open+Sans|Playfair+Display|Poppins:400,600,700|Roboto:400,700&display=swap');
-$font-abril: 'Abril Fatface', cursive;
-$font-calistoga: 'Calistoga', cursive;
-$font-cormorant: 'Cormorant Garamond', serif;
-$font-lato: 'Lato', sans-serif;
-$font-montserrat: 'Montserrat', sans-serif;
-$font-nunito: 'Nunito', sans-serif;
-$font-opensans: 'Open Sans', sans-serif;
-$font-playfair: 'Playfair Display', serif;
-$font-poppins: 'Poppins', sans-serif;
-$font-roboto: 'Roboto', sans-serif;
-
 @import url('https://fonts.googleapis.com/css?family=Bangers|Bebas+Neue|Black+Ops+One|Courier+Prime:400,700|Fredericka+the+Great|Josefin+Sans:300,400,600,700|Lilita+One|Luckiest+Guy|Press+Start+2P|Sigmar+One&display=swap');
-$font-bangers: 'Bangers', cursive;
-$font-bebas: 'Bebas Neue', cursive;
-$font-blackops: 'Black Ops One', cursive;
-$font-courier: 'Courier Prime', monospace;
-$font-fredericka: 'Fredericka the Great', cursive;
-$font-josefin: 'Josefin Sans', sans-serif;
-$font-lilita: 'Lilita One', cursive;
-$font-luckiest: 'Luckiest Guy', cursive;
-$font-pressstart: 'Press Start 2P', cursive;
-$font-sigmar: 'Sigmar One', cursive;
+@import url('https://fonts.googleapis.com/css?family=Cinzel+Decorative|Dancing+Script:400,500,600,700|Gelasio|Knewave|Limelight|Megrim|Raleway|Sacramento|Ubuntu&display=swap');
 
-@import url('https://fonts.googleapis.com/css?family=Bungee+Shade|Cinzel+Decorative|Dancing+Script:400,500,600,700|Gelasio|Knewave|Limelight|Megrim|Raleway|Sacramento|Ubuntu&display=swap');
-$font-cinzel: 'Cinzel Decorative', cursive;
-$font-knewave: 'Knewave', cursive;
-$font-limelight: 'Limelight', cursive;
-$font-megrim: 'Megrim', cursive;
-$font-bungee: 'Bungee Shade', cursive;
-$font-gelasio: 'Gelasio', serif;
-$font-raleway: 'Raleway', sans-serif;
-$font-ubuntu: 'Ubuntu', sans-serif;
-$font-dancing: 'Dancing Script', cursive;
-$font-sacramento: 'Sacramento', cursive;
+$fonts: (
+    "Abril": ('Abril Fatface', cursive),
+    "Bangers": ('Bangers', cursive),
+    "Bebas": ('Bebas Neue', cursive),
+    "Blackops": ('Black Ops One', cursive),
+    "Calistoga": ('Calistoga', cursive),
+    "Cinzel": ('Cinzel Decorative', cursive),
+    "Cormorant": ('Cormorant Garamond', serif),
+    "Courier": ('Courier Prime', monospace),
+    "Dancing": ('Dancing Script', cursive),
+    "Fredericka": ('Fredericka the Great', cursive),
+    "Gelasio": ('Gelasio', serif),
+    "Josefin": ('Josefin Sans', sans-serif),
+    "Knewave": ('Knewave', cursive),
+    "Lato": ('Lato', sans-serif),
+    "Lilita": ('Lilita One', cursive),
+    "Limelight": ('Limelight', cursive),
+    "Luckiest": ('Luckiest Guy', cursive),
+    "Megrim": ('Megrim', cursive),
+    "Montserrat": ('Montserrat', sans-serif),
+    "Nunito": ('Nunito', sans-serif),
+    "Opensans": ('Open Sans', sans-serif),
+    "Playfair": ('Playfair Display', serif),
+    "Poppins": ('Poppins', sans-serif),
+    "Pressstart": ('Press Start 2P', cursive),
+    "Raleway": ('Raleway', sans-serif),
+    "Roboto": ('Roboto', sans-serif),
+    "Sacramento": ('Sacramento', cursive),
+    "Sigmar": ('Sigmar One', cursive),
+    "Ubuntu": ('Ubuntu', sans-serif),
+);
 
-.fontPriPlayfair {
-    font-family: $font-playfair;
-    h1, h2, h3, h4 {
-        font-family: $font-playfair;
+@each $fontname, $font in $fonts {
+    .fontPri#{$fontname} {
+        font-family: $font;
+        h1,h2,h3,h4 {
+            font-family: $font;
+        }
     }
-}
-.fontSecPlayfair {
-    p {
-        font-family: $font-playfair;
-    }
-}
-
-.fontPriLato {
-    font-family: $font-lato;
-    h1, h2, h3, h4  {
-        font-family: $font-lato;
-    }
-}
-.fontSecLato {
-    p {
-        font-family: $font-lato;
-    }
-}
-
-.fontPriRoboto {
-    font-family: $font-roboto;
-    h1, h2, h3, h4  {
-        font-family: $font-roboto;
-    }
-}
-.fontSecRoboto {
-    p {
-        font-family: $font-roboto;
-    }
-}
-
-.fontPriOpensans {
-    font-family: $font-opensans;
-    h1, h2, h3, h4  {
-        font-family: $font-opensans;
-    }
-}
-.fontSecOpensans {
-    p {
-        font-family: $font-opensans;
-    }
-}
-
-.fontPriNunito {
-    font-family: $font-nunito;
-    h1, h2, h3, h4  {
-        font-family: $font-nunito;
-    }
-}
-.fontSecNunito {
-    p {
-        font-family: $font-nunito;
-    }
-}
-
-.fontPriAbril {
-    font-family: $font-abril;
-    h1, h2, h3, h4  {
-        font-family: $font-abril;
-    }
-}
-.fontSecAbril {
-    p {
-        font-family: $font-abril;
-    }
-}
-
-.fontPriCormorant {
-    font-family: $font-cormorant;
-    h1, h2, h3, h4  {
-        font-family: $font-cormorant;
-    }
-}
-.fontSecCormorant {
-    p {
-        font-family: $font-cormorant;
-    }
-}
-
-.fontPriPoppins {
-    font-family: $font-poppins;
-    h1, h2, h3, h4  {
-        font-family: $font-poppins;
-    }
-}
-.fontSecPoppins {
-    p {
-        font-family: $font-poppins;
-    }
-}
-
-.fontPriMontserrat {
-    font-family: $font-montserrat;
-    h1, h2, h3, h4  {
-        font-family: $font-montserrat;
-    }
-}
-.fontSecMontserrat {
-    p {
-        font-family: $font-montserrat;
-    }
-}
-
-.fontPriCalistoga {
-    font-family: $font-calistoga;
-    h1, h2, h3, h4  {
-        font-family: $font-calistoga;
-    }
-}
-.fontSecCalistoga {
-    p {
-        font-family: $font-calistoga;
+    .fontSec#{$fontname} {
+        p,input {
+            font-family: $font;
+        }
     }
 }

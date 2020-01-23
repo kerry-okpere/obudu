@@ -1,82 +1,42 @@
 header {
+    // margin: 0 0 40px;
     background: #fff;
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: auto;
-    z-index: 1000;
-    font-size: 14px;
-    font-weight: 700;
-    @include transition(background .25s cubic-bezier(0.25, 0.8, 0.25, 1),padding .25s cubic-bezier(0.25, 0.8, 0.25, 1));
-    @include animation(slideInDown 420ms cubic-bezier(0.165, 0.84, 0.44, 1));
-    &:before {
-        content: '';
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: -1;
-        opacity: 0;
+    img {
+        max-width: 100px;
     }
-    // img {
-    //     max-width: 100px;
-    // }
-    .navbar {
-        &__item {
-            display: flex;
-            img {
-                margin-right: 5px;
-            }
-            h4 {
-                font-size: 13px;
-                margin: 0;
-            }
-            p {
-                font-size: 12px;
-            }
-            button {
-                display: flex;
-            }
+    .ant-affix {
+        background: white;
+        padding: 20px 0;
+    }
+    a:hover {
+        text-decoration: none;
+    }
+    .navbar__item {
+        display: flex;
+        img {
+            margin-right: 8px;
         }
-        &-cta {
+        p {
+            font-size: 14px;
+            margin: 0;
+        }
+        button {
             display: flex;
         }
-        .logo {
-            h1 {
-                font-weight: 700;
-                margin: 5px 0;
-            }
+    }
+    .navbar-cta {
+        display: flex;
+    }
+    .logo {
+        h1 {
+            font-weight: 700;
+            margin: 5px 0;
         }
-    }
-    &.navTrans {
-        position: absolute;
-        top: 0%;
-        left: auto;
-        right: auto;
-        bottom: 0%;
-        background: transparent;
-        width: 100%;
-    }
-    &.navFixed {
-        position: fixed;
-        top: 0%;
-        left: auto;
-        right: auto;
-        bottom: auto;
-        z-index: 100;
-        width: 100%;
-        @include transition(background .25s cubic-bezier(0.25, 0.8, 0.25, 1),padding .25s cubic-bezier(0.25, 0.8, 0.25, 1));
-        @include animation(slideInDown 420ms cubic-bezier(0.165, 0.84, 0.44, 1));
-        box-shadow: 0 0px 22px rgba(0,0,0,0.1);
     }
 
     // Nav Layout One
     .navbar__one {
-        padding: 12px 0;
+        padding: 10px 0;
         &-nav {
             margin: 10px 0 0 0;
             a {
@@ -152,6 +112,30 @@ header {
         &-search {
             margin: 5px 0 0 0;
         }
+    }
+
+    &.navTrans {
+        position: absolute;
+        top: 0%;
+        left: auto;
+        right: auto;
+        bottom: 0%;
+        background: transparent;
+        width: 100%;
+    }
+    
+    &.navFixed {
+        position: fixed;
+        top: 0%;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        z-index: 100;
+        width: 100%;
+        -webkit-transition: background .25s cubic-bezier(0.25, 0.8, 0.25, 1),padding .25s cubic-bezier(0.25, 0.8, 0.25, 1);
+        transition: background .25s cubic-bezier(0.25, 0.8, 0.25, 1),padding .25s cubic-bezier(0.25, 0.8, 0.25, 1);
+        box-shadow: 0 0px 22px rgba(0,0,0,0.1);
+        animation: slideInDown 420ms cubic-bezier(0.165, 0.84, 0.44, 1);
     }
 }
 .cpOpen {
