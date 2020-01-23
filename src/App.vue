@@ -8,23 +8,18 @@
 import { STORENAME } from "./config";
 
 export default {
-  methods: {
-    capitalizeFirstLetter(string) {
-      return string.charAt(0).toUpperCase() + string.slice(1);
-    }
-  },
   watch: {
-    '$route':{
-    handler: (to, from) => {
-        document.title = to.meta.title 
-    },
-    immediate: true
+    $route: {
+      handler: (to, from) => {
+        document.title = to.meta.title;
+      },
+      immediate: true
     }
   },
   async created() {
     let res = await this.$store.dispatch("products/fetchStoreStyles");
-    let savedStyles = { ...res, storeName: this.capitalizeFirstLetter(STORENAME) };
-    let mergedStyles = { ...this.$store.state.styles, ...savedStyles };
+    let mergedStyles = { ...this.$store.state.styles, ...res };
+    this.$store.commit("updateStoreName", STORENAME);
     this.$store.commit("updateStyles", mergedStyles);
   }
 };

@@ -1,9 +1,9 @@
 const mutations = {
-  updateStore(state, store) {
-    state.store = store;
+  updateStoreName(state, storeName) {
+    console.log("Updatinf stor name")
+    state.data.storeName = storeName;
   },
   updateStyles(state, stylesObj) {
-    console.log("Updating styles with======>", stylesObj);
     state.styles = stylesObj;
   },
   setStoreName(state, storeName) {
