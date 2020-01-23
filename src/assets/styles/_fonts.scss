@@ -44,7 +44,7 @@ $fonts: (
         }
     }
     .fontSec#{$fontname} {
-        p {
+        p,input {
             font-family: $font;
         }
     }
