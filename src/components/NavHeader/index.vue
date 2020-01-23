@@ -203,11 +203,8 @@ import { STORENAME } from "./../../config"
         'navLogoTextColor',
         'navLogoTextSize',
         'navLayout',
-        // 'storeName'
+        'storeName'
       ]),
-      storeName() {
-        return STORENAME
-      }
     }
   }
 </script>
