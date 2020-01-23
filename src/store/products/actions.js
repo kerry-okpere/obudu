@@ -12,6 +12,29 @@ let dummy_store = `${STORENAME}`;
 
 
 const actions = {
+
+  async fetchStoreStyles({ state, commit }) {
+    return new Promise(async (resolve, reject) => {      
+      let response = await axios.get(`${API_URL}/${STORE_ID}/styles`).catch(err => console.log(err));
+      if (response.status == 200) {
+        resolve(response.data);
+      } else {
+        reject("Unable to fetch styles");
+      }
+    });
+  },
+
+  async saveStoreStyles({ state, commit }, {payload}) {
+    return new Promise(async (resolve, reject) => {      
+      let response = await axios.post(`${API_URL}/${STORE_ID}/styles`, {...payload}).catch(err => console.log(err));
+      if (response.status == 200) {
+        resolve(response.data);
+      } else {
+        reject("Unable to save styles");
+      }
+    });
+  },
+
   async fetchHomeProducts({ state, commit }) {
     return new Promise(async (resolve, reject) => {      
       let response = await storefront$http.get('/products').catch(err => console.log(err));
