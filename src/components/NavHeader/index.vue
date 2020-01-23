@@ -16,22 +16,23 @@
           <div class="col col-lg-4">
             <nav class="navbar__one-nav">
               <router-link exact to="/">Shop</router-link>
-              <router-link exact to="/">Collection</router-link>
-              <router-link exact to="/">Sale</router-link>
+              <router-link exact to="/">Collections</router-link>
             </nav>
           </div>
           <div class="col col-lg-4">
             <div class="navbar__one-search">
-              <a-input-search placeholder="Search store..." style="width: 250px" />
+              <a-input-search placeholder="Search store..." style="width: 200px;float: right;" />
             </div>
           </div>
           <div class="col col-lg-2">
-            <nav class="navbar__one-nav navbar-cta">
+            <nav class="navbar__one-nav navbar-cta" style="margin: 6px 0 0;">
               <div class="navbar__item">
-                <a-button type="link" @click="setCartShow">
-                  <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart">
-                  <p>Cart</p>
-                </a-button>
+                <a-badge :count="cartItems" :numberStyle="cartIconStyle">
+                  <a-button type="link" @click="setCartShow">
+                    <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart">
+                    <h4>Cart</h4>
+                  </a-button>
+                </a-badge>
               </div>
               <div v-if="userLoggedin" class="navbar__item">
                 <a-dropdown>
@@ -42,7 +43,7 @@
                   </a-menu>
                   <a-button type="link">
                     <img src="@/assets/img/nav/user.svg" width="20" alt="Account">
-                    <p>Account</p>
+                    <h4>Account</h4>
                     <a-icon type="down" style="margin:5px 5px 0;" />
                   </a-button>
                 </a-dropdown>
@@ -72,7 +73,7 @@
               </nav>
             </div>
             <div class="col col-lg-3">
-              <router-link>
+              <router-link to="/">
                 <img :src="navLogo" alt="Store Logo">
               </router-link>
             </div>
@@ -83,10 +84,12 @@
             </div>
             <div class="col col-lg-2">
               <nav class="navbar__two-nav navbar__two-secnav">
-                <router-link exact to="/">
-                  <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart">
-                  <p>Cart</p>
-                </router-link>
+                <a-badge :count="cartItems" :numberStyle="cartIconStyle">
+                  <a-button type="link" @click="setCartShow">
+                    <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart">
+                    <h4>Cart</h4>
+                  </a-button>
+                </a-badge>
                 <a-dropdown :trigger="['click']">
                   <a class="ant-dropdown-link" href="#"><img src="@/assets/img/nav/user.svg" width="20" alt="Account">
                     <p>Account</p>
@@ -131,10 +134,12 @@
             </div>
             <div class="col col-lg-2">
               <nav class="navbar__three-nav navbar__three-secnav">
-                <div>
-                  <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart">
-                  <p>Cart</p>
-                </div>
+                <a-badge :count="cartItems" :numberStyle="cartIconStyle">
+                  <a-button type="link" @click="setCartShow">
+                    <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart">
+                    <h4>Cart</h4>
+                  </a-button>
+                </a-badge>
                 <a-dropdown :trigger="['click']">
                   <a class="ant-dropdown-link" href="#"><img src="@/assets/img/nav/user.svg" width="20" alt="Account">
                     <p>Account</p>
@@ -157,11 +162,7 @@
 
     <!-- Mobile Nav -->
     <section class="navbar__mobile d-block d-lg-none">
-      <Slide>
-        <a id="home" href="#">
-          <span>Home</span>
-        </a>
-      </Slide>
+
     </section>
 
   </header>
@@ -177,7 +178,9 @@ import { STORENAME } from "./../../config"
       Slide
     },
     data: () => ({
-      userLoggedin: true
+      userLoggedin: true,
+      cartItems: 5,
+      cartIconStyle: 'backgroundColor: #3C87D1;',
     }),
     methods: {
       setCartShow(e) {

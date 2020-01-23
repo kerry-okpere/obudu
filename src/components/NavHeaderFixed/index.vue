@@ -29,8 +29,10 @@
             <nav class="navbar__one-nav navbar-cta">
                 <div class="navbar__item">
                 <a-button type="link" @click="setCartShow">
-                    <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart">
-                    <p>Cart</p>
+                    <a-badge count="5">
+                        <!-- <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart">
+                        <p>Cart</p> -->
+                    </a-badge>
                 </a-button>
                 </div>
                 <div v-if="userLoggedin" class="navbar__item">

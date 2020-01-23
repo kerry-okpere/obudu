@@ -1,27 +1,35 @@
 <template>
     <div class="product__info">
         <div class="product__info-name">
-            <h1>{{singleProd.name}}</h1>
-            <h2>{{singleProd.basePrice}}</h2>
+            <!-- <h1>{{singleProd.name}}</h1> -->
+            <h1>Logitech Wireless Mouse - M186</h1>
+            <a-rate v-model="rating" />
+            <h4>(2 ratings)</h4>
+            <h2>₦20,000</h2>
+            <!-- <h2>{{singleProd.basePrice}}</h2> -->
             <!-- {{singleProds}} -->
         </div>
-        <div class="product__info-description">
+        <!-- <div class="product__info-description">
             <p>{{singleProd.description}}</p>
-        </div>
+            <p>Logitech Wireless Mouse M186 is compatible with all brands of
+            laptops and computers. It has been integrated with Bluetooth technology
+            which ensures it has a great range of about 10 metres. It communicates
+            and connects to devices through radio.</p>
+        </div> -->
         <div class="product__info-variant">
-            <!-- <h4>Size</h4>
+            <h4>Size</h4>
                 <a-button-group>
                     <a-button>S</a-button>
                     <a-button>M</a-button>
                     <a-button>L</a-button>
                     <a-button>XL</a-button>
-                </a-button-group> -->
+                </a-button-group>
         </div>
         <div class="product__info-variant">
-            <!-- <h4>Variant</h4>
+            <h4>Variant</h4>
             <a-select defaultValue="variant" @change="selectVariant">
                 <a-select-option value="variant">Variant Option</a-select-option>
-            </a-select> -->
+            </a-select>
         </div>
         <div class="product__info-quantity">
             <h4>Quantity</h4>
@@ -38,7 +46,8 @@
         data: () => ({
             value: 1,
             btnSize: 'large',
-            singleProd: {}
+            singleProd: {},
+            rating: 4,
         }),
 
         computed: {

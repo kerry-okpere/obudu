@@ -1,11 +1,11 @@
 <template>
-    <section class="collection" v-if="collectionShow">
+    <section class="collection" v-if="collectionShow" :style="{backgroundColor: collectionBgColor}">
         
-        <!-- collection Layout One -->
+        <!-- Collection Layout One -->
         <div class="collection__one" v-if="collectionLayout === 1">
             <div class="container">
                 <div class="row">
-                    <div class="col">
+                    <div class="col-12 col-xl-4">
                         <div class="collection__one-single" :style="{backgroundColor: collectionOneBg}" v-if="collectionOneShow">
                             <div class="wrapper">
                                 <div class="content">
@@ -19,7 +19,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-12 col-xl-4">
                         <div class="collection__one-single" :style="{backgroundColor: collectionTwoBg}" v-if="collectionTwoShow">
                             <div class="wrapper">
                                 <div class="content">
@@ -33,7 +33,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col">
+                    <div class="col-12 col-xl-4">
                         <div class="collection__one-single" :style="{backgroundColor: collectionThreeBg}" v-if="collectionThreeShow">
                             <div class="wrapper">
                                 <div class="content">
@@ -51,6 +51,11 @@
             </div>
         </div>
 
+        <!-- Collection Layout Two -->
+        <div class="collection__two" v-if="collectionLayout === 2">
+
+        </div>
+
     </section>
 </template>
 
@@ -65,6 +70,7 @@ import { mapGetters, mapMutations } from 'vuex'
             ...mapGetters ([
                 'collectionShow',
                 'collectionLayout',
+                'collectionBgColor',
                 'collectionBtnColor',
                 'collectionOneShow',
                 'collectionOneBg',
