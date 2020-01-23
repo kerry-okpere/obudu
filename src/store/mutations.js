@@ -101,6 +101,9 @@ const mutations = {
     setCollectionLayout(state, collectionLayout) {
         state.styles.collectionLayout = collectionLayout
     },
+    setCollectionBgColor(state, color) {
+        state.styles.collectionBgColor = color
+    },
     setCollectionBtnColor(state, color) {
         state.styles.collectionBtnColor = color
     },

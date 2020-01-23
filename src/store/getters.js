@@ -55,6 +55,7 @@ const getters = {
         heroBtnSec: state => state.styles.heroBtnSec,
         collectionShow: state => state.styles.collectionShow,
         collectionLayout: state => state.styles.collectionLayout,
+        collectionBgColor: state => state.styles.collectionBgColor,
         collectionBtnColor: state => state.styles.collectionBtnColor,
         collectionOneShow: state => state.styles.collectionOneShow,
         collectionOneBg: state => state.styles.collectionOneBg,

@@ -56,6 +56,7 @@ const state = {
         heroBtnSec: '#fff',
         collectionShow: true,
         collectionLayout: 1,
+        collectionBgColor: '#fff',
         collectionBtnColor: '#fff',
         collectionOneShow: true,
         collectionOneBg: '#eee',
