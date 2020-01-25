@@ -2,7 +2,7 @@
   <div class="product__image">
     <a-skeleton :loading="loading" :disabled="loading" active>
       <!-- <SfGallery :images="images"></SfGallery> -->
-      <ProductZoomer :base-images="images" :base-zoomer-options="zoomerOptions"/>
+      <ProductZoomer :base-images="image" :base-zoomer-options="zoomerOptions" />
     </a-skeleton>
   </div>
 </template>
@@ -15,20 +15,44 @@ export default {
   //   SfGallery
   // },
   data: () => ({
-    image: [],
-    loading: false,
+    image: '',
+    loading: true,
     images: {
       thumbs: [
-        {id: 1, url: "https://yoohooworld.com/assets/images/vue_product_zoomer/thumbs/1.jpeg"},
-        {id: 2, url: "https://yoohooworld.com/assets/images/vue_product_zoomer/thumbs/2.jpeg"}
+        {
+          id: 1,
+          url:
+            "https://yoohooworld.com/assets/images/vue_product_zoomer/thumbs/1.jpeg"
+        },
+        {
+          id: 2,
+          url:
+            "https://yoohooworld.com/assets/images/vue_product_zoomer/thumbs/2.jpeg"
+        }
       ],
       normal_size: [
-        {id: 1, url: "https://yoohooworld.com/assets/images/vue_product_zoomer/normal_size/1.jpeg"},
-        {id: 2, url: "https://yoohooworld.com/assets/images/vue_product_zoomer/normal_size/2.jpeg"}
+        {
+          id: 1,
+          url:
+            "https://yoohooworld.com/assets/images/vue_product_zoomer/normal_size/1.jpeg"
+        },
+        {
+          id: 2,
+          url:
+            "https://yoohooworld.com/assets/images/vue_product_zoomer/normal_size/2.jpeg"
+        }
       ],
       large_size: [
-        {id: 1, url: "https://yoohooworld.com/assets/images/vue_product_zoomer/large_size/1.jpeg"},
-        {id: 2, url: "https://yoohooworld.com/assets/images/vue_product_zoomer/large_size/2.jpeg"}
+        {
+          id: 1,
+          url:
+            "https://yoohooworld.com/assets/images/vue_product_zoomer/large_size/1.jpeg"
+        },
+        {
+          id: 2,
+          url:
+            "https://yoohooworld.com/assets/images/vue_product_zoomer/large_size/2.jpeg"
+        }
       ]
     },
     zoomerOptions: {
@@ -39,51 +63,49 @@ export default {
       move_by_click: true,
       scroll_items: 3,
       choosed_thumb_border_color: "#dd2c00",
-      scroller_position: "bottom",
+      scroller_position: "bottom"
       // zoomer_pane_position: "right"
     }
   }),
 
-  // computed: {
-  //   singleProdGetter() {
-  //     return this.$store.getters["products/getProduct"];
-  //   }
-  // },
+  computed: {
+    singleProdGetter() {
+      return this.$store.getters["products/getProduct"];
+    }
+  },
 
-  // async created() {
-  //   let slug = this.$route.params.slug;
+  async created() {
+    let slug = this.$route.params.slug;
 
-  //   let product = await this.$store.dispatch("products/fetchSingleProducts", {
-  //     prodId: slug
-  //   });
+    let product = await this.$store.dispatch("products/fetchSingleProducts", {
+      prodId: slug
+    });
 
-  //   this.images = this.makeImageArr(product.images);
-  // },
+    this.image = this.makeImageArr(product.images);
+  },
 
-  // methods: {
-  //   makeImageArr(image) {
-  //     let imgArr = [];
-  //     image.map(img => {
-  //       let newObj = {
-  //         small: {
-  //           url: img.url,
-  //           alt: `${img.ref}`
-  //         },
-  //         normal: {
-  //           url: img.url,
-  //           alt: `${img.ref}`
-  //         },
-  //         big: {
-  //           url: img.url,
-  //           alt: `${img.ref}`
-  //         }
-  //       };
-  //       imgArr.push(newObj);
-  //     });
-  //     this.loading = false;
-  //     return imgArr;
-  //   }
-  // }
+  methods: {
+    makeImageArr(image) {
+      let imgArr = {
+        thumbs: [], normal_size: [], large_size: []
+      }
+        
+      image.map( (img, index) => {
+        if( index <= 2){
+          let tempObj = { 
+            id: 1, url: img.url ,
+            id: 2, url: img.url 
+          }
+          imgArr.thumbs.push(tempObj);
+          imgArr.normal_size.push(tempObj);
+          imgArr.large_size.push(tempObj);
+        }
+      });
+
+      this.loading = false;
+      return imgArr;
+    }
+  }
 };
 </script>
 

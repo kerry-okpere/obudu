@@ -73,18 +73,22 @@
         <!-- Home Products Layout Three -->
         <div class="products__three" v-if="productLayout === 1">
             <div class="row">
-                <div class="col-3">
+                <div class="col-3" v-for="(product, index) in products" :key="index">
                     <div class="products__three-single">
                         <div class="image">
-                            <img src="https://via.placeholder.com/250x350" alt="">
+                            <img :src="`${product.images[0].url}`" alt="">
                         </div>
+                        <router-link :to="`/product/${product.slug}`" type="primary">
+                            <a-button v-bind:style="{backgroundColor: priColor, borderColor: priColor}">Buy Now</a-button>
+                        </router-link>
                         <div class="info text-center">
-                            <h3 class="pt-3 pb-2">Long Sleeved Cotton</h3>
-                            <h4>$100</h4>
+                            <h3 class="pt-3 pb-2">{{product.name}}</h3>
+                            <h4>{{product.basePrice}}</h4>
                         </div>
                     </div>
                 </div>
-                <div class="col-3">
+                
+                <!-- <div class="col-3">
                                         <div class="products__three-single">
                         <div class="image">
                             <img src="https://via.placeholder.com/250x350" alt="">
@@ -116,7 +120,7 @@
                             <h4>$100</h4>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
         </div>
