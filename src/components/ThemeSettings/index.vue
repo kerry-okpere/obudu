@@ -12,7 +12,7 @@
                     <a-icon type="question-circle" />
                 </a-popover>
                 </div>
-                <h1>Store Name</h1>
+                <h1>{{storeName}}</h1>
                 <a-divider />
                 <div class="d-inline-flex">
                     <div>
@@ -679,7 +679,8 @@ export default {
       'footerShow',
       'footerLayout',
       'subfooterShow',
-      'subfooterLayout'
+      'subfooterLayout',
+      'storeName'
     ])
   },
   methods: {

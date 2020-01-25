@@ -14,6 +14,7 @@ import Design from './views/Design';
 
 import loadEnv from './middleware/loadEnv';
 
+import { STORENAME } from './../config'
 
 const router =  new Router({
   mode: 'history',
@@ -22,7 +23,7 @@ const router =  new Router({
       path: "/",
       component: Home,
       meta: {
-        title: 'Storefront',
+        title: `${STORENAME} Storefront`,
       }
     },
     {
@@ -38,7 +39,7 @@ const router =  new Router({
       path: "/checkout/",
       component: Checkout,
       meta: {
-        title: 'Checkout - Storename',
+        title: `Checkout - ${STORENAME}`,
         middleware: [
           loadEnv
         ]
@@ -48,21 +49,21 @@ const router =  new Router({
       path: "/dashboard/",
       component: Dashboard,
       meta: {
-        title: 'Manage Account - Storename'
+        title: `Manage Account - ${STORENAME}`
       }
     },
     {
       path: "/about/",
       component: About,
       meta: {
-        title: 'About - Storename'
+        title: `About - ${STORENAME}`
       }
     },
     {
       path: "/design/",
       component: Design,
       meta: {
-        title: 'Design - Storename',
+        title: `Design - ${STORENAME}`,
       }
     },
     
