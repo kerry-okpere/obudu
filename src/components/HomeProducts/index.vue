@@ -83,7 +83,7 @@
                         </router-link>
                         <div class="info text-center">
                             <h3 class="pt-3 pb-2">{{product.name}}</h3>
-                            <h4>{{product.basePrice}}</h4>
+                            <h4>&#x20A6;{{formatPrice(product.basePrice)}}</h4>
                         </div>
                     </div>
                 </div>
@@ -145,6 +145,13 @@ import { mapGetters } from 'vuex'
                 'productLayout',
                 'productBg'
             ])
+        },
+
+        methods: {
+            formatPrice(price){
+                // Apply currency
+                return Number(price.replace(/\D/g, "").slice(0, -2))
+            }
         },
 
         async created(){

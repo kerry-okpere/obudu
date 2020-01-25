@@ -5,7 +5,7 @@
       <!-- <h1>{{ selectedVariant }}</h1> -->
       <a-rate v-model="rating" />
       <h4>(2 ratings)</h4>
-      <h2>{{ selectedVariant.price || singleProd.basePrice }}</h2>
+      <h2>&#x20A6;{{ formatPrice(selectedVariant.price || singleProd.basePrice) }}</h2>
       <!-- {{singleProds}} -->
     </div>
     <!-- <div class="product__info-description">
@@ -142,6 +142,10 @@ export default {
       this.loading = true;
 
       return newAtrr;
+    },
+    formatPrice(price){
+       // Apply currency
+      return Number(price.replace(/\D/g, "").slice(0, -2))
     }
   },
 
