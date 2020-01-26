@@ -15,7 +15,7 @@ const actions = {
 
   async fetchStoreStyles({ state, commit }) {
     return new Promise(async (resolve, reject) => {      
-      let response = await axios.get(`${API_URL}/${STORE_ID}/styles`).catch(err => console.log(err));
+      let response = await storefront$http.get(`${API_URL}/${STORE_ID}/styles`).catch(err => console.log(err));
       if (response.status == 200) {
         resolve(response.data);
       } else {
@@ -26,7 +26,7 @@ const actions = {
 
   async saveStoreStyles({ state, commit }, {payload}) {
     return new Promise(async (resolve, reject) => {      
-      let response = await axios.post(`${API_URL}/${STORE_ID}/styles`, {...payload}).catch(err => console.log(err));
+      let response = await storefront$http.post(`${API_URL}/${STORE_ID}/styles`, {...payload}).catch(err => console.log(err));
       if (response.status == 200) {
         resolve(response.data);
       } else {
