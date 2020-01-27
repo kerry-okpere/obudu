@@ -9,7 +9,7 @@
   "dependencies": {
     "@storefront-ui/vue": "^0.3.6",
     "ant-design-vue": "^1.4.10",
-    "axios": "0.18.0",
+    "axios": "0.18.1",
     "bootstrap": "^4.4.1",
     "bootstrap-vue": "^2.1.0",
     "node-sass": "^4.13.1",
