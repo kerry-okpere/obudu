@@ -115,17 +115,6 @@ export default {
           bigArr[`${distinctKeys}`];
         }
       });
-      // let  bigArr,smallArr = new Array();
-      // let obj= {};
-      // let counter = 0;
-      // arr.map( (val, index) => {
-      //     distinctKeys.map ( (item, indx) => {
-      //         if(Object.keys(val) == item) {
-      //             obj = { [`${item}`] : [item] = val[`${item}`] }
-      //         }
-
-      //     })
-      // })
     },
     formatVariantsAttr(variantArr) {
       let typesArr = [];
