@@ -16,11 +16,8 @@
             and connects to devices through radio.</p>
         </div> -->
 
-    <div class="product__info-variant">
+    <!-- <div class="product__info-variant">
       <h4>Variants</h4>
-      <!-- <a-select defaultValue="variant" @change="selectVariant">
-                <a-select-option v-for="(type, index) in attrType" :key="index" :value="type">{{type}}</a-select-option>
-            </a-select> -->
       <a-select defaultValue="Select Variant" @change="selectVariant">
         <a-select-option
           v-for="(variant, index) in singleProd.variants"
@@ -32,25 +29,32 @@
             <span v-for="(va, i) in variant.variantAttributes" :key="i">
               {{ va.value }}
             </span>
+            <span v-for="(va, i) in variant.variantAttributes" :key="i">
+              {{ va.value }}
+            </span>
           </div>
         </a-select-option>
       </a-select>
-    </div>
+    </div> -->
 
     <div class="product__info-variant">
+      <div v-for="(va, index) in attrType" :key="index">
+        <h4>{{ va }}</h4>
+
+        <a-button-group v-for="(value, index) in Array.from(new Set(distinctTypes[va]))" :key="index">
+            <a-button> {{value[va]}} </a-button>
+        </a-button-group>
+      </div>
+    </div>
+
+    <!-- <div class="product__info-variant">
       <div v-for="(va, index) in selectedVariant.variantAttributes" :key="index">
         <h4>{{ va.type }}</h4>
         <a-button-group>
             <a-button> {{va.value}} </a-button>
-          <!-- <a-button v-for="(val, index) in attrVal" :key="index">{{
-            val
-          }}</a-button> -->
-          <!-- <a-button>M</a-button>
-                    <a-button>L</a-button>
-                    <a-button>XL</a-button> -->
         </a-button-group>
       </div>
-    </div>
+    </div> -->
 
     <div class="product__info-quantity">
       <h4>Quantity</h4>
@@ -83,6 +87,7 @@ export default {
     dupObj: {},
     distObj: {},
     variantId: "",
+    distinctTypes: "",
     selectedVariant: {}
   }),
 
@@ -108,13 +113,21 @@ export default {
       return newArr;
     },
     mergeArr(arr, distinctKeys) {
-      console.log(arr);
       let bigArr = new Array();
       arr.map((val, index) => {
-        if (index <= distinctKeys.length) {
-          bigArr[`${distinctKeys}`];
-        }
+          let key = Object.keys(val);
+          distinctKeys.map(item => {
+            if(key == item){
+                if(!bigArr[key]){
+                  bigArr[key] = new Array(val);
+                } else if(bigArr[key].length >= 1){
+                    bigArr[key].push(val)
+                }
+            }
+          })
       });
+
+      return bigArr;
     },
     formatVariantsAttr(variantArr) {
       let typesArr = [];
@@ -131,6 +144,15 @@ export default {
       this.loading = true;
 
       return newAtrr;
+    },
+    distinctTypesFunc(arr, distinctKeys){
+      let bigArr = new Array();
+      distinctKeys.map(item => { 
+        arr[item].map( ele => {
+          console.log(ele);
+        })
+      })
+
     },
     formatPrice(price){
        // Apply currency
@@ -150,17 +172,21 @@ export default {
     );
     this.variantId = this.singleProd.variants[0].index; // Setting initial variant
 
+    // console.log(this.singleProd.variants);
+
     this.variantAttr = this.formatVariantsAttr(this.singleProd.variants);
-    console.log("Variant Attributes", this.variantAttr);
+    // console.log("Variant Attributes", this.variantAttr);
     this.attrType = Array.from(new Set(this.variantAttr.type));
-    this.attrVal = this.variantAttr.value;
+    this.attrVal =  this.variantAttr.value;
 
-    console.log(this.attrVal);
+    // console.log(this.attrVal);
 
-    // let newObj = this.zip(this.variantAttr.type, this.variantAttr.value);
+    let newObj = this.zip(this.variantAttr.type, this.variantAttr.value);
 
-    // console.log(newObj);
-    // let check = this.mergeArr(newObj, this.attrType)
+    let check = this.distinctTypesFunc(this.mergeArr(newObj, this.attrType), this.attrType) ;
+    this.distinctTypes = this.mergeArr(newObj, this.attrType);
+
+    console.log(check);
   },
   watch: {
     variantId(index) { // Setting initial variant

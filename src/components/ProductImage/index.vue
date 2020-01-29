@@ -1,60 +1,17 @@
 <template>
   <div class="product__image">
     <a-skeleton :loading="loading" :disabled="loading" active>
-      <!-- <SfGallery :images="images"></SfGallery> -->
       <ProductZoomer :base-images="image" :base-zoomer-options="zoomerOptions" />
     </a-skeleton>
   </div>
 </template>
 
 <script>
-// import { SfGallery } from "@storefront-ui/vue";
 
 export default {
-  // components: {
-  //   SfGallery
-  // },
   data: () => ({
     image: '',
     loading: true,
-    images: {
-      thumbs: [
-        {
-          id: 1,
-          url:
-            "https://yoohooworld.com/assets/images/vue_product_zoomer/thumbs/1.jpeg"
-        },
-        {
-          id: 2,
-          url:
-            "https://yoohooworld.com/assets/images/vue_product_zoomer/thumbs/2.jpeg"
-        }
-      ],
-      normal_size: [
-        {
-          id: 1,
-          url:
-            "https://yoohooworld.com/assets/images/vue_product_zoomer/normal_size/1.jpeg"
-        },
-        {
-          id: 2,
-          url:
-            "https://yoohooworld.com/assets/images/vue_product_zoomer/normal_size/2.jpeg"
-        }
-      ],
-      large_size: [
-        {
-          id: 1,
-          url:
-            "https://yoohooworld.com/assets/images/vue_product_zoomer/large_size/1.jpeg"
-        },
-        {
-          id: 2,
-          url:
-            "https://yoohooworld.com/assets/images/vue_product_zoomer/large_size/2.jpeg"
-        }
-      ]
-    },
     zoomerOptions: {
       zoomFactor: 2,
       pane: "container",
@@ -86,22 +43,18 @@ export default {
 
   methods: {
     makeImageArr(image) {
-      let imgArr = {
-        thumbs: [], normal_size: [], large_size: []
-      }
-        
+      let counter = 1;
+      let thumbs = [];
       image.map( (img, index) => {
-        if( index <= 2){
           let tempObj = { 
-            id: 1, url: img.url ,
-            id: 2, url: img.url 
+            id:  index, url: img.url ,
           }
-          imgArr.thumbs.push(tempObj);
-          imgArr.normal_size.push(tempObj);
-          imgArr.large_size.push(tempObj);
-        }
+          thumbs.push(tempObj);
       });
-
+      
+      let imgArr = {
+        thumbs: [...thumbs], normal_size: [...thumbs], large_size: [...thumbs]
+      }
       this.loading = false;
       return imgArr;
     }
