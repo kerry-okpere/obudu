@@ -19,7 +19,10 @@
                         <p class="mb-1">Active theme</p>
                         <h3>Venus</h3>
                     </div>
-                    <a-button>Change</a-button>
+                    <a-button @click="changeThemes">Change</a-button>
+                    <a-modal title="Select Your Theme" v-model="showThemes" @ok="saveThemes" okText="Save" width="1000px">
+                        <ThemePicker />
+                    </a-modal>
                 </div>
                 <a-divider />
             </div>
@@ -125,7 +128,7 @@
                         </div>
                         <div class="settings__modal">
                             <a-button type="primary" @click="menuSettings">More Settings</a-button>
-                            <a-modal title="Modify Menu Content" v-model="showMenuSettings" onOk="saveSettings">
+                            <a-modal title="Modify Menu Content" v-model="showMenuSettings" onOk="saveSettings" :style="modalStyle">
                                 <template slot="footer">
                                     <a-button key="back" @click="menuCancel">Cancel</a-button>
                                     <a-button key="submit" type="primary" :loading="loading" @click="saveMenuSettings">Save</a-button>
@@ -185,7 +188,7 @@
                                 </a-radio-group>
                                 <div class="settings__modal">
                                     <a-button type="primary" @click="heroSettings">More Settings</a-button>
-                                    <a-modal title="Modify Hero Content" v-model="showHeroSettings" onOk="saveSettings">
+                                    <a-modal title="Modify Hero Content" v-model="showHeroSettings" onOk="saveSettings" :style="modalStyle">
                                         <template slot="footer">
                                             <a-button key="back" @click="heroCancel">Cancel</a-button>
                                             <a-button key="submit" type="primary" :loading="loading" @click="saveHeroSettings">Save</a-button>
@@ -288,7 +291,7 @@
                             </div>
                             <div class="settings__modal">
                                 <a-button type="primary" @click="collectionSettings">More Settings</a-button>
-                                <a-modal title="Modify Collection Content" v-model="showCollectionSettings" onOk="saveCollectionSettings">
+                                <a-modal title="Modify Collection Content" v-model="showCollectionSettings" onOk="saveCollectionSettings" :style="modalStyle">
                                     <template slot="footer">
                                         <a-button key="back" @click="collectionCancel">Cancel</a-button>
                                         <a-button key="submit" type="primary" :loading="loading" @click="saveCollectionSettings">Save</a-button>
@@ -445,7 +448,7 @@
                                 </a-radio-group>
                                 <div class="settings__modal">
                                     <a-button type="primary" @click="productSettings">More Settings</a-button>
-                                    <a-modal title="Modify Product Content" v-model="showProductSettings" onOk="saveProductSettings">
+                                    <a-modal title="Modify Product Content" v-model="showProductSettings" onOk="saveProductSettings" :style="modalStyle">
                                         <template slot="footer">
                                             <a-button key="back" @click="productCancel">Cancel</a-button>
                                             <a-button key="submit" type="primary" :loading="loading" @click="saveProductSettings">Save</a-button>
@@ -562,11 +565,13 @@
 </template>
 
 <script>
-import { Swatches } from 'vue-color'
-import { mapGetters, mapMutations } from 'vuex'
+import ThemePicker from './components/ThemePicker';
+import { Swatches } from 'vue-color';
+import { mapGetters, mapMutations } from 'vuex';
 export default {
   components: {
-      'swatches-picker': Swatches
+    'swatches-picker': Swatches,
+    ThemePicker,
   },
   data: () => ({
     loading: false,
@@ -576,19 +581,12 @@ export default {
         height: '30px',
         lineHeight: '30px'
     },
-    showHeroSettings: false,
-    showHeroImageUpload: false,
-    heroImageModal: false,
-    heroImagePreview: '',
+    modalStyle: {
+        margin: '0 50px 0 0'
+    },
     newHeroTitle: '',
-    fileList: [
-        {
-            uid: '-1',
-            name: 'hero.png',
-            status: 'done',
-            url: 'https://via.placeholder.com/500x300'
-        }
-    ],
+    showThemes: false,
+    showHeroSettings: false,
     showMenuSettings: false,
     showCollectionSettings: false,
     showProductSettings: false,
@@ -684,6 +682,21 @@ export default {
     ])
   },
   methods: {
+    //Theme Settings Modal
+    changeThemes() {
+        this.showThemes = true;
+    },
+    saveThemes() {
+        this.loading = true;
+        setTimeout(() => {
+            this.showThemes = false;
+            this.loading = false;
+        }, 1000);
+        this.openNotificationWithIcon('success');
+    },
+    themesCancel(e) {
+        this.showThemes = false;
+    },
     //Menu Settings Modal
     menuSettings() {
         this.showMenuSettings = true;
@@ -715,19 +728,6 @@ export default {
     },
     heroCancel(e) {
         this.showHeroSettings = false;
-    },
-    //END
-
-    //Hero Image Upload
-    hideHeroImageModal() {
-        this.heroImageModal = false;
-    },
-    showHeroImageModal(file) {
-        this.heroImagePreview = file.url || file.thumbUrl;
-        this.heroImageModal = true;
-    },
-    heroImageUpload({ fileList }) {
-        this.fileList = fileList;
     },
     //END
     
