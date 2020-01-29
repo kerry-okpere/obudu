@@ -166,6 +166,15 @@ header {
             button {
                 padding: 0 10px;
             }
+            .navbar__item {
+                img {
+                    margin-right: 3px;
+                    margin-left: 5px;
+                }
+                p {
+                    font-size: 10px;
+                }
+            }
         }
     }
 }

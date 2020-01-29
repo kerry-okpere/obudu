@@ -173,14 +173,14 @@
             </div>
           </div>
           <div class="col-8">
-            <nav class="navbar__mobile-nav navbar-cta" style="margin: 6px 0 0;">
+            <nav class="navbar__mobile-nav navbar-cta" style="margin: 0px 0 0;">
               <div class="navbar__item">
                 <a-button type="link">
-                  <a-icon type="search" style="margin:5px 5px 0;" />
+                  <!-- <img src="@/assets/img/nav/search.svg" width="20" alt="Search"> -->
                 </a-button>
               </div>
               <div class="navbar__item">
-                <a-badge :count="cartItems" :numberStyle="cartIconStyle">
+                <a-badge :count="cartItems" :numberStyle="cartIconStyleMobile">
                   <a-button type="link" @click="setCartShow">
                     <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart">
                   </a-button>
@@ -227,6 +227,7 @@ import { STORENAME } from "./../../config"
       userLoggedin: true,
       cartItems: 5,
       cartIconStyle: 'backgroundColor: #3C87D1;marginTop: 4px',
+      cartIconStyleMobile: 'backgroundColor: #3C87D1;marginTop: 10px',
     }),
     methods: {
       setCartShow(e) {
