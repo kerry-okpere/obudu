@@ -1,19 +1,20 @@
 <template>
   <section class="customize">
-    <a-layout id="fixed-sidebar">
+    <a-layout id="fixed-sidebar" class="hide">
       <a-layout-sider collapsible v-model="collapsed" width="275">
-        <!-- <a-menu mode="inline" :defaultSelectedKeys="['1']">
-          <a-menu-item key="1">
-            <a-icon class="trigger" :type="collapsed ? 'menu-unfold' : 'menu-fold'" @click="()=> collapsed = !collapsed"/>
-            <span>Hide Panel</span>
-          </a-menu-item>
-        </a-menu> -->
-        <ThemeSettings :class="{ hide: collapsed }" />
+        <ThemeSettings :class="{dNone: collapsed}" />
       </a-layout-sider>
-      <a-layout :style="{ marginLeft: '0px' }">
+      <a-layout :style="{marginLeft: '0px'}">
         <Layout />
       </a-layout>
     </a-layout>
+    <div class="d-md-none">
+      <div class="row">
+        <div class="col-12">
+          <ThemeSettings />
+        </div>
+      </div>
+    </div>
   </section>
 </template>
 
@@ -34,30 +35,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.hide {
-  display: none;
-}
-.customize {
-  &__settings {
-    padding-left: 20px;
-    padding-right: 5px;
-  }
-
-  &__preview {
-    padding: 0;
-  }
-
-  .ant-layout-sider {
-    background: #EEEEEE;
-    border-right: 1px solid #ddd;
-  }
-}
-
-@include media-breakpoint-down(xs) {
-  .customize {
-    &__preview {
-      display: none;
-    }
-  }
-}
+@import './index';
 </style>
