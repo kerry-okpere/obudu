@@ -20,6 +20,7 @@
     "vue": "^2.6.10",
     "vue-awesome": "^4.0.2",
     "vue-burger-menu": "^2.0.3",
+    "vue-carousel": "^0.18.0",
     "vue-color": "^2.7.0",
     "vue-material": "^1.0.0-beta-11",
     "vue-product-zoomer": "^3.0.0",

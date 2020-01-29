@@ -22,7 +22,7 @@ import 'ant-design-vue/dist/antd.css';
 
 import 'vue-awesome/icons';
 import Icon from 'vue-awesome/components/Icon';
-
+import VueCarousel from 'vue-carousel';
 import SocialSharing from 'vue-social-sharing';
 import ProductZoomer from 'vue-product-zoomer';
 import VueTour from 'vue-tour';
@@ -41,6 +41,7 @@ Vue.use(Router);
 Vue.use(BootstrapVue);
 Vue.use(Antd);
 // Vue.use(VueMaterial);
+Vue.use(VueCarousel);
 Vue.use(ProductZoomer);
 Vue.use(SocialSharing);
 Vue.use(VueTour);
