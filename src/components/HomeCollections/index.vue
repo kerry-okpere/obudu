@@ -53,7 +53,21 @@
 
         <!-- Collection Layout Two -->
         <div class="collection__two" v-if="collectionLayout === 2">
-
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="collection__one-single" :style="{backgroundImage: 'url(' + collectionOneImg + ')', backgroundColor: collectionOneBg}" v-if="collectionOneShow">
+                            <div class="wrapper">
+                                <div class="content">
+                                    <h3>{{collectionOneTitle}}</h3>
+                                    <p>{{collectionOneSubtitle}}</p>
+                                    <a-button ghost :style="{color: collectionBtnColor, borderColor: collectionBtnColor}" :href="collectionOneLink">{{collectionOneBtn}}</a-button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </section>

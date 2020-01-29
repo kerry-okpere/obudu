@@ -6,7 +6,7 @@ const state = {
         heroContent: 'Go go your theme settings to design your storefront',
         heroTitle: 'Welcome to Your Storefront',
         heroCTA: 'Get Started',
-        heroCTALink: '/customize/',
+        heroCTALink: '/design/',
         heroImage: 'https://via.placeholder.com/500x300',
         collectionOneTitle: 'Collection',
         collectionOneSubtitle: 'New Collection',

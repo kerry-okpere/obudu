@@ -7,14 +7,14 @@
                 <div class="hero__one-content" :style="{height: heroHeight + 'px'}">
                     <div class="container">
                         <div class="row">
-                            <div class="col">
+                            <div class="col-8 col-xl-6">
                                 <div class="hero__one-text">
                                     <h1 :style="{color: heroTitleColor}">{{heroTitle}}</h1>
                                     <p :style="{color: heroContentColor}">{{heroContent}}</p>
                                     <a-button type="primary" :style="{color: heroBtnSec, backgroundColor: heroBtnPri, borderColor: heroBtnPri}" :href="heroCTALink">{{heroCTA}}</a-button>
                                 </div>
                             </div>
-                            <div class="col">
+                            <div class="col-4 col-xl-6">
                                 <img v-if="heroImageShow === true" :src="heroImage">
                             </div>
                         </div>
@@ -44,10 +44,10 @@
                 <div class="hero__three-content" :style="{height: heroHeight + 'px'}">
                     <div class="container">
                         <div class="row">
-                            <div class="col">
+                            <div class="col-4 col-xl-6">
                                 <img v-if="heroImageShow === true" :src="heroImage">
                             </div>
-                            <div class="col">
+                            <div class="col-4 col-xl-6">
                                 <div class="hero__three-text">
                                     <h1 :style="{color: heroTitleColor}">{{heroTitle}}</h1>
                                     <p :style="{color: heroContentColor}">{{heroContent}}</p>

@@ -40,10 +40,15 @@ header {
             }
             button {
                 display: flex;
+                padding: 0 15px;
             }
         }
         &-cta {
             display: flex;
+            float: right;
+        }
+        .search {
+            float: right;
         }
         .logo {
             h1 {
@@ -78,7 +83,7 @@ header {
     .navbar__one {
         padding: 12px 0;
         &-nav {
-            margin: 10px 0 0 0;
+            margin: 5px 0;
             a {
                 display: inline-flex;
                 margin-right: 20px;
@@ -88,7 +93,7 @@ header {
             }
         }
         &-search {
-            margin: 5px 0 0 0;
+            margin: 5px 0;
         }
     }
 
@@ -153,10 +158,33 @@ header {
             margin: 5px 0 0 0;
         }
     }
+
+    // Mobile Nav
+    .navbar__mobile {
+        padding: 10px 0;
+        &-nav {
+            button {
+                padding: 0 10px;
+            }
+            .navbar__item {
+                img {
+                    margin-right: 3px;
+                    margin-left: 5px;
+                }
+                p {
+                    font-size: 10px;
+                }
+            }
+        }
+    }
 }
 .cpOpen {
     width: 82%;
 }
 .cpClosed {
     width: 95%
+}
+.col {
+    padding-left: 5px!important;
+    padding-right: 5px!important;
 }

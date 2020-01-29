@@ -1,76 +1,74 @@
+// Container Widths
 @include media-breakpoint-only(xl) {
-.container {
-    max-width: 1100px;
+    .container {
+        max-width: 1100px;
+    }
 }
-}
-
 @include media-breakpoint-only(lg){
-.container {
-    max-width: 1000px;
+    .container {
+        max-width: 1000px;
+    }
 }
-}
-
 @include media-breakpoint-only(md) {
-.container {
-    max-width: 640px;
+    .container {
+        max-width: 640px;
+    }
 }
+@include media-breakpoint-only(sm) {
+    .container {
+        max-width: 550px;
+    }
+}
+.container {
+    width: 90%;
 }
 
-@include media-breakpoint-only(sm) {
-.container {
-    max-width: 550px;
+
+//Other General Stuff
+.row {
+    overflow: hidden;
 }
-}
+
+
+//Ant Design
 
 .ant-card-bordered {
     border-radius: 5px;
 }
-
 // .ant-card-body {
 //     padding: 0!important;
 // }
-
 .ant-modal {
     margin: 0 50px 0 0!important;
 }
-
 .anticon {
     vertical-align: 1px!important;
 }
-
 .ant-input {
     height: 30px;
 }
-
 html.md-theme-default {
     background-color: #fff!important;
 }
-
 .md-steppers.md-vertical .md-stepper-header {
     margin-bottom: 15px!important;
 }
-
 .ant-select-selection.ant-select-selection--single {
     height: 40px!important;
 }
-
 .ant-select-selection__rendered {
     line-height: 40px!important;
 }
-
 .ant-form-explain {
     padding-top: 10px!important;
 }
-
 .ant-layout-sider-trigger {
     background: $primary!important;
-  }
-
+}
 .md-stepper-description {
     font-size: 14px;
     margin-top: 5px;
 }
-
 .md-stepper-label {
     font-size: 16px;
 }

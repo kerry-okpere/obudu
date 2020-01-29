@@ -1,14 +1,25 @@
 <template>
   <div class="product__image">
     <a-skeleton :loading="loading" :disabled="loading" active>
-      <ProductZoomer :base-images="image" :base-zoomer-options="zoomerOptions" />
+      <!-- <SfGallery :images="image"></SfGallery> -->
+      <!-- <ProductZoomer :base-images="image" :base-zoomer-options="zoomerOptions" /> -->
+      <carousel :per-page="1" :mouse-drag="true" autoplay="true" :autoplayTimeout="4000" :autoplayHoverPause="false" :navigationEnabled="false" :paginationEnabled="false">
+        <!-- <slide v-for="(images, index) in images" :key="index"> -->
+        <slide>
+          <img src="https://images.pexels.com/photos/3596695/pexels-photo-3596695.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="Product Name">
+        </slide>
+      </carousel>
     </a-skeleton>
   </div>
 </template>
 
 <script>
+import { SfGallery } from "@storefront-ui/vue";
 
 export default {
+  components: {
+    SfGallery
+  },
   data: () => ({
     image: '',
     loading: true,
@@ -21,7 +32,6 @@ export default {
       scroll_items: 3,
       choosed_thumb_border_color: "#dd2c00",
       scroller_position: "bottom"
-      // zoomer_pane_position: "right"
     }
   }),
 

@@ -1,0 +1,22 @@
+.customize {
+    &__settings {
+        padding-left: 20px;
+        padding-right: 5px;
+    }
+    &__preview {
+        padding: 0;
+    }
+    .ant-layout-sider {
+        background: #EEEEEE;
+        border-right: 1px solid #ddd;
+    }
+    .row {
+        overflow: visible;
+    }
+}
+
+@include media-breakpoint-down(sm) {
+    .hide {
+        display: none;
+    }
+}
