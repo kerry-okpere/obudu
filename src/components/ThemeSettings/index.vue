@@ -64,33 +64,33 @@
                         <div class="settings__item">
                             <h3>Secondary Font</h3>
                             <a-select :defaultValue="secFont" :size="size" style="width: 200px" @change="setSecFont">
-                              <a-select-option value="fontSecAbril" class="fontPriAbril">Abril Fatface</a-select-option>
-                              <a-select-option value="fontSecBangers" class="fontPriBangers">Bangers</a-select-option>
-                              <a-select-option value="fontSecBlackops" class="fontPriBlackops">Black Ops One</a-select-option>
-                              <a-select-option value="fontSecCinzel" class="fontPriCinzel">Cinzel</a-select-option>
-                              <a-select-option value="fontSecCalistoga" class="fontPriCalistoga">Calistoga</a-select-option>
-                              <a-select-option value="fontSecCormorant" class="fontPriCormorant">Cormorant Garamond</a-select-option>
-                              <a-select-option value="fontSecCourier" class="fontPriCourier">Courier Prime</a-select-option>
-                              <a-select-option value="fontSecDancing" class="fontPriDancing">Dancing Script</a-select-option>
-                              <a-select-option value="fontSecFredericka" class="fontPriFredericka">Fredericka the Great</a-select-option>
-                              <a-select-option value="fontSecGelasio" class="fontPriGelasio">Gelasio</a-select-option>
-                              <a-select-option value="fontSecJosefin" class="fontPriJosefin">Josefin Sans</a-select-option>
-                              <a-select-option value="fontSecKnewave" class="fontPriKnewave">Knewave</a-select-option>
-                              <a-select-option value="fontSecLato" class="fontPriLato">Lato</a-select-option>
-                              <a-select-option value="fontSecLilita" class="fontPriLilita">Lilita One</a-select-option>
-                              <a-select-option value="fontSecLimelight" class="fontPriLimelight">Limelight</a-select-option>
-                              <a-select-option value="fontSecLuckiest" class="fontPriLuckiest">Luckiest</a-select-option>
-                              <a-select-option value="fontSecMontserrat" class="fontPriMontserrat">Montserrat</a-select-option>
-                              <a-select-option value="fontSecNunito" class="fontPriNunito">Nunito</a-select-option>
-                              <a-select-option value="fontSecOpensans" class="fontPriOpensans">Open Sans</a-select-option>
-                              <a-select-option value="fontSecPlayfair" class="fontPriPlayfair">Playfair Display</a-select-option>
-                              <a-select-option value="fontSecPoppins" class="fontPriPoppins">Poppins</a-select-option>
-                              <a-select-option value="fontSecPressstart" class="fontPriPressstart">Press Start 2P</a-select-option>
-                              <a-select-option value="fontSecRaleway" class="fontPriRaleway">Raleway</a-select-option>
-                              <a-select-option value="fontSecRoboto" class="fontPriRoboto">Roboto</a-select-option>
-                              <a-select-option value="fontSecSacramento" class="fontPriSacramento">Sacramento</a-select-option>
-                              <a-select-option value="fontSecSigmar" class="fontPriSigmar">Sigmar One</a-select-option>
-                              <a-select-option value="fontSecUbuntu" class="fontPriUbuntu">Ubuntu</a-select-option>
+                                <a-select-option value="fontSecAbril" class="fontPriAbril">Abril Fatface</a-select-option>
+                                <a-select-option value="fontSecBangers" class="fontPriBangers">Bangers</a-select-option>
+                                <a-select-option value="fontSecBlackops" class="fontPriBlackops">Black Ops One</a-select-option>
+                                <a-select-option value="fontSecCinzel" class="fontPriCinzel">Cinzel</a-select-option>
+                                <a-select-option value="fontSecCalistoga" class="fontPriCalistoga">Calistoga</a-select-option>
+                                <a-select-option value="fontSecCormorant" class="fontPriCormorant">Cormorant Garamond</a-select-option>
+                                <a-select-option value="fontSecCourier" class="fontPriCourier">Courier Prime</a-select-option>
+                                <a-select-option value="fontSecDancing" class="fontPriDancing">Dancing Script</a-select-option>
+                                <a-select-option value="fontSecFredericka" class="fontPriFredericka">Fredericka the Great</a-select-option>
+                                <a-select-option value="fontSecGelasio" class="fontPriGelasio">Gelasio</a-select-option>
+                                <a-select-option value="fontSecJosefin" class="fontPriJosefin">Josefin Sans</a-select-option>
+                                <a-select-option value="fontSecKnewave" class="fontPriKnewave">Knewave</a-select-option>
+                                <a-select-option value="fontSecLato" class="fontPriLato">Lato</a-select-option>
+                                <a-select-option value="fontSecLilita" class="fontPriLilita">Lilita One</a-select-option>
+                                <a-select-option value="fontSecLimelight" class="fontPriLimelight">Limelight</a-select-option>
+                                <a-select-option value="fontSecLuckiest" class="fontPriLuckiest">Luckiest</a-select-option>
+                                <a-select-option value="fontSecMontserrat" class="fontPriMontserrat">Montserrat</a-select-option>
+                                <a-select-option value="fontSecNunito" class="fontPriNunito">Nunito</a-select-option>
+                                <a-select-option value="fontSecOpensans" class="fontPriOpensans">Open Sans</a-select-option>
+                                <a-select-option value="fontSecPlayfair" class="fontPriPlayfair">Playfair Display</a-select-option>
+                                <a-select-option value="fontSecPoppins" class="fontPriPoppins">Poppins</a-select-option>
+                                <a-select-option value="fontSecPressstart" class="fontPriPressstart">Press Start 2P</a-select-option>
+                                <a-select-option value="fontSecRaleway" class="fontPriRaleway">Raleway</a-select-option>
+                                <a-select-option value="fontSecRoboto" class="fontPriRoboto">Roboto</a-select-option>
+                                <a-select-option value="fontSecSacramento" class="fontPriSacramento">Sacramento</a-select-option>
+                                <a-select-option value="fontSecSigmar" class="fontPriSigmar">Sigmar One</a-select-option>
+                                <a-select-option value="fontSecUbuntu" class="fontPriUbuntu">Ubuntu</a-select-option>
                           </a-select>
                         </div>
                     </a-collapse-panel>

@@ -1,5 +1,5 @@
 <template>
-  <header v-if="navShow === true" :class="[navType]">
+  <header v-if="navShow === true" :class="[navType]" >
 
     <!-- Layout One -->
     <section class="navbar__one d-none d-lg-block" v-if="navLayout === 1">
