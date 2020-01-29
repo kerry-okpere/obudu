@@ -30,4 +30,9 @@ export default {
 .content {
   margin-top: 60px;
 }
+@include media-breakpoint-down(md) {
+  .content {
+    margin-top: 5px;
+  }
+}
 </style>

@@ -3,17 +3,17 @@
         <section class="product">
             <div class="container">
                 <div class="row">
-                    <div class="col col-xl-6">
+                    <div class="col-12 col-xl-6">
                         <ProductImage />
                     </div>
-                    <div class="col col-xl-6">
+                    <div class="col-12 col-xl-6">
                         <ProductBreadcrumb />
                         <ProductInfo />
                         <ProductShare />
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col">
+                    <div class="col-12 col-xl-12">
                         <ProductInfoBottom />
                     </div>
                 </div>
