@@ -13,10 +13,13 @@
     .row {
         overflow: visible;
     }
+    .hide {
+        display: none;
+    }
 }
 
 @include media-breakpoint-down(sm) {
-    .hide {
+    .hidden {
         display: none;
     }
 }

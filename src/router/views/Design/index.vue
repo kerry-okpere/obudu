@@ -1,8 +1,8 @@
 <template>
   <section class="customize">
-    <a-layout id="fixed-sidebar" class="hide">
+    <a-layout id="fixed-sidebar" class="hidden">
       <a-layout-sider collapsible v-model="collapsed" width="275">
-        <ThemeSettings :class="{dNone: collapsed}" />
+        <ThemeSettings :class="{hide: collapsed}" />
       </a-layout-sider>
       <a-layout :style="{marginLeft: '0px'}">
         <Layout />
