@@ -6,7 +6,7 @@
       <carousel :per-page="1" :mouse-drag="true" autoplay="true" :autoplayTimeout="4000" :autoplayHoverPause="false" :navigationEnabled="false" :paginationEnabled="false">
         <!-- <slide v-for="(images, index) in images" :key="index"> -->
         <slide>
-          <img src="https://images.pexels.com/photos/3596695/pexels-photo-3596695.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500" alt="Product Name">
+          <img :src="image" alt="Product Name">
         </slide>
       </carousel>
     </a-skeleton>
@@ -48,25 +48,28 @@ export default {
       prodId: slug
     });
 
-    this.image = this.makeImageArr(product.images);
+    this.image = this.makeImageArr(product);
+
+    // this.image = this.makeImageArr(product.images);
   },
 
   methods: {
-    makeImageArr(image) {
-      let counter = 1;
-      let thumbs = [];
-      image.map( (img, index) => {
-          let tempObj = { 
-            id:  index, url: img.url ,
-          }
-          thumbs.push(tempObj);
-      });
+    makeImageArr(productObj) {
+      // let counter = 1;
+      // let thumbs = [];
+      // image.map( (img, index) => {
+      //     let tempObj = { 
+      //       id:  index, url: img.url ,
+      //     }
+      //     thumbs.push(tempObj);
+      // });
       
-      let imgArr = {
-        thumbs: [...thumbs], normal_size: [...thumbs], large_size: [...thumbs]
-      }
+      // let imgArr = {
+      //   thumbs: [...thumbs], normal_size: [...thumbs], large_size: [...thumbs]
+      // }
+      let imageUrl = productObj.images[0].url;
       this.loading = false;
-      return imgArr;
+      return imageUrl;
     }
   }
 };

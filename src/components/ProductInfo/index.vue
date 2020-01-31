@@ -9,66 +9,28 @@
       <!-- {{singleProds}} -->
     </div>
     <!-- <div class="product__info-description">
-            <p>{{singleProd.description}}</p>
-            <p>Logitech Wireless Mouse M186 is compatible with all brands of
-            laptops and computers. It has been integrated with Bluetooth technology
-            which ensures it has a great range of about 10 metres. It communicates
-            and connects to devices through radio.</p>
-        </div> -->
-
-    <!-- <div class="product__info-variant">
-      <h4>Variants</h4>
-      <a-select defaultValue="Select Variant" @change="selectVariant">
-        <a-select-option
-          v-for="(variant, index) in singleProd.variants"
-          :key="index"
-          :value="variant.index"
-          :v-model="variantId"
-        >
-          <div>
-            <span v-for="(va, i) in variant.variantAttributes" :key="i">
-              {{ va.value }}
-            </span>
-            <span v-for="(va, i) in variant.variantAttributes" :key="i">
-              {{ va.value }}
-            </span>
-          </div>
-        </a-select-option>
-      </a-select>
-    </div> -->
+      <p>{{singleProd.description}}</p>
+    </div>-->
 
     <div class="product__info-variant">
       <div v-for="(va, index) in attrType" :key="index">
         <h4>{{ va }}</h4>
-
-        <a-button-group v-for="(value, index) in Array.from(new Set(distinctTypes[va]))" :key="index">
-            <a-button> {{value[va]}} </a-button>
-        </a-button-group>
+        <a-radio-group @change="onChange" :v-model="value">
+          <a-radio-button
+            v-for="(value, index) in attrVal[va]"
+            :key="index"
+            :value="`${va}:${value}`"
+          >{{ value }}</a-radio-button>
+        </a-radio-group>
       </div>
     </div>
-
-    <!-- <div class="product__info-variant">
-      <div v-for="(va, index) in selectedVariant.variantAttributes" :key="index">
-        <h4>{{ va.type }}</h4>
-        <a-button-group>
-            <a-button> {{va.value}} </a-button>
-        </a-button-group>
-      </div>
-    </div> -->
 
     <div class="product__info-quantity">
       <h4>Quantity</h4>
-      <a-input-number
-        :min="1"
-        :max="10"
-        v-model="value"
-        @change="changeQuant"
-      />
+      <a-input-number :min="1" :max="10" v-model="value" @change="changeQuant" />
     </div>
     <div class="product__info-cart">
-      <a-button type="primary" icon="plus" :size="btnSize" block
-        >Add to Cart</a-button
-      >
+      <a-button type="primary" icon="plus" :size="btnSize" block>Add to Cart</a-button>
     </div>
   </div>
 </template>
@@ -83,6 +45,7 @@ export default {
     variantAttr: {},
     attrType: [],
     attrVal: [],
+    variantsArr: [],
     loading: false,
     dupObj: {},
     distObj: {},
@@ -100,67 +63,61 @@ export default {
     changeQuant(value) {
       console.log("changed", value);
     },
-    selectVariant(index) { // Listening to variant options 
-      this.selectedVariant = this.singleProd.variants.filter(v => v.index == index)[0]
+    selectVariant(index) {
+      // Listening to variant options
+      this.selectedVariant = this.singleProd.variants.filter(
+        v => v.index == index
+      )[0];
     },
-    zip(arr1, arr2, out = {}) {
-      let newArr = [];
-      let obj = {};
-      arr1.map((val, idx) => {
-        obj = { [val]: arr2[idx] };
-        newArr.push(obj);
-      });
-      return newArr;
+    formatPrice(price) {
+      // Apply currency
+      return Number(price.replace(/\D/g, "").slice(0, -2));
     },
-    mergeArr(arr, distinctKeys) {
-      let bigArr = new Array();
-      arr.map((val, index) => {
-          let key = Object.keys(val);
-          distinctKeys.map(item => {
-            if(key == item){
-                if(!bigArr[key]){
-                  bigArr[key] = new Array(val);
-                } else if(bigArr[key].length >= 1){
-                    bigArr[key].push(val)
-                }
-            }
-          })
-      });
+    onChange(e) {
+      let variant = e.target.value;
+      let variantArr = variant.split(":");
+      let newAtrr = [];
 
-      return bigArr;
+      this.variantsArr[variantArr[0]] = variantArr[1];
+      let finalArr = this.variantsArr;
+      for (let [key, value] of Object.entries(finalArr)) {
+        newAtrr.push(value);
+      }
+      
+      let selectedVariant = this.findVariant(newAtrr.toString());
+      if(selectedVariant !== undefined) this.selectedVariant.price = selectedVariant.price
+    
+
+
     },
-    formatVariantsAttr(variantArr) {
-      let typesArr = [];
-      let valuesArr = [];
-      let newAtrr = {};
-      variantArr.map(variantAttr => {
-        variantAttr.variantAttributes.map(item => {
-          typesArr.push(item.type);
-          valuesArr.push(item.value);
+
+    // 000013200130170524000047568107
+    formatInfo(variants, types) {
+      let variantsArr = new Array();
+      let saturationVal = variants.length;
+      types.map((type, index) => {
+        variants.map(item => {
+          let newArr = item.variantValues.split(",");
+          if (!variantsArr[type]) {
+            variantsArr[type] = new Array(newArr[index]);
+          } else {
+            variantsArr[type].push(newArr[index]);
+          }
+
+          if (variantsArr[type].length == saturationVal) {
+            variantsArr[type] = Array.from(new Set(variantsArr[type]));
+          }
         });
       });
 
-      newAtrr = { type: typesArr, value: valuesArr };
-      this.loading = true;
-
-      return newAtrr;
+      return variantsArr;
     },
-    distinctTypesFunc(arr, distinctKeys){
-      let bigArr = new Array();
-      distinctKeys.map(item => { 
-        arr[item].map( ele => {
-          console.log(ele);
-        })
-      })
 
-    },
-    formatPrice(price){
-       // Apply currency
-      return Number(price.replace(/\D/g, "").slice(0, -2))
+    findVariant(array) {
+      return this.singleProd.variants.find( (item) => item.variantValues == array);
     }
   },
-
-  async beforeCreate() {
+  async created() {
     //get slugUrl
     let slug = this.$route.params.slug;
 
@@ -170,26 +127,21 @@ export default {
         prodId: slug
       }
     );
+
+    let singleProduct = this.singleProd;
+    let variantTypes = singleProduct.variants[0].variantTypes;
+    this.attrType = variantTypes.split(",");
+    let newVariantValues = this.formatInfo(
+      singleProduct.variants,
+      this.attrType
+    );
+
+    this.attrVal = newVariantValues;
     this.variantId = this.singleProd.variants[0].index; // Setting initial variant
-
-    // console.log(this.singleProd.variants);
-
-    this.variantAttr = this.formatVariantsAttr(this.singleProd.variants);
-    // console.log("Variant Attributes", this.variantAttr);
-    this.attrType = Array.from(new Set(this.variantAttr.type));
-    this.attrVal =  this.variantAttr.value;
-
-    // console.log(this.attrVal);
-
-    let newObj = this.zip(this.variantAttr.type, this.variantAttr.value);
-
-    let check = this.distinctTypesFunc(this.mergeArr(newObj, this.attrType), this.attrType) ;
-    this.distinctTypes = this.mergeArr(newObj, this.attrType);
-
-    console.log(check);
   },
   watch: {
-    variantId(index) { // Setting initial variant
+    variantId(index) {
+      // Setting initial variant
       this.selectedVariant = this.singleProd.variants.filter(
         v => v.index == index
       )[0];
