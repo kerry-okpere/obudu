@@ -22,6 +22,8 @@
 import { STORE_ID } from "./../../../config";
 import Layout from "@/router/layouts/Home.vue";
 import ThemeSettings from "@/components/ThemeSettings";
+import Cookies from 'js-cookie'
+
 
 export default {
   components: {
@@ -31,20 +33,9 @@ export default {
   data: () => ({
     collapsed: false
   }),
-  methods: {
-    getStoreCookie() {
-      // Get store value from Cookie
-      let cookie = {};
-      document.cookie.split(";").forEach(el => {
-        let [k, v] = el.split("=");
-        cookie[k.trim()] = v;
-      });
-      return cookie.store;
-    }
-  },
   created() {
     if (window.location.hostname != "localhost") {
-      const store = this.getStoreCookie();
+      const store = Cookies.get('storez')
       if (store != STORE_ID) {
         window.location.href = `https://${window.location.host}/dashboard`;
       }
