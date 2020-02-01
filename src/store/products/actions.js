@@ -60,7 +60,27 @@ const actions = {
         reject("Unable to fetch product");
       }
     })
+  },
+
+  addProductToCart({commit, state}, product){
+    let totalProdQty = product.quantity
+    product.quantity = 0;
+
+    if(totalProdQty > 0){
+
+      let cartItem = (state.cart.length <= 0 || !state.cart  ) ? undefined : state.cart.find(item => item.index == product.index);
+      
+      if(cartItem == undefined){
+        commit("PUSH_PROUDCT_TO_CART", product)
+      } else {
+        commit("INCREMENT_CART_ITEM_QUANTITY", cartItem)
+      }
+
+    }
+
   }
+
+
 };
 
 export default actions;

@@ -30,7 +30,8 @@
       <a-input-number :min="1" :max="10" v-model="value" @change="changeQuant" />
     </div>
     <div class="product__info-cart">
-      <a-button type="primary" icon="plus" :size="btnSize" block>Add to Cart</a-button>
+      <a-button v-if="!selectedVariant" icon="minus" :size="btnSize" block disabled>Add to Cart</a-button>
+      <a-button v-else type="primary" icon="plus" :size="btnSize" @click="addToCart(selectedVariant)" block >Add to Carts</a-button>
     </div>
   </div>
 </template>
@@ -51,7 +52,7 @@ export default {
     distObj: {},
     variantId: "",
     distinctTypes: "",
-    selectedVariant: {}
+    selectedVariant: false
   }),
 
   computed: {
@@ -62,6 +63,10 @@ export default {
   methods: {
     changeQuant(value) {
       console.log("changed", value);
+    },
+    addToCart(selectedVariant){
+      let prodObj = selectedVariant;
+      let product = this.$store.dispatch("products/addProductToCart", prodObj);
     },
     selectVariant(index) {
       // Listening to variant options
@@ -85,9 +90,8 @@ export default {
       }
       
       let selectedVariant = this.findVariant(newAtrr.toString());
-      if(selectedVariant !== undefined) this.selectedVariant.price = selectedVariant.price
-    
-
+      if(selectedVariant !== undefined) this.selectedVariant = selectedVariant
+  
 
     },
 
@@ -137,7 +141,7 @@ export default {
     );
 
     this.attrVal = newVariantValues;
-    this.variantId = this.singleProd.variants[0].index; // Setting initial variant
+    // this.variantId = this.singleProd.variants[0].index; // Setting initial variant
   },
   watch: {
     variantId(index) {

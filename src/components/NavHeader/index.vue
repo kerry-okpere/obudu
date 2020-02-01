@@ -1,6 +1,5 @@
 <template>
-  <header v-if="navShow === true" :class="[navType]" >
-
+  <header v-if="navShow === true" :class="[navType]">
     <!-- Layout One -->
     <section class="navbar__one d-none d-lg-block" v-if="navLayout === 1">
       <div class="container">
@@ -8,8 +7,11 @@
           <div class="col col-xl-2">
             <div class="logo">
               <router-link to="/">
-                <img v-if="navLogoImg" :src="navLogo" alt="Store Logo">
-                <h1 v-else :style="{color: navLogoTextColor, fontSize: navLogoTextSize + 'px'}">{{storeName}}</h1>
+                <img v-if="navLogoImg" :src="navLogo" alt="Store Logo" />
+                <h1
+                  v-else
+                  :style="{color: navLogoTextColor, fontSize: navLogoTextSize + 'px'}"
+                >{{storeName}}</h1>
               </router-link>
             </div>
           </div>
@@ -27,9 +29,9 @@
           <div class="col col-xl-3">
             <nav class="navbar__one-nav navbar-cta" style="margin: 6px 0 0;">
               <div class="navbar__item">
-                <a-badge :count="cartItems" :numberStyle="cartIconStyle">
+                <a-badge :count="getCartCount" :numberStyle="cartIconStyle" showZero=true>
                   <a-button type="link" @click="setCartShow">
-                    <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart">
+                    <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart" />
                     <h4>Cart</h4>
                   </a-button>
                 </a-badge>
@@ -37,12 +39,18 @@
               <div v-if="userLoggedin" class="navbar__item">
                 <a-dropdown>
                   <a-menu slot="overlay" @click="handleMenuClick">
-                    <a-menu-item key="1"><a-icon type="user" />My Account</a-menu-item>
-                    <a-menu-item key="2"><a-icon type="shopping" />My Orders</a-menu-item>
-                    <a-menu-item key="3"><a-icon type="lock" />Logout</a-menu-item>
+                    <a-menu-item key="1">
+                      <a-icon type="user" />My Account
+                    </a-menu-item>
+                    <a-menu-item key="2">
+                      <a-icon type="shopping" />My Orders
+                    </a-menu-item>
+                    <a-menu-item key="3">
+                      <a-icon type="lock" />Logout
+                    </a-menu-item>
                   </a-menu>
                   <a-button type="link">
-                    <img src="@/assets/img/nav/user.svg" width="20" alt="Account">
+                    <img src="@/assets/img/nav/user.svg" width="20" alt="Account" />
                     <h4>Account</h4>
                     <a-icon type="down" style="margin:5px 5px 0;" />
                   </a-button>
@@ -50,7 +58,7 @@
               </div>
               <div v-else class="navbar__item">
                 <a-button type="link" @click="setLoginShow">
-                  <img src="@/assets/img/nav/user.svg" width="20" alt="Account">
+                  <img src="@/assets/img/nav/user.svg" width="20" alt="Account" />
                   <p>Account</p>
                 </a-button>
               </div>
@@ -63,100 +71,102 @@
     <!-- Layout Two -->
     <section class="navbar__two d-none d-lg-block" v-if="navLayout === 2">
       <!-- <a-affix :offsetTop="0"> -->
-        <div class="container">
-          <div class="row">
-            <div class="col col-xl-4">
-              <nav class="navbar__two-nav">
-                <router-link exact to="/">Shop</router-link>
-                <router-link exact to="/">Collection</router-link>
-                <router-link exact to="/">Sale</router-link>
-              </nav>
-            </div>
-            <div class="col col-xl-3">
-              <router-link to="/">
-                <img :src="navLogo" alt="Store Logo">
-              </router-link>
-            </div>
-            <div class="col col-xl-3">
-              <div class="navbar__two-search">
-                <a-input-search placeholder="Search store..." style="width: 250px" />
-              </div>
-            </div>
-            <div class="col col-xl-2">
-              <nav class="navbar__two-nav navbar__two-secnav">
-                <a-badge :count="cartItems" :numberStyle="cartIconStyle">
-                  <a-button type="link" @click="setCartShow">
-                    <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart">
-                    <h4>Cart</h4>
-                  </a-button>
-                </a-badge>
-                <a-dropdown :trigger="['click']">
-                  <a class="ant-dropdown-link" href="#"><img src="@/assets/img/nav/user.svg" width="20" alt="Account">
-                    <p>Account</p>
-                  </a>
-                  <a-menu slot="overlay">
-                    <a-menu-item key="0">
-                      <a href="#">Register</a>
-                    </a-menu-item>
-                    <a-menu-item key="1">
-                      <a href="#">Sign in</a>
-                    </a-menu-item>
-                  </a-menu>
-                </a-dropdown>
-              </nav>
+      <div class="container">
+        <div class="row">
+          <div class="col col-xl-4">
+            <nav class="navbar__two-nav">
+              <router-link exact to="/">Shop</router-link>
+              <router-link exact to="/">Collection</router-link>
+              <router-link exact to="/">Sale</router-link>
+            </nav>
+          </div>
+          <div class="col col-xl-3">
+            <router-link to="/">
+              <img :src="navLogo" alt="Store Logo" />
+            </router-link>
+          </div>
+          <div class="col col-xl-3">
+            <div class="navbar__two-search">
+              <a-input-search placeholder="Search store..." style="width: 250px" />
             </div>
           </div>
+          <div class="col col-xl-2">
+            <nav class="navbar__two-nav navbar__two-secnav">
+              <a-badge :count="getCartCount" :numberStyle="cartIconStyle" showZero=true>
+                <a-button type="link" @click="setCartShow">
+                  <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart" />
+                  <h4>Cart</h4>
+                </a-button>
+              </a-badge>
+              <a-dropdown :trigger="['click']">
+                <a class="ant-dropdown-link" href="#">
+                  <img src="@/assets/img/nav/user.svg" width="20" alt="Account" />
+                  <p>Account</p>
+                </a>
+                <a-menu slot="overlay">
+                  <a-menu-item key="0">
+                    <a href="#">Register</a>
+                  </a-menu-item>
+                  <a-menu-item key="1">
+                    <a href="#">Sign in</a>
+                  </a-menu-item>
+                </a-menu>
+              </a-dropdown>
+            </nav>
+          </div>
         </div>
+      </div>
       <!-- </a-affix> -->
     </section>
 
     <!-- Layout Three -->
     <section class="navbar__three d-none d-lg-block" v-if="navLayout === 3">
       <!-- <a-affix :offsetTop="0"> -->
-        <div class="container">
-          <div class="row">
-            <div class="col col-xl-3">
-              <div class="navbar__three-search">
-                <a-input-search placeholder="Search store..." style="width: 250px"/>
-              </div>
-            </div>
-            <div class="col col-xl-4">
-              <nav class="navbar__three-nav">
-                <router-link exact to="/">Shop</router-link>
-                <router-link exact to="/">Collection</router-link>
-                <router-link exact to="/">Sale</router-link>
-              </nav>
-            </div>
-            <div class="col col-xl-3">
-              <router-link>
-                <img :src="navLogo" alt="Store Logo">
-              </router-link>
-            </div>
-            <div class="col col-xl-2">
-              <nav class="navbar__three-nav navbar__three-secnav">
-                <a-badge :count="cartItems" :numberStyle="cartIconStyle">
-                  <a-button type="link" @click="setCartShow">
-                    <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart">
-                    <h4>Cart</h4>
-                  </a-button>
-                </a-badge>
-                <a-dropdown :trigger="['click']">
-                  <a class="ant-dropdown-link" href="#"><img src="@/assets/img/nav/user.svg" width="20" alt="Account">
-                    <p>Account</p>
-                  </a>
-                  <a-menu slot="overlay">
-                    <a-menu-item key="0">
-                      <a href="#">Register</a>
-                    </a-menu-item>
-                    <a-menu-item key="1">
-                      <a href="#">Sign in</a>
-                    </a-menu-item>
-                  </a-menu>
-                </a-dropdown>
-              </nav>
+      <div class="container">
+        <div class="row">
+          <div class="col col-xl-3">
+            <div class="navbar__three-search">
+              <a-input-search placeholder="Search store..." style="width: 250px" />
             </div>
           </div>
+          <div class="col col-xl-4">
+            <nav class="navbar__three-nav">
+              <router-link exact to="/">Shop</router-link>
+              <router-link exact to="/">Collection</router-link>
+              <router-link exact to="/">Sale</router-link>
+            </nav>
+          </div>
+          <div class="col col-xl-3">
+            <router-link>
+              <img :src="navLogo" alt="Store Logo" />
+            </router-link>
+          </div>
+          <div class="col col-xl-2">
+            <nav class="navbar__three-nav navbar__three-secnav">
+              <a-badge :count="getCartCount" :numberStyle="cartIconStyle" showZero=true>
+                <a-button type="link" @click="setCartShow">
+                  <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart" />
+                  <h4>Cart</h4>
+                </a-button>
+              </a-badge>
+              <a-dropdown :trigger="['click']">
+                <a class="ant-dropdown-link" href="#">
+                  <img src="@/assets/img/nav/user.svg" width="20" alt="Account" />
+                  <p>Account</p>
+                </a>
+                <a-menu slot="overlay">
+                  <a-menu-item key="0">
+                    <a href="#">Register</a>
+                  </a-menu-item>
+                  <a-menu-item key="1">
+                    <a href="#">Sign in</a>
+                  </a-menu-item>
+                </a-menu>
+              </a-dropdown>
+            </nav>
+          </div>
         </div>
+      </div>
       <!-- </a-affix> -->
     </section>
 
@@ -167,8 +177,11 @@
           <div class="col-4">
             <div class="navbar__mobile-logo">
               <router-link to="/">
-                <img v-if="navLogoImg" :src="navLogo" alt="Store Logo">
-                <h1 v-else :style="{color: navLogoTextColor, fontSize: navLogoTextSize + 'px'}">{{storeName}}</h1>
+                <img v-if="navLogoImg" :src="navLogo" alt="Store Logo" />
+                <h1
+                  v-else
+                  :style="{color: navLogoTextColor, fontSize: navLogoTextSize + 'px'}"
+                >{{storeName}}</h1>
               </router-link>
             </div>
           </div>
@@ -180,28 +193,34 @@
                 </a-button>
               </div>
               <div class="navbar__item">
-                <a-badge :count="cartItems" :numberStyle="cartIconStyleMobile">
+                <a-badge :count="getCartCount" :numberStyle="cartIconStyleMobile" showZero=true>
                   <a-button type="link" @click="setCartShow">
-                    <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart">
+                    <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart" />
                   </a-button>
                 </a-badge>
               </div>
               <div v-if="userLoggedin" class="navbar__item">
                 <a-dropdown>
                   <a-menu slot="overlay" @click="handleMenuClick">
-                    <a-menu-item key="1"><a-icon type="user" />My Account</a-menu-item>
-                    <a-menu-item key="2"><a-icon type="shopping" />My Orders</a-menu-item>
-                    <a-menu-item key="3"><a-icon type="lock" />Logout</a-menu-item>
+                    <a-menu-item key="1">
+                      <a-icon type="user" />My Account
+                    </a-menu-item>
+                    <a-menu-item key="2">
+                      <a-icon type="shopping" />My Orders
+                    </a-menu-item>
+                    <a-menu-item key="3">
+                      <a-icon type="lock" />Logout
+                    </a-menu-item>
                   </a-menu>
                   <a-button type="link">
-                    <img src="@/assets/img/nav/user.svg" width="20" alt="Account">
+                    <img src="@/assets/img/nav/user.svg" width="20" alt="Account" />
                     <a-icon type="down" style="margin:5px 5px 0;" />
                   </a-button>
                 </a-dropdown>
               </div>
               <div v-else class="navbar__item">
                 <a-button type="link" @click="setLoginShow">
-                  <img src="@/assets/img/nav/user.svg" width="20" alt="Account">
+                  <img src="@/assets/img/nav/user.svg" width="20" alt="Account" />
                   <p>Account</p>
                 </a-button>
               </div>
@@ -210,52 +229,56 @@
         </div>
       </div>
     </section>
-
   </header>
 </template>
 
 <script>
-import { Slide } from 'vue-burger-menu'
-import { mapGetters, mapMutations } from 'vuex'
-import { STORENAME } from "./../../config"
+import { Slide } from "vue-burger-menu";
+import { mapGetters, mapMutations } from "vuex";
+import { STORENAME } from "./../../config";
 
-  export default {
-    components: {
-      Slide
+export default {
+  components: {
+    Slide
+  },
+
+  data: () => ({
+    userLoggedin: true,
+    cartItems: 0,
+    cartIconStyle: "backgroundColor: #3C87D1;marginTop: 4px",
+    cartIconStyleMobile: "backgroundColor: #3C87D1;marginTop: 10px"
+  }),
+
+  methods: {
+    setCartShow(e) {
+      this.$store.state.styles.cartShow = true;
     },
-    data: () => ({
-      userLoggedin: true,
-      cartItems: 5,
-      cartIconStyle: 'backgroundColor: #3C87D1;marginTop: 4px',
-      cartIconStyleMobile: 'backgroundColor: #3C87D1;marginTop: 10px',
-    }),
-    methods: {
-      setCartShow(e) {
-        this.$store.state.styles.cartShow = true;
-      },
-      setLoginShow(e) {
-        this.$store.state.styles.loginShow = true;
-      }
-    },
-    computed: {
-      ...mapGetters ([
-        'priColor',
-        'secColor',
-        'priFont',
-        'secFont',
-        'navShow',
-        'navType',
-        'navLogo',
-        'navLogoImg',
-        'navLogoTextColor',
-        'navLogoTextSize',
-        'navLayout',
-        'storeName'
-      ]),
+    setLoginShow(e) {
+      this.$store.state.styles.loginShow = true;
     }
+  },
+  computed: {
+    getCartCount() {
+      return this.$store.getters["products/getCartQuantity"];
+    },
+    ...mapGetters([
+      "priColor",
+      "secColor",
+      "priFont",
+      "secFont",
+      "navShow",
+      "navType",
+      "navLogo",
+      "navLogoImg",
+      "navLogoTextColor",
+      "navLogoTextSize",
+      "navLayout",
+      "storeName"
+    ])
   }
+};
 </script>
 
 <style lang="scss">
-  @import './_index';
+@import "./_index";
 </style>

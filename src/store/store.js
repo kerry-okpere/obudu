@@ -8,7 +8,8 @@ const vuexLocal = new VuexPersistence({
     reducer: (state) => ({
         products: state.products.products,
         singleProduct: state.products.singleProduct,
-        styles: state.styles
+        styles: state.styles,
+        cart: state.cart
 
     })
 });

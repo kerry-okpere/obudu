@@ -1,6 +1,7 @@
 const state = {
     products: [],
     singleProduct: {},
+    cart: []
 
 };
 
