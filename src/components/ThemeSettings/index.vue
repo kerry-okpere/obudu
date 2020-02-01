@@ -558,7 +558,7 @@
                 </div>
             </div>
             <div class="settings__dashboard">
-                <a-button size="large" block><a-icon type="dashboard" />Return to Dashboard</a-button>
+                <a-button size="large" block  @click.prevent="gotoDashboard()"><a-icon type="dashboard" />Return to Dashboard</a-button>
             </div>
         </div>
     </div>
@@ -682,6 +682,10 @@ export default {
     ])
   },
   methods: {
+    gotoDashboard(){
+        console.log("Jooo")
+        window.location.href = `https://${window.location.host}/dashboard`;
+    },
     //Theme Settings Modal
     changeThemes() {
         this.showThemes = true;
