@@ -30,6 +30,7 @@ const state = {
         notificationButton: 'Shop Now',
     },
     styles : {
+        themeName: "Jupiter",
         themeColor: '#007bff',
         priColor: '#007bff',
         secColor: '#007bff',

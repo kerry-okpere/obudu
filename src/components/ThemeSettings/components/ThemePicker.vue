@@ -7,7 +7,8 @@
           <a-card-meta title="Jupiter">
             <template slot="description">Minimalist theme for your store</template>
           </a-card-meta>
-          <a-button @click="setThemeJupiter" block>Select</a-button>
+          <a-button v-if="themeName == 'Jupiter'" :loading="loading && (themeName == 'Jupiter')" disabled block>Current Theme</a-button>
+          <a-button v-else @click="setThemeJupiter" block>Select</a-button>
         </a-card>
       </div>
       <div class="col-6 col-xl-4">
@@ -16,7 +17,8 @@
           <a-card-meta title="Venus">
             <template slot="description">Modern theme for your store</template>
           </a-card-meta>
-          <a-button @click="setThemeVenus" block>Select</a-button>
+          <a-button v-if="themeName == 'Venus'" :loading="loading && (themeName == 'Venus')" disabled block>Current Theme</a-button>
+          <a-button v-else @click="setThemeVenus" block>Select</a-button>
         </a-card>
       </div>
       <div class="col-6 col-xl-4">
@@ -25,7 +27,8 @@
           <a-card-meta title="Mars">
             <template slot="description">Clean theme for your store</template>
           </a-card-meta>
-          <a-button @click="setThemeMars" block>Select</a-button>
+          <a-button v-if="themeName == 'Mars'" :loadin="loading && (themeName == 'Mars')" disabled block>Current Theme</a-button>
+          <a-button v-else @click="setThemeMars" block>Select</a-button>
         </a-card>
       </div>
     </div>
@@ -34,24 +37,45 @@
 
 <script>
 import { eventBus } from '@/eventBus.js';
+import { mapGetters } from 'vuex';
 import themeJupiter from '@/store/themes/jupiter.js';
 import themeVenus from '@/store/themes/venus.js';
 import themeMars from '@/store/themes/mars.js';
 
 export default {
   data: () => ({
-    custom: 'width: 250px'
+    custom: 'width: 250px',
+    loading: false,
   }),
-
+  computed: {
+    ...mapGetters([
+      'themeName'
+    ])
+  },
   methods: {
     setThemeJupiter() {
+      this.loading = true;
       eventBus.$emit('themeJupiter');
+      setTimeout(() => {
+        this.$message.success('Theme successfully changed!');
+        this.loading = false;
+      }, 1000);
     },
     setThemeVenus() {
+      this.loading = true;
       eventBus.$emit('themeVenus');
+      setTimeout(() => {
+        this.$message.success('Theme successfully changed!');
+        this.loading = false;
+      }, 1000);
     },
     setThemeMars() {
+      this.loading = true;
       eventBus.$emit('themeMars');
+      setTimeout(() => {
+        this.$message.success('Theme successfully changed!');
+        this.loading = false;
+      }, 1000);
     }
   }
 }

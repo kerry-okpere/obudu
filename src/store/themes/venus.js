@@ -2,7 +2,37 @@ import store from '../../store/store.js';
 import { eventBus } from '@/eventBus.js';
 
 eventBus.$on('themeVenus', () => {
-    store.commit('setPriColor', '#000');
+    
+    // Data
+    store.commit('setHeroBgImg', '');
+    store.commit('setHeroContent', '');
+    store.commit('setHeroTitle', '');
+    store.commit('setHeroCTA', '');
+    store.commit('setHeroCTALink', '');
+    store.commit('setHeroImage', '');
+    store.commit('setCollectionOneTitle', '');
+    store.commit('setCollectionOneSubtitle', '');
+    store.commit('setCollectionOneImg', '');
+    store.commit('setCollectionOneBtn', '');
+    store.commit('setCollectionOneLink', '');
+    store.commit('setCollectionTwoTitle', '');
+    store.commit('setCollectionTwoSubtitle', '');
+    store.commit('setCollectionTwoImg', '');
+    store.commit('setCollectionTwoBtn', '');
+    store.commit('setCollectionTwoLink', '');
+    store.commit('setCollectionThreeTitle', '');
+    store.commit('setCollectionThreeSubtitle', '');
+    store.commit('setCollectionThreeImg', '');
+    store.commit('setCollectionThreeBtn', '');
+    store.commit('setCollectionThreeLink', '');
+    store.commit('setProductTitleMain', '');
+    store.commit('setProductTitleSub', '');
+    store.commit('setNotificationTitle', '');
+    store.commit('setNotificationContent', '');
+    store.commit('setNotificationButton', '');
+
+    //Styles
+    store.commit('setThemeName', 'Venus');
     store.commit('setThemeColor', '');
     store.commit('setPriColor', '');
     store.commit('setSecColor', '');
@@ -21,7 +51,6 @@ eventBus.$on('themeVenus', () => {
     store.commit('setHeroLayout', '');
     store.commit('setHeroHeight', '');
     store.commit('setHeroBgImgShow', '');
-    store.commit('setHeroOverlay', '');
     store.commit('setHeroColor', '');
     store.commit('setHeroTitleColor', '');
     store.commit('setHeroContentColor', '');

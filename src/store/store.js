@@ -9,8 +9,8 @@ const vuexLocal = new VuexPersistence({
         products: state.products.products,
         singleProduct: state.products.singleProduct,
         styles: state.styles,
+        data: state.data,
         cart: state.cart
-
     })
 });
 

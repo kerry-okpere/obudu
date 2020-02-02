@@ -12,7 +12,7 @@
           <div class="cart__main-full" v-else>
             <div class="header">
               <h1>Cart</h1>
-              <a-button type="link" @click="setCartShow">
+              <a-button type="link" @click="setCartShow($event.target.value)">
                 <v-icon name="times" />
               </a-button>
             </div>
@@ -39,39 +39,25 @@
                 <h3>Total</h3>
                 <h1>NGN Total</h1>
               </div>
-              <a-button type="primary" block @click="checkout">Checkout</a-button>
+              <a-button type="primary" block @click="checkout()">Checkout</a-button>
             </div>
           </div>
         </div>
-        <div class="col-2">
-          <v-icon name="trash" />
-        </div>
       </div>
-      <a-divider />
-    </div>
-    <div class="footer">
-      <div class="total">
-        <h3>Total</h3>
-        <h1>NGN Total</h1>
-      </div>
-      <a-button type="primary" block @click="checkout">Checkout</a-button>
     </div>
   </section>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 
 export default {
   data: () => ({
     cartEmpty: false
   }),
   methods: {
-    setCartShow(e) {
-        this.$store.state.styles.cartShow = false;
-    },
     checkout() {
-        this.$store.state.styles.cartShow = false;
+        this.cartShow = false;
         this.$router.push("/checkout");
     },
     findProduct(){
@@ -85,20 +71,22 @@ export default {
     getCartCount() {
       return this.$store.getters["products/getCartQuantity"];
     },
-
     getCartItems() {
       return this.$store.getters["products/getCartItems"];
     },
-
     getProducts() {
         return this.$store.getters["products/getProducts"]
     },
-
     ...mapGetters([
-      "cartShow",
-      "navFont"
-      ])
+      'cartShow',
+      'navFont'
+    ])
   },
+  methods: {
+    ...mapMutations([
+      'setCartShow',
+    ])
+  },  
 
   beforeCreated() {
 

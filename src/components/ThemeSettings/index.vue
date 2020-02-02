@@ -17,7 +17,7 @@
                 <div class="d-inline-flex">
                     <div>
                         <p class="mb-1">Active theme</p>
-                        <h3>Venus</h3>
+                        <h3>{{themeName}}</h3>
                     </div>
                     <a-button @click="changeThemes">Change</a-button>
                     <a-modal title="Select Your Theme" v-model="showThemes" @ok="saveThemes" okText="Save" width="1000px">
@@ -644,6 +644,7 @@ export default {
   computed: {
     ...mapGetters([
       'styles',
+      'themeName',
       'priColor',
       'secColor',
       'priFont',
@@ -729,7 +730,7 @@ export default {
             this.showThemes = false;
             this.loading = false;
         }, 1000);
-        this.openNotificationWithIcon('success');
+        this.$message.success('Storefront design saved successfully!');
     },
     themesCancel(e) {
         this.showThemes = false;
@@ -744,7 +745,7 @@ export default {
             this.showMenuSettings = false;
             this.loading = false;
         }, 1000);
-        this.openNotificationWithIcon('success');
+        this.$message.success('Storefront design saved successfully!');
     },
     menuCancel(e) {
         this.showMenuSettings = false;
@@ -761,7 +762,7 @@ export default {
             this.showHeroSettings = false;
             this.loading = false;
         }, 1000);
-        this.openNotificationWithIcon('success');
+        this.$message.success('Storefront design saved successfully!');
     },
     heroCancel(e) {
         this.showHeroSettings = false;
@@ -897,7 +898,7 @@ export default {
             this.showCollectionSettings = false;
             this.loading = false;
         }, 1000);
-        this.openNotificationWithIcon('success');
+        this.$message.success('Storefront design saved successfully!');
     },
     collectionCancel(e) {
         this.showCollectionSettings = false;
@@ -914,7 +915,7 @@ export default {
             this.showProductSettings = false;
             this.loading = false;
         }, 1000);
-        this.openNotificationWithIcon('success');
+        this.$message.success('Storefront design saved successfully!');
     },
     productCancel(e) {
         this.showProductSettings = false;

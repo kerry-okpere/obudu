@@ -1,3 +1,5 @@
+import state from "./state";
+
 const getters = {   
     data: state => state.data,
         storeName: state => state.data.storeName,
@@ -30,6 +32,7 @@ const getters = {
         notificationButton: state => state.data.notificationButton,
 
     styles: state => state.styles,
+        themeName: state => state.styles.themeName,
         themeColor: state => state.styles.themeColor,
         priColor: state => state.styles.priColor,
         secColor: state => state.styles.secColor,
