@@ -30,7 +30,7 @@
           <div class="col col-xl-3">
             <nav class="navbar__one-nav navbar-cta" style="margin: 6px 0 0;">
               <div class="navbar__item">
-                <a-badge :count="getCartCount" :numberStyle="cartIconStyle" showZero=true>
+                <a-badge :count="getCartCount" :numberStyle="{cartIconStyle}" :showZero=true>
                   <a-button type="link" @click="setCartShow">
                     <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart">
                     <span>Cart</span>
@@ -57,12 +57,12 @@
                   </a-button>
                 </a-dropdown>
               </div>
-              <div v-else class="navbar__item">
+              <!-- <div v-else class="navbar__item">
                 <a-button type="link" @click="setLoginShow">
                   <img src="@/assets/img/nav/user.svg" width="20" alt="Account">
                   <span>Account</span>
                 </a-button>
-              </div>
+              </div> -->
             </nav>
           </div>
         </div>
@@ -117,13 +117,13 @@
           </div>
           <div class="col col-xl-2">
             <nav class="navbar__two-nav navbar__two-secnav">
-              <a-badge :count="getCartCount" :numberStyle="cartIconStyle" showZero=true>
+              <a-badge :count="getCartCount" :numberStyle="{cartIconStyle}" :showZero=true>
                 <a-button type="link" @click="setCartShow">
                   <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart" />
                   <h4>Cart</h4>
                 </a-button>
               </a-badge>
-              <a-dropdown :trigger="['click']">
+              <!-- <a-dropdown :trigger="['click']">
                 <a class="ant-dropdown-link" href="#">
                   <img src="@/assets/img/nav/user.svg" width="20" alt="Account" />
                   <p>Account</p>
@@ -136,7 +136,7 @@
                     <a href="#">Sign in</a>
                   </a-menu-item>
                 </a-menu>
-              </a-dropdown>
+              </a-dropdown> -->
             </nav>
           </div>
         </div>
@@ -167,13 +167,13 @@
           </div>
           <div class="col col-xl-2">
             <nav class="navbar__three-nav navbar__three-secnav">
-              <a-badge :count="getCartCount" :numberStyle="cartIconStyle" showZero=true>
+              <a-badge :count="getCartCount" :numberStyle="{cartIconStyle}" :showZero=true>
                 <a-button type="link" @click="setCartShow">
                   <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart" />
                   <h4>Cart</h4>
                 </a-button>
               </a-badge>
-              <a-dropdown :trigger="['click']">
+              <!-- <a-dropdown :trigger="['click']">
                 <a class="ant-dropdown-link" href="#">
                   <img src="@/assets/img/nav/user.svg" width="20" alt="Account" />
                   <p>Account</p>
@@ -186,7 +186,7 @@
                     <a href="#">Sign in</a>
                   </a-menu-item>
                 </a-menu>
-              </a-dropdown>
+              </a-dropdown> -->
             </nav>
           </div>
         </div>
@@ -217,7 +217,7 @@
                 </a-button>
               </div>
               <div class="navbar__item">
-                <a-badge :count="getCartCount" :numberStyle="cartIconStyleMobile" showZero=true>
+                <a-badge :count="getCartCount" :numberStyle="{cartIconStyleMobile}" :showZero=true>
                   <a-button type="link" @click="setCartShow">
                     <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart" />
                   </a-button>
@@ -242,12 +242,12 @@
                   </a-button>
                 </a-dropdown>
               </div>
-              <div v-else class="navbar__item">
+              <!-- <div v-else class="navbar__item">
                 <a-button type="link" @click="setLoginShow">
                   <img src="@/assets/img/nav/user.svg" width="20" alt="Account" />
                   <p>Account</p>
                 </a-button>
-              </div>
+              </div> -->
             </nav>
           </div>
         </div>
@@ -267,10 +267,11 @@ export default {
   },
 
   data: () => ({
-    userLoggedin: true,
+    userLoggedin: false,
     cartItems: 0,
     cartIconStyle: "backgroundColor: #3C87D1;marginTop: 4px",
-    cartIconStyleMobile: "backgroundColor: #3C87D1;marginTop: 10px"
+    cartIconStyleMobile: "backgroundColor: #3C87D1;marginTop: 10px",
+    getCartCount: 0
   }),
 
   methods: {
@@ -279,12 +280,17 @@ export default {
     },
     setLoginShow(e) {
       this.$store.state.styles.loginShow = true;
+    },
+    handleMenuClick(e){
+      console.log("Menu clicked:", e)
     }
+    
   },
   computed: {
-    getCartCount() {
+    actualCartCount() {
       return this.$store.getters["products/getCartQuantity"];
     },
+    
     ...mapGetters([
       "priColor",
       "secColor",
@@ -299,6 +305,11 @@ export default {
       "navLayout",
       "storeName"
     ])
+  },
+  watch: {
+    actualCartCount(val){
+      this.getCartCount = val
+    }
   }
 };
 </script>
