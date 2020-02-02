@@ -28,6 +28,7 @@ header {
     .navbar {
         &__item {
             display: flex;
+            margin-right: 10px;
             img {
                 margin-right: 5px;
             }
@@ -41,6 +42,9 @@ header {
             button {
                 display: flex;
                 padding: 0 15px;
+            }
+            span {
+                margin-left: 5px;
             }
         }
         &-cta {
