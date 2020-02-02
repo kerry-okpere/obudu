@@ -3,7 +3,7 @@
         <div class="login__overlay">
             <div class="login__wrap">
                 <div class="login__main">
-                    <a-tabs defaultActiveKey="1" @change="callback">
+                    <!-- <a-tabs defaultActiveKey="1" @change="callback">
                         <a-tab-pane tab="Login" key="1">
                             <a-form
                             id="components-form-demo-normal-login"
@@ -113,7 +113,7 @@
                         </a-form>
                         </a-tab-pane>
                         <a-button @click="setLoginShow" slot="tabBarExtraContent" icon="close">Close</a-button>
-                    </a-tabs>
+                    </a-tabs> -->
                 </div>
             </div>
         </div>

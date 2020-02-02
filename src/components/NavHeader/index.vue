@@ -1,5 +1,5 @@
 <template>
-  <header v-if="navShow === true" :class="[navType, navFont]" >
+  <header v-if="navShow" :class="[navType, navFont]" >
 
     <!-- Layout One -->
     <section class="navbar__one d-none d-lg-block" v-if="navLayout === 1">
@@ -31,7 +31,7 @@
             <nav class="navbar__one-nav navbar-cta" style="margin: 6px 0 0;">
               <div class="navbar__item">
                 <a-badge :count="getCartCount" :numberStyle="{cartIconStyle}" :showZero=true>
-                  <a-button type="link" @click="setCartShow">
+                  <a-button type="link" @click="cartShow">
                     <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart">
                     <span>Cart</span>
                   </a-button>
@@ -57,8 +57,8 @@
                   </a-button>
                 </a-dropdown>
               </div>
-              <!-- <div v-else class="navbar__item">
-                <a-button type="link" @click="setLoginShow">
+              <div v-else class="navbar__item">
+                <a-button type="link" @click="loginShow">
                   <img src="@/assets/img/nav/user.svg" width="20" alt="Account">
                   <span>Account</span>
                 </a-button>
@@ -71,7 +71,6 @@
 
     <!-- Layout Two -->
     <section class="navbar__two d-none d-lg-block" v-if="navLayout === 2">
-      <!-- <a-affix :offsetTop="0"> -->
         <div class="container">
           <div class="row">
             <div class="col col-xl-4">
@@ -94,7 +93,7 @@
             <div class="col col-xl-2">
               <nav class="navbar__two-nav navbar__two-secnav">
                 <a-badge :count="cartItems" :numberStyle="cartIconStyle">
-                  <a-button type="link" @click="setCartShow">
+                  <a-button type="link" @click="cartShow">
                     <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart">
                     <h4>Cart</h4>
                   </a-button>
@@ -118,7 +117,7 @@
           <div class="col col-xl-2">
             <nav class="navbar__two-nav navbar__two-secnav">
               <a-badge :count="getCartCount" :numberStyle="{cartIconStyle}" :showZero=true>
-                <a-button type="link" @click="setCartShow">
+                <a-button type="link" @click="cartShow">
                   <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart" />
                   <h4>Cart</h4>
                 </a-button>
@@ -168,7 +167,7 @@
           <div class="col col-xl-2">
             <nav class="navbar__three-nav navbar__three-secnav">
               <a-badge :count="getCartCount" :numberStyle="{cartIconStyle}" :showZero=true>
-                <a-button type="link" @click="setCartShow">
+                <a-button type="link" @click="cartShow">
                   <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart" />
                   <h4>Cart</h4>
                 </a-button>
@@ -191,7 +190,6 @@
           </div>
         </div>
       </div>
-      <!-- </a-affix> -->
     </section>
 
     <!-- Mobile Nav -->
@@ -218,7 +216,7 @@
               </div>
               <div class="navbar__item">
                 <a-badge :count="getCartCount" :numberStyle="{cartIconStyleMobile}" :showZero=true>
-                  <a-button type="link" @click="setCartShow">
+                  <a-button type="link" @click="cartShow">
                     <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart" />
                   </a-button>
                 </a-badge>
@@ -242,8 +240,8 @@
                   </a-button>
                 </a-dropdown>
               </div>
-              <!-- <div v-else class="navbar__item">
-                <a-button type="link" @click="setLoginShow">
+              <div v-else class="navbar__item">
+                <a-button type="link" @click="loginShow">
                   <img src="@/assets/img/nav/user.svg" width="20" alt="Account" />
                   <p>Account</p>
                 </a-button>
@@ -258,7 +256,7 @@
 
 <script>
 import { Slide } from "vue-burger-menu";
-import { mapGetters, mapMutations } from "vuex";
+import { mapGetters } from "vuex";
 import { STORENAME } from "./../../config";
 
 export default {
@@ -275,12 +273,6 @@ export default {
   }),
 
   methods: {
-    setCartShow(e) {
-      this.$store.state.styles.cartShow = true;
-    },
-    setLoginShow(e) {
-      this.$store.state.styles.loginShow = true;
-    },
     handleMenuClick(e){
       console.log("Menu clicked:", e)
     }
@@ -290,20 +282,22 @@ export default {
     actualCartCount() {
       return this.$store.getters["products/getCartQuantity"];
     },
-    
     ...mapGetters([
-      "priColor",
-      "secColor",
-      "priFont",
-      "secFont",
-      "navShow",
-      "navType",
-      "navLogo",
-      "navLogoImg",
-      "navLogoTextColor",
-      "navLogoTextSize",
-      "navLayout",
-      "storeName"
+      'priColor',
+      'secColor',
+      'priFont',
+      'secFont',
+      'navFont',
+      'navShow',
+      'navType',
+      'navLogo',
+      'navLogoImg',
+      'navLogoTextColor',
+      'navLogoTextSize',
+      'navLayout',
+      'storeName',
+      'cartShow',
+      'loginShow'
     ])
   },
   watch: {
