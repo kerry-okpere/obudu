@@ -246,7 +246,8 @@ export default {
     userLoggedin: false,
     cartItems: 0,
     cartIconStyle: "backgroundColor: #3C87D1;marginTop: 4px",
-    cartIconStyleMobile: "backgroundColor: #3C87D1;marginTop: 10px"
+    cartIconStyleMobile: "backgroundColor: #3C87D1;marginTop: 10px",
+    getCartCount: 0
   }),
 
   methods: {
@@ -262,7 +263,7 @@ export default {
     
   },
   computed: {
-    getCartCount() {
+    actualCartCount() {
       return this.$store.getters["products/getCartQuantity"];
     },
     
@@ -280,6 +281,11 @@ export default {
       "navLayout",
       "storeName"
     ])
+  },
+  watch: {
+    actualCartCount(val){
+      this.getCartCount = val
+    }
   }
 };
 </script>
