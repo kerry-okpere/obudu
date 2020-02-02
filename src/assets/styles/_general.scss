@@ -47,6 +47,11 @@
 .ant-input {
     height: 30px;
 }
+.ant-btn-primary {
+    text-shadow: none!important;
+    -webkit-box-shadow: none!important;
+    box-shadow: none!important;
+}
 html.md-theme-default {
     background-color: #fff!important;
 }

@@ -9,7 +9,7 @@
                         <div class="collection__one-single" :style="{backgroundColor: collectionOneBg}" v-if="collectionOneShow">
                             <div class="wrapper">
                                 <div class="content">
-                                    <h3>{{collectionOneTitle}}</h3>
+                                    <h3 :style="{color: collectionTextColor}">{{collectionOneTitle}}</h3>
                                     <p>{{collectionOneSubtitle}}</p>
                                     <a-button ghost :style="{color: collectionBtnColor, borderColor: collectionBtnColor}" :href="collectionOneLink">{{collectionOneBtn}}</a-button>
                                 </div>
@@ -23,7 +23,7 @@
                         <div class="collection__one-single" :style="{backgroundColor: collectionTwoBg}" v-if="collectionTwoShow">
                             <div class="wrapper">
                                 <div class="content">
-                                    <h3>{{collectionTwoTitle}}</h3>
+                                    <h3 :style="{color: collectionTextColor}">{{collectionTwoTitle}}</h3>
                                     <p>{{collectionTwoSubtitle}}</p>
                                     <a-button ghost :style="{color: collectionBtnColor, borderColor: collectionBtnColor}" :href="collectionTwoLink">{{collectionTwoBtn}}</a-button>
                                 </div>
@@ -37,7 +37,7 @@
                         <div class="collection__one-single" :style="{backgroundColor: collectionThreeBg}" v-if="collectionThreeShow">
                             <div class="wrapper">
                                 <div class="content">
-                                    <h3>{{collectionThreeTitle}}</h3>
+                                    <h3 :style="{color: collectionTextColor}">{{collectionThreeTitle}}</h3>
                                     <p>{{collectionThreeSubtitle}}</p>
                                     <a-button ghost :style="{color: collectionBtnColor, borderColor: collectionBtnColor}" :href="collectionThreeLink">{{collectionThreeBtn}}</a-button>
                                 </div>
@@ -59,7 +59,7 @@
                         <div class="collection__one-single" :style="{backgroundImage: 'url(' + collectionOneImg + ')', backgroundColor: collectionOneBg}" v-if="collectionOneShow">
                             <div class="wrapper">
                                 <div class="content">
-                                    <h3>{{collectionOneTitle}}</h3>
+                                    <h3 :style="{color: collectionTextColor}">{{collectionOneTitle}}</h3>
                                     <p>{{collectionOneSubtitle}}</p>
                                     <a-button ghost :style="{color: collectionBtnColor, borderColor: collectionBtnColor}" :href="collectionOneLink">{{collectionOneBtn}}</a-button>
                                 </div>
@@ -86,6 +86,7 @@ import { mapGetters, mapMutations } from 'vuex'
                 'collectionLayout',
                 'collectionBgColor',
                 'collectionBtnColor',
+                'collectionTextColor',
                 'collectionOneShow',
                 'collectionOneBg',
                 'collectionOneTitle',
