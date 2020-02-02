@@ -74,7 +74,7 @@ const actions = {
 
     if(totalProdQty > 0){
 
-      let cartItem = (state.cart.length <= 0 || !state.cart  ) ? undefined : state.cart.find(item => item.index == selectedProd.index);
+      let cartItem = !state.cart ? undefined : state.cart.find(item => item.index == selectedProd.index);
       
       if(cartItem == undefined){
         let priceSplit = selectedProd.price.split("NGN"); selectedProd.price = parseFloat(priceSplit[1].trim().replace(",", ""));

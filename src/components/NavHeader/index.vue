@@ -38,7 +38,7 @@
                 </a-badge>
               </div>
               <div v-if="userLoggedin" class="navbar__item">
-                <a-dropdown>
+                <!-- <a-dropdown>
                   <a-menu slot="overlay" @click="handleMenuClick">
                     <a-menu-item key="1">
                       <a-icon type="user" />My Account
@@ -55,14 +55,14 @@
                     <span>Account</span>
                     <a-icon type="down" style="margin:5px 5px 0;" />
                   </a-button>
-                </a-dropdown>
+                </a-dropdown> -->
               </div>
               <div v-else class="navbar__item">
-                <a-button type="link" @click="loginShow">
+                <!-- <a-button type="link" @click="loginShow">
                   <img src="@/assets/img/nav/user.svg" width="20" alt="Account">
                   <span>Account</span>
-                </a-button>
-              </div> -->
+                </a-button> -->
+              </div>
             </nav>
           </div>
         </div>
@@ -98,7 +98,7 @@
                     <h4>Cart</h4>
                   </a-button>
                 </a-badge>
-                <a-dropdown :trigger="['click']">
+                <!-- <a-dropdown :trigger="['click']">
                   <a class="ant-dropdown-link" href="#"><img src="@/assets/img/nav/user.svg" width="20" alt="Account">
                     <span>Account</span>
                   </a>
@@ -110,7 +110,7 @@
                       <a href="#">Sign in</a>
                     </a-menu-item>
                   </a-menu>
-                </a-dropdown>
+                </a-dropdown> -->
               </nav>
             </div>
           </div>
@@ -245,7 +245,7 @@
                   <img src="@/assets/img/nav/user.svg" width="20" alt="Account" />
                   <p>Account</p>
                 </a-button>
-              </div> -->
+              </div>
             </nav>
           </div>
         </div>
