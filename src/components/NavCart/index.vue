@@ -1,10 +1,10 @@
 <template>
-  <section v-show="cartShow" class="cart">
+  <section v-show="cartShow" class="cart" :class="[navFont]">
     <div class="cart__overlay">
       <div class="cart__main" :class="{animated: setCartShow, slideInRight: setCartShow}">
         <div class="container">
           <div class="cart__main-empty" v-if="cartEmpty">
-            <img src="@/assets/img/cart.png" alt="Empty Cart" />
+            <img src="@/assets/img/cart.png" alt="Empty Cart">
             <h3>Your cart is empty</h3>
             <p>Looks like you haven't added any items to your cart yet, continue shopping to fill it up.</p>
             <a-button type="primary" block @click="setCartShow">Continue Shopping</a-button>
@@ -17,9 +17,9 @@
               </a-button>
             </div>
             <div class="item">
-              <div v-for="(cartItem,index) in getCartItems" class="row" :key="index">
+              <div class="row" v-for="(cartItem,index) in getCartItems" :key="index">
                 <div class="col-3">
-                  <img src="https://via.placeholder.com/80" alt />
+                  <img src="https://via.placeholder.com/80" alt="">
                 </div>
                 <div class="col-7">
                   <div class="item-details">
@@ -43,7 +43,18 @@
             </div>
           </div>
         </div>
+        <div class="col-2">
+          <v-icon name="trash" />
+        </div>
       </div>
+      <a-divider />
+    </div>
+    <div class="footer">
+      <div class="total">
+        <h3>Total</h3>
+        <h1>NGN Total</h1>
+      </div>
+      <a-button type="primary" block @click="checkout">Checkout</a-button>
     </div>
   </section>
 </template>
@@ -83,7 +94,10 @@ export default {
         return this.$store.getters["products/getProducts"]
     },
 
-    ...mapGetters(["cartShow"])
+    ...mapGetters([
+      "cartShow",
+      "navFont"
+      ])
   },
 
   beforeCreated() {

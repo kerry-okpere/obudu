@@ -25,6 +25,9 @@ const mutations = {
   setSecFont(state, secFont) {
     state.styles.secFont = secFont;
   },
+  setNavFont(state, navFont) {
+    state.styles.navFont = navFont;
+  },
   setNavShow(state, navShow) {
     state.styles.navShow = navShow;
   },

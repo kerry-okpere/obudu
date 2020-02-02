@@ -1,159 +1,86 @@
 <template>
     <section class="products" v-if="productShow === true" :style="{backgroundColor: productBg}">
         <div class="container">
-        <!-- Home Products Layout One -->
-        <div class="products__one" v-if="productLayout === 3">
-            <div class="row">
-                <div class="col" v-for="(product, index) in products" :key="index" >
-                    <a-card :hoverable="false" @mouseover="hover = true" @mouseleave="hover = false" :bordered="true" :loading="loading" style="width: 240px">
-                        <img alt="example" :src="`${product.images[0].url}`" width="240" />
-                        <router-link :to="`/product/${product.slug}`" type="primary">
-                            <a-button v-bind:style="{backgroundColor: priColor, borderColor: priColor}">Buy Now</a-button>
-                        </router-link>
-                        <div class="products__one-meta">
-                            <h2>{{product.name}}</h2>
-                            <h3>{{product.categoryName}}</h3>
-                            <p>{{product.basePrice}}</p>
+            
+            <!-- Home Products Layout One -->
+            <div class="products__one" v-if="productLayout === 1">
+                <div class="row">
+                    <div class="col-6 col-xl-3 col-lg-3 col-md-4 col-sm-6" v-for="(product, index) in products" :key="index" >
+                        <div class="products__one-image" :style="{backgroundImage:'url(' + `${product.images[0].url}` + ')'}">
+                            <a-button :class="[navFont]" class="animated fadeIn" @mouseover="hover = true"
+                            :style="[hover ? {backgroundColor: priColor, borderColor: priColor} : {backgroundColor: secColor, borderColor: secColor}]"
+                            @click="openQuickView">
+                                <v-icon name="eye" />Quick View
+                            </a-button>
+                        </div> 
+                        <div class="products__one-meta text-center">
+                            <router-link :to="`/product/${product.slug}`">
+                                <h4>{{product.name}}</h4>
+                            </router-link>
+                            <p>{{product.categoryName}}</p>
+                            <p class="price">{{product.basePrice}}</p>
+                            <!-- <p class="price">&#x20A6;{{formatPrice(product.basePrice)}}</p> -->
                         </div>
-                    </a-card>
+                    </div>
+                </div>
+                <div class="products__quickview">
+                    <a-modal v-model="quickView" :footer="null">
+                        <HomeProductsQuickView />
+                    </a-modal>
                 </div>
             </div>
-        </div>
 
-        <!-- Home Products Layout Two -->
-        <div class="products__two" v-if="productLayout === 2">
-            <div class="row">
-                <div class="col-6 col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                    <a-card :hoverable="false" @mouseover="hover = true" @mouseleave="hover = false" :bordered="true" :loading="loading" style="width: 240px">
-                        <img alt="example" src="https://cdn.shopify.com/s/files/1/1724/2825/products/IMG_8191_250x.jpg?v=1553005631" width="240" />
-                        <a-button type="primary" v-bind:style="{backgroundColor: priColor, borderColor: priColor}">Buy Now</a-button>
-                        <div class="products__one-meta">
-                            <h2>Product Name</h2>
-                            <h3>Product Category</h3>
-                            <p>NGN Price</p>
-                        </div>
-                    </a-card>
-                </div>
-                <div class="col-6 col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                    <a-card :hoverable="false" @mouseover="hover = true" @mouseleave="hover = false" :bordered="true" :loading="loading" style="width: 240px">
-                        <img alt="example" src="https://cdn.shopify.com/s/files/1/1724/2825/products/IMG_8191_250x.jpg?v=1553005631" width="240" />
-                        <a-button type="primary" v-bind:style="{backgroundColor: priColor, borderColor: priColor}">Buy Now</a-button>
-                        <div class="products__one-meta">
-                            <h2>Product Name</h2>
-                            <h3>Product Category</h3>
-                            <p>NGN Price</p>
-                        </div>
-                    </a-card>
-                </div>
-                <div class="col-6 col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                    <a-card :hoverable="false" @mouseover="hover = true" @mouseleave="hover = false" :bordered="true" :loading="loading" style="width: 240px">
-                        <img alt="example" src="https://cdn.shopify.com/s/files/1/1724/2825/products/IMG_8191_250x.jpg?v=1553005631" width="240" />
-                        <a-button type="primary" v-bind:style="{backgroundColor: priColor, borderColor: priColor}">Buy Now</a-button>
-                        <div class="products__one-meta">
-                            <h2>Product Name</h2>
-                            <h3>Product Category</h3>
-                            <p>NGN Price</p>
-                        </div>
-                    </a-card>
-                </div>
-                <div class="col-6 col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                    <a-card :hoverable="false" @mouseover="hover = true" @mouseleave="hover = false" :bordered="true" :loading="loading" style="width: 240px">
-                        <img alt="example" src="https://cdn.shopify.com/s/files/1/1724/2825/products/IMG_8191_250x.jpg?v=1553005631" width="240" />
-                        <a-button type="primary" v-bind:style="{backgroundColor: priColor, borderColor: priColor}">Buy Now</a-button>
-                        <div class="products__one-meta">
-                            <h2>Product Name</h2>
-                            <h3>Product Category</h3>
-                            <p>NGN Price</p>
-                        </div>
-                    </a-card>
+            <!-- Home Products Layout Two -->
+            <div class="products__two" v-if="productLayout === 2">
+                <div class="row">
+                    <div class="col"></div>
                 </div>
             </div>
-        </div>
 
-        <!-- Home Products Layout Three -->
-        <div class="products__three" v-if="productLayout === 1">
-            <div class="row">
-                <div class="col-3" v-for="(product, index) in products" :key="index">
-                    <div class="products__three-single">
-                        <div class="image">
-                            <img :src="`${product.images[0].url}`" alt="">
-                        </div>
-                        <router-link :to="`/product/${product.slug}`" type="primary">
-                            <a-button v-bind:style="{backgroundColor: priColor, borderColor: priColor}">Buy Now</a-button>
-                        </router-link>
-                        <div class="info text-center">
-                            <h3 class="pt-3 pb-2">{{product.name}}</h3>
-                            <h4>&#x20A6;{{formatPrice(product.basePrice)}}</h4>
-                        </div>
-                    </div>
+            <!-- Home Products Layout Three -->
+            <div class="products__three" v-if="productLayout === 3">
+                <div class="row">
+                    <div class="col"></div>
                 </div>
-                
-                <!-- <div class="col-3">
-                                        <div class="products__three-single">
-                        <div class="image">
-                            <img src="https://via.placeholder.com/250x350" alt="">
-                        </div>
-                        <div class="info text-center">
-                            <h3 class="pt-3 pb-2">Long Sleeved Cotton</h3>
-                            <h4>$100</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                                        <div class="products__three-single">
-                        <div class="image">
-                            <img src="https://via.placeholder.com/250x350" alt="">
-                        </div>
-                        <div class="info text-center">
-                            <h3 class="pt-3 pb-2">Long Sleeved Cotton</h3>
-                            <h4>$100</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-3">
-                                        <div class="products__three-single">
-                        <div class="image">
-                            <img src="https://via.placeholder.com/250x350" alt="">
-                        </div>
-                        <div class="info text-center">
-                            <h3 class="pt-3 pb-2">Long Sleeved Cotton</h3>
-                            <h4>$100</h4>
-                        </div>
-                    </div>
-                </div> -->
             </div>
-        </div>
+
         </div>
     </section>
 </template>
 
 <script>
+import HomeProductsQuickView from '@/components/HomeProductsQuickView';
 import { mapGetters } from 'vuex'
-
 
     export default {
         data: () => ({
             loading: false,
-            products: []
+            products: [],
+            hover: false,
+            quickView: false
         }),
-
+        components: {
+            HomeProductsQuickView
+        },
         computed: {
             ...mapGetters ([
                 'priColor',
                 'secColor',
                 'productShow',
                 'productLayout',
-                'productBg'
+                'productBg',
+                'navFont'
             ])
         },
-
         methods: {
             formatPrice(price){
                 // Apply currency
                 return Number(price.replace(/\D/g, "").slice(0, -2))
+            },
+            openQuickView() {
+                this.quickView = true;
             }
         },
-
         async created(){
             let res = await this.$store.dispatch('products/fetchHomeProducts');
             this.products = res;

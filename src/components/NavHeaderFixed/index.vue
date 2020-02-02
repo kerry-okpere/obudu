@@ -1,5 +1,5 @@
 <template>
-  <header v-if="navShow === true" class="navFixed" >
+  <header v-if="navShow === true" class="navFixed" :class="[navFont]" >
 
     <!-- Layout One -->
     <section class="navbar__one d-none d-lg-block" v-if="navLayout === 1">
@@ -243,6 +243,7 @@ import { STORENAME } from "./../../config"
         'secColor',
         'priFont',
         'secFont',
+        'navFont',
         'navShow',
         'navType',
         'navLogo',

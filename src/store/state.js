@@ -35,6 +35,7 @@ const state = {
         secColor: '#007bff',
         priFont: "fontPriLato",
         secFont: "fontSecLato",
+        navFont: "fontPriLato",
         navShow: true,
         navLayout: 1,
         navType: "navFixed",

@@ -1,5 +1,5 @@
 <template>
-  <section class="layout__default">
+  <section class="layout__default" :class="[this.$store.state.styles.priFont, this.$store.state.styles.secFont]">
     <NavHeader />
     <div class="content">
       <slot />

@@ -1,5 +1,6 @@
 <template>
-  <header v-if="navShow === true" :class="[navType]">
+  <header v-if="navShow === true" :class="[navType, navFont]" >
+
     <!-- Layout One -->
     <section class="navbar__one d-none d-lg-block" v-if="navLayout === 1">
       <div class="container">
@@ -31,8 +32,8 @@
               <div class="navbar__item">
                 <a-badge :count="getCartCount" :numberStyle="cartIconStyle" showZero=true>
                   <a-button type="link" @click="setCartShow">
-                    <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart" />
-                    <h4>Cart</h4>
+                    <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart">
+                    <span>Cart</span>
                   </a-button>
                 </a-badge>
               </div>
@@ -50,16 +51,16 @@
                     </a-menu-item>
                   </a-menu>
                   <a-button type="link">
-                    <img src="@/assets/img/nav/user.svg" width="20" alt="Account" />
-                    <h4>Account</h4>
+                    <img src="@/assets/img/nav/user.svg" width="20" alt="Account">
+                    <span>Account</span>
                     <a-icon type="down" style="margin:5px 5px 0;" />
                   </a-button>
                 </a-dropdown>
               </div>
               <div v-else class="navbar__item">
                 <a-button type="link" @click="setLoginShow">
-                  <img src="@/assets/img/nav/user.svg" width="20" alt="Account" />
-                  <p>Account</p>
+                  <img src="@/assets/img/nav/user.svg" width="20" alt="Account">
+                  <span>Account</span>
                 </a-button>
               </div>
             </nav>
@@ -71,23 +72,47 @@
     <!-- Layout Two -->
     <section class="navbar__two d-none d-lg-block" v-if="navLayout === 2">
       <!-- <a-affix :offsetTop="0"> -->
-      <div class="container">
-        <div class="row">
-          <div class="col col-xl-4">
-            <nav class="navbar__two-nav">
-              <router-link exact to="/">Shop</router-link>
-              <router-link exact to="/">Collection</router-link>
-              <router-link exact to="/">Sale</router-link>
-            </nav>
-          </div>
-          <div class="col col-xl-3">
-            <router-link to="/">
-              <img :src="navLogo" alt="Store Logo" />
-            </router-link>
-          </div>
-          <div class="col col-xl-3">
-            <div class="navbar__two-search">
-              <a-input-search placeholder="Search store..." style="width: 250px" />
+        <div class="container">
+          <div class="row">
+            <div class="col col-xl-4">
+              <nav class="navbar__two-nav">
+                <router-link exact to="/">Shop</router-link>
+                <router-link exact to="/">Collection</router-link>
+                <router-link exact to="/">Sale</router-link>
+              </nav>
+            </div>
+            <div class="col col-xl-3">
+              <router-link to="/">
+                <img :src="navLogo" alt="Store Logo">
+              </router-link>
+            </div>
+            <div class="col col-xl-3">
+              <div class="navbar__two-search">
+                <a-input-search placeholder="Search store..." style="width: 250px" />
+              </div>
+            </div>
+            <div class="col col-xl-2">
+              <nav class="navbar__two-nav navbar__two-secnav">
+                <a-badge :count="cartItems" :numberStyle="cartIconStyle">
+                  <a-button type="link" @click="setCartShow">
+                    <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart">
+                    <h4>Cart</h4>
+                  </a-button>
+                </a-badge>
+                <a-dropdown :trigger="['click']">
+                  <a class="ant-dropdown-link" href="#"><img src="@/assets/img/nav/user.svg" width="20" alt="Account">
+                    <span>Account</span>
+                  </a>
+                  <a-menu slot="overlay">
+                    <a-menu-item key="0">
+                      <a href="#">Register</a>
+                    </a-menu-item>
+                    <a-menu-item key="1">
+                      <a href="#">Sign in</a>
+                    </a-menu-item>
+                  </a-menu>
+                </a-dropdown>
+              </nav>
             </div>
           </div>
           <div class="col col-xl-2">
@@ -115,7 +140,6 @@
             </nav>
           </div>
         </div>
-      </div>
       <!-- </a-affix> -->
     </section>
 

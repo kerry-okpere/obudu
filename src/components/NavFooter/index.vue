@@ -1,6 +1,6 @@
 <template>
     <footer>
-        <section class="footer" v-if="footerShow">
+        <section class="footer" v-if="footerShow" :class="[navFont]">
             <!-- Footer Layout One -->
             <section class="footer__one" v-if="footerLayout === 1">
                 <div class="container">
@@ -136,6 +136,7 @@ export default {
     }),
     computed: {
         ...mapGetters ([
+            'navFont',
             'footerShow',
             'footerLayout',
             'subfooterShow',

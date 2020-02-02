@@ -35,6 +35,7 @@ const getters = {
         secColor: state => state.styles.secColor,
         priFont: state => state.styles.priFont,
         secFont: state => state.styles.secFont,
+        navFont: state => state.styles.navFont,
         navShow: state => state.styles.navShow,
         navLayout: state => state.styles.navLayout,
         navType: state => state.styles.navType,
