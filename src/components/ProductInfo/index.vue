@@ -64,9 +64,17 @@ export default {
     changeQuant(value) {
       console.log("changed", value);
     },
-    addToCart(selectedVariant){
+    addToCart(selectedVariant) {
       let prodObj = selectedVariant;
+      prodObj.selectedQuantity = this.value;
       let product = this.$store.dispatch("products/addProductToCart", prodObj);
+      this.openNotification();
+    },
+    openNotification() {
+      this.$notification.open({
+        message: "Product added to cart",
+        duration: 1.5
+      });
     },
     selectVariant(index) {
       // Listening to variant options
@@ -76,7 +84,11 @@ export default {
     },
     formatPrice(price) {
       // Apply currency
-      return Number(price.replace(/\D/g, "").slice(0, -2));
+      if (typeof price !== "number") {
+        return Number(price.replace(/\D/g, "").slice(0, -2));
+      } else {
+        return price;
+      }
     },
     onChange(e) {
       let variant = e.target.value;
@@ -88,11 +100,9 @@ export default {
       for (let [key, value] of Object.entries(finalArr)) {
         newAtrr.push(value);
       }
-      
-      let selectedVariant = this.findVariant(newAtrr.toString());
-      if(selectedVariant !== undefined) this.selectedVariant = selectedVariant
-  
 
+      let selectedVariant = this.findVariant(newAtrr.toString());
+      if (selectedVariant !== undefined) this.selectedVariant = selectedVariant;
     },
 
     // 000013200130170524000047568107
@@ -118,10 +128,11 @@ export default {
     },
 
     findVariant(array) {
-      return this.singleProd.variants.find( (item) => item.variantValues == array);
+      return this.singleProd.variants.find(item => item.variantValues == array);
     }
   },
   async created() {
+    let cart = this.$store.getters["products/cart"];
     //get slugUrl
     let slug = this.$route.params.slug;
 

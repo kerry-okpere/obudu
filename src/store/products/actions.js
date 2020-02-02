@@ -1,5 +1,6 @@
 import axios from "axios";
 import { STORENAME, API_URL, STORE_ID } from "./../../config"
+// import products from "./products";
 const storefront$http = axios.create({
   baseURL: API_URL+"/storefront",
   headers: {
@@ -63,22 +64,44 @@ const actions = {
   },
 
   addProductToCart({commit, state}, product){
-    let totalProdQty = product.quantity
-    product.quantity = 0;
+    let selectedProd = {...product};
+    let totalProdQty = selectedProd.quantity;
+    // let totalProdQty = product.quantity; product.quantity = 0;
+
+    let prodbj = state.singleProduct
+    selectedProd.image  = prodbj.images[0].url;
+
 
     if(totalProdQty > 0){
 
-      let cartItem = (state.cart.length <= 0 || !state.cart  ) ? undefined : state.cart.find(item => item.index == product.index);
+      let cartItem = (state.cart.length <= 0 || !state.cart  ) ? undefined : state.cart.find(item => item.index == selectedProd.index);
       
       if(cartItem == undefined){
-        commit("PUSH_PROUDCT_TO_CART", product)
+        let priceSplit = selectedProd.price.split("NGN"); selectedProd.price = parseFloat(priceSplit[1].trim().replace(",", ""));
+        selectedProd.quantity = selectedProd.selectedQuantity; delete selectedProd.selectedQuantity;
+        commit("PUSH_PROUDCT_TO_CART", selectedProd)
       } else {
-        commit("INCREMENT_CART_ITEM_QUANTITY", cartItem)
+        let cartIndex = state.cart.map( (item,indx) => {
+          if(item.index == cartItem.index){
+            return indx;
+          } 
+        });
+        cartIndex = cartIndex[0];
+        cartItem.quantity += selectedProd.selectedQuantity;
+        commit("INCREMENT_CART_ITEM_QUANTITY", {cartItem, cartIndex})
       }
 
     }
 
+  },
+
+  deleteCartItem({state, commit}, cartIndex){
+    let newCart = state.cart.find( (item, index) => index === cartIndex );
+    if(newCart){
+      commit('UPDATE_CART_ON_ITEM_DELETE', cartIndex);
+    }
   }
+
 
 
 };

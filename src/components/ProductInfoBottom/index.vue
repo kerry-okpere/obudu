@@ -5,14 +5,11 @@
             <a-icon type="caret-right" :rotate="props.isActive ? 90 : 0" />
         </template>
         <a-collapse-panel header="Product Details" key="1" :style="customStyle">
-            <p>Logitech Wireless Mouse M186 is compatible with all brands of
-            laptops and computers. It has been integrated with Bluetooth technology
-            which ensures it has a great range of about 10 metres. It communicates
-            and connects to devices through radio.</p>
+            <p>{{singleProd.description}}</p>
         </a-collapse-panel>
-        <a-collapse-panel header="Customer Reviews" key="2" :style="customStyle">
+        <!-- <a-collapse-panel header="Customer Reviews" key="2" :style="customStyle">
 
-        </a-collapse-panel>
+        </a-collapse-panel> -->
     </a-collapse>
 </div>
 </template>
@@ -21,8 +18,15 @@
 export default {
     data: () => ({
         customStyle:
-          'fontSize: 16px; fontWeight: 500;',
-    })
+        'fontSize: 16px; fontWeight: 500;',
+    }),
+
+    computed: {
+        singleProd() {
+            return this.$store.getters["products/getProduct"];
+        }
+
+    }
 }
 </script>
 

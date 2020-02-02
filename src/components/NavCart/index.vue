@@ -3,7 +3,7 @@
     <div class="cart__overlay">
       <div class="cart__main" :class="{animated: setCartShow, slideInRight: setCartShow}">
         <div class="container">
-          <div class="cart__main-empty" v-if="cartEmpty">
+          <div class="cart__main-empty" v-if="!cartEmpty">
             <img src="@/assets/img/cart.png" alt="Empty Cart" />
             <h3>Your cart is empty</h3>
             <p>Looks like you haven't added any items to your cart yet, continue shopping to fill it up.</p>
@@ -19,17 +19,17 @@
             <div class="item">
               <div v-for="(cartItem,index) in getCartItems" class="row" :key="index">
                 <div class="col-3">
-                  <img src="https://via.placeholder.com/80" alt />
+                  <img class="responsive" :src="cartItem.image" alt />
                 </div>
                 <div class="col-7">
                   <div class="item-details">
-                    <h1>Product Name</h1>
-                    <h3>NGN Price</h3>
-                    <p>Quantity</p>
+                    <h1>{{cartItem.name}} ({{cartItem.variantValues}})</h1>
+                    <h3>{{cartItem.price}}</h3>
+                    <p>{{cartItem.quantity}}</p>
                   </div>
                 </div>
                 <div class="col-2">
-                  <v-icon name="trash" />
+                  <v-icon name="trash" @click="deleteCartItem(index)" />
                 </div>
               </div>
               <a-divider />
@@ -37,7 +37,7 @@
             <div class="footer">
               <div class="total">
                 <h3>Total</h3>
-                <h1>NGN Total</h1>
+                <h1>NGN {{ formatTotal() }}</h1>
               </div>
               <a-button type="primary" block @click="checkout">Checkout</a-button>
             </div>
@@ -53,7 +53,9 @@ import { mapGetters } from "vuex";
 
 export default {
   data: () => ({
-    cartEmpty: false
+    cartEmpty: () => {
+        return this.getCartCount == 0 ? false : true
+    }
   }),
   methods: {
     setCartShow(e) {
@@ -63,16 +65,25 @@ export default {
         this.$store.state.styles.cartShow = false;
         this.$router.push("/checkout");
     },
-    findProduct(){
-        // let newProdObj = {}
-        // this.getProducts.map(item => {
-        //     item.variants.finc(item.)
-        // })
+    formatTotal(){
+        if(this.getCartCount > 0 ){
+            return new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(this.getCartTotal)
+        } else {
+            return 0;
+        }
+    },
+    deleteCartItem(index){
+        this.$store.dispatch("products/deleteCartItem", index)
     }
+
   },
   computed: {
     getCartCount() {
       return this.$store.getters["products/getCartQuantity"];
+    },
+
+    getCartTotal(){
+        return this.$store.getters["products/getCartTotal"];
     },
 
     getCartItems() {
@@ -84,12 +95,6 @@ export default {
     },
 
     ...mapGetters(["cartShow"])
-  },
-
-  beforeCreated() {
-
-    // console.log(this.getCartCount)
-    // this.cartEmpty = this.getCartCount !== 0 ? false : true
   }
 };
 </script>
