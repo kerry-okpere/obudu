@@ -132,17 +132,17 @@
                     <a-collapse-panel header="Colors" key="2" :showArrow="false">
                         <div class="settings__item">
                             <h3>Primary Color</h3>
-                            <a-button type="primary" @click="showPriColorCP = !showPriColorCP" v-bind:style="{backgroundColor: priColor, borderColor: priColor}">
+                            <a-button type="primary" @click="priColorCP = !priColorCP" v-bind:style="{backgroundColor: priColor, borderColor: priColor}">
                                 Select Color
                             </a-button>
-                            <swatches-picker v-if="showPriColorCP" :value="priColor" @input="setPriColor($event.hex)" :disableAlpha="true" />
+                            <swatches-picker v-if="priColorCP" :value="priColor" @input="setPriColor($event.hex)" :disableAlpha="true" />
                         </div>
                         <div class="settings__item">
                             <h3>Secondary Color</h3>
-                            <a-button type="primary" @click="showSecColorCP = !showSecColorCP" v-bind:style="{backgroundColor: secColor, borderColor: secColor}">
+                            <a-button type="primary" @click="secColorCP = !secColorCP" v-bind:style="{backgroundColor: secColor, borderColor: secColor}">
                                 Select Color
                             </a-button>
-                            <swatches-picker v-if="showSecColorCP" :value="secColor" @input="setSecColor($event.hex)" :disableAlpha="true" />
+                            <swatches-picker v-if="secColorCP" :value="secColor" @input="setSecColor($event.hex)" :disableAlpha="true" />
                         </div>
                     </a-collapse-panel>
                     <a-collapse-panel header="Menu" key="3" :showArrow="false">
@@ -177,10 +177,10 @@
                                         </div>
                                         <div class="settings__modal-item">
                                             <p>Text Logo</p>
-                                            <a-button type="primary" size="small" @click="showNavLogoTextCP = !showNavLogoTextCP">
+                                            <a-button type="primary" size="small" @click="navLogoTextCP = !navLogoTextCP">
                                                 Select Color
                                             </a-button>
-                                            <swatches-picker v-if="showNavLogoTextCP" :value="navLogoTextColor" @input="setNavLogoTextColor($event.hex)" :disableAlpha="true" />
+                                            <swatches-picker v-if="navLogoTextCP" :value="navLogoTextColor" @input="setNavLogoTextColor($event.hex)" :disableAlpha="true" />
                                         </div>
                                         <div class="settings__modal-item">
                                             <p>Text Logo Size</p>
@@ -229,10 +229,10 @@
                                             <a-collapse-panel header="Hero Background" key="1" :showArrow="false">
                                                 <div class="settings__modal-item">
                                                     <p>Background Color</p>
-                                                    <a-button type="primary" @click="showHeroColorCP = !showHeroColorCP" v-bind:style="{backgroundColor: heroColor, borderColor: heroColor}">
+                                                    <a-button type="primary" @click="heroColorCP = !heroColorCP" v-bind:style="{backgroundColor: heroColor, borderColor: heroColor}">
                                                         Select Color
                                                     </a-button>
-                                                    <swatches-picker v-if="showHeroColorCP" :value="heroColor" @input="setHeroColor($event.hex)" :disableAlpha="true" />
+                                                    <swatches-picker v-if="heroColorCP" :value="heroColor" @input="setHeroColor($event.hex)" :disableAlpha="true" />
                                                 </div>
                                                 <div class="settings__modal-item">
                                                     <p>Background Image</p>
@@ -250,18 +250,18 @@
                                                 <div class="settings__modal-item">
                                                     <p>Hero Title</p>
                                                     <a-input @change="setHeroTitle($event.target.value)" :placeholder="heroTitle" />
-                                                    <a-button type="primary" size="small" @click="showHeroTitleCP = !showHeroTitleCP">
+                                                    <a-button type="primary" size="small" @click="heroTitleCP = !heroTitleCP">
                                                         Select Color
                                                     </a-button>
-                                                    <swatches-picker v-if="showHeroTitleCP" :value="heroTitleColor" @input="setHeroTitleColor($event.hex)" :disableAlpha="true" />
+                                                    <swatches-picker v-if="heroTitleCP" :value="heroTitleColor" @input="setHeroTitleColor($event.hex)" :disableAlpha="true" />
                                                 </div>
                                                 <div class="settings__modal-item">
                                                     <p>Hero Content</p>
                                                     <a-textarea @change="setHeroContent($event.target.value)" :placeholder="heroContent" autosize />
-                                                    <a-button type="primary" size="small" @click="showHeroContentCP = !showHeroContentCP">
+                                                    <a-button type="primary" size="small" @click="heroContentCP = !heroContentCP">
                                                         Select Color
                                                     </a-button>
-                                                    <swatches-picker v-if="showHeroContentCP" :value="heroContentColor" @input="setHeroContentColor($event.hex)" :disableAlpha="true" />
+                                                    <swatches-picker v-if="heroContentCP" :value="heroContentColor" @input="setHeroContentColor($event.hex)" :disableAlpha="true" />
                                                 </div>
                                                 <div class="settings__modal-item">
                                                     <p>Hero Image</p>
@@ -282,17 +282,17 @@
                                             <a-collapse-panel header="Hero Button" key="3" :showArrow="false">
                                                 <div class="settings__modal-item">
                                                     <p>Primary Color</p>
-                                                    <a-button type="primary" size="small" @click="showHeroBtnPriCP = !showHeroBtnPriCP" v-bind:style="{backgroundColor: heroBtnPri, borderColor: heroBtnPri, color: heroBtnSec}">
+                                                    <a-button type="primary" size="small" @click="heroBtnPriCP = !heroBtnPriCP" v-bind:style="{backgroundColor: heroBtnPri, borderColor: heroBtnPri, color: heroBtnSec}">
                                                         Select Color
                                                     </a-button>
-                                                    <swatches-picker v-if="showHeroBtnPriCP" :value="heroBtnPri" @input="setHeroBtnPri($event.hex)" :disableAlpha="true" />
+                                                    <swatches-picker v-if="heroBtnPriCP" :value="heroBtnPri" @input="setHeroBtnPri($event.hex)" :disableAlpha="true" />
                                                 </div>
                                                 <div class="settings__modal-item">
                                                     <p>Secondary Color</p>
-                                                    <a-button type="primary" size="small" @click="showHeroBtnSecCP = !showHeroBtnSecCP" v-bind:style="{backgroundColor: heroBtnPri, borderColor: heroBtnPri, color: heroBtnSec}">
+                                                    <a-button type="primary" size="small" @click="heroBtnSecCP = !heroBtnSecCP" v-bind:style="{backgroundColor: heroBtnPri, borderColor: heroBtnPri, color: heroBtnSec}">
                                                         Select Color
                                                     </a-button>
-                                                    <swatches-picker v-if="showHeroBtnSecCP" :value="heroBtnSec" @input="setHeroBtnSec($event.hex)" :disableAlpha="true" />
+                                                    <swatches-picker v-if="heroBtnSecCP" :value="heroBtnSec" @input="setHeroBtnSec($event.hex)" :disableAlpha="true" />
                                                 </div>
                                                 <div class="settings__modal-item">
                                                     <p>Call to Action</p>
@@ -332,17 +332,17 @@
                                         <a-collapse-panel header="Collection Settings" key="1" :showArrow="false">
                                             <div class="settings__modal-item">
                                                 <p>Button Color</p>
-                                                <a-button type="primary" @click="showCollectionBtnCP = !showCollectionBtnCP" v-bind:style="{backgroundColor: collectionBtnColor, borderColor: collectionBtnColor}">
+                                                <a-button type="primary" @click="collectionBtnCP = !collectionBtnCP" v-bind:style="{backgroundColor: collectionBtnColor, borderColor: collectionBtnColor}">
                                                     Select Color
                                                 </a-button>
-                                                <swatches-picker v-if="showCollectionBtnCP" :value="collectionBtnColor" @input="setCollectionBtnColor($event.hex)" :disableAlpha="true" />
+                                                <swatches-picker v-if="collectionBtnCP" :value="collectionBtnColor" @input="setCollectionBtnColor($event.hex)" :disableAlpha="true" />
                                             </div>
                                             <div class="settings__modal-item">
                                                 <p>Background Color</p>
-                                                <a-button type="primary" @click="showCollectionBgCP = !showCollectionBgCP" v-bind:style="{backgroundColor: collectionBgColor, borderColor: collectionBgColor}">
+                                                <a-button type="primary" @click="collectionBgCP = !collectionBgCP" v-bind:style="{backgroundColor: collectionBgColor, borderColor: collectionBgColor}">
                                                     Select Color
                                                 </a-button>
-                                                <swatches-picker v-if="showCollectionBgCP" :value="collectionBgColor" @input="setCollectionBgColor($event.hex)" :disableAlpha="true" />
+                                                <swatches-picker v-if="collectionBgCP" :value="collectionBgColor" @input="setCollectionBgColor($event.hex)" :disableAlpha="true" />
                                             </div>
                                         </a-collapse-panel>
                                         <a-collapse-panel header="Collection One" key="2" :showArrow="false">
@@ -354,10 +354,10 @@
                                             </div>
                                             <div class="settings__modal-item">
                                                 <p>Collection Background</p>
-                                                <a-button type="primary" @click="showCollectionOneBgCP = !showCollectionOneBgCP" v-bind:style="{backgroundColor: collectionOneBg, borderColor: collectionOneBg}">
+                                                <a-button type="primary" @click="collectionOneBgCP = !collectionOneBgCP" v-bind:style="{backgroundColor: collectionOneBg, borderColor: collectionOneBg}">
                                                     Select Color
                                                 </a-button>
-                                                <swatches-picker v-if="showCollectionOneBgCP" :value="collectionOneBg" @input="setCollectionOneBg($event.hex)" :disableAlpha="true" />
+                                                <swatches-picker v-if="collectionOneBgCP" :value="collectionOneBg" @input="setCollectionOneBg($event.hex)" :disableAlpha="true" />
                                             </div>
                                             <div class="settings__modal-item">
                                                 <p>Collection Title</p>
@@ -393,10 +393,10 @@
                                             </div>
                                             <div class="settings__modal-item">
                                                 <p>Collection Background</p>
-                                                <a-button type="primary" @click="showCollectionTwoBgCP = !showCollectionTwoBgCP" v-bind:style="{backgroundColor: collectionTwoBg, borderColor: collectionTwoBg}">
+                                                <a-button type="primary" @click="collectionTwoBgCP = !collectionTwoBgCP" v-bind:style="{backgroundColor: collectionTwoBg, borderColor: collectionTwoBg}">
                                                     Select Color
                                                 </a-button>
-                                                <swatches-picker v-if="showCollectionTwoBgCP" :value="collectionTwoBg" @input="setCollectionTwoBg($event.hex)" :disableAlpha="true" />
+                                                <swatches-picker v-if="collectionTwoBgCP" :value="collectionTwoBg" @input="setCollectionTwoBg($event.hex)" :disableAlpha="true" />
                                             </div>
                                             <div class="settings__modal-item">
                                                 <p>Collection Title</p>
@@ -432,10 +432,10 @@
                                             </div>
                                             <div class="settings__modal-item">
                                                 <p>Collection Background</p>
-                                                <a-button type="primary" @click="showCollectionThreeBgCP = !showCollectionThreeBgCP" v-bind:style="{backgroundColor: collectionThreeBg, borderColor: collectionThreeBg}">
+                                                <a-button type="primary" @click="collectionThreeBgCP = !collectionThreeBgCP" v-bind:style="{backgroundColor: collectionThreeBg, borderColor: collectionThreeBg}">
                                                     Select Color
                                                 </a-button>
-                                                <swatches-picker v-if="showCollectionThreeBgCP" :value="collectionThreeBg" @input="setCollectionThreeBg($event.hex)" :disableAlpha="true" />
+                                                <swatches-picker v-if="collectionThreeBgCP" :value="collectionThreeBg" @input="setCollectionThreeBg($event.hex)" :disableAlpha="true" />
                                             </div>
                                             <div class="settings__modal-item">
                                                 <p>Collection Title</p>
@@ -479,7 +479,7 @@
                                     <a-radio :style="radioStyle" :value="3">Layout Three</a-radio>
                                 </a-radio-group>
                                 <div class="settings__modal">
-                                    <a-button type="primary" @click="productSettings">More Settings</a-button>
+                                    <a-button type="primary" @click="showProductSettings">More Settings</a-button>
                                     <a-modal title="Modify Product Content" v-model="showProductSettings" onOk="saveProductSettings" :style="modalStyle">
                                         <template slot="footer">
                                             <a-button key="back" @click="productCancel">Cancel</a-button>
@@ -489,19 +489,19 @@
                                             <a-collapse-panel header="Product Background" key="1" :showArrow="false">
                                                 <div class="settings__modal-item">
                                                 <p>Product Section Background</p>
-                                                    <a-button type="primary" @click="showProdBgCP = !showProdBgCP" v-bind:style="{backgroundColor: productBg, borderColor: productBg}">
+                                                    <a-button type="primary" @click="prodBgCP = !prodBgCP" v-bind:style="{backgroundColor: productBg, borderColor: productBg}">
                                                         Select Color
                                                     </a-button>
-                                                    <swatches-picker v-if="showProdBgCP" :value="productBg" @input="setProductBg($event.hex)" :disableAlpha="true" />
+                                                    <swatches-picker v-if="prodBgCP" :value="productBg" @input="setProductBg($event.hex)" :disableAlpha="true" />
                                                 </div>
                                             </a-collapse-panel>
                                             <a-collapse-panel header="Product Section Title" key="2" :showArrow="false">
                                                 <div class="settings__modal-item">
                                                     <p>Background Color</p>
-                                                    <a-button type="primary" @click="showProductTitleBgCP = !showProductTitleBgCP" v-bind:style="{backgroundColor: productTitleBgColor, borderColor: productTitleBgColor}">
+                                                    <a-button type="primary" @click="productTitleBgCP = !productTitleBgCP" v-bind:style="{backgroundColor: productTitleBgColor, borderColor: productTitleBgColor}">
                                                         Select Color
                                                     </a-button>
-                                                    <swatches-picker v-if="showProductTitleBgCP" :value="productTitleBgColor" @input="setProductTitleBgColor($event.hex)" :disableAlpha="true" />
+                                                    <swatches-picker v-if="productTitleBgCP" :value="productTitleBgColor" @input="setProductTitleBgColor($event.hex)" :disableAlpha="true" />
                                                 </div>
                                                 <div class="settings__modal-item">
                                                     <p>Product Section Title</p>
@@ -510,17 +510,17 @@
                                                     </div>
                                                     <div class="pb-3">
                                                         <a-input @change="setProductTitleMain($event.target.value)" :placeholder="productTitleMain" />
-                                                        <a-button type="primary" size="small" @click="showProdTitleMainCP = !showProdTitleMainCP" v-bind:style="{backgroundColor: productTitleMainColor, borderColor: productTitleMainColor}">
+                                                        <a-button type="primary" size="small" @click="prodTitleMainCP = !prodTitleMainCP" v-bind:style="{backgroundColor: productTitleMainColor, borderColor: productTitleMainColor}">
                                                             Select Color
                                                         </a-button>
-                                                        <swatches-picker v-if="showProdTitleMainCP" :value="productTitleMainColor" @input="setProductTitleMainColor($event.hex)" :disableAlpha="true" />
+                                                        <swatches-picker v-if="prodTitleMainCP" :value="productTitleMainColor" @input="setProductTitleMainColor($event.hex)" :disableAlpha="true" />
                                                     </div>
                                                     <div class="pb-3">
                                                         <a-input @change="setProductTitleSub($event.target.value)" :placeholder="productTitleSub" />
-                                                        <a-button type="primary" size="small" @click="showProdTitleSubCP = !showProdTitleSubCP" v-bind:style="{backgroundColor: productTitleSubColor, borderColor: productTitleSubColor}">
+                                                        <a-button type="primary" size="small" @click="prodTitleSubCP = !prodTitleSubCP" v-bind:style="{backgroundColor: productTitleSubColor, borderColor: productTitleSubColor}">
                                                             Select Color
                                                         </a-button>
-                                                        <swatches-picker v-if="showProdTitleSubCP" :value="productTitleSubColor" @input="setProductTitleSubColor($event.hex)" :disableAlpha="true" />
+                                                        <swatches-picker v-if="prodTitleSubCP" :value="productTitleSubColor" @input="setProductTitleSubColor($event.hex)" :disableAlpha="true" />
                                                     </div>
                                                 </div>
                                                 <div class="settings__modal-item">
@@ -620,26 +620,26 @@ export default {
     showThemes: false,
     showHeroSettings: false,
     showMenuSettings: false,
-    showCollectionSettings: false,
     showProductSettings: false,
-    showPriColorCP: false,
-    showSecColorCP: false,
-    showNavLogoTextCP: false,
-    showProductTitleBgCP: false,
-    showHeroColorCP: false,
-    showHeroTitleCP: false,
-    showHeroContentCP: false,
-    showHeroBtnPriCP: false,
-    showHeroBtnSecCP: false,
-    showCollectionBgCP: false,
-    showCollectionBtnCP: false,
-    showCollectionOneBgCP: false,
-    showCollectionTwoBgCP: false,
-    showCollectionThreeBgCP: false,
-    showProductTitleBgCP: false,
-    showProdTitleMainCP: false,
-    showProdTitleSubCP: false,
-    showProdBgCP: false,
+    showCollectionSettings: false,
+    priColorCP: false,
+    secColorCP: false,
+    navLogoTextCP: false,
+    productTitleBgCP: false,
+    heroColorCP: false,
+    heroTitleCP: false,
+    heroContentCP: false,
+    heroBtnPriCP: false,
+    heroBtnSecCP: false,
+    collectionBgCP: false,
+    collectionBtnCP: false,
+    collectionOneBgCP: false,
+    collectionTwoBgCP: false,
+    collectionThreeBgCP: false,
+    productTitleBgCP: false,
+    prodTitleMainCP: false,
+    prodTitleSubCP: false,
+    prodBgCP: false,
   }),
   computed: {
     ...mapGetters([
@@ -769,60 +769,6 @@ export default {
     },
     //END
     
-    //Color Pickers
-    showPriColorCP() {
-        this.priColorCP = true;
-    },
-    showSecColorCP() {
-        this.secColorCP = true;
-    },
-    showNavLogoTextCP() {
-        this.navLogoTextCP = true;
-    },
-    showHeroColorCP() {
-        this.heroColorCP = true;
-    },
-    showHeroTitleCP() {
-        this.heroTitleCP = true;
-    },
-    showHeroContentCP() {
-        this.heroContentCP = true;
-    },
-    showCollectionBgCP() {
-        this.collectionBgCP = true;
-    },
-    showCollectionBtnCP() {
-        this.collectionBtnCP = true;
-    },
-    showCollectionOneBgCP() {
-        this.collectionOneBgCP = true;
-    },
-    showCollectionTwoBgCP() {
-        this.collectionTwoBgCP = true;
-    },
-    showCollectionThreeBgCP() {
-        this.collectionThreeBgCP = true;
-    },
-    showProductTitleBgCP() {
-        this.productTitleBgCP = true;
-    },
-    showProdTitleMainCP() {
-        this.prodTitleMainCP = true;
-    },
-    showProdTitleSubCP() {
-        this.prodTitleSubCP = true;
-    },
-    showProdBgCP() {
-        this.prodBgCP = true;
-    },
-    showHeroBtnPriCP() {
-        this.heroBtnPriCP = true;
-    },
-    showHeroBtnSecCP() {
-        this.heroBtnSecCP = true;
-    },
-    //END
-
     setPriFont(value) {
         this.$store.commit('setPriFont', value);
     },
