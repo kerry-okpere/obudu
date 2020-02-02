@@ -18,26 +18,26 @@
           </div>
           <div class="col col-xl-4">
             <nav class="navbar__one-nav">
-              <router-link exact to="/">Shop</router-link>
+              <router-link exact to="/" :style="{color: navColor}">Shop</router-link>
               <router-link exact to="/">Collections</router-link>
             </nav>
           </div>
           <div class="col col-xl-3">
-            <div class="navbar__one-search search">
+            <div class="navbar__one-search search" :style="{color: navColor}">
               <a-input-search placeholder="Search store..." style="width: 270px;float: right;" />
             </div>
           </div>
           <div class="col col-xl-3">
             <nav class="navbar__one-nav navbar-cta" style="margin: 6px 0 0;">
-              <div class="navbar__item">
+              <div class="navbar__item" :style="{color: navColor}">
                 <a-badge :count="getCartCount" :numberStyle="{cartIconStyle}" :showZero=true>
-                  <a-button type="link" @click="cartShow">
+                  <a-button type="link" @click="setCartShow">
                     <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart">
                     <span>Cart</span>
                   </a-button>
                 </a-badge>
               </div>
-              <div v-if="userLoggedin" class="navbar__item">
+              <!-- <div v-if="userLoggedin" class="navbar__item">
                 <a-dropdown>
                   <a-menu slot="overlay" @click="handleMenuClick">
                     <a-menu-item key="1">
@@ -56,8 +56,8 @@
                     <a-icon type="down" style="margin:5px 5px 0;" />
                   </a-button>
                 </a-dropdown>
-              </div>
-              <div v-else class="navbar__item">
+              </div> -->
+              <!-- <div v-else class="navbar__item">
                 <a-button type="link" @click="loginShow">
                   <img src="@/assets/img/nav/user.svg" width="20" alt="Account">
                   <span>Account</span>
@@ -93,24 +93,11 @@
             <div class="col col-xl-2">
               <nav class="navbar__two-nav navbar__two-secnav">
                 <a-badge :count="cartItems" :numberStyle="cartIconStyle">
-                  <a-button type="link" @click="cartShow">
+                  <a-button type="link" @click="setCartShow($event.target.value)">
                     <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart">
                     <h4>Cart</h4>
                   </a-button>
                 </a-badge>
-                <a-dropdown :trigger="['click']">
-                  <a class="ant-dropdown-link" href="#"><img src="@/assets/img/nav/user.svg" width="20" alt="Account">
-                    <span>Account</span>
-                  </a>
-                  <a-menu slot="overlay">
-                    <a-menu-item key="0">
-                      <a href="#">Register</a>
-                    </a-menu-item>
-                    <a-menu-item key="1">
-                      <a href="#">Sign in</a>
-                    </a-menu-item>
-                  </a-menu>
-                </a-dropdown>
               </nav>
             </div>
           </div>
@@ -122,29 +109,13 @@
                   <h4>Cart</h4>
                 </a-button>
               </a-badge>
-              <!-- <a-dropdown :trigger="['click']">
-                <a class="ant-dropdown-link" href="#">
-                  <img src="@/assets/img/nav/user.svg" width="20" alt="Account" />
-                  <p>Account</p>
-                </a>
-                <a-menu slot="overlay">
-                  <a-menu-item key="0">
-                    <a href="#">Register</a>
-                  </a-menu-item>
-                  <a-menu-item key="1">
-                    <a href="#">Sign in</a>
-                  </a-menu-item>
-                </a-menu>
-              </a-dropdown> -->
             </nav>
           </div>
         </div>
-      <!-- </a-affix> -->
     </section>
 
     <!-- Layout Three -->
     <section class="navbar__three d-none d-lg-block" v-if="navLayout === 3">
-      <!-- <a-affix :offsetTop="0"> -->
       <div class="container">
         <div class="row">
           <div class="col col-xl-3">
@@ -167,25 +138,11 @@
           <div class="col col-xl-2">
             <nav class="navbar__three-nav navbar__three-secnav">
               <a-badge :count="getCartCount" :numberStyle="{cartIconStyle}" :showZero=true>
-                <a-button type="link" @click="cartShow">
+                <a-button type="link" @click="setCartShow($event.target.value)">
                   <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart" />
                   <h4>Cart</h4>
                 </a-button>
               </a-badge>
-              <!-- <a-dropdown :trigger="['click']">
-                <a class="ant-dropdown-link" href="#">
-                  <img src="@/assets/img/nav/user.svg" width="20" alt="Account" />
-                  <p>Account</p>
-                </a>
-                <a-menu slot="overlay">
-                  <a-menu-item key="0">
-                    <a href="#">Register</a>
-                  </a-menu-item>
-                  <a-menu-item key="1">
-                    <a href="#">Sign in</a>
-                  </a-menu-item>
-                </a-menu>
-              </a-dropdown> -->
             </nav>
           </div>
         </div>
@@ -221,31 +178,6 @@
                   </a-button>
                 </a-badge>
               </div>
-              <div v-if="userLoggedin" class="navbar__item">
-                <a-dropdown>
-                  <a-menu slot="overlay" @click="handleMenuClick">
-                    <a-menu-item key="1">
-                      <a-icon type="user" />My Account
-                    </a-menu-item>
-                    <a-menu-item key="2">
-                      <a-icon type="shopping" />My Orders
-                    </a-menu-item>
-                    <a-menu-item key="3">
-                      <a-icon type="lock" />Logout
-                    </a-menu-item>
-                  </a-menu>
-                  <a-button type="link">
-                    <img src="@/assets/img/nav/user.svg" width="20" alt="Account" />
-                    <a-icon type="down" style="margin:5px 5px 0;" />
-                  </a-button>
-                </a-dropdown>
-              </div>
-              <div v-else class="navbar__item">
-                <a-button type="link" @click="loginShow">
-                  <img src="@/assets/img/nav/user.svg" width="20" alt="Account" />
-                  <p>Account</p>
-                </a-button>
-              </div> -->
             </nav>
           </div>
         </div>
@@ -256,7 +188,7 @@
 
 <script>
 import { Slide } from "vue-burger-menu";
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 import { STORENAME } from "./../../config";
 
 export default {
@@ -272,12 +204,6 @@ export default {
     getCartCount: 0
   }),
 
-  methods: {
-    handleMenuClick(e){
-      console.log("Menu clicked:", e)
-    }
-    
-  },
   computed: {
     actualCartCount() {
       return this.$store.getters["products/getCartQuantity"];
@@ -290,6 +216,7 @@ export default {
       'navFont',
       'navShow',
       'navType',
+      'navColor',
       'navLogo',
       'navLogoImg',
       'navLogoTextColor',
@@ -299,6 +226,11 @@ export default {
       'cartShow',
       'loginShow'
     ])
+  },
+  methods: {
+    setCartShow() {
+      this.$store.commit('setCartShow', true);
+    }
   },
   watch: {
     actualCartCount(val){

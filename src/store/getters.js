@@ -42,6 +42,7 @@ const getters = {
         navShow: state => state.styles.navShow,
         navLayout: state => state.styles.navLayout,
         navType: state => state.styles.navType,
+        navColor: state => state.styles.navColor,
         navLogoImg: state => state.styles.navLogoImg,
         navLogoTextColor: state => state.styles.navLogoTextColor,
         navLogoTextSize: state => state.styles.navLogoTextSize,

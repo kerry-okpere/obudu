@@ -187,13 +187,20 @@
                                             <a-slider @change="setNavLogoTextSize" :min="10" :max="50" :defaultValue="navLogoTextSize" />
                                         </div>
                                     </a-collapse-panel>
-                                    <a-collapse-panel header="Menu Type" key="2" :showArrow="false">
+                                    <a-collapse-panel header="Menu Settings" key="2" :showArrow="false">
                                         <div class="settings__modal-item">
                                             <p>Choose Menu Type</p>
-                                                <a-select :defaultValue="navType" style="width: 200px" @change="setNavType">
-                                                    <a-select-option value="navFixed">Fixed Menu</a-select-option>
-                                                    <a-select-option value="navTrans">Transparent Menu</a-select-option>
-                                                </a-select>
+                                            <a-select :defaultValue="navType" style="width: 200px" @change="setNavType">
+                                                <a-select-option value="navFixed">Fixed Menu</a-select-option>
+                                                <a-select-option value="navTrans">Transparent Menu</a-select-option>
+                                            </a-select>
+                                        </div>
+                                        <div class="settings__modal-item">
+                                            <p>Menu Color</p>
+                                            <a-button type="primary" size="small" @click="navColorCP = !navColorCP">
+                                                Select Color
+                                            </a-button>
+                                            <swatches-picker v-if="navColorCP" :value="navColor" @input="setNavColor($event.hex)" :disableAlpha="true" />
                                         </div>
                                     </a-collapse-panel>
                                 </a-collapse>
@@ -624,6 +631,7 @@ export default {
     showCollectionSettings: false,
     priColorCP: false,
     secColorCP: false,
+    navColorCP: false,
     navLogoTextCP: false,
     productTitleBgCP: false,
     heroColorCP: false,
@@ -650,6 +658,7 @@ export default {
       'priFont',
       'secFont',
       'navFont',
+      'navColor',
       'navShow',
       'navType',
       'navLayout',
@@ -871,6 +880,7 @@ export default {
     ...mapMutations([
       'setPriColor',
       'setSecColor',
+      'setNavColor',
       'setNavLayout',
       'setNavLogoTextColor',
       'setNavLogoTextSize',

@@ -40,6 +40,7 @@ const state = {
         navShow: true,
         navLayout: 1,
         navType: "navFixed",
+        navColor: "#2323",
         navLogoImg: false,
         navLogoTextColor: '#2323',
         navLogoTextSize: 20,
