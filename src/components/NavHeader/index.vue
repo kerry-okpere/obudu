@@ -19,21 +19,22 @@
           <div class="col col-xl-4">
             <nav class="navbar__one-nav">
               <router-link exact to="/" :style="{color: navColor}">Shop</router-link>
-              <router-link exact to="/">Collections</router-link>
+              <router-link exact to="/" :style="{color: navColor}">Collections</router-link>
             </nav>
           </div>
-          <div class="col col-xl-3">
+          <div class="col col-xl-5">
             <div class="navbar__one-search search" :style="{color: navColor}">
               <a-input-search placeholder="Search store..." style="width: 270px;float: right;" />
             </div>
           </div>
-          <div class="col col-xl-3">
+          <div class="col col-xl-1">
             <nav class="navbar__one-nav navbar-cta" style="margin: 6px 0 0;">
               <div class="navbar__item" :style="{color: navColor}">
-                <a-badge :count="getCartCount" :numberStyle="{cartIconStyle}" :showZero=true>
+                <a-badge :count="getCartCount" :numberStyle="cartIconStyle" :showZero=true>
                   <a-button type="link" @click="setCartShow">
-                    <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart">
-                    <span>Cart</span>
+                    <!-- <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart"> -->
+                    <v-icon name="shopping-cart" :style="{color: navColor}" />
+                    <span :style="{color: navColor}">Cart</span>
                   </a-button>
                 </a-badge>
               </div>
@@ -75,9 +76,9 @@
           <div class="row">
             <div class="col col-xl-4">
               <nav class="navbar__two-nav">
-                <router-link exact to="/">Shop</router-link>
-                <router-link exact to="/">Collection</router-link>
-                <router-link exact to="/">Sale</router-link>
+                <router-link exact to="/" :style="{color: navColor}">Shop</router-link>
+                <router-link exact to="/" :style="{color: navColor}">Collection</router-link>
+                <router-link exact to="/" :style="{color: navColor}">Sale</router-link>
               </nav>
             </div>
             <div class="col col-xl-3">
@@ -95,7 +96,7 @@
                 <a-badge :count="cartItems" :numberStyle="cartIconStyle">
                   <a-button type="link" @click="setCartShow($event.target.value)">
                     <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart">
-                    <h4>Cart</h4>
+                    <h4 :style="{color: navColor}">Cart</h4>
                   </a-button>
                 </a-badge>
               </nav>
@@ -125,9 +126,9 @@
           </div>
           <div class="col col-xl-4">
             <nav class="navbar__three-nav">
-              <router-link exact to="/">Shop</router-link>
-              <router-link exact to="/">Collection</router-link>
-              <router-link exact to="/">Sale</router-link>
+              <router-link exact to="/" :style="{color: navColor}">Shop</router-link>
+              <router-link exact to="/" :style="{color: navColor}">Collection</router-link>
+              <router-link exact to="/" :style="{color: navColor}">Sale</router-link>
             </nav>
           </div>
           <div class="col col-xl-3">
@@ -140,7 +141,7 @@
               <a-badge :count="getCartCount" :numberStyle="{cartIconStyle}" :showZero=true>
                 <a-button type="link" @click="setCartShow($event.target.value)">
                   <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart" />
-                  <h4>Cart</h4>
+                  <h4 :style="{color: navColor}">Cart</h4>
                 </a-button>
               </a-badge>
             </nav>
@@ -199,7 +200,7 @@ export default {
   data: () => ({
     userLoggedin: false,
     cartItems: 0,
-    cartIconStyle: "backgroundColor: #3C87D1;marginTop: 4px",
+    cartIconStyle: "backgroundColor: #ff5252;borderColor: #ff5252;marginTop: 4px",
     cartIconStyleMobile: "backgroundColor: #3C87D1;marginTop: 10px",
     getCartCount: 0
   }),
