@@ -3,16 +3,16 @@
     <div class="cart__overlay">
       <div class="cart__main" :class="{animated: setCartShow, slideInRight: setCartShow}">
         <div class="container">
-          <div class="cart__main-empty" v-if="!cartEmpty">
+          <div class="cart__main-empty" v-if="!cartFull">
             <img src="@/assets/img/cart.png" alt="Empty Cart" />
             <h3>Your cart is empty</h3>
             <p>Looks like you haven't added any items to your cart yet, continue shopping to fill it up.</p>
-            <a-button type="primary" block @click="setCartShow">Continue Shopping</a-button>
+            <a-button type="primary" block @click="setCartShow()">Continue Shopping</a-button>
           </div>
           <div class="cart__main-full" v-else>
             <div class="header">
               <h1>Cart</h1>
-              <a-button type="link" @click="setCartShow($event.target.value)">
+              <a-button type="link" @click="setCartShow()">
                 <v-icon name="times" />
               </a-button>
             </div>
@@ -53,7 +53,7 @@ import { mapGetters, mapMutations } from "vuex";
 
 export default {
   data: () => ({
-    cartEmpty: () => {
+    cartFull: () => {
         return this.getCartCount == 0 ? false : true
     }
   }),
@@ -93,9 +93,9 @@ export default {
     ])
   },
   methods: {
-    ...mapMutations([
-      'setCartShow',
-    ])
+    setCartShow() {
+      this.$store.commit('setCartShow', false);
+    }
   },  
 
   beforeCreated() {
