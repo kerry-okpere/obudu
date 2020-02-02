@@ -62,6 +62,7 @@ const getters = {
         collectionLayout: state => state.styles.collectionLayout,
         collectionBgColor: state => state.styles.collectionBgColor,
         collectionBtnColor: state => state.styles.collectionBtnColor,
+        collectionTextColor: state => state.styles.collectionTextColor,
         collectionOneShow: state => state.styles.collectionOneShow,
         collectionOneBg: state => state.styles.collectionOneBg,
         collectionTwoShow: state => state.styles.collectionTwoShow,

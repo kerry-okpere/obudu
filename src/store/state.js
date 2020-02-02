@@ -60,6 +60,7 @@ const state = {
         collectionShow: true,
         collectionLayout: 1,
         collectionBgColor: '#fff',
+        collectionTextColor: '#fff',
         collectionBtnColor: '#fff',
         collectionOneShow: true,
         collectionOneBg: '#eee',

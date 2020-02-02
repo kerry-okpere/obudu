@@ -186,6 +186,9 @@ const mutations = {
   setCollectionBtnColor(state, color) {
     state.styles.collectionBtnColor = color;
   },
+  setCollectionTextColor(state, color) {
+    state.styles.collectionTextColor = color;
+  },
   setCollectionOneShow(state, collectionOneShow) {
     state.styles.collectionOneShow = collectionOneShow;
   },

@@ -79,7 +79,7 @@
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="subfooter__one-badge">
-                                        <p>Powered by MercurieMart</p>
+                                        <a href="https://mercuriemart.com" target="_blank"><p>Powered by MercurieMart</p></a>
                                         </div>
                                     </div>
                                 </div>
@@ -101,7 +101,7 @@
                         </div>
                         <div class="col-12 col-xl-6 col-lg-6 col-md-12 col-sm-12">
                             <div class="subfooter__two-badge">
-                                <p>Powered by MercurieMart</p>
+                                <a href="https://mercuriemart.com" target="_blank"><p>Powered by MercurieMart</p></a>
                             </div>
                         </div>
                     </div>
@@ -117,7 +117,7 @@
                                 <p>© Copyright {{getCurrentYear}}, <a :href="storeUrl">{{storeName}}</a> - All Rights Reserved.</p>
                             </div>
                             <div class="subfooter__three-badge">
-                                <p>Powered by MercurieMart</p>
+                                <a href="https://mercuriemart.com" target="_blank"><p>Powered by MercurieMart</p></a>
                             </div>
                         </div>
                     </div>
