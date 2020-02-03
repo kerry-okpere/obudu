@@ -3,14 +3,14 @@
     <div class="product__info-name">
       <h1>{{ singleProd.name }}</h1>
       <!-- <h1>{{ selectedVariant }}</h1> -->
-      <a-rate v-model="rating" />
-      <h4>(2 ratings)</h4>
+      <!-- <a-rate v-model="rating" />
+      <h4>(2 ratings)</h4> -->
       <h2>&#x20A6;{{ formatPrice(selectedVariant.price || singleProd.basePrice) }}</h2>
       <!-- {{singleProds}} -->
     </div>
-    <!-- <div class="product__info-description">
+    <div class="product__info-description">
       <p>{{singleProd.description}}</p>
-    </div>-->
+    </div>
 
     <div class="product__info-variant">
       <div v-for="(va, index) in attrType" :key="index">

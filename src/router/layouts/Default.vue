@@ -1,6 +1,6 @@
 <template>
   <section class="layout__default" :class="[this.$store.state.styles.priFont, this.$store.state.styles.secFont]">
-    <NavHeader />
+    <NavHeaderFixed />
     <div class="content">
       <slot />
     </div>
@@ -11,14 +11,14 @@
 </template>
 
 <script>
-import NavHeader from '@/components/NavHeader'
+import NavHeaderFixed from '@/components/NavHeaderFixed'
 import NavCart from '@/components/NavCart'
 import NavLogin from '@/components/NavLogin'
 import NavFooter from '@/components/NavFooter'
 
 export default {
   components: {
-    NavHeader,
+    NavHeaderFixed,
     NavCart,
     NavLogin,
     NavFooter

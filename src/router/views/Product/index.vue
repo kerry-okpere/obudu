@@ -7,7 +7,7 @@
                         <ProductImage />
                     </div>
                     <div class="col-12 col-xl-6">
-                        <ProductBreadcrumb />
+                        <!-- <ProductBreadcrumb /> -->
                         <ProductInfo />
                         <ProductShare />
                     </div>
@@ -27,7 +27,7 @@ import ProductImage from '@/components/ProductImage'
 import ProductInfo from '@/components/ProductInfo'
 import ProductInfoBottom from '@/components/ProductInfoBottom'
 import ProductShare from '@/components/ProductShare'
-import ProductBreadcrumb from '@/components/ProductBreadcrumb'
+// import ProductBreadcrumb from '@/components/ProductBreadcrumb'
 
 export default {
     components: {
@@ -35,7 +35,7 @@ export default {
         ProductInfo,
         ProductInfoBottom,
         ProductShare,
-        ProductBreadcrumb,
+        // ProductBreadcrumb,
     },
 }
 </script>
