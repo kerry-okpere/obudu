@@ -37,6 +37,9 @@
             h4 {
                 font-size: 18px;
                 color: #3d3d3d;
+                &:hover {
+                    font-weight: bold;
+                }
             }
             p {
                 font-size: 12px;
