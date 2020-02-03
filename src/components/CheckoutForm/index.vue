@@ -143,7 +143,7 @@
               <div class="checkout__summary-single">
                 <div v-for="(cartItem, index) in getCartItems" class="row" :key="index">
                   <div class="col-lg-3 col-sm-3">
-                    <img src="https://via.placeholder.com/100" alt="Product Name" />
+                    <img :src="cartItem.image" alt="Product Name" />
                   </div>
                   <div class="col-lg-6 col-sm-6">
                     <h3 class="name">{{cartItem.name}} ({{cartItem.variantValues}})</h3>
