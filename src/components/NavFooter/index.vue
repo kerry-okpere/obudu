@@ -1,6 +1,7 @@
 <template>
     <footer>
         <section class="footer" v-if="footerShow" :class="[navFont]">
+           
             <!-- Footer Layout One -->
             <section class="footer__one" v-if="footerLayout === 1">
                 <div class="container">
@@ -58,30 +59,31 @@
         </section>
 
         <section class="subfooter" v-if="subfooterShow">
+            
             <!-- Subfooter Layout One -->
-            <section class="subfooter__one" v-if="subfooterLayout === 1">
+            <section class="subfooter__one" v-if="subfooterLayout === 1" :style="{backgroundColor: subfooterBgColor, color: subfooterColor}">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                             <div class="subfooter__one-copyright">
-                                <p>© Copyright {{getCurrentYear}}, <a :href="storeUrl">{{storeName}}</a> - All Rights
+                                <p>© Copyright {{getCurrentYear}}, <a :href="storeUrl" :style="{color: subfooterColor}">{{storeName}}</a> - All Rights
                                     Reserved.</p>
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="subfooter__one-payment">
-                                        <img src="@/assets/img/footer/paystack.svg" alt="Paystack Logo" width="100">
-                                        <img src="@/assets/img/footer/flutterwave.svg" alt="Flutterwave Logo" width="100">
-                                        <img src="@/assets/img/footer/quickteller.svg" alt="Quickteller Logo" width="100">
+                                        <div class="subfooter__one-payment pt-1">
+                                        <img src="@/assets/img/footer/master.png" alt="MasterCard Logo" width="50">
+                                        <!-- <img src="@/assets/img/footer/visa.png" alt="Visa Logo" width="60"> -->
+                                        <img src="@/assets/img/footer/verve.png" alt="Verve Logo" width="60">
                                         </div>
                                     </div>
-                                    <div class="col-lg-12">
+                                    <!-- <div class="col-lg-12">
                                         <div class="subfooter__one-badge">
-                                        <a href="https://mercuriemart.com" target="_blank"><p>Powered by MercurieMart</p></a>
+                                        <p href="https://mercuriemart.com" target="_blank"><p>Powered by MercurieMart</p></a>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                     </div>
@@ -89,36 +91,36 @@
             </section>
 
             <!-- Subfooter Layout Two -->
-            <section class="subfooter__two" v-if="subfooterLayout === 2">
+            <section class="subfooter__two" v-if="subfooterLayout === 2" :style="{backgroundColor: subfooterBgColor, color: subfooterColor}">
                 <div class="container">
                     <div class="row">
                         <div class="col-12 col-xl-6 col-lg-6 col-md-12 col-sm-12">
                             <div class="subfooter__two-copyright">
-                                <p>© Copyright {{getCurrentYear}}, <a :href="storeUrl">{{storeName}}</a> - All Rights
+                                <p>© Copyright {{getCurrentYear}}, <a :href="storeUrl" :style="{color: subfooterColor}">{{storeName}}</a> - All Rights
                                     Reserved.
                                 </p>
                             </div>
                         </div>
-                        <div class="col-12 col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                        <!-- <div class="col-12 col-xl-6 col-lg-6 col-md-12 col-sm-12">
                             <div class="subfooter__two-badge">
                                 <a href="https://mercuriemart.com" target="_blank"><p>Powered by MercurieMart</p></a>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </section>
 
             <!-- Subfooter Layout Three -->
-            <section class="subfooter__three" v-if="subfooterLayout === 3">
+            <section class="subfooter__three" v-if="subfooterLayout === 3" :style="{backgroundColor: subfooterBgColor, color: subfooterColor}">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
-                            <div class="subfooter__three-copyright">
-                                <p>© Copyright {{getCurrentYear}}, <a :href="storeUrl">{{storeName}}</a> - All Rights Reserved.</p>
+                            <div class="subfooter__three-copyright pt-3">
+                                <p>© Copyright {{getCurrentYear}}, <a :href="storeUrl" :style="{color: subfooterColor}">{{storeName}}</a> - All Rights Reserved.</p>
                             </div>
-                            <div class="subfooter__three-badge">
+                            <!-- <div class="subfooter__three-badge">
                                 <a href="https://mercuriemart.com" target="_blank"><p>Powered by MercurieMart</p></a>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -139,10 +141,13 @@ export default {
     computed: {
         ...mapGetters ([
             'navFont',
+            'priColor',
             'footerShow',
             'footerLayout',
             'subfooterShow',
             'subfooterLayout',
+            'subfooterBgColor',
+            'subfooterColor',
             'navLogoImg',
             'navLogoTextColor',
             'storeName'

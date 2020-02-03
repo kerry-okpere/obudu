@@ -47,7 +47,7 @@ eventBus.$on('themeJupiter', () => {
     store.commit('setNavLogoImg', false);
     store.commit('setNavLogoTextColor', '#fff');
     store.commit('setNavLogoTextSize', '20');
-    store.commit('setCartShow', true);
+    store.commit('setCartShow', false);
     store.commit('setLoginShow', false);
     store.commit('setHeroShow', true);
     store.commit('setHeroLayout', 1);
@@ -90,5 +90,7 @@ eventBus.$on('themeJupiter', () => {
     store.commit('setFooterLayout', 1);
     store.commit('setSubfooterShow', true);
     store.commit('setSubfooterLayout', 1);
+    store.commit('setSubfooterBgColor', '#0360C4');
+    store.commit('setSubfooterColor', '#fff');
     console.log(`Theme successfully changed to Jupiter`);
 });

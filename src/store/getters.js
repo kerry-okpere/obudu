@@ -88,7 +88,9 @@ const getters = {
         footerShow: state => state.styles.footerShow,
         footerLayout: state => state.styles.footerLayout,
         subfooterShow: state => state.styles.subfooterShow,
-        subfooterLayout: state => state.styles.subfooterLayout
+        subfooterLayout: state => state.styles.subfooterLayout,
+        subfooterBgColor: state => state.styles.subfooterBgColor,
+        subfooterColor: state => state.styles.subfooterColor
 };
 
 export default getters;
