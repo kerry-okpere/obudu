@@ -87,7 +87,9 @@ const state = {
         footerShow: false,
         footerLayout: 1,
         subfooterShow: true,
-        subfooterLayout: 1
+        subfooterLayout: 1,
+        subfooterBgColor: '#fff',
+        subfooterColor: '#222'
     },
     
     store: null

@@ -270,6 +270,12 @@ const mutations = {
   },
   setSubfooterLayout(state, subfooterLayout) {
     state.styles.subfooterLayout = subfooterLayout;
+  },
+  setSubfooterBgColor(state, subfooterBgColor) {
+    state.styles.subfooterBgColor = subfooterBgColor;
+  },
+  setSubfooterColor(state, subfooterColor) {
+    state.styles.subfooterColor = subfooterColor;
   }
 };
 
