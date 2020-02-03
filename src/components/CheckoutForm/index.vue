@@ -151,7 +151,7 @@
                     <h3 class="variant">{{cartItem.quantity}}</h3>
                   </div>
                   <div class="col-lg-3">
-                    <h3 class="price">Price</h3>
+                    <h3 class="price">{{cartItem.price}}</h3>
                   </div>
                 </div>
               </div>
@@ -160,15 +160,15 @@
                   <div class="col">
                     <p>
                       Subtotal:
-                      <span class="amount">Amount</span>
+                      <span class="amount">{{formatTotal}}</span>
                     </p>
                     <p>
                       Shipping:
-                      <span class="amount">Amount</span>
+                      <span class="amount">--</span>
                     </p>
                     <p>
                       Total:
-                      <span class="amount">Amount</span>
+                      <span class="amount">{{formatTotal}}</span>
                     </p>
                   </div>
                 </div>
@@ -214,8 +214,20 @@ export default {
     getCartCount() {
       return this.$store.getters["products/getCartQuantity"];
     },
+    getCartTotal() {
+      return this.$store.getters["products/getCartTotal"];
+    },
     getCartItems() {
       return this.$store.getters["products/getCartItems"];
+    },
+    formatTotal() {
+      if (this.getCartCount > 0) {
+        return new Intl.NumberFormat("en-IN", {
+          maximumSignificantDigits: 3
+        }).format(this.getCartTotal);
+      } else {
+        return 0;
+      }
     }
   },
 
