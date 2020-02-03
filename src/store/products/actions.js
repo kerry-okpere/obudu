@@ -14,6 +14,17 @@ let dummy_store = `${STORENAME}`;
 
 const actions = {
 
+  async fetchStoreMetadata({ state, commit }) {
+    return new Promise(async (resolve, reject) => {      
+      let response = await storefront$http.get(`${API_URL}/${STORE_ID}/metadata`).catch(err => console.log(err));
+      if (response.status == 200) {
+        resolve(response.data);
+      } else {
+        reject("Unable to fetch metadata");
+      }
+    });
+  },
+
   async fetchStoreStyles({ state, commit }) {
     return new Promise(async (resolve, reject) => {      
       let response = await storefront$http.get(`${API_URL}/${STORE_ID}/styles`).catch(err => console.log(err));
