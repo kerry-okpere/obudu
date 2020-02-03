@@ -9,13 +9,13 @@
                             <h3>Categories</h3>
                             <ul>
                                 <li>
-                                    <router-link exact to="/">Category One</router-link>
+                                    <router-link exact to="#">Category One</router-link>
                                 </li>
                                 <li>
-                                    <router-link exact to="/">Category Two</router-link>
+                                    <router-link exact to="#">Category Two</router-link>
                                 </li>
                                 <li>
-                                    <router-link exact to="/">Category Three</router-link>
+                                    <router-link exact to="#">Category Three</router-link>
                                 </li>
                             </ul>
                         </div>
@@ -23,19 +23,19 @@
                             <h3>Account</h3>
                             <ul>
                                 <li>
-                                    <router-link exact to="/">Register</router-link>
+                                    <router-link exact to="#">Register</router-link>
                                 </li>
                                 <li>
-                                    <router-link exact to="/">Sign In</router-link>
+                                    <router-link exact to="#">Sign In</router-link>
                                 </li>
                                 <li>
-                                    <router-link exact to="/">Orders</router-link>
+                                    <router-link exact to="#">Orders</router-link>
                                 </li>
                             </ul>
                         </div>
                         <div class="col-12 col-xl-3 col-lg-3 col-md-4 col-sm-12">
                             <h3>About</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            <p>{{metadata.about}}</p>
                         </div>
                         <div class="col-12 col-xl-3 col-lg-3 col-md-4 col-sm-12">
                             <div class="footer__one-contact">
@@ -43,12 +43,12 @@
                                     <img v-if="navLogoImg" :src="navLogo" :alt="storeName" width="200">
                                     <h1 v-else :style="{color: navLogoTextColor}">{{storeName}}</h1>
                                 </div>
-                                <p>+234 801 234 5678</p>
-                                <p>123A, Somewhere Street, Lagos, Nigeria.</p>
+                                <p>{{metadata.phone}}</p>
+                                <p>{{metadata.address}}</p>
                                 <div class="footer__one-social">
-                                    <v-icon name="brands/facebook-f"/>
-                                    <v-icon name="brands/twitter"/>
-                                    <v-icon name="brands/instagram"/>
+                                    <a :href="metadata.facebook" target="_blank"> <v-icon name="brands/facebook-f"/> </a>
+                                    <a :href="metadata.twitter" target="_blank"> <v-icon name="brands/twitter"/> </a>
+                                    <a :href="metadata.instagram" target="_blank">  <v-icon name="brands/instagram"/> </a>
                                 </div>
                             </div>
                         </div>
@@ -129,10 +129,12 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import { STORENAME } from "./../../config";
 
 export default {
     data: () => ({
         storeUrl: null,
+        metadata: null
     }),
     computed: {
         ...mapGetters ([
@@ -148,7 +150,11 @@ export default {
         getCurrentYear() {
             return new Date().getFullYear()
         }
-    }
+    },
+  async created() {
+    let res = await this.$store.dispatch("products/fetchStoreMetadata");
+    this.metadata = res
+  }
 }
 </script>
 
