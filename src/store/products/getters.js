@@ -2,7 +2,8 @@ const getters = {
     getProducts: state => state.products,
     getProduct: state => state.singleProduct,
     getCartQuantity: state => {
-        if(state.cart.length > 0 ){
+        let storeState = JSON.parse(window.localStorage.getItem(process.env.VUE_APP_STORENAME));
+        if(storeState.cart !== undefined){
             return state.cart.reduce((totalCount, item) => totalCount += item.quantity, 0);
         } else {
             return 0;

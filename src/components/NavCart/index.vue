@@ -37,7 +37,7 @@
             <div class="footer">
               <div class="total">
                 <h3>Total</h3>
-                <h1>NGN {{ formatTotal() }}</h1>
+                <h1>NGN {{ formatTotal }}</h1>
               </div>
               <a-button type="primary" block @click="checkout()">Checkout</a-button>
             </div>
@@ -54,52 +54,51 @@ import { mapGetters, mapMutations } from "vuex";
 export default {
   data: () => ({
     cartFull: () => {
-        return this.getCartCount == 0 ? false : true
+      return this.getCartCount == 0 ? false : true;
     }
   }),
-  methods: {
-    checkout() {
-        this.cartShow = false;
-        this.$router.push("/checkout");
-    },
-    formatTotal(){
-        if(this.getCartCount > 0 ){
-            return new Intl.NumberFormat('en-IN', { maximumSignificantDigits: 3 }).format(this.getCartTotal)
-        } else {
-            return 0;
-        }
-    },
-    deleteCartItem(index){
-        this.$store.dispatch("products/deleteCartItem", index)
-    }
 
-  },
   computed: {
     getCartCount() {
       return this.$store.getters["products/getCartQuantity"];
     },
-    getCartTotal(){
-        return this.$store.getters["products/getCartTotal"];
+    getCartTotal() {
+      return this.$store.getters["products/getCartTotal"];
     },
     getCartItems() {
       return this.$store.getters["products/getCartItems"];
     },
-    getProducts() {
-        return this.$store.getters["products/getProducts"]
+    formatTotal() {
+      if (this.getCartCount > 0) {
+        return new Intl.NumberFormat("en-IN", {
+          maximumSignificantDigits: 3
+        }).format(this.getCartTotal);
+      } else {
+        return 0;
+      }
     },
-    ...mapGetters([
-      'cartShow',
-      'navFont'
-    ])
+    getProducts() {
+      return this.$store.getters["products/getProducts"];
+    },
+    getCartShow(){
+        return this.$store.getters["cartShow"];
+    },
+    ...mapGetters(["cartShow", "navFont"])
   },
   methods: {
     setCartShow() {
-      this.$store.commit('setCartShow', false);
+      this.$store.commit("setCartShow", false);
+    },
+    checkout() {
+      this.cartShow = false;
+      this.$router.push("/checkout");
+    },
+    deleteCartItem(index) {
+      this.$store.dispatch("products/deleteCartItem", index);
     }
-  },  
+  },
 
   beforeCreated() {
-
     // console.log(this.getCartCount)
     // this.cartEmpty = this.getCartCount !== 0 ? false : true
   }

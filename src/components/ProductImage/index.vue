@@ -1,7 +1,7 @@
 <template>
   <div class="product__image">
     <a-skeleton :loading="loading" :disabled="loading" active>
-      <carousel :per-page="1" :mouse-drag="true" autoplay="true" :autoplayTimeout="4000" :autoplayHoverPause="false" :navigationEnabled="false" :paginationEnabled="false">
+      <carousel :per-page="1" :mouse-drag=true :autoplay=true :autoplayTimeout=4000 :autoplayHoverPause=false :navigationEnabled=false :paginationEnabled=false>
         <slide>
           <img :src="image" alt="Product Name">
         </slide>

@@ -35,35 +35,32 @@ const router =  new Router({
       }
     },
     {
-      path: "/collection/",
+      path: "/collection",
       component: Collection
     },
     {
-      path: "/checkout/",
+      path: "/checkout",
       component: Checkout,
       meta: {
         title: `Checkout - ${STORENAME}`,
-        middleware: [
-          loadEnv
-        ]
       }
     },
     {
-      path: "/dashboard/",
+      path: "/dashboard",
       component: Dashboard,
       meta: {
         title: `Manage Account - ${STORENAME}`
       }
     },
     {
-      path: "/about/",
+      path: "/about",
       component: About,
       meta: {
         title: `About - ${STORENAME}`
       }
     },
     {
-      path: "/design/",
+      path: "/design",
       component: Design,
       meta: {
         title: `Design - ${STORENAME}`,

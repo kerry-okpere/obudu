@@ -41,7 +41,6 @@ const actions = {
       let response = await storefront$http.get('/products').catch(err => console.log(err));
       if (response.status == 200) {
         resolve(response.data);
-        console.log(response.data);
         commit("setProducts", response.data);
       } else {
         reject("Unable to fetch products");

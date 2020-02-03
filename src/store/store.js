@@ -6,12 +6,9 @@ const vuexLocal = new VuexPersistence({
     key: process.env.VUE_APP_STORENAME,
     storage: window.localStorage,
     reducer: (state) => ({
-        products: state.products.products,
-        singleProduct: state.products.singleProduct,
         styles: state.styles,
         data: state.data,
         cart: state.products.cart
-
     })
 });
 
@@ -25,14 +22,14 @@ import products from './products/products';
 Vue.use(Vuex);
 
 const store = new Vuex.Store({
-    plugins: [vuexLocal.plugin],
     actions,
     getters,
     mutations,
     state,
     modules: {
         products
-    }
+    },
+    plugins: [vuexLocal.plugin]
 });
 
 export default store;

@@ -30,7 +30,7 @@
           <div class="col col-xl-1">
             <nav class="navbar__one-nav navbar-cta" style="margin: 6px 0 0;">
               <div class="navbar__item" :style="{color: navColor}">
-                <a-badge :count="getCartCount" :numberStyle="cartIconStyle" :showZero=true>
+                <a-badge :count="actualCartCount" :numberStyle="{cartIconStyle}" :showZero=true>
                   <a-button type="link" @click="setCartShow">
                     <!-- <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart"> -->
                     <v-icon name="shopping-cart" :style="{color: navColor}" />
@@ -93,7 +93,7 @@
             </div>
             <div class="col col-xl-2">
               <nav class="navbar__two-nav navbar__two-secnav">
-                <a-badge :count="cartItems" :numberStyle="cartIconStyle">
+                <a-badge :count="actualCartCount" :numberStyle="{cartIconStyle}">
                   <a-button type="link" @click="setCartShow($event.target.value)">
                     <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart">
                     <h4 :style="{color: navColor}">Cart</h4>
@@ -104,7 +104,7 @@
           </div>
           <div class="col col-xl-2">
             <nav class="navbar__two-nav navbar__two-secnav">
-              <a-badge :count="getCartCount" :numberStyle="{cartIconStyle}" :showZero=true>
+              <a-badge :count="actualCartCount" :numberStyle="{cartIconStyle}" :showZero=true>
                 <a-button type="link" @click="cartShow">
                   <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart" />
                   <h4>Cart</h4>
@@ -138,7 +138,7 @@
           </div>
           <div class="col col-xl-2">
             <nav class="navbar__three-nav navbar__three-secnav">
-              <a-badge :count="getCartCount" :numberStyle="{cartIconStyle}" :showZero=true>
+              <a-badge :count="actualCartCount" :numberStyle="{cartIconStyle}" :showZero=true>
                 <a-button type="link" @click="setCartShow($event.target.value)">
                   <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart" />
                   <h4 :style="{color: navColor}">Cart</h4>
@@ -173,7 +173,7 @@
                 </a-button>
               </div>
               <div class="navbar__item">
-                <a-badge :count="getCartCount" :numberStyle="{cartIconStyleMobile}" :showZero=true>
+                <a-badge :count="actualCartCount" :numberStyle="{cartIconStyleMobile}" :showZero=true>
                   <a-button type="link" @click="cartShow">
                     <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart" />
                   </a-button>
@@ -233,11 +233,11 @@ export default {
       this.$store.commit('setCartShow', true);
     }
   },
-  watch: {
-    actualCartCount(val){
-      this.getCartCount = val
-    }
-  }
+  // watch: {
+  //   actualCartCount(val){
+  //     this.getCartCount = val
+  //   }
+  // }
 };
 </script>
 

@@ -85,7 +85,9 @@ export default {
     formatPrice(price) {
       // Apply currency
       if (typeof price !== "number") {
-        return Number(price.replace(/\D/g, "").slice(0, -2));
+        if(price !== undefined){
+          return Number(price.replace(/\D/g, "").slice(0, -2));
+        }
       } else {
         return price;
       }
