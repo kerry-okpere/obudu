@@ -30,8 +30,8 @@
       <a-input-number :min="1" :max="10" v-model="value" @change="changeQuant" />
     </div>
     <div class="product__info-cart">
-      <a-button v-if="!selectedVariant" icon="minus" :size="btnSize" block disabled>Add to Cart</a-button>
-      <a-button v-else type="primary" icon="plus" :size="btnSize" @click="addToCart(selectedVariant)" block >Add to Carts</a-button>
+      <a-button v-if="!selectedVariant" :size="btnSize" block disabled>Add to Cart</a-button>
+      <a-button v-else type="primary" icon="plus" :size="btnSize" @click="addToCart(selectedVariant)" block >Add to Cart</a-button>
     </div>
   </div>
 </template>
@@ -68,7 +68,7 @@ export default {
       let prodObj = selectedVariant;
       prodObj.selectedQuantity = this.value;
       let product = this.$store.dispatch("products/addProductToCart", prodObj);
-      this.openNotification();
+      this.$message.success('Added to cart!');
     },
     openNotification() {
       this.$notification.open({

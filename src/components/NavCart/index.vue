@@ -3,7 +3,7 @@
     <div class="cart__overlay">
       <div class="cart__main" :class="{animated: setCartShow, slideInRight: setCartShow}">
         <div class="container">
-          <div class="cart__main-empty" v-if="!cartFull">
+          <div class="cart__main-empty" v-if="getCartCount < 1">
             <img src="@/assets/img/cart.png" alt="Empty Cart" />
             <h3>Your cart is empty</h3>
             <p>Looks like you haven't added any items to your cart yet, continue shopping to fill it up.</p>
@@ -13,7 +13,7 @@
             <div class="header">
               <h1>Cart</h1>
               <a-button type="link" @click="setCartShow()">
-                <v-icon name="times" />
+                <v-icon name="times" class="trash-pointer"/>
               </a-button>
             </div>
             <div class="item">
@@ -24,15 +24,15 @@
                 <div class="col-7">
                   <div class="item-details">
                     <h1>{{cartItem.name}} ({{cartItem.variantValues}})</h1>
-                    <h3>{{cartItem.price}}</h3>
-                    <p>{{cartItem.quantity}}</p>
+                    <h3>&#x20A6; {{cartItem.price}}</h3>
+                    <p>Quantity - {{cartItem.quantity}}</p>
                   </div>
                 </div>
                 <div class="col-2">
-                  <v-icon name="trash" @click="deleteCartItem(index)" />
+                  <v-icon name="trash" class="trash-pointer" @click="deleteCartItem(index)" />
                 </div>
+                <a-divider />
               </div>
-              <a-divider />
             </div>
             <div class="footer">
               <div class="total">
@@ -52,12 +52,6 @@
 import { mapGetters, mapMutations } from "vuex";
 
 export default {
-  data: () => ({
-    cartFull: () => {
-      return this.getCartCount == 0 ? false : true;
-    }
-  }),
-
   computed: {
     getCartCount() {
       return this.$store.getters["products/getCartQuantity"];
@@ -90,7 +84,7 @@ export default {
       this.$store.commit("setCartShow", false);
     },
     checkout() {
-      this.cartShow = false;
+      this.$store.commit("setCartShow", false);
       this.$router.push("/checkout");
     },
     deleteCartItem(index) {

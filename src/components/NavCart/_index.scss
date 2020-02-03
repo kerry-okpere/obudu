@@ -84,7 +84,7 @@
                         margin: 0 0 10px;
                     }
                     h3 {
-                        font-size: 14px;
+                        font-size: 16px;
                         margin: 0;
                     }
                     p {
@@ -121,5 +121,12 @@
                 }
             }
         }
+    }
+}
+
+.trash-pointer {
+    &:hover {
+        cursor: pointer;
+        color: $failed;
     }
 }

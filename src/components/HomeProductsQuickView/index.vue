@@ -18,11 +18,24 @@ import ProductBreadcrumb from '@/components/ProductBreadcrumb';
 import ProductInfo from '@/components/ProductInfo';
 
 export default {
+  data: () => ({
+    singleProd: {}
+  }),
   components: {
     ProductImage,
     ProductBreadcrumb,
     ProductInfo
-  }
+  },
+  async created() {
+    let slug = this.$route.params.slug;
+    console.log(slug);
+    this.singleProd = await this.$store.dispatch(
+      "products/fetchSingleProducts",
+      {
+        prodId: slug
+      }
+    );
+  },
 }
 </script>
 
