@@ -207,7 +207,7 @@ export default {
 
   computed: {
     actualCartCount() {
-      return this.$store.getters["products/getCartQuantity"];
+      return this.$store.getters["getCartQuantity"];
     },
     ...mapGetters([
       'priColor',

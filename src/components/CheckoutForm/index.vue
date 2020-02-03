@@ -218,13 +218,13 @@ export default {
   }),
   computed: {
     getCartCount() {
-      return this.$store.getters["products/getCartQuantity"];
+      return this.$store.getters["getCartQuantity"];
     },
     getCartTotal() {
-      return this.$store.getters["products/getCartTotal"];
+      return this.$store.getters["getCartTotal"];
     },
     getCartItems() {
-      return this.$store.getters["products/getCartItems"];
+      return this.$store.getters["getCartItems"];
     },
     formatTotal() {
       if (this.getCartCount > 0) {
@@ -314,8 +314,10 @@ export default {
     }
   }
 };
+
 </script>
 
 <style lang="scss" scoped>
 @import "./index";
+
 </style>
