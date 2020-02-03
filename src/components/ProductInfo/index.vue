@@ -67,7 +67,7 @@ export default {
     addToCart(selectedVariant) {
       let prodObj = selectedVariant;
       prodObj.selectedQuantity = this.value;
-      let product = this.$store.dispatch("products/addProductToCart", prodObj);
+      let product = this.$store.dispatch("addProductToCart", prodObj);
       this.$message.success('Added to cart!');
     },
     openNotification() {
@@ -134,7 +134,6 @@ export default {
     }
   },
   async created() {
-    let cart = this.$store.getters["products/cart"];
     //get slugUrl
     let slug = this.$route.params.slug;
 
