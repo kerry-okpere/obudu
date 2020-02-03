@@ -6,6 +6,7 @@ Vue.use(Router)
 
 import Home from './views/Home';
 import Product from './views/Product';
+import Cart from './views/Cart';
 import Collection from './views/Collection';
 import Checkout from './views/Checkout';
 import Dashboard from './views/Dashboard';
@@ -46,7 +47,14 @@ const router =  new Router({
       }
     },
     {
-      path: "/dashboard",
+      path: "/cart/",
+      component: Cart,
+      meta: {
+        title: `Cart - ${STORENAME}`
+      }
+    },
+    {
+      path: "/dashboard/",
       component: Dashboard,
       meta: {
         title: `Manage Account - ${STORENAME}`

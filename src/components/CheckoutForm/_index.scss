@@ -1,4 +1,8 @@
 .checkout {
+    margin: 120px 0 0;
+    input#shippingDetails_address {
+        width: 512px;
+    }
     &__steps {
         &-shipping {
             span {
@@ -21,8 +25,8 @@
             height: 40px;
         }
     }
-
     &__summary {
+        width: 350px;
         &-single {
             border-bottom: 1px solid #f3f3f3;
             margin: 15px 0;
@@ -69,6 +73,7 @@
         }
         button {
             border-radius: 0 0 10px 10px;
+            box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.19);
             height: 60px;
             font-size: 18px;
             font-weight: 700;
@@ -83,14 +88,24 @@
 .ant-form-inline .ant-form-item {
     margin-bottom: 10px;
 }
+.ant-card-head-title {
+    font-weight: 600;
+}
 .ant-card-bordered {
     border: 0px solid #222;
     border-radius: 10px 10px 0 0;
     box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.19);
 }
 
-@media (min-width: 764px) and (max-width: 1024px) {
+@include media-breakpoint-down(sm) {
     .checkout {
+        margin: 80px 0 0;
+        input#shippingDetails_address {
+            width: 250px;
+        }
+        .container {
+            width: 100%;
+        }
         &__steps {
             &-shipping {
                 .wrapperCol {
@@ -98,6 +113,10 @@
                 }
             }
         }
+        &__summary {
+            width: 300px;
+            margin-left: 25px;
+            padding: 40px 0 20px;
+        }
     }
-    
 }

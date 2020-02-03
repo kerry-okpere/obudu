@@ -2,7 +2,7 @@
   <section class="checkout">
     <div class="container">
       <div class="row">
-        <div class="col-lg-8">
+        <div class="col-12 col-md-6 col-xl-8">
           <div class="checkout__steps">
             <md-steppers :md-active-step.sync="active" md-vertical md-linear>
               <md-step
@@ -51,8 +51,8 @@
                     <a-input
                       v-decorator="['address', { rules: [{ required: true, message: 'Please enter a valid address' }] }]"
                       placeholder="Address"
-                      style="width: 518px; height: 40px;"
-                      class="adInput"
+                      style="height: 40px;"
+                      class="address"
                       type="text"
                       name="address"
                     />
@@ -137,8 +137,8 @@
             </md-steppers>
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="checkout__summary" style="width: 350px">
+        <div class="col-12 col-md-6 col-xl-4">
+          <div class="checkout__summary">
             <a-card title="Order Summary" hoverable>
               <div class="checkout__summary-single">
                 <div v-for="(cartItem, index) in getCartItems" class="row" :key="index">
@@ -190,6 +190,12 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import VueMaterial from 'vue-material'
+import 'vue-material/dist/vue-material.min.css';
+import 'vue-material/dist/theme/default.css';
+Vue.use(VueMaterial)
+
 export default {
   data: () => ({
     active: "first",
@@ -209,7 +215,6 @@ export default {
       sm: { span: 12 }
     }
   }),
-
   computed: {
     getCartCount() {
       return this.$store.getters["products/getCartQuantity"];
