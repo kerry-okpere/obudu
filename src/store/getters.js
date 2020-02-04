@@ -1,5 +1,3 @@
-import state from "./state";
-
 const getters = {
     data: state => state.data,
     storeName: state => state.data.storeName,

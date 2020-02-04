@@ -207,7 +207,7 @@ export default {
 
   computed: {
     navTypeFixed() {
-      if (navType === 'navFixed') {
+      if (this.$store.state.styles.navType === 'navFixed') {
         return true
       } else {
         return false
