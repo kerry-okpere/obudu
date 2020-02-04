@@ -8,7 +8,7 @@
                         <h1>404</h1>
                         <h3>Page not found</h3>
                         <router-link to="/">
-                            <s-button :priColor="priColor" :secColor="secColor">Return home</s-button>
+                            <s-button :pri="priColor" :sec="secColor">Return home</s-button>
                         </router-link>
                     </div>
                 </div>
@@ -41,11 +41,6 @@ export default {
     h3 {
         font-size: 24px;
         padding: 5px 0 10px;
-    }
-    button {
-        margin: 10px 0;
-        font-weight: 600;
-        font-size: 16px;
     }
 }
 </style>

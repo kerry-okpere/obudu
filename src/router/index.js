@@ -13,6 +13,8 @@ import Dashboard from './views/Dashboard';
 import About from './views/About';
 import Design from './views/Design';
 import Error from './views/Error';
+import OrderSuccess from './views/OrderSuccess';
+import OrderFailure from './views/OrderFailure';
 
 import loadEnv from './middleware/loadEnv';
 
@@ -80,6 +82,20 @@ const router =  new Router({
       component: Error,
       meta: {
         title: `Page Not Found - ${STORENAME}`,
+      }
+    },
+    {
+      path: "/order/success",
+      component: OrderSuccess,
+      meta: {
+        title: `Order Successful - ${STORENAME}`,
+      }
+    },
+    {
+      path: "/order/failed",
+      component: OrderFailure,
+      meta: {
+        title: `Order Failed - ${STORENAME}`,
       }
     }
   ]
