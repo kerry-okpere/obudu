@@ -47,7 +47,7 @@ eventBus.$on('themeJupiter', () => {
     store.commit('setNavBgColor', '#0360C4');
     store.commit('setNavLogoImg', false);
     store.commit('setNavLogoTextColor', '#fff');
-    store.commit('setNavLogoTextSize', '20');
+    store.commit('setNavLogoTextSize', 20);
     store.commit('setCartShow', false);
     store.commit('setLoginShow', false);
     store.commit('setHeroShow', true);
