@@ -124,6 +124,9 @@ const mutations = {
   setNavColor(state, color) {
     state.styles.navColor = color;
   },
+  setNavBgColor(state, color) {
+    state.styles.navBgColor = color;
+  },
   setNavLayout(state, navLayout) {
     state.styles.navLayout = navLayout;
   },

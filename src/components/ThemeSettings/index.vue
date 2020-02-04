@@ -170,7 +170,7 @@
                                         <div class="settings__modal-item">
                                             <p>Logo</p>
                                             <div class="settings__upload">
-                                                <a-button type="primary" id="upload_widget" @click="uploadWidget()">
+                                                <a-button type="primary" id="upload_widget" @click="upLogo">
                                                     Upload Logo
                                                 </a-button>
                                             </div>
@@ -247,7 +247,7 @@
                                                         <a-switch :defaultChecked="heroBgImgShow" @change="setHeroBgImgShow" />
                                                     </div>
                                                     <div class="settings__upload">
-                                                        <a-button type="primary" @click="uploadWidget()">
+                                                        <a-button type="primary" @click="upHeroBg">
                                                             Upload Image
                                                         </a-button>
                                                     </div>
@@ -276,7 +276,7 @@
                                                         <a-switch :defaultChecked="heroImageShow" @change="setHeroImageShow" />
                                                     </div>
                                                     <div class="settings__upload">
-                                                        <a-button type="primary" @click="uploadWidget()">
+                                                        <a-button type="primary" @click="upHeroImage">
                                                             Upload Image
                                                         </a-button>
                                                     </div>
@@ -373,7 +373,7 @@
                                             <div class="settings__modal-item">
                                                 <p>Collection Image</p>
                                                 <div class="settings__upload">
-                                                    <a-button type="primary" @click="uploadWidget()">
+                                                    <a-button type="primary" @click="upCollectionOneImg">
                                                         Upload Image
                                                     </a-button>
                                                 </div>
@@ -416,7 +416,7 @@
                                             <div class="settings__modal-item">
                                                 <p>Collection Image</p>
                                                 <div class="settings__upload">
-                                                    <a-button type="primary" @click="uploadWidget()">
+                                                    <a-button type="primary" @click="upCollectionTwoImg">
                                                         Upload Image
                                                     </a-button>
                                                 </div>
@@ -455,7 +455,7 @@
                                             <div class="settings__modal-item">
                                                 <p>Collection Image</p>
                                                 <div class="settings__upload">
-                                                    <a-button type="primary" @click="uploadWidget()">
+                                                    <a-button type="primary" @click="upCollectionThreeImg">
                                                         Upload Image
                                                     </a-button>
                                                 </div>
@@ -604,9 +604,12 @@
 </template>
 
 <script>
-import ThemePicker from './components/ThemePicker';
+import { eventBus } from '@/eventBus.js';
 import { Swatches } from 'vue-color';
 import { mapGetters, mapMutations } from 'vuex';
+import ThemePicker from './components/ThemePicker';
+import cloudinary from '@/components/ThemeSettings/cloudinary.js';
+
 export default {
   components: {
     'swatches-picker': Swatches,
@@ -809,7 +812,6 @@ export default {
     },
     setHeroImageShow(checked) {
         this.$store.commit('setHeroImageShow', checked);
-        this.showHeroImageUpload = checked;
     },
     setCollectionShow(checked) {
         this.$store.commit('setCollectioShow', checked);
@@ -933,31 +935,10 @@ export default {
           'You have saved your storefront design successfully.',
       });
     },
-
-    uploadWidget() {
-      // TODO: Update present to support logo dimensions and use versions for updating logos
-      // Save image with params e.g. heroBg, logo ...
-      const myWidget = cloudinary.createUploadWidget(
-          {
-          cloudName: "mercurie",
-          apiKey: "486138948246678",
-          // uploadPreset: "mercuriemartlogos",
-          uploadPreset: "preset1",
-          multiple: false,
-          cropping: true,
-          defaultSource: "local",
-          folder: "mercuriemartlogos",
-          public_id: "testStore"
-          },
-          (error, result) => {
-          if (!error && result && result.event === "success") {
-              console.log("Done! Here is the image info: ", result.info);
-          } else {
-              console.log(error);
-          }
-          }
-      );
-      return myWidget.open()
+    
+    //Cloudinary Upload Widgets
+    upLogo() {
+        eventBus.$emit('upLogo');
     }
   },
   mounted(){

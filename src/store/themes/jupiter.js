@@ -34,7 +34,7 @@ eventBus.$on('themeJupiter', () => {
 
     // Styles
     store.commit('setThemeName', 'Jupiter');
-    store.commit('setThemeColor', '#000');
+    store.commit('setThemeColor', '#0360C4');
     store.commit('setPriColor', '#0360C4');
     store.commit('setSecColor', '#0074F5');
     store.commit('setPriFont', 'fontPriUbuntu');
@@ -44,9 +44,10 @@ eventBus.$on('themeJupiter', () => {
     store.commit('setNavLayout', 1);
     store.commit('setNavType', 'navTrans');
     store.commit('setNavColor', '#fff');
+    store.commit('setNavBgColor', '#0360C4');
     store.commit('setNavLogoImg', false);
     store.commit('setNavLogoTextColor', '#fff');
-    store.commit('setNavLogoTextSize', '20');
+    store.commit('setNavLogoTextSize', 20);
     store.commit('setCartShow', false);
     store.commit('setLoginShow', false);
     store.commit('setHeroShow', true);

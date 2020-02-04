@@ -6,15 +6,18 @@
             <div class="products__one" v-if="productLayout === 1">
                 <div class="row">
                     <div class="col-6 col-xl-3 col-lg-3 col-md-4 col-sm-6" v-for="(product, index) in products" :key="index" >
-                        <div class="products__one-image" :style="{backgroundImage:'url(' + `${product.images[0].url}` + ')'}">
-                            <a-button :class="[navFont]" class="animated fadeIn" @mouseover="hover = true"
+                        <!-- <div class="products__one-image" :style="{backgroundImage:'url(' + `${product.images[0].url}` + ')'}"> -->
+                                <!-- <img :src="product.images[0].url" alt="Product Name"> -->
+                            <!-- <a-button :class="[navFont]" class="animated fadeIn" @mouseover="hover = true"
                             :style="[hover ? {backgroundColor: priColor, borderColor: priColor} : {backgroundColor: secColor, borderColor: secColor}]"
                             @click="openQuickView">
                                 <v-icon name="eye" />Quick View
-                            </a-button>
-                        </div> 
+                            </a-button> -->
+                        <!-- </div>  -->
                         <div class="products__one-meta text-center">
                             <router-link :to="`/product/${product.slug}`">
+                            <img :src="product.images[0].url" alt="Product Name">
+
                                 <h4>{{product.name}}</h4>
                             </router-link>
                             <p>{{product.categoryName}}</p>
