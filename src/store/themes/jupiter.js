@@ -27,7 +27,7 @@ eventBus.$on('themeJupiter', () => {
     store.commit('setCollectionThreeBtn', 'Shop Now');
     store.commit('setCollectionThreeLink', '#');
     store.commit('setProductTitleMain', 'Latest Products');
-    store.commit('setProductTitleSub', 'Shop our newest arrivals...');
+    store.commit('setProductTitleSub', 'Shop our newest devices');
     store.commit('setNotificationTitle', 'Follow us on Instagram @phoneNG');
     store.commit('setNotificationContent', 'and more discounts!');
     store.commit('setNotificationButton', 'Follow');
