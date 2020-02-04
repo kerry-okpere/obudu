@@ -202,12 +202,12 @@ export default {
     cartItems: 0,
     cartIconStyle: {backgroundColor: "#ff5252", borderColor: "#ff5252", marginTop: "4px"},
     cartIconStyleMobile: {backgroundColor: "#3C87D1", marginTop: "10px"},
-    getCartCount: 0
+    getCartCount: 0,
   }),
 
   computed: {
     actualCartCount() {
-      return this.$store.getters["products/getCartQuantity"];
+      return this.$store.getters["getCartQuantity"];
     },
     ...mapGetters([
       'priColor',
@@ -243,5 +243,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./_index";
+@import "../NavHeader/_index";
 </style>
