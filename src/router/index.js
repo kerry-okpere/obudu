@@ -12,6 +12,7 @@ import Checkout from './views/Checkout';
 import Dashboard from './views/Dashboard';
 import About from './views/About';
 import Design from './views/Design';
+import Error from './views/Error';
 
 import loadEnv from './middleware/loadEnv';
 
@@ -74,7 +75,13 @@ const router =  new Router({
         title: `Design - ${STORENAME}`,
       }
     },
-    
+    {
+      path: "*",
+      component: Error,
+      meta: {
+        title: `Page Not Found - ${STORENAME}`,
+      }
+    }
   ]
 });
 
