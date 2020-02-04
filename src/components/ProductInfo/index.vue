@@ -30,13 +30,17 @@
       <a-input-number :min="1" :max="10" v-model="value" @change="changeQuant" />
     </div>
     <div class="product__info-cart">
-      <a-button v-if="!selectedVariant" :size="btnSize" block disabled>Add to Cart</a-button>
-      <a-button v-else type="primary" icon="plus" :size="btnSize" @click="addToCart(selectedVariant)" block >Add to Cart</a-button>
+      <s-button v-if="!selectedVariant" :pri="priColor" :sec="secColor" class="disabled">Add to Cart</s-button>
+      <s-button v-else :pri="priColor" :sec="secColor" @click="addToCart(selectedVariant)"><a-icon type="plus" class="pr-2" />Add to Cart</s-button>
+      <!-- <a-button v-if="!selectedVariant" :size="btnSize" block disabled>Add to Cart</a-button> -->
+      <!-- <a-button v-else type="primary" icon="plus" :size="btnSize" @click="addToCart(selectedVariant)" block >Add to Cart</a-button> -->
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   data: () => ({
     value: 1,
@@ -58,7 +62,11 @@ export default {
   computed: {
     singleProds() {
       return this.$store.getters["products/getProduct"];
-    }
+    },
+    ...mapGetters([
+      'priColor',
+      'secColor'
+    ])
   },
   methods: {
     changeQuant(value) {

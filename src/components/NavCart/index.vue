@@ -88,7 +88,7 @@ export default {
       this.$router.push("/checkout");
     },
     deleteCartItem(index) {
-      this.$store.dispatch("products/deleteCartItem", index);
+      this.$store.dispatch("deleteCartItem", index);
     }
   },
 
