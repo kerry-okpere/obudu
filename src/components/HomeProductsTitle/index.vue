@@ -11,7 +11,7 @@
                     </div>
                     <div class="col">
                         <div class="button">
-                            <a-button class="float-right" type="primary" :style="{backgroundColor: priColor, borderColor: priColor}">View All</a-button>
+                            <s-button class="float-right" :pri="priColor" :sec="secColor">View All</s-button>
                         </div>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                     <div class="col">
                         <h1 v-bind:style="{color: productTitleMainColor}">{{productTitleMain}}</h1>
                         <p v-bind:style="{color: productTitleSubColor}">{{productTitleSub}}</p>
-                        <a-button type="primary" :style="{backgroundColor: priColor, borderColor: priColor}">View All</a-button>
+                        <s-button :pri="priColor" :sec="secColor">View All</s-button>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="button">
-                            <a-button type="primary" :style="{backgroundColor: priColor, borderColor: priColor}">View All</a-button>
+                        <s-button :pri="priColor" :sec="secColor">View All</s-button>
                         </div>
                     </div>
                     <div class="col">
