@@ -5,137 +5,154 @@
         <div class="col-12 col-md-6 col-xl-8">
           <div class="checkout__steps">
             <!-- <form novalidate @submit.prevent="validateUser"> -->
-              <md-steppers :md-active-step.sync="active" md-vertical md-linear>
-                <md-step
-                  id="first"
-                  md-label="Shipping Details"
-                  md-description="Please enter your shipping details"
-                  :md-editable="true"
-                  :md-done.sync="first"
-                >
-                  <a-form :form="form" @submit="saveShipping" layout="inline">
-                    <a-form-item :wrapper-col="wrapperCol">
-                      <a-input
-                        v-decorator="['firstName', { rules: [{ required: true, message: 'Please enter a valid first name' }] }]"
-                        placeholder="First Name"
-                        style="width: 250px; height: 40px;"
-                        type="text"
-                        name="firstname"
-                      />
-                    </a-form-item>
-                    <a-form-item :wrapper-col="wrapperCol">
-                      <a-input
-                        v-decorator="['lastName', { rules: [{ required: true, message: 'Please enter a valid last name' }] }]"
-                        placeholder="Last Name"
-                        style="width: 250px; height: 40px;"
-                        type="text"
-                        name="lastname"
-                      />
-                    </a-form-item>
-                    <a-form-item :wrapper-col="wrapperCol">
-                      <a-input
-                        v-decorator="['email', { rules: [{ required: true, message: 'Please enter a valid email address' }] }]"
-                        placeholder="Email"
-                        style="width: 250px; height: 40px;"
-                        type="email"
-                      />
-                    </a-form-item>
-                    <a-form-item :wrapper-col="wrapperCol">
-                      <a-input
-                        v-decorator="['phone', { rules: [{ required: true, message: 'Please enter a valid phone number' }] }]"
-                        placeholder="Phone"
-                        style="width: 250px; height: 40px;"
-                        type="tel"
-                      />
-                    </a-form-item>
-                    <a-form-item :wrapper-col="wrapperCol">
-                      <a-input
-                        v-decorator="['address', { rules: [{ required: true, message: 'Please enter a valid address' }] }]"
-                        placeholder="Address"
-                        style="height: 40px;"
-                        class="address"
-                        type="text"
-                        name="address"
-                      />
-                    </a-form-item>
-                    <a-form-item :wrapper-col="wrapperCol">
-                      <a-input
-                        v-decorator="['state', { rules: [{ required: true, message: 'Please enter a valid state' }] }]"
-                        placeholder="State"
-                        style="width: 250px; height: 40px;"
-                      />
-                    </a-form-item>
-                    <a-form-item :wrapper-col="wrapperCol">
-                      <a-select
-                        showSearch
-                        placeholder="Country"
-                        optionFilterProp="children"
-                        v-decorator="['country', { rules: [{ required: true, message: 'Please choose a country' }] }]"
-                        style="width: 250px; height: 40px;"
-                        @change="handleChange"
-                        :filterOption="filterOption"
-                      >
-                        <a-select-option value="nigeria">Nigeria</a-select-option>
-                        <a-select-option value="ghana">Ghana</a-select-option>
-                        <a-select-option value="kenya">Kenya</a-select-option>
-                      </a-select>
-                    </a-form-item>
-                  </a-form>
-                  <a-button
-                    type="primary"
-                    class="mt-3"
-                    html-type="submit"
-                    @click="saveShipping"
-                  >Continue</a-button>
-                </md-step>
-                <md-step
-                  id="second"
-                  md-label="Shipping Method"
-                  md-description="Please choose your shipping method"
-                  :md-error="secondStepError"
-                  :md-editable="true"
-                  :md-done.sync="second"
-                >
-                  <div class="checkout__steps-shipping">
-                    <a-radio-group v-model="shippingMethod">
-                      <a-radio :style="radioStyle" :value="1">
-                        <span>Standard Shipping - N1,000</span>
-                        <p>Delivery: 3-5 days</p>
-                      </a-radio>
-                      <a-radio :style="radioStyle" :value="2">
-                        <span>Expedited Shipping - N3,500</span>
-                        <p>Delivery: 2 days</p>
-                      </a-radio>
-                    </a-radio-group>
-                  </div>
-                  <a-button type="primary" class="mt-1" @click="saveShippingMethod">Continue</a-button>
-                  <!-- <a-button type="primary" @click="setError()">Set error!</a-button> -->
-                </md-step>
-                <md-step
-                  id="third"
-                  md-label="Payment Method"
-                  md-description="Please choose your payment method"
-                  :md-editable="true"
-                  :md-done.sync="third"
-                >
-                  <div class="checkout__steps-shipping">
-                    <a-radio-group v-model="paymentMethod">
-                      <!-- <a-radio :style="radioStyle" :value="2">
+            <md-steppers :md-active-step.sync="active" md-vertical md-linear>
+              <md-step
+                id="first"
+                md-label="Shipping Details"
+                md-description="Please enter your shipping details"
+                :md-editable="true"
+                :md-done.sync="first"
+              >
+                <a-form :form="form" @submit="saveShipping" layout="inline">
+                  <a-form-item :wrapper-col="wrapperCol">
+                    <a-input
+                      v-decorator="['firstName', { rules: [{ required: true, message: 'Please enter a valid first name' }] }]"
+                      placeholder="First Name"
+                      style="width: 250px; height: 40px;"
+                      type="text"
+                      name="firstname"
+                    />
+                  </a-form-item>
+                  <a-form-item :wrapper-col="wrapperCol">
+                    <a-input
+                      v-decorator="['lastName', { rules: [{ required: true, message: 'Please enter a valid last name' }] }]"
+                      placeholder="Last Name"
+                      style="width: 250px; height: 40px;"
+                      type="text"
+                      name="lastname"
+                    />
+                  </a-form-item>
+                  <a-form-item :wrapper-col="wrapperCol">
+                    <a-input
+                      v-decorator="['email', { rules: [{ required: true, message: 'Please enter a valid email address' }] }]"
+                      placeholder="Email"
+                      style="width: 250px; height: 40px;"
+                      type="email"
+                    />
+                  </a-form-item>
+                  <a-form-item :wrapper-col="wrapperCol">
+                    <a-input
+                      v-decorator="['phone', { rules: [{ required: true, message: 'Please enter a valid phone number' }] }]"
+                      placeholder="Phone"
+                      style="width: 250px; height: 40px;"
+                      type="tel"
+                    />
+                  </a-form-item>
+                  <a-form-item :wrapper-col="wrapperCol">
+                    <a-input
+                      v-decorator="['address', { rules: [{ required: true, message: 'Please enter a valid address' }] }]"
+                      placeholder="Address"
+                      style="height: 40px;"
+                      class="address"
+                      type="text"
+                      name="address"
+                    />
+                  </a-form-item>
+
+                  <a-form-item :wrapper-col="wrapperCol">
+                    <a-select
+                      showSearch
+                      placeholder="Country"
+                      optionFilterProp="children"
+                      v-decorator="['country', { rules: [{ required: true, message: 'Please choose a country' }] }]"
+                      style="width: 250px; height: 40px;"
+                      @change="handleChange"
+                      :filterOption="filterOption"
+                    >
+                      <a-select-option
+                        @change="getStates(country.name)"
+                        v-for="(country, index) in getAllCountries"
+                        :key="index"
+                        :value="country.name"
+                      >{{country.name}}</a-select-option>
+                    </a-select>
+                  </a-form-item>
+
+                  <a-form-item :wrapper-col="wrapperCol">
+                    <a-select
+                      showSearch
+                      placeholder="State"
+                      optionFilterProp="children"
+                      v-decorator="['state', { rules: [{ required: true, message: 'Please choose a state' }] }]"
+                      style="width: 250px; height: 40px;"
+                      @change="getCities"
+                      :filterOption="filterOption"
+                    >
+                      <a-select-option
+                        @change="getCities(statesVal.name)"
+                        v-for="(statesVal, index) in states"
+                        :key="index"
+                        :value="statesVal.name"
+                      >{{statesVal.name}}</a-select-option>
+                    </a-select>
+                  </a-form-item>
+                </a-form>
+                <a-button
+                  type="primary"
+                  class="mt-3"
+                  html-type="submit"
+                  @click="saveShipping"
+                >Continue</a-button>
+              </md-step>
+              <md-step
+                id="second"
+                md-label="Shipping Method"
+                md-description="Please choose your shipping method"
+                :md-error="secondStepError"
+                :md-editable="true"
+                :md-done.sync="second"
+              >
+                <div class="checkout__steps-shipping">
+                  <a-radio-group v-model="shippingMethod">
+                    <a-radio :style="radioStyle" :value="1">
+                      <span>Standard Shipping - N1,000</span>
+                      <p>Delivery: 3-5 days</p>
+                    </a-radio>
+                    <a-radio :style="radioStyle" :value="2">
+                      <span>Expedited Shipping - N3,500</span>
+                      <p>Delivery: 2 days</p>
+                    </a-radio>
+                  </a-radio-group>
+                </div>
+                <a-button type="primary" class="mt-1" @click="saveShippingMethod">Continue</a-button>
+                <!-- <a-button type="primary" @click="setError()">Set error!</a-button> -->
+              </md-step>
+              <md-step
+                id="third"
+                md-label="Payment Method"
+                md-description="Please choose your payment method"
+                :md-editable="true"
+                :md-done.sync="third"
+              >
+                <div class="checkout__steps-shipping">
+                  <a-radio-group v-model="paymentMethod">
+                    <!-- <a-radio :style="radioStyle" :value="2">
                         <span>Pay on Delivery</span>
                         <p>Pay cash after you recieve items</p>
-                      </a-radio> -->
-                      <a-radio :style="radioStyle" :value="1">
-                        <span>Pay Now</span>
-                        <p>Pay online using your Visa/Mastercard</p>
-                        <div>
-                          <img src="../../assets/img/footer/paystack.svg" alt="Paystack" />
-                        </div>
-                      </a-radio>
-                    </a-radio-group>
-                  </div>
-                  <a-button type="primary" @click="setDone('third')">Continue</a-button>
-                </md-step>
-              </md-steppers>
+                    </a-radio>-->
+                    <a-radio :style="radioStyle" :value="1">
+                      <span>Pay Now</span>
+                      <p>Pay online using your Visa/Mastercard</p>
+                      <div>
+                        <img src="../../assets/img/footer/paystack.svg" alt="Paystack" />
+                      </div>
+                    </a-radio>
+                  </a-radio-group>
+                </div>
+                <a-button type="primary" @click="savePaymentMethod()">Continue</a-button>
+                <!-- <a-button type="primary" @click="setDone('third')">Continue</a-button> -->
+              </md-step>
+            </md-steppers>
             <!-- </form> -->
           </div>
         </div>
@@ -191,11 +208,13 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import VueMaterial from 'vue-material'
-import 'vue-material/dist/vue-material.min.css';
-import 'vue-material/dist/theme/default.css';
-Vue.use(VueMaterial)
+import Vue from "vue";
+import VueMaterial from "vue-material";
+import "vue-material/dist/vue-material.min.css";
+import "vue-material/dist/theme/default.css";
+import csc from "country-state-city";
+
+Vue.use(VueMaterial);
 
 export default {
   data: () => ({
@@ -206,6 +225,7 @@ export default {
     secondStepError: null,
     shippingMethod: 1,
     paymentMethod: 1,
+    userDetails: {},
     radioStyle: {
       display: "block",
       height: "70px",
@@ -215,6 +235,9 @@ export default {
       xs: { span: 12 },
       sm: { span: 12 }
     },
+    states: [],
+    cities: [],
+    merchantData: {}
   }),
   computed: {
     getCartCount() {
@@ -225,6 +248,9 @@ export default {
     },
     getCartItems() {
       return this.$store.getters["getCartItems"];
+    },
+    getAllCountries() {
+      return this.$store.getters["getCountries"];
     },
     formatTotal() {
       if (this.getCartCount > 0) {
@@ -238,8 +264,10 @@ export default {
   },
 
   //Form
-  beforeCreate() {
+  async beforeCreate() {
     this.form = this.$form.createForm(this, { name: "shippingDetails" });
+    await this.$store.dispatch("fetchCountries");
+    this.merchantData = await this.$store.dispatch("fetchMerchantSettings");
   },
 
   methods: {
@@ -250,11 +278,14 @@ export default {
         this.active = index;
       }
     },
+    getCities(nameOfState) {
+      this.userDetails.state = nameOfState;
+    },
     handleSubmit(e) {
       e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
-          console.log('Received values of form: ', values);
+          // console.log('Received values of form: ', values);
         }
       });
     },
@@ -262,25 +293,64 @@ export default {
       e.preventDefault();
       this.form.validateFields((err, values) => {
         if (!err) {
-          let userDetails = values;
-          this.setDone('first', 'second');
+          this.userDetails = values;
+          this.setDone("first", "second");
         }
       });
     },
     saveShippingMethod(e) {
-      this.setDone('second', 'third');
+      this.setDone("second", "third");
     },
-    savePaymentMethod(e) {
-      this.setDone('third', 'third');
+    async savePaymentMethod(e) {
+      this.setDone("third", "third");
+      console.log("savePaymentMethod");
+      await this.createOrder();
     },
     setError() {
       this.secondStepError = "This is an error!";
     },
-    createOrder() {
-      console.log('Create Order')
+    completeCheckout(response) {
+      if (response.status !== "success") {
+        let error = response.message;
+        alert(error);
+      } else if (response.status === "success") {
+        this.$store.dispatch("emptyCart");
+        alert("Payment successful");
+      }
+    },
+
+    async createOrder() {
+      const { address, country, state } = this.userDetails;
+      this.userDetails.shipping = { address, country, state };
+      this.userDetails.name = `${this.userDetails.firstName} ${this.userDetails.lastName}`;
+      delete this.userDetails.address;
+      delete this.userDetails.country, delete this.userDetails.state;
+      delete this.userDetails.firstName;
+      delete this.userDetails.lastName;
+      let orderObj = {
+        createCustomer: "true",
+        customer: { ...this.userDetails },
+        payment: {},
+        products: this.getCartItems
+      };
+
+      let amt_in_kobo = this.getCartTotal * 100; //convert naira to kobo
+
+      let createOrder = await this.$store.dispatch("createOrder", orderObj);
+      await this.makePayment(
+        this.merchantData.paystackKey,
+        this.userDetails.email,
+        amt_in_kobo,
+        createOrder.orderId
+      );
+      console.log(createOrder);
+      // if(createOrder == undefined); await this.makePayment()
     },
     handleChange(value) {
-      console.log(`selected ${value}`);
+      this.userDetails.country = value;
+      let countryData = this.getAllCountries.find(item => item.name == value);
+      let getStatesOfCountry = csc.getStatesOfCountry(countryData.id);
+      this.states = getStatesOfCountry;
     },
     filterOption(input, option) {
       return (
@@ -289,7 +359,7 @@ export default {
           .indexOf(input.toLowerCase()) >= 0
       );
     },
-    async makePayment(key, email, amount, ref, checkout_id, callbackFunc) {
+    async makePayment(key, email, amount, ref, callbackFunc) {
       let handler = PaystackPop.setup({
         key: key,
         email: email,
@@ -301,7 +371,7 @@ export default {
         },
         callback: function(response) {
           if (response) {
-            callbackFunc(checkout_id, response);
+            callbackFunc(response);
           } else {
             alert("payment failed");
           }
@@ -314,10 +384,8 @@ export default {
     }
   }
 };
-
 </script>
 
 <style lang="scss" scoped>
 @import "./index";
-
 </style>

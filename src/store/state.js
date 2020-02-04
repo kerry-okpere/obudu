@@ -91,7 +91,7 @@ const state = {
         subfooterBgColor: '#fff',
         subfooterColor: '#222'
     },
-    
+    countries: [],
     store: null
 
 };

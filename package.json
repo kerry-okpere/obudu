@@ -19,6 +19,7 @@
     "sass-loader": "^8.0.0",
     "style-resources-loader": "^1.3.2",
     "vue": "^2.6.10",
+    "country-state-city": "^1.0.0",
     "vue-awesome": "^4.0.2",
     "vue-burger-menu": "^2.0.3",
     "vue-carousel": "^0.18.0",

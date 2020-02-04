@@ -1,15 +1,12 @@
 import axios from "axios";
-import { STORENAME, API_URL, STORE_ID } from "./../../config"
-// import products from "./products";
+import { STORENAME, API_URL, STORE_ID } from "../../config";
+
 const storefront$http = axios.create({
   baseURL: API_URL+"/storefront",
   headers: {
     "Authorization": STORE_ID
   }
 });
-
-let fetchProductUrl = `${API_URL}/storefront`;
-let dummy_store = `${STORENAME}`;
 
 
 const actions = {
@@ -63,7 +60,7 @@ const actions = {
     return new Promise (async (resolve, reject) => {
       let reqUrl = `/${prodId}`;
       let response = await storefront$http.get(reqUrl).catch(err => console.log(err));
-
+  
       if(response.status == 200) {
         resolve(response.data);
         commit("setProduct", response.data);

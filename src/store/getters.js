@@ -113,7 +113,8 @@ const getters = {
             }
         }
         return tempPrice;
-    }
+    },
+    getCountries: state => state.countries 
 
 };
 

@@ -277,6 +277,9 @@ const mutations = {
   setSubfooterColor(state, subfooterColor) {
     state.styles.subfooterColor = subfooterColor;
   },
+  SET_COUNTRIES_MUTATION(state, countries){
+    state.countries = countries;
+  },
 
   //CART MUTATIONS
   PUSH_PROUDCT_TO_CART(state, cartObj) {
@@ -287,8 +290,13 @@ const mutations = {
   INCREMENT_CART_ITEM_QUANTITY(state, { cartItem, cartIndex }) {
     state.cart[cartIndex].quantity = cartItem.quantity
   },
+  
   UPDATE_CART_ON_ITEM_DELETE(state, cartIndex) {
     state.cart = state.cart.filter((item, index) => index !== cartIndex);
+  },
+
+  EMPTY_CART(state){
+    state.cart = []
   }
 
 };
