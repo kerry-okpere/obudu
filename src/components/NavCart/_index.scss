@@ -53,9 +53,7 @@
                 margin: 0 auto;
             }
             button {
-                height: 45px;
-                font-size: 16px;
-                font-weight: 500;
+                width: 100%;
             }
         }
 
@@ -111,13 +109,11 @@
                         right: 20px;
                         margin: 0;
                         float: right;
-                        padding-right: 10px;
+                        padding-right: 20px;
                     }
                 }
                 button {
-                    height: 45px;
-                    font-size: 16px;
-                    font-weight: 500;
+                    width: 100%;
                 }
             }
         }

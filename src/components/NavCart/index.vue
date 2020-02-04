@@ -7,7 +7,7 @@
             <img src="@/assets/img/cart.png" alt="Empty Cart" />
             <h3>Your cart is empty</h3>
             <p>Looks like you haven't added any items to your cart yet, continue shopping to fill it up.</p>
-            <a-button type="primary" block @click="setCartShow()">Continue Shopping</a-button>
+            <s-button :pri="priColor" :sec="secColor" @click="setCartShow()">Continue Shopping</s-button>
           </div>
           <div class="cart__main-full" v-else>
             <div class="header">
@@ -39,7 +39,7 @@
                 <h3>Total</h3>
                 <h1>NGN {{ formatTotal }}</h1>
               </div>
-              <a-button type="primary" block @click="checkout()">Checkout</a-button>
+              <s-button :pri="priColor" :sec="secColor" @click="checkout()">Checkout</s-button>
             </div>
           </div>
         </div>
@@ -77,7 +77,7 @@ export default {
     getCartShow(){
         return this.$store.getters["cartShow"];
     },
-    ...mapGetters(["cartShow", "navFont"])
+    ...mapGetters(["cartShow", "navFont", "priColor", "secColor"])
   },
   methods: {
     setCartShow() {
