@@ -34,8 +34,6 @@ import '@/assets/styles/global.scss';
 // Firebase
 import '@/firebase/config';
 
-Vue.config.productionTip = false;
-
 Vue.use(Vuex);
 Vue.use(Router);
 Vue.use(BootstrapVue);
@@ -45,9 +43,15 @@ Vue.use(VueCarousel);
 Vue.use(ProductZoomer);
 Vue.use(SocialSharing);
 Vue.use(VueTour);
-
 Vue.component('Layout', Default);
 Vue.component('v-icon', Icon);
+
+Vue.config.productionTip = false;
+
+//Styled Components
+// import './components/AStyled';
+import SButton from './components/AStyled/SButton.js';
+Vue.component('s-button', SButton);
 
 new Vue({
   store,
