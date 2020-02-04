@@ -1,17 +1,32 @@
 <template>
-    <section class="section">
+    <section class="section-title">
     <div class="container">
-        <h3 class="section__title">{{ title }}</h3>
-        <p class="section__subtitle">{{ subtitle }}</p>
+        <div class="row">
+            <div class="col-12 col-xl-12 text-center">
+                <h3>{{ title }}</h3>
+                <p>{{ subtitle }}</p>
+                  <a-breadcrumb>
+                    <a-breadcrumb-item><router-link to="/" :style="{color: priColor}">Home</router-link></a-breadcrumb-item>
+                    <a-breadcrumb-item>{{title}}</a-breadcrumb-item>
+                </a-breadcrumb>
+            </div>
+        </div>
     </div>
     </section>
 </template>
 
 <script>
+import {mapGetters} from 'vuex';
+
 export default {
     props: {
         title: String,
-        subtitle: String
+        subtitle: String,
+    },
+    computed: {
+        ...mapGetters ([
+            'priColor'
+        ])
     }
 }
 </script>

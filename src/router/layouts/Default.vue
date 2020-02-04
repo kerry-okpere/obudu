@@ -6,6 +6,7 @@
     </div>
     <NavCart />
     <NavLogin />
+    <BacktoTop />
     <NavFooter />
   </section>
 </template>
@@ -15,13 +16,15 @@ import NavHeaderFixed from '@/components/NavHeaderFixed'
 import NavCart from '@/components/NavCart'
 import NavLogin from '@/components/NavLogin'
 import NavFooter from '@/components/NavFooter'
+import BacktoTop from '@/components/BacktoTop'
 
 export default {
   components: {
     NavHeaderFixed,
     NavCart,
     NavLogin,
-    NavFooter
+    NavFooter,
+    BacktoTop
   }
 }
 </script>

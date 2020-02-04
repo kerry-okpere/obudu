@@ -97,12 +97,9 @@
                     </a-select>
                   </a-form-item>
                 </a-form>
-                <a-button
-                  type="primary"
-                  class="mt-3"
+                <s-button :pri="priColor" :sec="secColor" class="mt-3"
                   html-type="submit"
-                  @click="saveShipping"
-                >Continue</a-button>
+                  @click="saveShipping">Continue</s-button>
               </md-step>
               <md-step
                 id="second"
@@ -124,8 +121,9 @@
                     </a-radio>
                   </a-radio-group>
                 </div>
-                <a-button type="primary" class="mt-1" @click="saveShippingMethod">Continue</a-button>
-                <!-- <a-button type="primary" @click="setError()">Set error!</a-button> -->
+                <s-button :pri="priColor" :sec="secColor" class="mt-3"
+                  html-type="submit"
+                  @click="saveShippingMethod">Continue</s-button>
               </md-step>
               <md-step
                 id="third"
@@ -149,8 +147,9 @@
                     </a-radio>
                   </a-radio-group>
                 </div>
-                <a-button type="primary" @click="savePaymentMethod()">Continue</a-button>
-                <!-- <a-button type="primary" @click="setDone('third')">Continue</a-button> -->
+                <s-button :pri="priColor" :sec="secColor" class="mt-3"
+                  html-type="submit"
+                  @click="savePaymentMethod">Continue</s-button>
               </md-step>
             </md-steppers>
             <!-- </form> -->
@@ -194,11 +193,11 @@
               </div>
             </a-card>
             <div v-if="getCartCount > 0">
-              <a-button v-if="paymentMethod === 1" type="primary" block>Checkout</a-button>
-              <a-button v-else type="primary" block>Proceed to Payment</a-button>
+              <s-button v-if="paymentMethod === 1" :pri="priColor" :sec="secColor">Checkout</s-button>
+              <s-button v-else :pri="priColor" :sec="secColor" class="disabled">Checkout</s-button>
             </div>
             <div v-else>
-              <a-button type="primary" block disabled>Checkout</a-button>
+              <s-button :pri="priColor" :sec="secColor" class="disabled">Checkout</s-button>
             </div>
           </div>
         </div>
@@ -213,7 +212,7 @@ import VueMaterial from "vue-material";
 import "vue-material/dist/vue-material.min.css";
 import "vue-material/dist/theme/default.css";
 import csc from "country-state-city";
-
+import {mapGetters} from 'vuex';
 Vue.use(VueMaterial);
 
 export default {
@@ -240,6 +239,10 @@ export default {
     merchantData: {}
   }),
   computed: {
+    ...mapGetters([
+      'priColor',
+      'secColor'
+    ]),
     getCartCount() {
       return this.$store.getters["getCartQuantity"];
     },
