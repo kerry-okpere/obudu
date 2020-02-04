@@ -4,6 +4,7 @@ import { eventBus } from '@/eventBus.js';
 eventBus.$on('themeMars', () => {
 
     // Data
+    store.commit('setNavLogo', null);
     store.commit('setHeroBgImg', '');
     store.commit('setHeroContent', '');
     store.commit('setHeroTitle', '');
@@ -36,21 +37,21 @@ eventBus.$on('themeMars', () => {
     store.commit('setThemeColor', '');
     store.commit('setPriColor', '');
     store.commit('setSecColor', '');
-    store.commit('setPriFont', '');
-    store.commit('setSecFont', '');
-    store.commit('setNavFont', '');
-    store.commit('setNavShow', '');
-    store.commit('setNavLayout', '');
-    store.commit('setNavType', '');
-    store.commit('setNavLogoImg', '');
+    store.commit('setPriFont', 'fontPriPoppins');
+    store.commit('setSecFont', 'fontSecLato');
+    store.commit('setNavFont', 'fontPriPoppins');
+    store.commit('setNavShow', true);
+    store.commit('setNavLayout', 1);
+    store.commit('setNavType', 'navFixed');
+    store.commit('setNavLogoImg', false);
     store.commit('setNavLogoTextColor', '');
     store.commit('setNavLogoTextSize', '');
-    store.commit('setCartShow', '');
-    store.commit('setLoginShow', '');
-    store.commit('setHeroShow', '');
-    store.commit('setHeroLayout', '');
-    store.commit('setHeroHeight', '');
-    store.commit('setHeroBgImgShow', '');
+    store.commit('setCartShow', false);
+    store.commit('setLoginShow', false);
+    store.commit('setHeroShow', true);
+    store.commit('setHeroLayout', 1);
+    store.commit('setHeroHeight', '500');
+    store.commit('setHeroBgImgShow', true);
     store.commit('setHeroColor', '');
     store.commit('setHeroTitleColor', '');
     store.commit('setHeroContentColor', '');

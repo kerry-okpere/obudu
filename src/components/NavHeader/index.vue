@@ -1,5 +1,5 @@
 <template>
-  <header v-if="navShow" :class="[navType, navFont]" >
+  <header v-if="navShow" :class="[navType, navFont]" :style="navTypeFixed ? {backgroundColor: navBgColor} : {backgroundColor: 'transparent'}">
 
     <!-- Layout One -->
     <section class="navbar__one d-none d-lg-block" v-if="navLayout === 1">
@@ -202,10 +202,17 @@ export default {
     cartItems: 0,
     cartIconStyle: {backgroundColor: "#ff5252", borderColor: "#ff5252", marginTop: "4px"},
     cartIconStyleMobile: {backgroundColor: "#3C87D1", marginTop: "10px"},
-    getCartCount: 0
+    getCartCount: 0,
   }),
 
   computed: {
+    navTypeFixed() {
+      if (navType === 'navFixed') {
+        return true
+      } else {
+        return false
+      };
+    },
     actualCartCount() {
       return this.$store.getters["getCartQuantity"];
     },
@@ -218,6 +225,7 @@ export default {
       'navShow',
       'navType',
       'navColor',
+      'navBgColor',
       'navLogo',
       'navLogoImg',
       'navLogoTextColor',
