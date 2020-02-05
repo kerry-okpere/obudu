@@ -200,8 +200,8 @@ export default {
   data: () => ({
     userLoggedin: false,
     cartItems: 0,
-    cartIconStyle: {backgroundColor: "#ff5252", borderColor: "#ff5252", marginTop: "4px"},
-    cartIconStyleMobile: {backgroundColor: "#3C87D1", marginTop: "10px"},
+    cartIconStyle: {backgroundColor: "#ff0909", borderColor: "#ff0909", marginTop: "4px"},
+    cartIconStyleMobile: {backgroundColor: "#ff0909", borderColor: "#ff0909", marginTop: "10px"},
     getCartCount: 0,
   }),
 

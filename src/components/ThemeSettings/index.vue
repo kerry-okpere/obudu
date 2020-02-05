@@ -2,15 +2,16 @@
     <div class="settings">
         <div class="container">
             <div class="settings__intro">
+                <img src="../../assets/img/nav/beta.png" width="40" class="pb-4" alt="Mercuriemart Design Tool Beta"/>
                 <div class="d-inline-flex">
                     <h3>You are customizing</h3>
                     <a-popover trigger="click" placement="topRight">
-                    <template slot="content">
-                        <p class="pt-2">The Customizer allows you to change <br />the look and feel of your store and to <br />preview changes before publishing them.</p>
-                        <a href="">Learn more</a>
-                    </template>
-                    <a-icon type="question-circle" />
-                </a-popover>
+                        <template slot="content">
+                            <p class="pt-2">The Customizer allows you to change <br />the look and feel of your store and to <br />preview changes before publishing them.</p>
+                            <a href="">Learn more</a>
+                        </template>
+                        <a-icon type="question-circle" />
+                    </a-popover>
                 </div>
                 <h1>{{storeName}}</h1>
                 <a-divider />
@@ -196,7 +197,14 @@
                                             </a-select>
                                         </div>
                                         <div class="settings__modal-item">
-                                            <p>Menu Color</p>
+                                            <p>Menu Background Color</p>
+                                            <a-button type="primary" size="small" @click="navBgColorCP = !navBgColorCP">
+                                                Select Color
+                                            </a-button>
+                                            <swatches-picker v-if="navBgColorCP" :value="navBgColor" @input="setNavBgColor($event.hex)" :disableAlpha="true" />
+                                        </div>
+                                        <div class="settings__modal-item">
+                                            <p>Menu Text Color</p>
                                             <a-button type="primary" size="small" @click="navColorCP = !navColorCP">
                                                 Select Color
                                             </a-button>
@@ -635,6 +643,7 @@ export default {
     priColorCP: false,
     secColorCP: false,
     navColorCP: false,
+    navBgColorCP: false,
     navLogoTextCP: false,
     productTitleBgCP: false,
     heroColorCP: false,
@@ -662,6 +671,7 @@ export default {
       'secFont',
       'navFont',
       'navColor',
+      'navBgColor',
       'navShow',
       'navType',
       'navLayout',
@@ -883,6 +893,7 @@ export default {
       'setPriColor',
       'setSecColor',
       'setNavColor',
+      'setNavBgColor',
       'setNavLayout',
       'setNavLogoTextColor',
       'setNavLogoTextSize',
