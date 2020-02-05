@@ -26,12 +26,12 @@
                     </a-modal>
                 </div>
                 <div class="row pt-3">
-                    <div class="col-6">
-                        <p class="pt-1">Under Constuction</p>
+                    <div class="col-7">
+                        <p class="pt-1">Under Construction</p>
                     </div>
-                    <div class="col-6">
+                    <div class="col-5">
                         <a-switch checkedChildren="Enabled" unCheckedChildren="Disabled"
-                        :defaultChecked="underConstruction" @change="setUnderConstruction" class="ml-4 mt-0" />
+                        :defaultChecked="underConstruction" @change="setUnderConstruction" class="ml-1 mt-0" />
                     </div>
                 </div>
                 <a-divider />
