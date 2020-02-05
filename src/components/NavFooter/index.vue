@@ -73,10 +73,10 @@
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
                                 <div class="row">
                                     <div class="col-lg-12">
-                                        <div class="subfooter__one-payment pt-1">
-                                        <img src="@/assets/img/footer/master.png" alt="MasterCard Logo" width="50">
+                                        <div class="subfooter__one-payment pt-3">
+                                        <img src="@/assets/img/footer/paystack.svg" alt="Paystack Logo" width="100">
                                         <!-- <img src="@/assets/img/footer/visa.png" alt="Visa Logo" width="60"> -->
-                                        <img src="@/assets/img/footer/verve.png" alt="Verve Logo" width="60">
+                                        <!-- <img src="@/assets/img/footer/verve.png" alt="Verve Logo" width="60"> -->
                                         </div>
                                     </div>
                                     <!-- <div class="col-lg-12">
