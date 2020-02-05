@@ -34,6 +34,7 @@ eventBus.$on('themeJupiter', () => {
 
     // Styles
     store.commit('setThemeName', 'Jupiter');
+    store.commit('setUnderConstruction', false);
     store.commit('setThemeColor', '#0360C4');
     store.commit('setPriColor', '#0360C4');
     store.commit('setSecColor', '#0074F5');

@@ -25,6 +25,15 @@
                         <ThemePicker />
                     </a-modal>
                 </div>
+                <div class="row pt-3">
+                    <div class="col-6">
+                        <p class="pt-1">Under Constuction</p>
+                    </div>
+                    <div class="col-6">
+                        <a-switch checkedChildren="Enabled" unCheckedChildren="Disabled"
+                        :defaultChecked="underConstruction" @change="setUnderConstruction" class="ml-4 mt-0" />
+                    </div>
+                </div>
                 <a-divider />
             </div>
             <div class="settings__master">
@@ -665,6 +674,7 @@ export default {
     ...mapGetters([
       'styles',
       'themeName',
+      'underConstruction',
       'priColor',
       'secColor',
       'priFont',
@@ -811,6 +821,9 @@ export default {
     },
 
     //Display
+    setUnderConstruction(checked) {
+        this.$store.commit('setUnderConstruction', checked);
+    },
     setNavShow(checked) {
         this.$store.commit('setNavShow', checked);
     },

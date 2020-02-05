@@ -12,6 +12,7 @@ import Checkout from './views/Checkout';
 import Dashboard from './views/Dashboard';
 import About from './views/About';
 import Design from './views/Design';
+import Preview from './views/Preview';
 import Error from './views/Error';
 import OrderSuccess from './views/OrderSuccess';
 import OrderFailure from './views/OrderFailure';
@@ -75,6 +76,13 @@ const router =  new Router({
       component: Design,
       meta: {
         title: `Design - ${STORENAME}`,
+      }
+    },
+    {
+      path: "/preview",
+      component: Preview,
+      meta: {
+        title: `Preview - ${STORENAME}`,
       }
     },
     {

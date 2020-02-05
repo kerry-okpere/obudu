@@ -30,6 +30,7 @@ const state = {
         notificationButton: 'Shop Now',
     },
     styles : {
+        underConstruction: false,
         themeName: "Default",
         themeColor: '#007bff',
         priColor: '#007bff',
@@ -58,7 +59,7 @@ const state = {
         heroImageShow: true,
         heroBtnPri: '#007bff',
         heroBtnSec: '#fff',
-        collectionShow: true,
+        collectionShow: false,
         collectionLayout: 2,
         collectionBgColor: '#fff',
         collectionTextColor: '#fff',

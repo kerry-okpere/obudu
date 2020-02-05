@@ -94,6 +94,9 @@ const mutations = {
   },
 
   //Styles
+  setUnderConstruction(state, underConstruction) {
+    state.styles.underConstruction = underConstruction;
+  },
   setThemeName(state, themeName) {
     state.styles.themeName = themeName;
   },

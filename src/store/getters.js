@@ -30,6 +30,7 @@ const getters = {
     notificationButton: state => state.data.notificationButton,
 
     styles: state => state.styles,
+        underConstruction: state => state.styles.underConstruction,
         themeName: state => state.styles.themeName,
         themeColor: state => state.styles.themeColor,
         priColor: state => state.styles.priColor,

@@ -1,9 +1,6 @@
 <template>
   <section class="layout__home" :class="[priFont, secFont]">
-    <section class="construction" v-if="underConstruction">
-      <UnderConstruction />
-    </section>
-    <section class="storefront" v-else>
+    <section class="storefront">
       <NavHeader />
         <HomeHero />
         <HomeCollections />
@@ -51,14 +48,11 @@ export default {
     ...mapGetters([
       'priFont',
       'secFont',
-      'underConstruction'
     ])
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.layout__home {
-  background-color: #fff;
-}
+
 </style>

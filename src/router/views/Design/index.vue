@@ -20,7 +20,7 @@
 
 <script>
 import { STORE_ID } from "./../../../config";
-import Layout from "@/router/layouts/Home.vue";
+import Layout from "@/router/layouts/Preview.vue";
 import ThemeSettings from "@/components/ThemeSettings";
 import Cookies from 'js-cookie'
 
