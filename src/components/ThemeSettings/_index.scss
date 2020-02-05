@@ -14,6 +14,7 @@ button {
     @include btn-solid-color($black);
     &:hover {
         @include btn-outline-color($black);
+        background-color: #fff;
     }
 }
 

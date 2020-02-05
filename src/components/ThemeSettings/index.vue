@@ -175,8 +175,16 @@
                                     <a-button key="back" @click="menuCancel">Cancel</a-button>
                                     <a-button key="submit" type="primary" :loading="loading" @click="saveMenuSettings">Save</a-button>
                                 </template>
-                                <a-collapse defaultActiveKey="1" accordion>
-                                    <a-collapse-panel header="Upload Logo" key="1" :showArrow="false">
+                                <a-collapse accordion>
+                                    <a-collapse-panel header="Storename" key="1" :showArrow="false">
+                                        <div class="settings__modal-item">
+                                            <p>Change Storename</p>
+                                            <div class="settings__upload">
+                                                <a-input @change="setStoreName($event.target.value)" :placeholder="storeName" />
+                                            </div>
+                                        </div>
+                                    </a-collapse-panel>
+                                    <a-collapse-panel header="Upload Logo" key="2" :showArrow="false">
                                         <div class="settings__modal-item">
                                             <p>Logo</p>
                                             <div class="settings__upload">
@@ -197,7 +205,7 @@
                                             <a-slider @change="setNavLogoTextSize" :min="10" :max="50" :defaultValue="navLogoTextSize" />
                                         </div>
                                     </a-collapse-panel>
-                                    <a-collapse-panel header="Menu Settings" key="2" :showArrow="false">
+                                    <a-collapse-panel header="Menu Settings" key="3" :showArrow="false">
                                         <div class="settings__modal-item">
                                             <p>Choose Menu Type</p>
                                             <a-select :defaultValue="navType" style="width: 200px" @change="setNavType">
@@ -218,6 +226,32 @@
                                                 Select Color
                                             </a-button>
                                             <swatches-picker v-if="navColorCP" :value="navColor" @input="setNavColor($event.hex)" :disableAlpha="true" />
+                                        </div>
+                                    </a-collapse-panel>
+                                    <a-collapse-panel header="Menu Links" key="4" :showArrow="false">
+                                        <div class="settings__modal-item">
+                                            <p>Manage Menu</p>
+                                                <!-- <a-list size="small" bordered :dataSource="navMenu">
+                                                    <a-list-item slot="renderItem" slot-scope="item, index">{{item}}</a-list-item>
+                                                </a-list> -->
+                                                <a-button type="primary" @click="newMenu = !newMenu">Add Menu</a-button>
+                                                <div class="new-menu pt-4" v-show="newMenu">
+                                                    <a-form layout="vertical">
+                                                        <a-form-item label="Menu Name">
+                                                            <a-input 
+                                                            v-decorator="['menuName', {rules: [{required: true, message: 'Menu name required'}]}]"
+                                                            placeholder="Eg. Home"/>
+                                                        </a-form-item>
+                                                        <a-form-item label="Menu Link">
+                                                            <a-input 
+                                                            v-decorator="['menuLink', {rules: [{required: true, message: 'Menu link required'}]}]"
+                                                            placeholder="Eg. https://www.yourstore.mercuriemart.com"/>
+                                                        </a-form-item>
+                                                        <a-form-item>
+                                                            <a-button type="primary" html-type="submit" icon="plus">Add</a-button>
+                                                        </a-form-item>
+                                                    </a-form>
+                                                </div>
                                         </div>
                                     </a-collapse-panel>
                                 </a-collapse>
@@ -249,7 +283,7 @@
                                             <a-button key="back" @click="heroCancel">Cancel</a-button>
                                             <a-button key="submit" type="primary" :loading="loading" @click="saveHeroSettings">Save</a-button>
                                         </template>
-                                        <a-collapse defaultActiveKey="1" accordion>
+                                        <a-collapse  accordion>
                                             <a-collapse-panel header="Hero Background" key="1" :showArrow="false">
                                                 <div class="settings__modal-item">
                                                     <p>Background Color</p>
@@ -352,7 +386,7 @@
                                         <a-button key="back" @click="collectionCancel">Cancel</a-button>
                                         <a-button key="submit" type="primary" :loading="loading" @click="saveCollectionSettings">Save</a-button>
                                     </template>
-                                    <a-collapse defaultActiveKey="1" accordion>
+                                    <a-collapse accordion>
                                         <a-collapse-panel header="Collection Settings" key="1" :showArrow="false">
                                             <div class="settings__modal-item">
                                                 <p>Button Color</p>
@@ -509,7 +543,7 @@
                                             <a-button key="back" @click="productCancel">Cancel</a-button>
                                             <a-button key="submit" type="primary" :loading="loading" @click="saveProductSettings">Save</a-button>
                                         </template>
-                                        <a-collapse defaultActiveKey="1" accordion>
+                                        <a-collapse accordion>
                                             <a-collapse-panel header="Product Background" key="1" :showArrow="false">
                                                 <div class="settings__modal-item">
                                                 <p>Product Section Background</p>
@@ -633,6 +667,7 @@ export default {
     ThemePicker,
   },
   data: () => ({
+    newMenu: false,
     loading: false,
     size: 'default',
     radioStyle: {
@@ -687,6 +722,8 @@ export default {
       'navLayout',
       'navLogoTextColor',
       'navLogoTextSize',
+      'navMenu',
+      'navMenuNew',
       'heroShow',
       'heroLayout',
       'heroHeight',
