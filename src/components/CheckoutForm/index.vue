@@ -160,33 +160,29 @@
             <a-card title="Order Summary" hoverable>
               <div class="checkout__summary-single">
                 <div v-for="(cartItem, index) in getCartItems" class="row" :key="index">
-                  <div class="col-lg-3 col-sm-3">
+                  <div class="col-3 col-xl-3">
                     <img :src="cartItem.image" alt="Product Name" />
                   </div>
-                  <div class="col-lg-6 col-sm-6">
+                  <div class="col-3 col-xl-6">
                     <h3 class="name">{{cartItem.name}} ({{cartItem.variantValues}})</h3>
-                    <h3 class="variant">{{cartItem.variantValues}}</h3>
-                    <h3 class="variant">{{cartItem.quantity}}</h3>
+                    <h3 class="variant">Variant - {{cartItem.variantValues}}</h3>
+                    <h3 class="variant">Quantity - {{cartItem.quantity}}</h3>
                   </div>
-                  <div class="col-lg-3">
-                    <h3 class="price">{{cartItem.price}}</h3>
+                  <div class="col-3 col-xl-3">
+                    <h3 class="price">&#x20A6;{{cartItem.price}}</h3>
                   </div>
                 </div>
               </div>
+              <a-divider />
               <div class="checkout__summary-total">
                 <div class="row">
                   <div class="col">
-                    <p>
-                      Subtotal:
-                      <span class="amount">{{formatTotal}}</span>
+                    <p>Subtotal<span class="amount">&#x20A6;{{formatTotal}}</span>
                     </p>
-                    <p>
-                      Shipping:
-                      <span class="amount">--</span>
+                    <p>Shipping<span class="amount">--</span>
                     </p>
-                    <p>
-                      Total:
-                      <span class="amount">{{formatTotal}}</span>
+                    <p class="total" :style="{color: priColor}">
+                      Total<span class="amount">&#x20A6;{{formatTotal}}</span>
                     </p>
                   </div>
                 </div>
