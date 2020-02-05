@@ -58,6 +58,16 @@
     -webkit-box-shadow: none!important;
     box-shadow: none!important;
 }
+.ant-collapse > .ant-collapse-item > .ant-collapse-header {
+    position: relative;
+    padding: 10px 0 10px 40px;
+    padding-top: 10px;
+    color: rgba(21, 21, 21, 0.85);
+    line-height: 15px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+}
 html.md-theme-default {
     background-color: #fff!important;
 }
