@@ -340,13 +340,23 @@ export default {
       let amt_in_kobo = this.getCartTotal * 100; //convert naira to kobo
 
       let createOrder = await this.$store.dispatch("createOrder", orderObj);
+      console.log(this.merchantData.paystackKey)
+      //production paystack secret key variant
       await this.makePayment(
-        this.merchantData.paystackKey,
+        "pk_test_48015e5bc54bf6b5ff0f3e7e1a3c8e1ab9cc4a4d",
         this.userDetails.email,
         amt_in_kobo,
-        createOrder.orderId
+        createOrder.orderId,
+        this.completeCheckout
       );
-      console.log(createOrder);
+      // await this.makePayment(
+      //   this.merchantData.paystackKey,
+      //   this.userDetails.email,
+      //   amt_in_kobo,
+      //   createOrder.orderId,
+      //   this.completeCheckout
+      // );
+      // console.log(createOrder);
       // if(createOrder == undefined); await this.makePayment()
     },
     handleChange(value) {
