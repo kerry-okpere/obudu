@@ -7,8 +7,8 @@
                     <h3>You are customizing</h3>
                     <a-popover trigger="click" placement="topRight">
                         <template slot="content">
-                            <p class="pt-2">The Customizer allows you to change <br />the look and feel of your store and to <br />preview changes before publishing them.</p>
-                            <a href="">Learn more</a>
+                            <p class="pt-2">Our design tool allows you change the <br />look & feel of your store and to preview  <br />changes before publishing them.</p>
+                            <a href="https://help.mercuriemart.com" target="_blank">Learn more</a>
                         </template>
                         <a-icon type="question-circle" />
                     </a-popover>

@@ -1,5 +1,6 @@
 $dark: #444;
 $light: #fff;
+$black: #222;
 
 h1,h2,h3,h4,h5,h6,p {
     color: $dark;
@@ -7,6 +8,13 @@ h1,h2,h3,h4,h5,h6,p {
 
 .container {
     width: 100%;
+}
+
+button {
+    @include btn-solid-color($black);
+    &:hover {
+        @include btn-outline-color($black);
+    }
 }
 
 .settings {
@@ -32,6 +40,13 @@ h1,h2,h3,h4,h5,h6,p {
         button {
             margin-left: 90px;
             margin-top: 10px;
+        }
+        a {
+            color: $black!important;
+            font-weight: 500;
+            &:hover {
+                font-weight: bold;
+            }
         }
         .beta {
             padding-right: 40px;
@@ -135,6 +150,6 @@ h1,h2,h3,h4,h5,h6,p {
         border: 1px solid transparent;
     }
     .ant-switch-checked {
-        background-color: #1890ff!important;
+        background-color: $black!important;
     }
 }
