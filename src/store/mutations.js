@@ -1,7 +1,7 @@
 const mutations = {
   updateStoreName(state, storeName) {
-    console.log("Updatinf stor name")
     state.data.storeName = storeName;
+    state.styles.storeName = storeName
   },
   updateStyles(state, stylesObj) {
     state.styles = stylesObj;

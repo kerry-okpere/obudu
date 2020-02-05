@@ -1000,6 +1000,10 @@ export default {
     //Cloudinary Upload Widgets
     upLogo() {
         eventBus.$emit('upLogo');
+    },
+
+    setStoreName(storename){
+        this.$store.commit("updateStoreName", storename);
     }
   },
   mounted(){
