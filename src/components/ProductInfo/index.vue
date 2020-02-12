@@ -56,7 +56,8 @@ export default {
     distObj: {},
     variantId: "",
     distinctTypes: "",
-    selectedVariant: false
+    selectedVariant: false,
+    hasDefaultVariant: false
   }),
 
   computed: {
@@ -115,7 +116,6 @@ export default {
       if (selectedVariant !== undefined) this.selectedVariant = selectedVariant;
     },
 
-    // 000013200130170524000047568107
     formatInfo(variants, types) {
       let variantsArr = new Array();
       let saturationVal = variants.length;
@@ -151,6 +151,14 @@ export default {
         prodId: slug
       }
     );
+
+    if(this.singleProd.variants.length <= 1){
+      this.hasDefaultVariant = true;
+      this.selectedVariant = this.singleProd.variants[0];
+      return;
+    }
+
+    console.log("here");
 
     let singleProduct = this.singleProd;
     let variantTypes = singleProduct.variants[0].variantTypes;

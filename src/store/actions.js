@@ -13,6 +13,7 @@ const actions = {
     addProductToCart({ commit, state }, product) {
         let selectedProd = { ...product };
         let totalProdQty = selectedProd.quantity;
+
         // let totalProdQty = product.quantity; product.quantity = 0;
 
         let prodbj = state.products.singleProduct
@@ -26,6 +27,7 @@ const actions = {
             if (cartItem == undefined) {
                 let priceSplit = selectedProd.price.split("NGN"); selectedProd.price = parseFloat(priceSplit[1].trim().replace(",", ""));
                 selectedProd.quantity = selectedProd.selectedQuantity; delete selectedProd.selectedQuantity;
+                console.log(selectedProd);
                 commit("PUSH_PROUDCT_TO_CART", selectedProd)
             } else {
                 let cartIndex = state.cart.map((item, indx) => {
