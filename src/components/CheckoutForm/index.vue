@@ -4,7 +4,6 @@
       <div class="row">
         <div class="col-12 col-md-6 col-xl-8">
           <div class="checkout__steps">
-            <!-- <form novalidate @submit.prevent="validateUser"> -->
             <md-steppers :md-active-step.sync="active" md-vertical md-linear>
               <md-step
                 id="first"
@@ -152,7 +151,6 @@
                   @click="savePaymentMethod">Continue</s-button>
               </md-step>
             </md-steppers>
-            <!-- </form> -->
           </div>
         </div>
         <div class="col-12 col-md-6 col-xl-4">

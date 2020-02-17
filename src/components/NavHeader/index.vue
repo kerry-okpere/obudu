@@ -17,9 +17,9 @@
             </div>
           </div>
           <div class="col col-xl-4">
-            <nav class="navbar__one-nav">
-              <router-link exact to="/" :style="{color: navColor}">Shop</router-link>
-              <router-link exact to="/" :style="{color: navColor}">Collections</router-link>
+            <nav class="navbar__one-nav" v-for="(navMenuItem, index) in navMenu" :key="index">
+              <a :href="navMenu.link" />
+              <!-- <router-link exact to="/" :style="{color: navColor}">Shop</router-link> -->
             </nav>
           </div>
           <div class="col col-xl-5">

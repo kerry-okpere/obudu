@@ -1,7 +1,20 @@
 const state = {
     data: {
         storeName: 'storename',
+        siteTitle: 'Storefront',
+        siteTagline: 'Your very own storefront...',
+        siteLogo: 'https://res.cloudinary.com/mercurie/image/upload/v1567432684/mercuriemart/logo.svg',
+        siteLogoAlt: 'https://res.cloudinary.com/mercurie/image/upload/v1567432684/mercuriemart/logo.svg',
+        siteFavicon: 'https://res.cloudinary.com/mercurie/image/upload/v1567279816/mercuriemart/favicon.png',
         navLogo: 'https://res.cloudinary.com/mercurie/image/upload/v1567432684/mercuriemart/logo.svg',
+        navMenu: [{
+            name: "Home",
+            link: "#"
+        }],
+        navMenuNew: [{
+            name: null,
+            link: null,
+        }],
         heroBgImg: 'https://via.placeholder.com/1000x400',
         heroContent: 'Go go your theme settings to design your storefront',
         heroTitle: 'Welcome to Your Storefront',
@@ -29,7 +42,7 @@ const state = {
         notificationContent: 'Hurry! Sales starts at 10:00AM',
         notificationButton: 'Shop Now',
     },
-    styles : {
+    styles: {
         underConstruction: false,
         themeName: "Default",
         themeColor: '#007bff',
@@ -46,6 +59,7 @@ const state = {
         navLogoImg: false,
         navLogoTextColor: '#333',
         navLogoTextSize: 20,
+        siteLogoSize: 100,
         cartShow: false,
         loginShow: false,
         heroShow: true,
@@ -95,7 +109,8 @@ const state = {
     },
     cart: [],
     countries: [],
-    store: null
+    store: null,
+    cart: []
 
 };
 

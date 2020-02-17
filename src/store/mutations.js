@@ -1,5 +1,6 @@
 const mutations = {
   updateStoreName(state, storeName) {
+    console.log("Updating store name")
     state.data.storeName = storeName;
     state.styles.storeName = storeName
   },
@@ -11,9 +12,41 @@ const mutations = {
   setStoreName(state, storeName) {
     state.data.storeName = storeName;
   },
+  setSiteTitle(state, siteTitle) {
+    state.data.siteTitle = siteTitle;
+  },
+  setSiteTagline(state, siteTagline) {
+    state.data.siteTagline = siteTagline;
+  },
+  setSiteLogo(state, siteLogo) {
+    state.data.siteLogo = siteLogo;
+  },
+  setSiteLogoAlt(state, siteLogoAlt) {
+    state.data.siteLogoAlt = siteLogoAlt;
+  },
+  setSiteLogoSize(state, siteLogoSize) {
+    state.data.siteLogoSize = siteLogoSize;
+  },
+  setSiteFavicon(state, siteFavicon) {
+    state.data.siteFavicon = siteFavicon;
+  },
   setNavLogo(state, navLogo) {
     state.data.navLogo = navLogo;
   },
+
+  // setNavMenu(state, navMenu) {
+  //   state.data.navMenu = navMenu;
+  // },
+  getNavMenuNew(state, navMenuNew) {
+    state.data.navMenuNew = navMenuNew
+  },
+  addNavMenuNew(state) {
+    state.data.navMenu.push({
+      name: state.data.navMenuNew.name,
+      link: state.data.navMenuNew.link
+    })
+  },
+
   setHeroBgImg(state, heroBgImg) {
     state.data.heroBgImg = heroBgImg;
   },

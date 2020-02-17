@@ -27,9 +27,9 @@ const router =  new Router({
     {
       path: "/",
       component: Home,
-      meta: {
-        title: `${STORENAME} Storefront`,
-      }
+      // meta: {
+      //   title: `${STORENAME} Storefront`,
+      // }
     },
     {
       path:"/product/:slug",

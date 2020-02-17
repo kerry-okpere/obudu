@@ -6,6 +6,12 @@ h1,h2,h3,h4,h5,h6,p {
     color: $dark;
 }
 
+h1 {
+    font-size: 12px;
+    font-weight: 700;
+    padding: 10px 0;
+}
+
 .container {
     width: 100%;
 }
@@ -61,7 +67,7 @@ button {
         }
     }
     &__item {
-        padding: 10px 0;
+        padding: 5px 0;
         h3 {
             font-size: 12px;
             font-weight: 600;
@@ -70,17 +76,21 @@ button {
             margin: 20px 0 0;
             width: 210px;
         }
+        button {
+            font-size: 12px;
+            margin: 5px 0 0;
+        }
     }
     &__switch {
         display: inline-flex;
-        padding: 0 0 20px;
+        padding: 0 0 10px;
         h3 {
             padding-right: 10px;
         }
     }
     &__modal {
         display: block;
-        padding: 20px 0 0;
+        padding: 0;
         &-item {
             padding: 5px 0 10px;
             p {
@@ -99,9 +109,14 @@ button {
                 font-weight: 600;
             }
             button {
-                margin: 10px 0 0;
+                margin: 5px 0;
                 font-size: 12px;
                 font-weight: bold;
+                @include btn-solid-color($black);
+                &:hover {
+                    @include btn-outline-color($black);
+                    background-color: #fff;
+                }
             }
         }
     }
