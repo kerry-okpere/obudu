@@ -2,7 +2,7 @@
   <section class="customize">
     <a-layout id="fixed-sidebar" class="hidden">
       <!-- <a-layout-sider collapsible v-model="collapsed" width="275"> -->
-      <a-layout-sider width="275" :style="{ overflow: 'auto', zIndex: 1000, height: '100vh', position: 'fixed', left: 0 }">
+      <a-layout-sider width="275" :style="panel">
         <ThemeSettings :class="{ hide: collapsed }" />
       </a-layout-sider>
       <a-layout :style="{ marginLeft: '230px' }">
@@ -26,13 +26,14 @@ import ThemeSettings from "@/components/ThemeSettings";
 import Cookies from 'js-cookie'
 
 export default {
+  data: () => ({
+    collapsed: false,
+    panel: { overflow: 'auto', zIndex: 1000, height: '100vh', position: 'fixed', left: 0 }
+  }),
   components: {
     Layout,
     ThemeSettings
   },
-  data: () => ({
-    collapsed: false
-  }),
   created() {
     if (window.location.hostname != "localhost") {
       const store = Cookies.get('storez')
