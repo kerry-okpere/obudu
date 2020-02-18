@@ -1,10 +1,11 @@
 <template>
   <section class="customize">
     <a-layout id="fixed-sidebar" class="hidden">
-      <a-layout-sider collapsible v-model="collapsed" width="275">
+      <!-- <a-layout-sider collapsible v-model="collapsed" width="275"> -->
+      <a-layout-sider width="275" :style="{ overflow: 'auto', height: '100vh',  zIndex: 1000, position: 'fixed', left: 0 }">
         <ThemeSettings :class="{ hide: collapsed }" />
       </a-layout-sider>
-      <a-layout :style="{ marginLeft: '0px' }">
+      <a-layout :style="{ marginLeft: '230px' }">
         <Layout />
       </a-layout>
     </a-layout>

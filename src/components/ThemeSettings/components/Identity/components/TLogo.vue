@@ -2,7 +2,7 @@
   <div class="settings__logo">
     <div class="settings__modal-item">
       <p>Logo</p>
-      <img :src="siteLogo" :alt="storeName" width="100" class="d-block">
+      <img :src="siteLogo" :alt="storeName" width="100" class="d-block pb-2">
       <a-button type="primary" size="small" id="upload_widget" @click="upLogo">
         Change Logo
       </a-button>
@@ -13,7 +13,7 @@
     </div>
     <div class="settings__modal-item">
       <p>Favicon</p>
-      <img :src="siteFavicon" :alt="storeName" width="30" class="d-block">
+      <img :src="siteFavicon" :alt="storeName" width="30" class="d-block pb-2">
       <a-button type="primary" size="small" id="upload_widget" @click="upFavicon">
         Change Favicon
       </a-button>

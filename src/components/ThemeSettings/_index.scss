@@ -1,6 +1,6 @@
 $dark: #444;
 $light: #fff;
-$black: #222;
+$black: #333;
 
 h1,h2,h3,h4,h5,h6,p {
     color: $dark;
@@ -25,11 +25,20 @@ button {
 }
 
 .settings {
-    padding: 40px 0;
+    padding: 20px 0 40px;
+    .return {
+        padding: 10px 0 15px;
+        span {
+            font-size: 10px;
+            font-weight: 600;
+            padding-left: 5px;
+        }
+    }
     &__intro {
         h1 {
             font-size: 18px;
             font-weight: 700;
+            padding: 0;
         }
         h3 {
             font-size: 16px;
@@ -37,6 +46,7 @@ button {
         p {
             font-size: 12px;
             font-weight: 600;
+            margin: 0;
         }
         .anticon {
             margin-left: 70px;
@@ -110,7 +120,7 @@ button {
             }
             button {
                 margin: 5px 0;
-                font-size: 12px;
+                font-size: 10px;
                 font-weight: bold;
                 @include btn-solid-color($black);
                 &:hover {

@@ -24,9 +24,9 @@
         <h1>Social Media</h1>
         <StoreSocial />
       </section>
-      <section class="settings__dashboard">
+      <!-- <section class="settings__dashboard">
         <a-button size="large" block  @click.prevent="gotoDashboard()"><a-icon type="dashboard" />Return to Dashboard</a-button>
-      </section>
+      </section> -->
     </div>
   </section>
 </template>

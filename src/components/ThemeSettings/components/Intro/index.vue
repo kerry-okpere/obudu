@@ -1,6 +1,8 @@
 <template>
   <div class="settings__intro">
-    <!-- <img src="../../assets/img/nav/beta.png" width="40" class="pb-4" alt="Mercuriemart Design Tool Beta"/> -->
+    <div class="return">
+      <v-icon name="arrow-circle-left" /><span>Return to Dashboard</span>
+    </div>
     <div class="d-inline-flex">
       <h3>You are customizing</h3>
       <a-popover trigger="click" placement="topRight">
@@ -8,7 +10,7 @@
           <p class="pt-2">Our design tool allows you change the <br />look & feel of your store and to preview  <br />changes before publishing them.</p>
           <a href="https://help.mercuriemart.com" target="_blank">Learn more</a>
         </template>
-        <a-icon type="question-circle" />
+        <a-icon type="question-circle" class="pt-1" />
       </a-popover>
     </div>
     <h1>{{storeName}}</h1>
@@ -82,4 +84,5 @@ export default {
 
 <style lang="scss">
 @import '../../_index';
+
 </style>
