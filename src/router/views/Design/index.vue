@@ -2,7 +2,7 @@
   <section class="customize">
     <a-layout id="fixed-sidebar" class="hidden">
       <!-- <a-layout-sider collapsible v-model="collapsed" width="275"> -->
-      <a-layout-sider width="275" :style="{ overflow: 'auto', height: '100vh',  zIndex: 1000, position: 'fixed', left: 0 }">
+      <a-layout-sider width="275" :style="{ overflow: 'auto', zIndex: 1000, height: '100vh', position: 'fixed', left: 0 }">
         <ThemeSettings :class="{ hide: collapsed }" />
       </a-layout-sider>
       <a-layout :style="{ marginLeft: '230px' }">
@@ -24,7 +24,6 @@ import { STORE_ID } from "./../../../config";
 import Layout from "@/router/layouts/Preview.vue";
 import ThemeSettings from "@/components/ThemeSettings";
 import Cookies from 'js-cookie'
-
 
 export default {
   components: {

@@ -24,9 +24,6 @@
         <h1>Social Media</h1>
         <StoreSocial />
       </section>
-      <!-- <section class="settings__dashboard">
-        <a-button size="large" block  @click.prevent="gotoDashboard()"><a-icon type="dashboard" />Return to Dashboard</a-button>
-      </section> -->
     </div>
   </section>
 </template>
@@ -53,11 +50,6 @@ export default {
     StoreSocial
   },
   methods: {
-    gotoDashboard(){
-        console.log("Jooo")
-        window.location.href = `https://${window.location.host}/dashboard`;
-    },
-
     //Notification on Save
     openNotificationWithIcon(type) {
         this.$notification[type]({

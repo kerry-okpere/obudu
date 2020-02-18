@@ -26,14 +26,6 @@ button {
 
 .settings {
     padding: 20px 0 40px;
-    .return {
-        padding: 10px 0 15px;
-        span {
-            font-size: 10px;
-            font-weight: 600;
-            padding-left: 5px;
-        }
-    }
     &__intro {
         h1 {
             font-size: 18px;
@@ -48,8 +40,21 @@ button {
             font-weight: 600;
             margin: 0;
         }
+        &-return {
+            padding: 10px 0 15px;
+            span {
+                font-size: 10px;
+                font-weight: 600;
+                padding-left: 5px;
+                button {
+                    margin: 0;
+                    padding: 0;
+                    color: $black;
+                }
+            }
+        }
         .anticon {
-            margin-left: 70px;
+            float: right;
             &:hover {
                 color: $primary;
             }
