@@ -66,6 +66,7 @@
         computed: {
             ...mapGetters([
                 'priColor',
+                'secColor',
                 'productTitleShow',
                 'productTitleLayout',
                 'productTitleBgColor',

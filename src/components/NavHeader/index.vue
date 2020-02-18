@@ -222,6 +222,7 @@ export default {
       'priFont',
       'secFont',
       'navFont',
+      'navMenu',
       'navShow',
       'navType',
       'navColor',

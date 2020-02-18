@@ -58,7 +58,8 @@ export default {
   computed: {
     ...mapGetters([
       'storeName',
-      'themeName'
+      'themeName',
+      'underConstruction',
     ])
   },
   methods: {
