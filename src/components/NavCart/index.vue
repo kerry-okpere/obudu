@@ -29,17 +29,18 @@
                   </div>
                 </div>
                 <div class="col-2">
-                  <v-icon name="trash" class="trash-pointer" @click="deleteCartItem(index)" />
+                  <v-icon name="trash" class="trash-pointer-delete mb-2" @click="deleteCartItem(index)" />
                 </div>
                 <a-divider />
               </div>
             </div>
             <div class="footer">
               <div class="total">
-                <h3>Total</h3>
-                <h1>NGN {{ formatTotal }}</h1>
+                <h3>Subtotal</h3>
+                <h1 :style="{color: priColor}">NGN {{ formatTotal }}</h1>
               </div>
-              <s-button :pri="priColor" :sec="secColor" @click="checkout()">Checkout</s-button>
+              <s-button class="mb-0" :pri="priColor" :sec="secColor" @click="checkout()">Checkout</s-button>
+              <s-button-outline :pri="priColor" :sec="secColor" @click="setCartShow()">Continue Shopping</s-button-outline>
             </div>
           </div>
         </div>
@@ -53,6 +54,9 @@ import { mapGetters, mapMutations } from "vuex";
 
 export default {
   computed: {
+    ...mapGetters ([
+      'priColor'
+    ]),
     getCartCount() {
       return this.$store.getters["getCartQuantity"];
     },
