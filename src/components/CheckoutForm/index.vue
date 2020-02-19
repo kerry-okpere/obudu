@@ -157,7 +157,7 @@
           <div class="checkout__summary">
             <a-card title="Order Summary" hoverable>
               <div class="checkout__summary-single">
-                <div v-for="(cartItem, index) in getCartItems" class="row" :key="index">
+                <div v-for="(cartItem, index) in getCartItems" class="row item" :key="index">
                   <div class="col-3 col-xl-3">
                     <img :src="cartItem.image" alt="Product Name" />
                   </div>

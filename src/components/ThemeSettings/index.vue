@@ -5,24 +5,24 @@
         <StoreIntro />
       </section>
       <section class="settings__identity">
-        <h1>Store Identity</h1>
+        <h1><v-icon name="paint-brush" class="mr-2" />Identity</h1>
         <StoreIdentity />
       </section>
       <section class="settings__layout">
-        <h1>Store Layout</h1>
+        <h1><v-icon name="layer-group" class="mr-2" />Layout</h1>
         <StoreLayout />
       </section>
       <section class="settings__widgets">
-        <h1>Store Widgets</h1>
+        <h1><v-icon name="shapes" class="mr-2" />Widgets</h1>
         <StoreWidgets />
       </section>
-      <section class="settings__pages">
-        <h1>Additional Pages</h1>
-        <StorePages />
+      <section class="settings__utility">
+        <h1><v-icon name="tools" class="mr-2" />Utility</h1>
+        <StoreUtility />
       </section>
-      <section class="settings__social">
-        <h1>Social Media</h1>
-        <StoreSocial />
+      <section class="settings__pages">
+        <h1><v-icon name="scroll" class="mr-2" />Pages</h1>
+        <StorePages />
       </section>
     </div>
   </section>
@@ -37,7 +37,7 @@ import StoreIdentity from './components/Identity/index.vue';
 import StoreLayout from './components/Layout/index.vue';
 import StoreWidgets from './components/Widgets/index.vue';
 import StorePages from './components/Pages/index.vue';
-import StoreSocial from './components/Social/index.vue';
+import StoreUtility from './components/Utility/index.vue';
 import cloudinary from './cloudinary.js';
 
 export default {
@@ -47,7 +47,7 @@ export default {
     StoreLayout,
     StoreWidgets,
     StorePages,
-    StoreSocial
+    StoreUtility
   },
   methods: {
     //Notification on Save

@@ -30,6 +30,9 @@
         width: 350px;
         &-single {
             margin: 0px 0;
+            .item {
+                padding: 0 0 15px;
+            }
             h3 {
                 &.name {
                     font-size: 14px;
@@ -123,6 +126,9 @@
     border: 0px solid #222;
     border-radius: 5px 5px 0 0;
     @include box-shadow(0 2px 8px rgba(0, 0, 0, 0.09));
+}
+.ant-divider-horizontal {
+    margin: 10px 0 25px;
 }
 
 @include media-breakpoint-down(sm) {

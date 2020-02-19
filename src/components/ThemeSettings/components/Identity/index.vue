@@ -6,10 +6,10 @@
     <a-collapse-panel header="Logo" key="2" :showArrow="arrow">
       <TLogo />
     </a-collapse-panel>
-    <a-collapse-panel header="Fonts" key="3" :showArrow="arrow">
+    <a-collapse-panel header="Typography" key="3" :showArrow="arrow">
       <TFonts />
     </a-collapse-panel>
-    <a-collapse-panel header="Colors" key="4" :showArrow="arrow">
+    <a-collapse-panel header="Palette" key="4" :showArrow="arrow">
       <TColors />
     </a-collapse-panel>
   </a-collapse>
