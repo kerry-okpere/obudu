@@ -5,10 +5,10 @@ const colorProp = {
     sec: String 
 };
 
-const SButton = styled('button', colorProp)`
-    background-color: ${props => props.pri}!important;
+const SButtonOutline = styled('button', colorProp)`
+    background-color: transparent!important;
     border-color: ${props => props.pri}!important;
-    color: #fff!important;
+    color: ${props => props.pri}!important;
     border-radius: 3px;
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
     transition-property: all;
@@ -21,7 +21,7 @@ const SButton = styled('button', colorProp)`
     font-weight: 600;
     font-size: 16px;
     &:hover {
-        background-color: ${props => props.sec}!important;
+        color: ${props => props.sec}!important;
         border-color: ${props => props.sec}!important;
         -webkit-box-shadow: -2px -2px 22px -8px rgba(153,153,153,0.77);
         -moz-box-shadow: -2px -2px 22px -8px rgba(153,153,153,0.77);
@@ -29,4 +29,4 @@ const SButton = styled('button', colorProp)`
     }
 `;
 
-export default SButton;
+export default SButtonOutline;
