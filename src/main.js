@@ -30,7 +30,9 @@ import '@/assets/styles/global.scss';
 
 // Styled Components
 import SButton from './components/AStyled/SButton.js';
+import SButtonOutline from './components/AStyled/SButtonOutline.js';
 Vue.component('s-button', SButton);
+Vue.component('s-button-outline', SButtonOutline);
 
 // Firebase
 import '@/firebase/config';
