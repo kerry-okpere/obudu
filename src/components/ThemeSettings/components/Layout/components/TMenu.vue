@@ -7,7 +7,7 @@
       </div>
       <div class="settings__modal-item">
       <p>Menu Layout</p>
-      <a-select :defaultValue="navLayout" style="width: 200px" @change="setNavLayout($event.target.value)">
+      <a-select :defaultValue="navLayout" style="width: 200px" @change="setNavLayout">
           <a-select-option :value="1">Left</a-select-option>
           <a-select-option :value="2">Centered</a-select-option>
           <a-select-option :value="3">Right</a-select-option>
@@ -82,10 +82,11 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
   data: () => ({
+    loading: false,
     radioStyle: {
       paddingTop: '10px',
       display: 'block',
@@ -109,14 +110,14 @@ export default {
     ])
   },
   methods: {
-    ...mapMutations ([
-      'setNavLayout'
-    ]),
     setNavShow(checked) {
       this.$store.commit('setNavShow', checked);
     },
     setNavType(value) {
       this.$store.commit('setNavType', value);
+    },
+    setNavLayout(value) {
+      this.$store.commit('setNavLayout', value);
     },
     
     //Menu Settings Modal

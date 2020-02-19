@@ -7,7 +7,7 @@
       </div>
       <div class="settings__modal-item">
         <h3>Hero Layout</h3>
-        <a-select :defaultValue="heroLayout" style="width: 200px" @change="setHeroLayout($event.target.value)">
+        <a-select :defaultValue="heroLayout" style="width: 200px" @change="setHeroLayout">
           <a-select-option :value="1">Left</a-select-option>
           <a-select-option :value="2">Centered</a-select-option>
           <a-select-option :value="3">Right</a-select-option>
@@ -39,7 +39,7 @@
                         <a-switch :defaultChecked="heroBgImgShow" @change="setHeroBgImgShow" />
                     </div>
                     <div class="settings__upload">
-                        <a-button type="primary" @click="upHeroBg">
+                        <a-button type="primary">
                             Upload Image
                         </a-button>
                     </div>
@@ -68,7 +68,7 @@
                         <a-switch :defaultChecked="heroImageShow" @change="setHeroImageShow" />
                     </div>
                     <div class="settings__upload">
-                        <a-button type="primary" @click="upHeroImage">
+                        <a-button type="primary">
                             Upload Image
                         </a-button>
                     </div>
@@ -111,9 +111,11 @@
 
 <script>
 import { mapGetters, mapMutations } from 'vuex';
+import { Swatches } from 'vue-color'; 
 
 export default {
   data: () => ({
+    loading: false,
     modalStyle: {
       margin: '0 50px 0 0'
     },
@@ -124,6 +126,9 @@ export default {
     heroBtnPriCP: false,
     heroBtnSecCP: false,
   }),
+  components: {
+    'swatches-picker': Swatches,
+  },
   computed: {
     ...mapGetters ([
       'heroShow',
@@ -146,12 +151,12 @@ export default {
   },
   methods: {
     ...mapMutations ([
-      'setHeroLayout',
       'setHeroColor',
       'setHeroTitle',
       'setHeroTitleColor',
       'setHeroContent',
       'setHeroContentColor',
+      'setHeroBgImgShow',
       'setHeroCTA',
       'setHeroCTALink',
       'setHeroBtnPri',
@@ -160,34 +165,36 @@ export default {
     
     //Hero Settings Modal
     heroSettings() {
-        this.showHeroSettings = true;
+      this.showHeroSettings = true;
     },
     saveHeroSettings(e) {
-        this.loading = true;
-        setTimeout(() => {
-            this.showHeroSettings = false;
-            this.loading = false;
-        }, 1000);
-        this.$message.success('Storefront design saved successfully!');
+      this.loading = true;
+      setTimeout(() => {
+        this.showHeroSettings = false;
+        this.loading = false;
+      }, 1000);
+      this.$message.success('Storefront design saved successfully!');
     },
     heroCancel(e) {
-        this.showHeroSettings = false;
+      this.showHeroSettings = false;
     },
     //END
 
     setHeroShow(checked) {
-        this.$store.commit('setHeroShow', checked);
+      this.$store.commit('setHeroShow', checked);
     },
-    setHeroBgImgShow(checked) {
-        this.$store.commit('setHeroBgImgShow', checked);
+    setHeroLayout(value) {
+      this.$store.commit('setHeroLayout', value);
+    },
+    setHeroHeight(value) {
+      this.$store.commit('setHeroHeight', value);
+    },
+    HeroBgImgShow(checked) {
+      this.$store.commit('setHeroBgImgShow', checked);
     },
     setHeroImageShow(checked) {
-        this.$store.commit('setHeroImageShow', checked);
+      this.$store.commit('setHeroImageShow', checked);
     },
   }
 }
 </script>
-
-<style>
-
-</style>

@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import { eventBus } from '@/eventBus.js';
 import { mapGetters } from 'vuex';
 
 export default {
@@ -38,11 +39,12 @@ export default {
     setLogoSize(value) {
       this.$store.commit('setLogoSize', value);
     },
+    
+    //Cloudinary Upload Widgets
+    upLogo() {
+      eventBus.$emit('upLogo');
+    },
 
   }
 }
 </script>
-
-<style>
-
-</style>
