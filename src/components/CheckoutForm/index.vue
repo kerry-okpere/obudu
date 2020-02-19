@@ -174,13 +174,18 @@
               <a-divider />
               <div class="checkout__summary-total">
                 <div class="row">
-                  <div class="col">
-                    <p>Subtotal<span class="amount">&#x20A6;{{formatTotal}}</span>
-                    </p>
-                    <p>Shipping<span class="amount">--</span>
-                    </p>
+                  <div class="col left">
+                    <p>Subtotal</p>
+                    <p>Shipping</p>
                     <p class="total" :style="{color: priColor}">
-                      Total<span class="amount">&#x20A6;{{formatTotal}}</span>
+                      Total
+                    </p>
+                  </div>
+                  <div class="col right">
+                    <p><span class="amount">&#x20A6;{{formatTotal}}</span></p>
+                    <p><span class="amount"></span></p>
+                    <p class="total" :style="{color: priColor}">
+                      &#x20A6;{{formatTotal}}
                     </p>
                   </div>
                 </div>
@@ -193,6 +198,7 @@
             <div v-else>
               <s-button :pri="priColor" :sec="secColor" class="disabled">Checkout</s-button>
             </div>
+            <s-button-outline :pri="priColor" :sec="secColor" class="return mt-3" @click="returntoStore">Return to Store</s-button-outline>
           </div>
         </div>
       </div>
@@ -268,6 +274,9 @@ export default {
   },
 
   methods: {
+    returntoStore() {
+      this.$router.push('/');
+    },
     setDone(id, index) {
       this[id] = true;
       this.secondStepError = null;
