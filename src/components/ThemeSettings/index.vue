@@ -49,6 +49,14 @@ export default {
     StorePages,
     StoreUtility
   },
+  computed: {
+    styles(){
+      return this.$store.state.styles
+    },
+    data(){
+      return this.$store.state.data
+    }
+  },
   methods: {
     //Notification on Save
     openNotificationWithIcon(type) {
@@ -64,7 +72,6 @@ export default {
     }
   },
   mounted(){
-    // console.log(this.styles)
   },
   watch: {
     styles: {
@@ -72,6 +79,14 @@ export default {
       handler(newStyles) {
         this.$store.dispatch("products/saveStoreStyles", {
           payload: newStyles
+        });
+      }
+    },
+    data: {
+      deep: true,
+      handler(newData) {
+        this.$store.dispatch("products/saveStoreData", {
+          payload: newData
         });
       }
     }
