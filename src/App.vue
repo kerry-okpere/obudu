@@ -19,11 +19,14 @@ export default {
     }
   },
   async created() {
-    let res = await this.$store.dispatch("products/fetchStoreStyles");
-    let mergedStyles = { ...this.$store.state.styles, ...res,  };
-    const storeName = res.storeName || STORENAME
+    let stylesRes = await this.$store.dispatch("products/fetchStoreStyles");
+    let dataRes = await this.$store.dispatch("products/fetchStoreStyles");
+    let mergedStyles = { ...this.$store.state.styles, ...stylesRes,  };
+    let mergedData = { ...this.$store.state.styles, ...dataRes,  };
+    const storeName = stylesRes.storeName || STORENAME
     this.$store.commit("updateStoreName", storeName);
     this.$store.commit("updateStyles", mergedStyles);
+    this.$store.commit("updateData", mergedData);
   }
 };
 </script>
