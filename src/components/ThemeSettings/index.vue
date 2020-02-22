@@ -85,6 +85,7 @@ export default {
     data: {
       deep: true,
       handler(newData) {
+        this.styles.data = newData
         this.$store.dispatch("products/saveStoreData", {
           payload: newData
         });
