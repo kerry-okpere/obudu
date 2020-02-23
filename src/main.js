@@ -25,8 +25,9 @@ import VueTour from 'vue-tour';
 require('vue-tour/dist/vue-tour.css');
 
 // Styles
-import "@storefront-ui/vue/styles.scss";
+import '@storefront-ui/vue/styles.scss';
 import '@/assets/styles/global.scss';
+import '@/assets/fonts/fonts.css';
 
 // Styled Components
 import SButton from './components/AStyled/SButton.js';

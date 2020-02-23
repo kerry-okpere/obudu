@@ -1,5 +1,5 @@
 <template>
-    <section class="checkout">
+    <section class="checkout" :class="[priFont]">
         <SectionTitle>
             <template v-slot:image>
                 <router-link to="/">
@@ -27,6 +27,8 @@ export default {
     },
     computed: {
         ...mapGetters([
+            'priFont',
+            'secFont',
             'navLogo',
             'navLogoImg',
             'storeName'

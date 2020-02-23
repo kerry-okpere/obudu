@@ -170,16 +170,16 @@
               <div class="checkout__summary-total">
                 <div class="row">
                   <div class="col left">
-                    <p>Subtotal</p>
-                    <p>Shipping</p>
-                    <p class="total" :style="{color: priColor}">
+                    <p :class="[priFont]">Subtotal</p>
+                    <p :class="[priFont]">Shipping</p>
+                    <p class="total" :class="[priFont]" :style="{color: priColor}">
                       Total
                     </p>
                   </div>
                   <div class="col right">
-                    <p><span class="amount">&#x20A6;{{formatTotal}}</span></p>
-                    <p><span class="amount"></span></p>
-                    <p class="total" :style="{color: priColor}">
+                    <p :class="[priFont]"><span class="amount">&#x20A6;{{formatTotal}}</span></p>
+                    <p :class="[priFont]"><span class="amount"></span></p>
+                    <p class="total" :class="[priFont]" :style="{color: priColor}">
                       &#x20A6;{{formatTotal}}
                     </p>
                   </div>
@@ -237,7 +237,8 @@ export default {
   computed: {
     ...mapGetters([
       'priColor',
-      'secColor'
+      'secColor',
+      'priFont'
     ]),
     getCartCount() {
       return this.$store.getters["getCartQuantity"];
