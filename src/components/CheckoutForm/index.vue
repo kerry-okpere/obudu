@@ -111,12 +111,10 @@
                 <div class="checkout__steps-shipping">
                   <a-radio-group v-model="shippingMethod">
                     <a-radio :style="radioStyle" :value="1">
-                      <span>Standard Shipping - N1,000</span>
-                      <p>Delivery: 3-5 days</p>
-                    </a-radio>
-                    <a-radio :style="radioStyle" :value="2">
-                      <span>Expedited Shipping - N3,500</span>
-                      <p>Delivery: 2 days</p>
+                      <span>Ship with Sendbox</span>
+                      <div>
+                        <img src="../../assets/img/sendbox-logo.png" alt="Sendbox" />
+                      </div>
                     </a-radio>
                   </a-radio-group>
                 </div>
@@ -132,12 +130,12 @@
                 :md-done.sync="third"
               >
                 <div class="checkout__steps-shipping">
-                  <a-radio-group v-model="paymentMethod">
-                    <!-- <a-radio :style="radioStyle" :value="2">
+                  <a-radio-group @change="savePaymentMethod" v-model="paymentMethod">
+                    <a-radio :style="radioStyle" :value="1">
                         <span>Pay on Delivery</span>
                         <p>Pay cash after you recieve items</p>
-                    </a-radio>-->
-                    <a-radio :style="radioStyle" :value="1">
+                    </a-radio>
+                    <a-radio :style="radioStyle" :value="2">
                       <span>Pay Now</span>
                       <p>Pay online using your Visa/Mastercard</p>
                       <div>
@@ -146,9 +144,6 @@
                     </a-radio>
                   </a-radio-group>
                 </div>
-                <s-button :pri="priColor" :sec="secColor" class="mt-3"
-                  html-type="submit"
-                  @click="savePaymentMethod">Continue</s-button>
               </md-step>
             </md-steppers>
           </div>
@@ -192,8 +187,8 @@
               </div>
             </a-card>
             <div v-if="getCartCount > 0">
-              <s-button v-if="paymentMethod === 1" :pri="priColor" :sec="secColor">Checkout</s-button>
-              <s-button v-else :pri="priColor" :sec="secColor" class="disabled">Checkout</s-button>
+              <s-button v-if="paymentMethod <= 0" :pri="priColor" :sec="secColor" class="disabled">Checkout</s-button>
+              <s-button v-else :pri="priColor" :sec="secColor" @click="checkout"><a-icon v-if="checkoutLoading" type="loading" class="mr-3" />Checkout</s-button>
             </div>
             <div v-else>
               <s-button :pri="priColor" :sec="secColor" class="disabled">Checkout</s-button>
@@ -223,7 +218,8 @@ export default {
     third: false,
     secondStepError: null,
     shippingMethod: 1,
-    paymentMethod: 1,
+    paymentMethod: 0,
+    checkoutLoading: false,
     userDetails: {},
     radioStyle: {
       display: "block",
@@ -307,9 +303,11 @@ export default {
     saveShippingMethod(e) {
       this.setDone("second", "third");
     },
-    async savePaymentMethod(e) {
+    savePaymentMethod(e) {
       this.setDone("third", "third");
-      console.log("savePaymentMethod");
+    },
+    async checkout(e) {
+      this.checkoutLoading = true;
       await this.createOrder();
     },
     setError() {

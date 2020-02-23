@@ -1,24 +1,24 @@
 // Container Widths
-@include media-breakpoint-only(xl) {
-    .container {
-        max-width: 1100px;
-    }
-}
-@include media-breakpoint-only(lg){
-    .container {
-        max-width: 1000px;
-    }
-}
-@include media-breakpoint-only(md) {
-    .container {
-        max-width: 640px;
-    }
-}
-@include media-breakpoint-only(sm) {
-    .container {
-        max-width: 550px;
-    }
-}
+// @include media-breakpoint-only(xl) {
+//     .container {
+//         max-width: 1100px;
+//     }
+// }
+// @include media-breakpoint-only(lg){
+//     .container {
+//         max-width: 1000px;
+//     }
+// }
+// @include media-breakpoint-only(md) {
+//     .container {
+//         max-width: 640px;
+//     }
+// }
+// @include media-breakpoint-only(sm) {
+//     .container {
+//         max-width: 550px;
+//     }
+// }
 .container {
     width: 90%;
 }
