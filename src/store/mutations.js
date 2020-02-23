@@ -1,16 +1,20 @@
 const mutations = {
+  // Special
   updateStoreName(state, storeName) {
-    console.log("Updating store name")
     state.data.storeName = storeName;
     state.styles.storeName = storeName
   },
   updateStyles(state, stylesObj) {
     state.styles = stylesObj;
   },
+  updateData(state, dataObj) {
+    state.data = dataObj;
+  },
 
   //Data
   setStoreName(state, storeName) {
     state.data.storeName = storeName;
+    state.styles.storeName = storeName
   },
   setSiteTitle(state, siteTitle) {
     state.data.siteTitle = siteTitle;

@@ -4,6 +4,7 @@ $black: #333;
 
 h1,h2,h3,h4,h5,h6,p {
     color: $dark;
+    font-family: $pri-font;
 }
 
 h1 {
@@ -30,6 +31,7 @@ button {
 
 .settings {
     padding: 20px 0 40px;
+    font-family: $pri-font;
     &__intro {
         h1 {
             font-size: 18px;
@@ -38,6 +40,7 @@ button {
         }
         h3 {
             font-size: 16px;
+            font-family: $pri-font;
         }
         p {
             font-size: 12px;

@@ -1,5 +1,5 @@
 <template>
-    <section class="section-title">
+    <section class="section-title" :style="{backgroundColor: priColor}">
     <div class="container">
         <div class="row">
             <div class="col-12 col-xl-12 text-center">
@@ -26,7 +26,8 @@ export default {
     },
     computed: {
         ...mapGetters ([
-            'priColor'
+            'priColor',
+            'navBgColor'
         ])
     }
 }

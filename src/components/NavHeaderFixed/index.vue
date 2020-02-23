@@ -1,5 +1,5 @@
 <template>
-  <header v-if="navShow" class="navFixed" :class="[navFont]" :style="{backgroundColor: navBgColor}">
+  <header v-if="navShow" class="navFixed" :class="[navFont]" :style="{backgroundColor: priColor}">
 
     <!-- Layout One -->
     <section class="navbar__one d-none d-lg-block" v-if="navLayout === 1">
@@ -17,10 +17,10 @@
             </div>
           </div>
           <div class="col col-xl-4">
-            <nav class="navbar__one-nav">
+            <!-- <nav class="navbar__one-nav">
               <router-link exact to="/" :style="{color: navColor}">Shop</router-link>
               <router-link exact to="/" :style="{color: navColor}">Collections</router-link>
-            </nav>
+            </nav> -->
           </div>
           <div class="col col-xl-5">
             <div class="navbar__one-search search" :style="{color: navColor}">
@@ -75,11 +75,11 @@
         <div class="container">
           <div class="row">
             <div class="col col-xl-4">
-              <nav class="navbar__two-nav">
+              <!-- <nav class="navbar__two-nav">
                 <router-link exact to="/" :style="{color: navColor}">Shop</router-link>
                 <router-link exact to="/" :style="{color: navColor}">Collection</router-link>
                 <router-link exact to="/" :style="{color: navColor}">Sale</router-link>
-              </nav>
+              </nav> -->
             </div>
             <div class="col col-xl-3">
               <router-link to="/">
@@ -125,11 +125,11 @@
             </div>
           </div>
           <div class="col col-xl-4">
-            <nav class="navbar__three-nav">
+            <!-- <nav class="navbar__three-nav">
               <router-link exact to="/" :style="{color: navColor}">Shop</router-link>
               <router-link exact to="/" :style="{color: navColor}">Collection</router-link>
               <router-link exact to="/" :style="{color: navColor}">Sale</router-link>
-            </nav>
+            </nav> -->
           </div>
           <div class="col col-xl-3">
             <router-link>

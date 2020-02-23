@@ -30,16 +30,17 @@
         </a-radio-group>
       </div>
     </div>
-
     <div class="product__info-quantity">
       <h3 class="pb-2">Quantity</h3>
       <a-input-number :min="1" :max="10" v-model="value" @change="changeQuant" />
     </div>
     <div class="product__info-cart">
       <s-button v-if="!selectedVariant" :pri="priColor" :sec="secColor" class="disabled mb-0">Add to Cart</s-button>
-      <s-button v-else :pri="priColor" :sec="secColor" @click="addToCart(selectedVariant)" class="mb-0"><a-icon type="plus" class="pr-2" />Add to Cart</s-button>
+      <s-button v-if="productInCart" :pri="priColor" :sec="secColor" class="disabled mb-0"><a-icon type="check" class="pr-2" />Add to Cart</s-button>
+      <s-button v-if="selectedVariant && !productInCart" :pri="priColor" :sec="secColor" @click="addToCart(selectedVariant)" class="mb-0"><a-icon type="plus" class="pr-2" />Add to Cart</s-button>
       <s-button-outline v-if="!selectedVariant" :pri="priColor" :sec="secColor" class="disabled">Buy Now</s-button-outline>
-      <s-button-outline v-else :pri="priColor" :sec="secColor">Buy Now</s-button-outline>
+      <s-button-outline v-if="selectedVariant && !buyNowLoading" :pri="priColor" :sec="secColor" @click="buyNow(selectedVariant)">Buy Now</s-button-outline>
+      <s-button-outline v-if="buyNowLoading" :pri="priColor" :sec="secColor"><a-icon type="loading" class="mr-3" />Buy Now</s-button-outline>
     </div>
   </div>
 </template>
@@ -63,7 +64,9 @@ export default {
     variantId: "",
     distinctTypes: "",
     selectedVariant: false,
-    hasDefaultVariant: false
+    hasDefaultVariant: false,
+    productInCart: false,
+    buyNowLoading: false
   }),
 
   computed: {
@@ -87,11 +90,24 @@ export default {
       let prodObj = selectedVariant;
       prodObj.selectedQuantity = this.value;
       let product = this.$store.dispatch("addProductToCart", prodObj);
+      this.openMessage();
+      this.productInCart = true;
+    },
+    buyNow(selectedVariant) {
+      this.buyNowLoading = true;
+      let prodObj = selectedVariant;
+      prodObj.selectedQuantity = this.value;
+      let product = this.$store.dispatch("addProductToCart", prodObj);
+      setTimeout(() => {
+        this.$router.push("/checkout");
+      }, 1000);
+    },
+    openMessage() {
       this.$message.success('Added to cart!');
     },
     openNotification() {
       this.$notification.open({
-        message: "Product added to cart",
+        message: "Added to cart!",
         duration: 1.5
       });
     },
