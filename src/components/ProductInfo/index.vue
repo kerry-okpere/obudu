@@ -11,8 +11,8 @@
       <h3 class="m-0">{{singleProd.categoryName}}</h3>
     </div>
     <div class="product__info-description">
-      <h3 class="pb-1">Description</h3>
-      <p>{{singleProd.description}}</p>
+      <!-- <h3 class="pb-1">Description</h3>
+      <p>{{singleProd.description}}</p> -->
     </div>
     <div class="product__info-price">
       <h3>Price</h3>
@@ -75,6 +75,10 @@ export default {
       'secColor'
     ])
   },
+
+  // https://us-central1-mercuriemart.cloudfunctions.net/paystack_webhook
+
+  // https://us-central1-mercuriemart.cloudfunctions.net/paystack_webhook
   methods: {
     changeQuant(value) {
       console.log("changed", value);

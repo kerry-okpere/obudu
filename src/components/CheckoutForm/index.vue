@@ -342,14 +342,16 @@ export default {
 
       let amt_in_kobo = this.getCartTotal * 100; //convert naira to kobo
 
-      let createOrder = await this.$store.dispatch("createOrder", orderObj);
+      let createOrderResponse = await this.$store.dispatch("createOrder", orderObj);
+      const { orderId, merchantId } = createOrderResponse
       console.log(this.merchantData.paystackKey)
       //production paystack secret key variant
       await this.makePayment(
         "pk_test_48015e5bc54bf6b5ff0f3e7e1a3c8e1ab9cc4a4d",
         this.userDetails.email,
         amt_in_kobo,
-        createOrder.orderId,
+        orderId,
+        merchantId,
         this.completeCheckout
       );
       // await this.makePayment(
@@ -375,15 +377,16 @@ export default {
           .indexOf(input.toLowerCase()) >= 0
       );
     },
-    async makePayment(key, email, amount, ref, callbackFunc) {
+    async makePayment(key, email, amount, orderId, merchantId, callbackFunc) {
       let handler = PaystackPop.setup({
         key: key,
         email: email,
         amount: amount,
         currency: "NGN",
-        ref: ref,
+        ref: orderId,
         metadata: {
-          custom_fields: [{}]
+          orderId,
+          merchantId
         },
         callback: function(response) {
           if (response) {
