@@ -107,7 +107,6 @@ const state = {
         subfooterBgColor: '#fff',
         subfooterColor: '#333'
     },
-    cart: [],
     countries: [],
     store: null,
     cart: []

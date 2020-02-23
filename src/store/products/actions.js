@@ -44,6 +44,28 @@ const actions = {
     });
   },
 
+  async fetchStoreData({ state, commit }) {
+    return new Promise(async (resolve, reject) => {      
+      let response = await storefront$http.get(`${API_URL}/${STORE_ID}/data`).catch(err => console.log(err));
+      if (response.status == 200) {
+        resolve(response.data);
+      } else {
+        reject("Unable to fetch data");
+      }
+    });
+  },
+
+  async saveStoreData({ state, commit }, {payload}) {
+    return new Promise(async (resolve, reject) => {      
+      let response = await storefront$http.post(`${API_URL}/${STORE_ID}/data`, {...payload}).catch(err => console.log(err));
+      if (response.status == 200) {
+        resolve(response.data);
+      } else {
+        reject("Unable to save data");
+      }
+    });
+  },
+
   async fetchHomeProducts({ state, commit }) {
     return new Promise(async (resolve, reject) => {      
       let response = await storefront$http.get('/products').catch(err => console.log(err));
