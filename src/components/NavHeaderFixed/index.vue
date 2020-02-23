@@ -1,5 +1,5 @@
 <template>
-  <header v-if="navShow" class="navFixed" :class="[navFont]" :style="{backgroundColor: navBgColor}">
+  <header v-if="navShow" class="navFixed" :class="[navFont]" :style="{backgroundColor: priColor}">
 
     <!-- Layout One -->
     <section class="navbar__one d-none d-lg-block" v-if="navLayout === 1">

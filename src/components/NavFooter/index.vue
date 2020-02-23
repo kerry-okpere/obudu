@@ -61,7 +61,7 @@
         <section class="subfooter" v-if="subfooterShow">
             
             <!-- Subfooter Layout One -->
-            <section class="subfooter__one" v-if="subfooterLayout === 1" :style="{backgroundColor: navBgColor, color: navColor}">
+            <section class="subfooter__one" v-if="subfooterLayout === 1" :style="{backgroundColor: priColor, color: navColor}">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
@@ -91,7 +91,7 @@
             </section>
 
             <!-- Subfooter Layout Two -->
-            <section class="subfooter__two" v-if="subfooterLayout === 2" :style="{backgroundColor: navBgColor, color: navColor}">
+            <section class="subfooter__two" v-if="subfooterLayout === 2" :style="{backgroundColor: priColor, color: navColor}">
                 <div class="container">
                     <div class="row">
                         <div class="col-12 col-xl-6 col-lg-6 col-md-12 col-sm-12">
@@ -111,7 +111,7 @@
             </section>
 
             <!-- Subfooter Layout Three -->
-            <section class="subfooter__three" v-if="subfooterLayout === 3" :style="{backgroundColor: navBgColor, color: navColor}">
+            <section class="subfooter__three" v-if="subfooterLayout === 3" :style="{backgroundColor: priColor, color: navColor}">
                 <div class="container">
                     <div class="row">
                         <div class="col-12">
@@ -140,6 +140,7 @@ export default {
     }),
     computed: {
         ...mapGetters ([
+            'priColor',
             'navFont',
             'navBgColor',
             'navColor',
