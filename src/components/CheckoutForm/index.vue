@@ -198,6 +198,7 @@
             </a-card>
             <div v-if="getCartCount > 0">
               <s-button v-if="paymentMethod <= 0" :pri="priColor" :sec="secColor" class="disabled">Checkout</s-button>
+              <s-button v-if="paymentMethod = 1" :pri="priColor" :sec="secColor" @click="checkoutDelivery"><a-icon v-if="checkoutLoading" type="loading" class="mr-3" />Checkout</s-button>
               <s-button v-else :pri="priColor" :sec="secColor" @click="checkout"><a-icon v-if="checkoutLoading" type="loading" class="mr-3" />Checkout</s-button>
             </div>
             <div v-else>
@@ -320,6 +321,10 @@ export default {
     async checkout(e) {
       this.checkoutLoading = true;
       await this.createOrder();
+    },
+    async checkoutDelivery(e) {
+      this.checkoutLoading = true;
+      await this.$router.push("/order/success");
     },
     setError() {
       this.secondStepError = "This is an error!";
