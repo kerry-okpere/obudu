@@ -111,6 +111,14 @@
                 <div class="checkout__steps-shipping">
                   <a-radio-group v-model="shippingMethod">
                     <a-radio :style="radioStyle" :value="1">
+                      <span>Standard Shipping</span>
+                      <p>Standard shipping to your shipping address</p>
+                    </a-radio>
+                    <a-radio :style="radioStyle" :value="2">
+                      <span>Pickup on Location</span>
+                      <p>Pickup your items from out location at your convenience</p>
+                    </a-radio>
+                    <a-radio :style="radioStyle" :value="3">
                       <span>Ship with Sendbox</span>
                       <div>
                         <img src="../../assets/img/sendbox-logo.png" alt="Sendbox" />
@@ -172,12 +180,14 @@
                   <div class="col left">
                     <p :class="[priFont]">Subtotal</p>
                     <p :class="[priFont]">Shipping</p>
+                    <p :class="[priFont]">Tax</p>
                     <p class="total" :class="[priFont]" :style="{color: priColor}">
                       Total
                     </p>
                   </div>
                   <div class="col right">
                     <p :class="[priFont]"><span class="amount">&#x20A6;{{formatTotal}}</span></p>
+                    <p :class="[priFont]"><span class="amount"></span></p>
                     <p :class="[priFont]"><span class="amount"></span></p>
                     <p class="total" :class="[priFont]" :style="{color: priColor}">
                       &#x20A6;{{formatTotal}}
