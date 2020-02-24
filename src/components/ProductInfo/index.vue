@@ -4,7 +4,7 @@
       <h1>{{ singleProd.name }}</h1>
       <!-- <h1>{{ selectedVariant }}</h1> -->
       <!-- <a-rate v-model="rating" />
-      <h4>(2 ratings)</h4> -->
+      <h4>(2 ratings)</h4>-->
       <!-- {{singleProds}} -->
     </div>
     <div class="product__info-description">
@@ -12,7 +12,7 @@
     </div>
     <div class="product__info-description">
       <!-- <h3 class="pb-1">Description</h3>
-      <p>{{singleProd.description}}</p> -->
+      <p>{{singleProd.description}}</p>-->
     </div>
     <div class="product__info-price">
       <h3>Price</h3>
@@ -35,18 +35,45 @@
       <a-input-number :min="1" :max="10" v-model="value" @change="changeQuant" />
     </div>
     <div class="product__info-cart">
-      <s-button v-if="!selectedVariant" :pri="priColor" :sec="secColor" class="disabled mb-0">Add to Cart</s-button>
-      <s-button v-if="productInCart" :pri="priColor" :sec="secColor" class="mb-0"><a-icon type="check" class="pr-2" />Add to Cart</s-button>
-      <s-button v-if="selectedVariant && !productInCart" :pri="priColor" :sec="secColor" @click="addToCart(selectedVariant)" class="mb-0"><a-icon type="plus" class="pr-2" />Add to Cart</s-button>
-      <s-button-outline v-if="!selectedVariant" :pri="priColor" :sec="secColor" class="disabled">Buy Now</s-button-outline>
-      <s-button-outline v-if="selectedVariant && !buyNowLoading" :pri="priColor" :sec="secColor" @click="buyNow(selectedVariant)">Buy Now</s-button-outline>
-      <s-button-outline v-if="buyNowLoading" :pri="priColor" :sec="secColor"><a-icon type="loading" class="mr-3" />Buy Now</s-button-outline>
+      <s-button
+        v-if="!selectedVariant"
+        :pri="priColor"
+        :sec="secColor"
+        class="disabled mb-0"
+      >Add to Cart</s-button>
+      <s-button v-if="productInCart" :pri="priColor" :sec="secColor" class="mb-0">
+        <a-icon type="check" class="pr-2" />Add to Cart
+      </s-button>
+      <s-button
+        v-if="selectedVariant && !productInCart"
+        :pri="priColor"
+        :sec="secColor"
+        @click="addToCart(selectedVariant)"
+        class="mb-0"
+      >
+        <a-icon type="plus" class="pr-2" />Add to Cart
+      </s-button>
+      <s-button-outline
+        v-if="!selectedVariant"
+        :pri="priColor"
+        :sec="secColor"
+        class="disabled"
+      >Buy Now</s-button-outline>
+      <s-button-outline
+        v-if="selectedVariant && !buyNowLoading"
+        :pri="priColor"
+        :sec="secColor"
+        @click="buyNow(selectedVariant)"
+      >Buy Now</s-button-outline>
+      <s-button-outline v-if="buyNowLoading" :pri="priColor" :sec="secColor">
+        <a-icon type="loading" class="mr-3" />Buy Now
+      </s-button-outline>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
 
 export default {
   data: () => ({
@@ -73,10 +100,7 @@ export default {
     singleProds() {
       return this.$store.getters["products/getProduct"];
     },
-    ...mapGetters([
-      'priColor',
-      'secColor'
-    ])
+    ...mapGetters(["priColor", "secColor"])
   },
 
   // https://us-central1-mercuriemart.cloudfunctions.net/paystack_webhook
@@ -98,15 +122,32 @@ export default {
     },
     buyNow(selectedVariant) {
       this.buyNowLoading = true;
+
       let prodObj = selectedVariant;
       prodObj.selectedQuantity = this.value;
-      let product = this.$store.dispatch("addProductToCart", prodObj);
+      let prodExistsVal = this.prodExists(selectedVariant);
+      if(prodExistsVal !== undefined) {
+        this.routeToCheckout();
+      } else {
+        let product = this.$store.dispatch("addProductToCart", prodObj);
+        this.routeToCheckout();
+      }
+    },
+
+    routeToCheckout() {
       setTimeout(() => {
         this.$router.push("/checkout");
       }, 1000);
     },
+
+    prodExists(cartItem) {
+      let cartItems = this.$store.getters["getCartItems"];
+      let cartFind = cartItems.find(item => item.index == cartItem.index);
+      return cartFind;
+    },
+
     openMessage() {
-      this.$message.success('Added to cart!');
+      this.$message.success("Added to cart!");
     },
     openNotification() {
       this.$notification.open({
@@ -123,7 +164,7 @@ export default {
     formatPrice(price) {
       // Apply currency
       if (typeof price !== "number") {
-        if(price !== undefined){
+        if (price !== undefined) {
           return Number(price.replace(/\D/g, "").slice(0, -2));
         }
       } else {
@@ -181,7 +222,7 @@ export default {
       }
     );
 
-    if(this.singleProd.variants.length <= 1){
+    if (this.singleProd.variants.length <= 1) {
       this.hasDefaultVariant = true;
       this.selectedVariant = this.singleProd.variants[0];
       return;

@@ -318,9 +318,11 @@ export default {
       if (response.status !== "success") {
         let error = response.message;
         alert(error);
+        this.$router.push("/order/failed");
       } else if (response.status === "success") {
         this.$store.dispatch("emptyCart");
         alert("Payment successful");
+        this.$router("/order/success");
       }
     },
 
