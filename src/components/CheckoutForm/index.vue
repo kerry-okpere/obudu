@@ -156,10 +156,10 @@
                   <div class="col-3 col-xl-3">
                     <img :src="cartItem.image" alt="Product Name" />
                   </div>
-                  <div class="col-3 col-xl-6">
+                  <div class="col-6 col-xl-6">
                     <h3 class="name">{{cartItem.name}} ({{cartItem.variantValues}})</h3>
-                    <h3 class="variant">Variant - {{cartItem.variantValues}}</h3>
-                    <h3 class="variant">Quantity - {{cartItem.quantity}}</h3>
+                    <h3 class="variant">{{cartItem.variantValues}}</h3>
+                    <h3 class="variant">{{cartItem.quantity}}</h3>
                   </div>
                   <div class="col-3 col-xl-3">
                     <h3 class="price">&#x20A6;{{cartItem.price}}</h3>
