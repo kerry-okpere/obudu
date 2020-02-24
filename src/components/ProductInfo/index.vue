@@ -36,7 +36,7 @@
     </div>
     <div class="product__info-cart">
       <s-button v-if="!selectedVariant" :pri="priColor" :sec="secColor" class="disabled mb-0">Add to Cart</s-button>
-      <s-button v-if="productInCart" :pri="priColor" :sec="secColor" class="disabled mb-0"><a-icon type="check" class="pr-2" />Add to Cart</s-button>
+      <s-button v-if="productInCart" :pri="priColor" :sec="secColor" class="mb-0"><a-icon type="check" class="pr-2" />Add to Cart</s-button>
       <s-button v-if="selectedVariant && !productInCart" :pri="priColor" :sec="secColor" @click="addToCart(selectedVariant)" class="mb-0"><a-icon type="plus" class="pr-2" />Add to Cart</s-button>
       <s-button-outline v-if="!selectedVariant" :pri="priColor" :sec="secColor" class="disabled">Buy Now</s-button-outline>
       <s-button-outline v-if="selectedVariant && !buyNowLoading" :pri="priColor" :sec="secColor" @click="buyNow(selectedVariant)">Buy Now</s-button-outline>
@@ -92,6 +92,9 @@ export default {
       let product = this.$store.dispatch("addProductToCart", prodObj);
       this.openMessage();
       this.productInCart = true;
+      setTimeout(() => {
+        this.productInCart = false;
+      }, 3000);
     },
     buyNow(selectedVariant) {
       this.buyNowLoading = true;
