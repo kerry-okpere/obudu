@@ -1,7 +1,17 @@
 <template>
   <div class="settings__intro">
     <div class="settings__intro-return">
+      <span class="d-none d-md-block">
       <v-icon name="arrow-circle-left" /><span><a-button type="link" @click.prevent="gotoDashboard()">Return to Dashboard</a-button></span>
+      </span>
+      <div class="row d-sm-block d-md-none">
+        <div class="col-6">
+          <v-icon name="arrow-circle-left" /><span><a-button type="link" @click.prevent="gotoDashboard()">Return to Dashboard</a-button></span>
+        </div>
+        <div class="col-6">
+          <span class="float-right"><router-link to="/" target="_blank"><a-button type="link">Preview Storefront</a-button><v-icon name="arrow-circle-right" class="ml-2" /></router-link></span>
+        </div>
+      </div>
     </div>
     <div class="row">
       <div class="col-10">
@@ -36,7 +46,7 @@
         <p class="pt-1">Under Construction</p>
       </div>
       <div class="col-5">
-        <a-switch checkedChildren="Enabled" unCheckedChildren="Disabled"
+        <a-switch checkedChildren="Active" unCheckedChildren="Inactive"
           :defaultChecked="underConstruction" @change="setUnderConstruction" class="ml-1 mt-0 float-right" />
       </div>
     </div>
