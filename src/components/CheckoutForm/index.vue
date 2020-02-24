@@ -198,8 +198,8 @@
             </a-card>
             <div v-if="getCartCount > 0">
               <s-button v-if="paymentMethod <= 0" :pri="priColor" :sec="secColor" class="disabled">Checkout</s-button>
-              <s-button v-if="paymentMethod = 1" :pri="priColor" :sec="secColor" @click="checkoutDelivery"><a-icon v-if="checkoutLoading" type="loading" class="mr-3" />Checkout</s-button>
-              <s-button v-else :pri="priColor" :sec="secColor" @click="checkout"><a-icon v-if="checkoutLoading" type="loading" class="mr-3" />Checkout</s-button>
+              <s-button v-if="paymentMethod === 1" :pri="priColor" :sec="secColor" @click="checkoutDelivery"><a-icon v-if="checkoutLoading" type="loading" class="mr-3" />Checkout</s-button>
+              <s-button v-if="paymentMethod === 2" :pri="priColor" :sec="secColor" @click="checkout"><a-icon v-if="checkoutLoading" type="loading" class="mr-3" />Checkout</s-button>
             </div>
             <div v-else>
               <s-button :pri="priColor" :sec="secColor" class="disabled">Checkout</s-button>
