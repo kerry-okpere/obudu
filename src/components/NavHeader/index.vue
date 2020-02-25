@@ -77,20 +77,9 @@
             </div>
           </div>
           <div class="col-8">
-            <nav class="navbar__mobile-nav navbar-cta" style="margin: 0px 0 0;">
-              <div class="navbar__item">
-                <a-button type="link">
-                  <!-- <img src="@/assets/img/nav/search.svg" width="20" alt="Search"> -->
-                </a-button>
-              </div>
-              <div class="navbar__item">
-                <a-badge :count="actualCartCount" :numberStyle="{cartIconStyleMobile}" :showZero="false">
-                  <a-button type="link" @click="cartShow">
-                    <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart" />
-                  </a-button>
-                </a-badge>
-              </div>
-            </nav>
+            <div class="navbar__items">
+              <NavAction />
+            </div>
           </div>
         </div>
       </div>

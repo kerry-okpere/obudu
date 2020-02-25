@@ -4,7 +4,7 @@
     <!-- Cart -->
     <a-badge :count="actualCartCount" :numberStyle="cartIconStyle" :showZero="false">
       <a-button type="link" @click="setCartShow">
-        <v-icon name="shopping-cart" :style="{color: navColor}" />
+        <v-icon name="shopping-cart" class="mt-1" :style="{color: navColor}" />
         <span :style="{color: navColor}">Cart</span>
       </a-button>
     </a-badge>
