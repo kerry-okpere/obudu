@@ -5,10 +5,11 @@
                 <div class="row">
                     <div class="col-12 col-xl-12 text-center">
                         <lottie-player src="https://assets2.lottiefiles.com/temp/lf20_QrtGro.json"
-                            background="transparent" speed="1" style="width: 300px; height: 300px;" autoplay>
+                            background="transparent" speed="1" style="width: 100px; height: 100px;" autoplay>
                         </lottie-player>
                         <h1>Order Failed</h1>
                         <p>Your order failed, please try again</p>
+                        <OrderSummary />
                         <router-link to="/">
                             <s-button :pri="priColor" :sec="secColor">Continue Shopping</s-button>
                         </router-link>
@@ -21,7 +22,11 @@
 
 <script>
 import { mapGetters } from 'vuex';  
+import OrderSummary from '@/components/OrderSummary'; 
 export default {
+    components: {
+        OrderSummary
+    },
     computed: {
         ...mapGetters([
             'priColor',
@@ -33,11 +38,10 @@ export default {
 
 <style lang="scss" scoped>
 .failed {
-    margin: 120px 0 100px;
+    margin: 150px 0 100px;
     h1 {
-        font-size: 50px;
+        font-size: 20px;
         font-weight: 600;
-        padding: 10px 0 0;
     }
     h3 {
         font-size: 24px;
