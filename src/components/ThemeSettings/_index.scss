@@ -23,6 +23,9 @@ button {
         @include btn-outline-color($black);
         background-color: #fff;
     }
+    &.upload {
+        color: #fff;
+    }
 }
 
 .fa-icon {
