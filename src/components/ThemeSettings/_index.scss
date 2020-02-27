@@ -19,13 +19,17 @@ h1 {
 
 button {
     @include btn-solid-color($black);
-    &:hover {
+    &:hover, &:focus {
         @include btn-outline-color($black);
         background-color: #fff;
     }
     &.upload {
         color: #fff;
     }
+}
+
+.ant-btn-primary:focus {
+    @include btn-solid-color($black!important);
 }
 
 .fa-icon {
@@ -156,6 +160,10 @@ button {
             // color: #fff;
         }
     }
+    // .ant-modal {
+    //     margin: 0px 50px 0px 0px;
+    //     width: 520px;
+    // }
     .ant-divider {
         background: #ddd;
     }
@@ -195,3 +203,10 @@ button {
         background-color: $black!important;
     }
 }
+
+// @include media-breakpoint-down(sm) {
+//     .ant-modal {
+//         margin: 0;
+//         width: 500px;
+//     }
+// }
