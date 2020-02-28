@@ -71,6 +71,19 @@ const actions = {
         })
     },
 
+    async fetchOrderById({state, commit}, {orderId}) {
+        return new Promise (async (resolve, reject) => {
+          let reqUrl = `/orders/${orderId}`;
+          let response = await storefront$http.get(reqUrl).catch(err => console.log(err));
+      
+          if(response.status == 200) {
+            resolve(response.data);
+          }else {
+            reject("Unable to fetch product");
+          }
+        })
+      },
+    
     async fetchMerchantSettings({commit, state}) {
         return new Promise(async (resolve, reject) => {
             let response = await storefront$http.get("/merchants/settings").catch(err => console.log(err));

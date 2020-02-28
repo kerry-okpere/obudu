@@ -112,6 +112,20 @@ const router =  new Router({
       meta: {
         title: `Order Failed - ${STORENAME}`,
       }
+    },
+    {
+      path: "/order/success/:slug",
+      component: OrderSuccess,
+      meta: {
+        title: `Order Successful - ${STORENAME}`,
+      }
+    },
+    {
+      path: "/order/failed/:slug",
+      component: OrderFailure,
+      meta: {
+        title: `Order Failed - ${STORENAME}`,
+      }
     }
   ]
 });

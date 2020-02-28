@@ -110,15 +110,15 @@
               >
                 <div class="checkout__steps-shipping">
                   <a-radio-group v-model="shippingMethod">
-                    <a-radio :style="radioStyle" :value="1">
+                    <a-radio :style="radioStyle" :value="0">
                       <span>Standard Shipping</span>
                       <p>Standard shipping to your shipping address</p>
                     </a-radio>
-                    <a-radio :style="radioStyle" :value="2">
+                    <a-radio :style="radioStyle" :value="1">
                       <span>Pickup on Location</span>
                       <p>Pickup your items from out location at your convenience</p>
                     </a-radio>
-                    <a-radio :style="radioStyle" :value="3">
+                    <a-radio :style="radioStyle" :value="2">
                       <span>Ship with Sendbox</span>
                       <div>
                         <img src="../../assets/img/sendbox-logo.png" alt="Sendbox" />
@@ -139,11 +139,11 @@
               >
                 <div class="checkout__steps-shipping">
                   <a-radio-group @change="savePaymentMethod" v-model="paymentMethod">
-                    <a-radio :style="radioStyle" :value="1">
+                    <a-radio :style="radioStyle" :value="0">
                         <span>Pay on Delivery</span>
                         <p>Pay cash after you recieve items</p>
                     </a-radio>
-                    <a-radio :style="radioStyle" :value="2">
+                    <a-radio :style="radioStyle" :value="1">
                       <span>Pay Now</span>
                       <p>Pay online using your Visa/Mastercard</p>
                       <div>
@@ -197,9 +197,8 @@
               </div>
             </a-card>
             <div v-if="getCartCount > 0">
-              <s-button v-if="paymentMethod <= 0" :pri="priColor" :sec="secColor" class="disabled">Checkout</s-button>
-              <s-button v-if="paymentMethod === 1" :pri="priColor" :sec="secColor" @click="checkoutDelivery"><a-icon v-if="checkoutLoading" type="loading" class="mr-3" />Checkout</s-button>
-              <s-button v-if="paymentMethod === 2" :pri="priColor" :sec="secColor" @click="checkout"><a-icon v-if="checkoutLoading" type="loading" class="mr-3" />Checkout</s-button>
+              <s-button v-if="paymentMethod >= 0" :pri="priColor" :sec="secColor" @click="checkout"><a-icon v-if="checkoutLoading" type="loading" class="mr-3" />Checkout</s-button>
+              <s-button v-else :pri="priColor" :sec="secColor" class="disabled">Checkout</s-button>
             </div>
             <div v-else>
               <s-button :pri="priColor" :sec="secColor" class="disabled">Checkout</s-button>
@@ -228,9 +227,10 @@ export default {
     second: false,
     third: false,
     secondStepError: null,
-    shippingMethod: 1,
-    paymentMethod: 0,
+    shippingMethod: 0,
+    paymentMethod: null,
     checkoutLoading: false,
+    orderId: null,
     userDetails: {},
     radioStyle: {
       display: "block",
@@ -322,9 +322,10 @@ export default {
       this.checkoutLoading = true;
       await this.createOrder();
     },
-    async checkoutDelivery(e) {
+    async checkoutDelivery(orderId) {
       this.checkoutLoading = true;
-      await this.$router.push("/order/success");
+      this.$store.dispatch("emptyCart");
+      return this.$router.push(`/order/success/${orderId}`);
     },
     setError() {
       this.secondStepError = "This is an error!";
@@ -332,12 +333,12 @@ export default {
     completeCheckout(response) {
       if (response.status !== "success") {
         let error = response.message;
-        alert(error);
+        // alert(error);
         this.$router.push("/order/failed");
       } else if (response.status === "success") {
         this.$store.dispatch("emptyCart");
-        alert("Payment successful");
-        this.$router("/order/success");
+        // alert("Payment successful");
+        this.$router.push("/order/success");
       }
     },
 
@@ -359,7 +360,11 @@ export default {
       let amt_in_kobo = this.getCartTotal * 100; //convert naira to kobo
 
       let createOrderResponse = await this.$store.dispatch("createOrder", orderObj);
-      const { orderId, merchantId } = createOrderResponse
+      const { orderId, merchantId } = createOrderResponse;
+      if (this.paymentMethod === 0) {
+        this.checkoutDelivery(orderId);
+        return;
+      }
       console.log(this.merchantData.paystackKey)
       //production paystack secret key variant
       await this.makePayment(
