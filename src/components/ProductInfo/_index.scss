@@ -67,5 +67,10 @@
             cursor: not-allowed!important;
         }
     }
+}
 
+@include media-breakpoint-down(sm) {
+    .product__info {
+        padding: 10px 0;
+    }
 }

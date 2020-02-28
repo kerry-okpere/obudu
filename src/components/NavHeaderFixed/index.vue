@@ -151,7 +151,7 @@
     </section>
 
     <!-- Mobile Nav -->
-    <section class="navbar__mobile d-block d-lg-none">
+     <section class="navbar__mobile d-block d-lg-none">
       <div class="container">
         <div class="row">
           <div class="col-4">
@@ -166,20 +166,9 @@
             </div>
           </div>
           <div class="col-8">
-            <nav class="navbar__mobile-nav navbar-cta" style="margin: 0px 0 0;">
-              <div class="navbar__item">
-                <a-button type="link">
-                  <!-- <img src="@/assets/img/nav/search.svg" width="20" alt="Search"> -->
-                </a-button>
-              </div>
-              <div class="navbar__item">
-                <a-badge :count="actualCartCount" :numberStyle="{cartIconStyleMobile}" :showZero=true>
-                  <a-button type="link" @click="cartShow">
-                    <img src="@/assets/img/nav/cart.svg" width="20" alt="Cart" />
-                  </a-button>
-                </a-badge>
-              </div>
-            </nav>
+            <div class="navbar__items">
+              <NavAction />
+            </div>
           </div>
         </div>
       </div>
@@ -191,10 +180,12 @@
 import { Slide } from "vue-burger-menu";
 import { mapGetters, mapMutations } from "vuex";
 import { STORENAME } from "./../../config";
+import NavAction from '../NavHeader/components/NavAction';
 
 export default {
   components: {
-    Slide
+    Slide,
+    NavAction
   },
 
   data: () => ({

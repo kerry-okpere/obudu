@@ -7,3 +7,14 @@
         max-height: 500px;
     }
 }
+@include media-breakpoint-down(sm) {
+    .product__image{
+        img {
+            min-width: 250px;
+            max-width: 250px;
+            min-height: 250px;
+            max-height: 250px;
+        }
+    }
+}
+
