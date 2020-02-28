@@ -51,6 +51,13 @@ const router =  new Router({
       }
     },
     {
+      path: "/checkout/:slug",
+      component: Checkout,
+      meta: {
+        title: `Checkout - ${STORENAME}`,
+      }
+    },
+    {
       path: "/cart/",
       component: Cart,
       meta: {
