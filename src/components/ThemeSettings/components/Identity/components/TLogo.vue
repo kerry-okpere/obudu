@@ -58,7 +58,6 @@ export default {
     },
     faviconData: {
       asset_name: "favicon"
-
     }
   }),
   computed: {
@@ -74,6 +73,12 @@ export default {
     ])
   },
   methods: {
+    setLogoUrl(url) {
+      this.$store.commit("setSiteLogo", url);
+    },
+    setFaviconUrl(url) {
+      this.$store.commit("setSiteFavicon", url);
+    },
     setLogoSize(value) {
       this.$store.commit("setLogoSize", value);
     },
@@ -83,6 +88,7 @@ export default {
       }
       if (info.file.status === "done") {
         this.$message.success(`${info.file.name} file uploaded successfully`);
+        this.setLogoUrl(info.file.response.data);
       } else if (info.file.status === "error") {
         this.$message.error(`${info.file.name} file upload failed.`);
       }
@@ -93,6 +99,7 @@ export default {
       }
       if (info.file.status === "done") {
         this.$message.success(`${info.file.name} file uploaded successfully`);
+        this.setFaviconUrl(info.file.response.data);
       } else if (info.file.status === "error") {
         this.$message.error(`${info.file.name} file upload failed.`);
       }
