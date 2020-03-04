@@ -330,7 +330,7 @@ export default {
     setError() {
       this.secondStepError = "This is an error!";
     },
-    completeCheckout(response) {
+    completeCheckout(response, orderId) {
       if (response.status !== "success") {
         let error = response.message;
         // alert(error);
@@ -338,7 +338,8 @@ export default {
       } else if (response.status === "success") {
         this.$store.dispatch("emptyCart");
         // alert("Payment successful");
-        this.$router.push("/order/success");
+        this.$router.push(`/order/success/${orderId}`);
+        // this.$router.push("/order/success");
       }
     },
 
@@ -411,7 +412,7 @@ export default {
         },
         callback: function(response) {
           if (response) {
-            callbackFunc(response);
+            callbackFunc(response, orderId);
           } else {
             alert("payment failed");
           }

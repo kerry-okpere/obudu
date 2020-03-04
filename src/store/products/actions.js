@@ -11,6 +11,17 @@ const storefront$http = axios.create({
 
 const actions = {
 
+  async uploadStoreImages({ state, commit }, {payload}) {
+    return new Promise(async (resolve, reject) => {      
+      let response = await storefront$http.post(`${API_URL}/merchants/uploads`, {...payload}).catch(err => console.log(err));
+      if (response.status == 200) {
+        resolve(response.data);
+      } else {
+        reject("Unable to post image");
+      }
+    });
+  },
+
   async fetchStoreMetadata({ state, commit }) {
     return new Promise(async (resolve, reject) => {      
       let response = await storefront$http.get(`${API_URL}/${STORE_ID}/metadata`).catch(err => console.log(err));
